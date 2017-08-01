@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: service-registry
+server:
+  port: ${port}
+eureka:
+  client:
+    service-url:
+      defaultZone: ${defaultZone}
+  instance:
+#    hostname: ${hostname}
+    instance-id: ${spring.cloud.client.ipAddress}:${port}
