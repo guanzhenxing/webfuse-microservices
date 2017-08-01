@@ -7,11 +7,14 @@
     <groupId>network.swan</groupId>
     <artifactId>swan</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
     <name>swan</name>
     <description>a microservices platform</description>
-
     <packaging>pom</packaging>
+
+    <modules>
+        <module>config-repo</module>
+        <module>service-registry</module>
+    </modules>
 
     <properties>
         <java.version>1.8</java.version>

@@ -1,0 +1,54 @@
+logging:
+  level:
+    network.swan: DEBUG
+    org.springframework: INFO
+
+ribbon:
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 1
+  OkToRetryOnAllOperations: true
+  ServerListRefreshInterval: 2000
+  ConnectTimeout: 3000
+  ReadTimeout: 3000
+
+feign:
+  compression:  # 开启请求与响应的GZIP压缩
+    request:
+      enabled: true
+    response:
+      enabled: true
+  hystrix:
+    enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+
+spring:
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true # 开启负载均衡的重试机制
+    bus:
+      trace:
+        enabled: true #开启bus跟踪
+    config:
+      fail-fast: true
+  rabbitmq: # 配置rabbitmq
+    host: 192.168.118.131
+    port: 5672
+    username: guest
+    password: guest
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://eureka-peer-1:1001/eureka/,http://eureka-peer-2:1002/eureka/,http://eureka-peer-3:1003/eureka/  # 服务注册中心的地址
