@@ -1,0 +1,92 @@
+server:
+  port: 2001
+spring:
+  profiles:
+    active: @env@
+  application:
+    name: config-server-center
+  cloud:
+    bus:
+      trace:
+        enabled: true
+    config:
+      server:
+        health:
+          enabled: true
+        git:
+          search-paths: '{application}'   # 配置仓库路径下的相对搜索位置，这里使用的是项目名称作为占位符进行搜索。
+          clone-on-start: true            # 启动的时候就clone Git仓库
+          force-pull: true                # 如果本地副本是脏的，将使Spring Cloud Config Server强制从远程存储库拉
+security:
+  basic:
+    enabled: true
+  user:
+    name: dynamax
+    password: dynamax
+management:
+  security:
+     enabled: false
+
+---
+spring:
+  profiles: dev
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/guanzhenxing/config-repo
+          username: xxx
+          password: xxx
+  rabbitmq: # 配置rabbitmq
+    host: 192.168.118.131
+    port: 5672
+    username: guest
+    password: guest
+
+---
+spring:
+  profiles: test
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/guanzhenxing/config-repo
+          username: xxx
+          password: xxx
+  rabbitmq: # 配置rabbitmq
+    host: 192.168.118.131
+    port: 5672
+    username: guest
+    password: guest
+
+---
+spring:
+  profiles: beta
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/guanzhenxing/config-repo
+          username: xxx
+          password: xxx
+  rabbitmq: # 配置rabbitmq
+    host: 192.168.118.131
+    port: 5672
+    username: guest
+    password: guest
+
+---
+spring:
+  profiles: prod
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/guanzhenxing/config-repo
+          username: xxx
+          password: xxx
+  rabbitmq: # 配置rabbitmq
+    host: 192.168.118.131
+    port: 5672
+    username: guest
+    password: guest
