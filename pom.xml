@@ -17,6 +17,7 @@
         <module>config-server</module>
         <module>gateway-service</module>
         <module>ms-service-starter</module>
+        <module>monitoring-service</module>
     </modules>
 
     <properties>
