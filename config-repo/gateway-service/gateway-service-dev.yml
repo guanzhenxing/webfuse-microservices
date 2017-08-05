@@ -1,0 +1,19 @@
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
+
+ribbon:
+  ConnectTimeout: 20000
+  ReadTimeout: 20000
+
+zuul:
+  ignored-services: '*'
+  host:
+    connect-timeout-millis: 20000
+    socket-timeout-millis: 20000
+  prefix: /api
+  # routes:
