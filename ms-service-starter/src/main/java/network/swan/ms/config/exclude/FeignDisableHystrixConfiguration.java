@@ -1,4 +1,4 @@
-package network.swan.ms.config.ext;
+package network.swan.ms.config.exclude;
 
 import feign.Feign;
 import org.springframework.context.annotation.Bean;
