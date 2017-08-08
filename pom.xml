@@ -18,6 +18,7 @@
         <module>gateway-service</module>
         <module>ms-service-starter</module>
         <module>monitoring-service</module>
+        <module>tracking-service</module>
     </modules>
 
     <properties>
