@@ -19,6 +19,8 @@
         <module>ms-service-starter</module>
         <module>monitoring-service</module>
         <module>tracking-service</module>
+        <module>core</module>
+        <module>common-frame</module>
     </modules>
 
     <properties>
