@@ -1,5 +1,6 @@
 package network.swan.core.utils;
 
+import com.google.common.base.Strings;
 import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.helpers.MessageFormatter;
 
@@ -76,7 +77,7 @@ public class AssertUtil {
     }
 
     public static void assertHasText(String target, String message, Object... params) {
-        if (!StringUtil.hasText(target)) {
+        if (Strings.isNullOrEmpty(target)) {
             throwAssertionException(message, params);
         }
     }
