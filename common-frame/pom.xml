@@ -11,5 +11,13 @@
 
     <artifactId>common-frame</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>network.swan</groupId>
+            <artifactId>core</artifactId>
+            <version>${swan.version}</version>
+        </dependency>
+    </dependencies>
+
 
 </project>
