@@ -1,5 +1,6 @@
 package network.swan.core.utils;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +29,7 @@ public class ReflectionUtil {
      * 调用Getter方法.
      */
     public static Object invokeGetter(Object obj, String propertyName) {
-        String getterMethodName = GETTER_PREFIX + StringUtil.capitalize(propertyName);
+        String getterMethodName = GETTER_PREFIX + StringUtils.capitalize(propertyName);
         return invokeMethod(obj, getterMethodName, new Class[]{}, new Object[]{});
     }
 
@@ -36,7 +37,7 @@ public class ReflectionUtil {
      * 调用Setter方法, 仅匹配方法名。
      */
     public static void invokeSetter(Object obj, String propertyName, Object value) {
-        String setterMethodName = SETTER_PREFIX + StringUtil.capitalize(propertyName);
+        String setterMethodName = SETTER_PREFIX + StringUtils.capitalize(propertyName);
         invokeMethodByName(obj, setterMethodName, new Object[]{value});
     }
 

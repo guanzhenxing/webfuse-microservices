@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.fasterxml.jackson.module.jaxb.JaxbAnnotationModule;
 import network.swan.core.utils.StringUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -86,7 +87,7 @@ public class JsonMapper {
      * @see #fromJson(String, JavaType)
      */
     public <T> T fromJson(String jsonString, Class<T> clazz) {
-        if (StringUtil.isEmpty(jsonString)) {
+        if (StringUtils.isEmpty(jsonString)) {
             return null;
         }
 
@@ -104,7 +105,7 @@ public class JsonMapper {
      */
     @SuppressWarnings("unchecked")
     public <T> T fromJson(String jsonString, JavaType javaType) {
-        if (StringUtil.isEmpty(jsonString)) {
+        if (StringUtils.isEmpty(jsonString)) {
             return null;
         }
 

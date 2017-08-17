@@ -5,7 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class StringUtil extends StringUtils {
+public class StringUtil {
 
     private StringUtil() {
     }
@@ -64,7 +64,7 @@ public class StringUtil extends StringUtils {
      * @return
      */
     public static String lowerFirstCharacter(String str) {
-        if (isEmpty(str)) return str;
+        if (StringUtils.isEmpty(str)) return str;
         char[] arrays = str.toCharArray();
         char firstUpperCaseChar = arrays[0];
         char firstLowercaseChar = Character.toLowerCase(firstUpperCaseChar);

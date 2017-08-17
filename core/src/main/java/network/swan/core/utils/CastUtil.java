@@ -1,6 +1,7 @@
 package network.swan.core.utils;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -81,7 +82,7 @@ public class CastUtil {
         double doubleValue = defaultValue;
         if (object != null) {
             String strValue = object2String(object);
-            if (StringUtil.isNotEmpty(strValue)) {
+            if (StringUtils.isNotEmpty(strValue)) {
                 try {
                     doubleValue = Double.parseDouble(strValue);
                 } catch (NumberFormatException e) {
@@ -133,7 +134,7 @@ public class CastUtil {
         int intValue = defaultValue;
         if (object != null) {
             String strValue = object2String(object);
-            if (StringUtil.isNotEmpty(strValue)) {
+            if (StringUtils.isNotEmpty(strValue)) {
                 try {
                     intValue = Integer.parseInt(strValue);
                 } catch (NumberFormatException e) {
@@ -185,7 +186,7 @@ public class CastUtil {
         float floatValue = defaultValue;
         if (object != null) {
             String strValue = object2String(object);
-            if (StringUtil.isNotEmpty(strValue)) {
+            if (StringUtils.isNotEmpty(strValue)) {
                 try {
                     floatValue = Float.parseFloat(strValue);
                 } catch (NumberFormatException e) {
@@ -237,7 +238,7 @@ public class CastUtil {
         long longValue = defaultValue;
         if (object != null) {
             String strValue = object2String(object);
-            if (StringUtil.isNotEmpty(strValue)) {
+            if (StringUtils.isNotEmpty(strValue)) {
                 try {
                     longValue = Long.parseLong(strValue);
                 } catch (NumberFormatException e) {

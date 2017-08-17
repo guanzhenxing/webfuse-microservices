@@ -3,6 +3,7 @@ package network.swan.core.utils.mapper;
 import network.swan.core.utils.ExceptionUtil;
 import network.swan.core.utils.ReflectionUtil;
 import network.swan.core.utils.StringUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
 
 import javax.xml.bind.*;
@@ -104,7 +105,7 @@ public class JaxbMapper {
 
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
-            if (StringUtil.isNotBlank(encoding)) {
+            if (StringUtils.isNotBlank(encoding)) {
                 marshaller.setProperty(Marshaller.JAXB_ENCODING, encoding);
             }
 

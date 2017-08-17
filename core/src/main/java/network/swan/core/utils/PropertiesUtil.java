@@ -1,6 +1,7 @@
 package network.swan.core.utils;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,7 +26,7 @@ public class PropertiesUtil {
         Properties props = new Properties();
         InputStream is = null;
         try {
-            if (StringUtil.isEmpty(propsPath)) {
+            if (StringUtils.isEmpty(propsPath)) {
                 throw new IllegalArgumentException();
             }
             String suffix = ".properties";
