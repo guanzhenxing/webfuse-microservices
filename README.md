@@ -25,3 +25,6 @@ swan是基于Spring Cloud开发的微服务框架。可以在现有的基础上�
 
 ## 怎么用
 
+## TODO List
+
+- 整理core，确保知道每个依赖是做什么的（just for self）
