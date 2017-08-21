@@ -4,7 +4,7 @@ import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.net.URLCodec;
-import org.apache.commons.lang3.StringEscapeUtils;
+import org.apache.commons.text.StringEscapeUtils;
 
 /**
  * 各种编码工具类。实现：
@@ -84,10 +84,10 @@ public class EncodeUtil {
     }
 
     /**
-     * Xml 转码.
+     * Xml 转码.(默认转码1.0版本的xml)
      */
     public static String escapeXml(String xml) {
-        return StringEscapeUtils.escapeXml(xml);
+        return StringEscapeUtils.escapeXml10(xml);
     }
 
     /**

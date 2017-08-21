@@ -7,6 +7,7 @@ import org.apache.commons.lang3.Validate;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /**
@@ -109,7 +110,7 @@ public class ServletUtil {
      */
     public static void setFileDownloadHeader(HttpServletResponse response, String fileName) {
         // 中文文件名支持
-        String encodedfileName = new String(fileName.getBytes(), Charsets.ISO_8859_1);
+        String encodedfileName = new String(fileName.getBytes(), StandardCharsets.ISO_8859_1);
         response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + encodedfileName + "\"");
 
     }
