@@ -9,8 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>config-repo</artifactId>
-    <name>config-repo</name>
+    <artifactId>ms-config-repo</artifactId>
+    <name>ms-config-repo</name>
     <description>The configuration repository</description>
     <packaging>pom</packaging>
 

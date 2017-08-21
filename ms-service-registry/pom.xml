@@ -9,8 +9,8 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>service-registry</artifactId>
-	<name>service-registry</name>
+	<artifactId>ms-service-registry</artifactId>
+	<name>ms-service-registry</name>
 	<description>The service registry</description>
 	<packaging>jar</packaging>
 

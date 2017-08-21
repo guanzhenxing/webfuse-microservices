@@ -12,13 +12,13 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>config-repo</module>
-        <module>service-registry</module>
-        <module>config-server</module>
-        <module>gateway-service</module>
+        <module>ms-config-repo</module>
+        <module>ms-service-registry</module>
+        <module>ms-config-server</module>
+        <module>ms-gateway-service</module>
         <module>ms-service-starter</module>
-        <module>monitoring-service</module>
-        <module>tracking-service</module>
+        <module>ms-monitoring-service</module>
+        <module>ms-tracking-service</module>
         <module>swan-core</module>
         <module>swan-common-frame</module>
     </modules>
