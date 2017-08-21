@@ -12,7 +12,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>core</module>
         <module>config-repo</module>
         <module>service-registry</module>
         <module>config-server</module>
@@ -20,7 +19,8 @@
         <module>ms-service-starter</module>
         <module>monitoring-service</module>
         <module>tracking-service</module>
-        <module>common-frame</module>
+        <module>swan-core</module>
+        <module>swan-common-frame</module>
     </modules>
 
     <properties>

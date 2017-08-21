@@ -9,13 +9,13 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>common-frame</artifactId>
+    <artifactId>swan-common-frame</artifactId>
 
 
     <dependencies>
         <dependency>
             <groupId>network.swan</groupId>
-            <artifactId>core</artifactId>
+            <artifactId>swan-core</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
