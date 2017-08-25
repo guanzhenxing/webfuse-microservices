@@ -21,6 +21,7 @@
         <module>ms-tracking-service</module>
         <module>swan-core</module>
         <module>swan-common-frame</module>
+        <module>ms-uaa-service</module>
     </modules>
 
     <properties>
