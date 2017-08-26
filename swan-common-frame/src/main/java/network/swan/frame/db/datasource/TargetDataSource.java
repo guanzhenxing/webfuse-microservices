@@ -11,7 +11,6 @@ import java.lang.annotation.*;
  *   {@literal @}TargetDataSource(value = "primaryDataSource")
  * </pre>
  * <p>
- * Created by guanzhenxing on 2017/8/10.
  */
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)

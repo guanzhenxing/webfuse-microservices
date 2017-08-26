@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 /**
  * 切换数据源Advice
- * Created by guanzhenxing on 2017/8/10.
  */
 
 @Aspect

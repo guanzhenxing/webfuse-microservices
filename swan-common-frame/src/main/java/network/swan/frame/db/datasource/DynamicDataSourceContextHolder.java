@@ -5,7 +5,6 @@ import java.util.List;
 
 /**
  * 动态数据源上下文
- * Created by guanzhenxing on 2017/8/9.
  */
 public class DynamicDataSourceContextHolder {
 
@@ -26,6 +25,10 @@ public class DynamicDataSourceContextHolder {
 
     public static boolean containsDataSource(String dataSourceName) {
         return dataSourceNames.contains(dataSourceName);
+    }
+
+    public static void addDataSourceName(String name) {
+        dataSourceNames.add(name);
     }
 
 }
