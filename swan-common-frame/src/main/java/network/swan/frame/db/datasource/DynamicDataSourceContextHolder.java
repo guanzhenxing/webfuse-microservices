@@ -27,8 +27,4 @@ public class DynamicDataSourceContextHolder {
         return dataSourceNames.contains(dataSourceName);
     }
 
-    public static void addDataSourceName(String name) {
-        dataSourceNames.add(name);
-    }
-
 }
