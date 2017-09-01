@@ -1,4 +1,4 @@
-package network.swan.ms.config.exclude;
+package network.swan.ms.config;
 
 import feign.Feign;
 import network.swan.ms.annotation.IgnoreDuringScan;
