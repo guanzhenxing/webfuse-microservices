@@ -39,7 +39,7 @@ spring:
     config:
       fail-fast: true
   rabbitmq: # 配置rabbitmq
-    host: 192.168.118.131
+    host: 119.23.173.116
     port: 5672
     username: guest
     password: guest
@@ -56,4 +56,4 @@ eureka:
     healthcheck:
       enabled: true
     serviceUrl:
-      defaultZone: http://eureka-peer-1:1001/eureka/,http://eureka-peer-2:1002/eureka/,http://eureka-peer-3:1003/eureka/  # 服务注册中心的地址
+      defaultZone: http://eureka-peer-1:2101/eureka/,http://eureka-peer-2:2102/eureka/  # 服务注册中心的地址
