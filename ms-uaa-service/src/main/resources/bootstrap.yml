@@ -1,8 +1,8 @@
 server:
-  port: 2501
+  port: 8001
 spring:
   application:
-    name: ms-tracking-service
+    name: ms-uaa-service
   profiles:
     active: @env@
 ---

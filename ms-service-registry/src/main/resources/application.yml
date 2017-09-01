@@ -1,6 +1,6 @@
 spring:
   application:
-    name: service-registry
+    name: ms-service-registry
 server:
   port: ${port}
 eureka:

@@ -1,8 +1,8 @@
 server:
-  port: 11001
+  port: 2401
 spring:
   application:
-    name: monitoring-service
+    name: ms-monitoring-service
   profiles:
     active: @env@
 ---
@@ -10,9 +10,9 @@ spring:
   profiles: dev
   cloud:
     config:
-      uri: http://127.0.0.1:2001/
-      username: dynamax
-      password: dynamax
+      uri: http://127.0.0.1:2201/
+      username: zxguan
+      password: zxguan
       profile: ${spring.profiles.active}
       label: master
 ---
@@ -20,9 +20,9 @@ spring:
   profiles: test
   cloud:
     config:
-      uri: http://127.0.0.1:2001/
-      username: dynamax
-      password: dynamax
+      uri: http://127.0.0.1:2201/
+      username: zxguan
+      password: zxguan
       profile: ${spring.profiles.active}
       label: master
 ---
@@ -30,9 +30,9 @@ spring:
   profiles: beta
   cloud:
     config:
-      uri: http://127.0.0.1:2001/
-      username: dynamax
-      password: dynamax
+      uri: http://127.0.0.1:2201/
+      username: zxguan
+      password: zxguan
       profile: ${spring.profiles.active}
       label: master
 ---
@@ -40,8 +40,8 @@ spring:
   profiles: prod
   cloud:
     config:
-      uri: http://127.0.0.1:2001/
-      username: dynamax
-      password: dynamax
+      uri: http://127.0.0.1:2201/
+      username: zxguan
+      password: zxguan
       profile: ${spring.profiles.active}
       label: master
