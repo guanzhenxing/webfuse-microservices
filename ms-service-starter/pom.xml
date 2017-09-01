@@ -14,6 +14,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>network.swan</groupId>
+            <artifactId>swan-common-frame</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
