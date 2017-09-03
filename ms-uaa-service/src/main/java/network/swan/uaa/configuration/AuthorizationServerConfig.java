@@ -2,14 +2,12 @@ package network.swan.uaa.configuration;
 
 import network.swan.uaa.models.Role;
 import network.swan.uaa.service.AccountService;
-import network.swan.uaa.service.CustomerTokenService;
 import network.swan.uaa.service.TokenBlackListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -21,17 +19,15 @@ import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
-import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
 
 /**
- * 配置认证
+ * 认证配置
  * Created by guanzhenxing on 2017/9/3.
  */
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
-
+public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Value("${security.oauth2.resource.id}")
     private String resourceId;
@@ -44,6 +40,20 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
         return new AccountService();
     }
 
+    /**
+     * 配置认证的节点
+     *
+     * @param endpoints
+     * @throws Exception
+     */
+    @Override
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        endpoints
+                .authenticationManager(authenticationManager)
+                .tokenStore(tokenStore())
+                .accessTokenConverter(accessTokenConverter())
+                .tokenServices(tokenServices());
+    }
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
@@ -53,43 +63,57 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
                 .checkTokenAccess("hasAuthority('ROLE_TRUSTED_CLIENT')");
     }
 
-    @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints
-                .authenticationManager(this.authenticationManager)
-                .tokenServices(tokenServices())
-                .tokenStore(tokenStore())
-                .accessTokenConverter(accessTokenConverter());
-    }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients
-                .inMemory()
-                .withClient("trusted-app")
-                .authorizedGrantTypes("client_credentials", "password", "refresh_token")
-                .authorities(Role.ROLE_TRUSTED_CLIENT.toString())
+        clients.inMemory()
+                .withClient("normal-app")
+                .authorizedGrantTypes("authorization_code", "implicit")
+                .authorities("ROLE_CLIENT")
                 .scopes("read", "write")
                 .resourceIds(resourceId)
-                .accessTokenValiditySeconds(30000)
-                .refreshTokenValiditySeconds(86400)
-                .secret("secret")
+                .accessTokenValiditySeconds(3600)
+                .refreshTokenValiditySeconds(10000)
                 .and()
-                .withClient("register-app")
-                .authorizedGrantTypes("client_credentials")
-                .authorities(Role.ROLE_REGISTER.toString())
-                .scopes("registerUser")
+                .withClient("trusted-app").secret("secret")
+                .authorizedGrantTypes("client_credentials", "password", "refresh_token")
+                .authorities("ROLE_TRUSTED_CLIENT")
+                .scopes("read", "write")
                 .resourceIds(resourceId)
-                .accessTokenValiditySeconds(10)
-                .refreshTokenValiditySeconds(10)
-                .secret("secret");
+                .accessTokenValiditySeconds(3600)
+                .refreshTokenValiditySeconds(10000)
+                .and()
+                .withClient("register-app").secret("secret")
+                .authorizedGrantTypes("client_credentials")
+                .authorities("ROLE_REGISTER")
+                .scopes("read")
+                .resourceIds(resourceId)
+                .and()
+                .withClient("my-client-with-registered-redirect")
+                .authorizedGrantTypes("authorization_code")
+                .authorities("ROLE_CLIENT")
+                .scopes("read", "trust")
+                .resourceIds("oauth2-resource")
+                .redirectUris("http://anywhere?key=value");
     }
 
+
+    /**
+     * 定义TokenStore
+     *
+     * @return
+     */
     @Bean
     public TokenStore tokenStore() {
         return new JwtTokenStore(accessTokenConverter());
     }
 
+
+    /**
+     * 定义JwtAccessTokenConverter
+     *
+     * @return
+     */
     @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
@@ -97,13 +121,16 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
         return converter;
     }
 
-    @Autowired
-    private TokenBlackListService blackListService;
 
+    /**
+     * 定义TokenServices
+     *
+     * @return
+     */
     @Bean
     @Primary
     public DefaultTokenServices tokenServices() {
-        CustomerTokenService tokenService = new CustomerTokenService(blackListService);
+        DefaultTokenServices tokenService = new DefaultTokenServices();
         tokenService.setTokenStore(tokenStore());
         tokenService.setSupportRefreshToken(true);
         tokenService.setTokenEnhancer(accessTokenConverter());

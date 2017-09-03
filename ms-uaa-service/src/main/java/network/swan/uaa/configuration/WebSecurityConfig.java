@@ -1,10 +1,12 @@
 package network.swan.uaa.configuration;
 
+import network.swan.uaa.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -25,7 +27,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    public UserDetailsService accountService;
+    public UserDetailsService userDetailsService;   //在AuthorizationServerConfig中实例化了
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -43,23 +45,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
-                .userDetailsService(accountService)
+                .userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .formLogin().disable() // disable form authentication
-                .anonymous().disable() // disable anonymous user
-                .httpBasic().and()
-                .authorizeRequests().anyRequest().authenticated(); // restricting access to authenticated users
+                .authorizeRequests()
+                .anyRequest().authenticated()
+                .antMatchers("/", "/**").permitAll()
+                .antMatchers(HttpMethod.OPTIONS).permitAll()
+                .and().httpBasic().and()
+                .csrf().disable();
     }
 
     @Override
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
-        // provides the default AuthenticationManager as a Bean
         return super.authenticationManagerBean();
     }
 }
