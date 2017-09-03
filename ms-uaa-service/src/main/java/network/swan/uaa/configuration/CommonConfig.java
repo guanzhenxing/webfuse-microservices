@@ -1,4 +1,4 @@
-package network.swan.uaa.config;
+package network.swan.uaa.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
  * Created by guanzhenxing on 2017/8/5.
  */
 @Configuration
-public class CommonConfiguration {
+public class CommonConfig {
 
     /**
      * 具有负载均衡的RestTemplate
