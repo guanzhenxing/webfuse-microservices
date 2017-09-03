@@ -1,6 +1,5 @@
 package network.swan.uaa.configuration;
 
-import network.swan.uaa.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
