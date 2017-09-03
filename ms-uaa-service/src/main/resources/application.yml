@@ -11,3 +11,6 @@ spring:
 security:
   user:
     password: password
+  oauth2:
+    resource:
+      id: oauth2_id
