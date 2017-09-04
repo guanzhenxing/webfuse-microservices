@@ -14,3 +14,6 @@ security:
   oauth2:
     resource:
       id: oauth2_id
+logging:
+  level:
+    org.springframework: DEBUG

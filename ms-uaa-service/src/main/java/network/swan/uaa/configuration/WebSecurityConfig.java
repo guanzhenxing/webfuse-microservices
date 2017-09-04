@@ -1,6 +1,6 @@
 package network.swan.uaa.configuration;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import network.swan.uaa.service.AccountService;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,8 +25,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    public UserDetailsService userDetailsService;   //在AuthorizationServerConfig中实例化了
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return new AccountService();
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -41,10 +44,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return provider;
     }
 
+
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
-                .userDetailsService(userDetailsService)
+                .userDetailsService(userDetailsService())
                 .passwordEncoder(passwordEncoder());
     }
 
@@ -56,6 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .and().httpBasic()
                 .and().csrf().disable();
+
     }
 
     @Override

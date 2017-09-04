@@ -2,6 +2,7 @@ package network.swan.uaa.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -28,10 +29,11 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     private String resourceId;
 
     @Autowired
-    private DefaultTokenServices tokenServices; //在AuthorizationServerConfig中实例化了
+    private DefaultTokenServices tokenServices; //在WebSecurityConfig中实例化了
 
     @Autowired
     private TokenStore tokenStore; //在AuthorizationServerConfig中实例化了
+
 
     // To allow the ResourceServerConfigurerAdapter to understand the token,
     // it must share the same characteristics with AuthorizationServerConfigurerAdapter.
@@ -58,6 +60,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .antMatchers("/api/admin").hasRole("ADMIN")
                 .antMatchers("/api/register").hasAuthority("ROLE_REGISTER")
                 .anyRequest().authenticated();
+
+
     }
 
     private static class OAuthRequestedMatcher implements RequestMatcher {

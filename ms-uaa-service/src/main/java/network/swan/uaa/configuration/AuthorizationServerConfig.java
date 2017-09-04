@@ -1,8 +1,6 @@
 package network.swan.uaa.configuration;
 
-import network.swan.uaa.models.Role;
 import network.swan.uaa.service.AccountService;
-import network.swan.uaa.service.TokenBlackListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -20,8 +18,6 @@ import org.springframework.security.oauth2.provider.token.DefaultAccessTokenConv
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
-import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
-import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 
 /**
@@ -38,10 +34,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        return new AccountService();
-    }
 
     /**
      * 配置认证的节点
@@ -99,6 +91,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .resourceIds("oauth2-resource")
                 .redirectUris("http://anywhere?key=value");
     }
+
 
 
     /**
