@@ -1,4 +1,4 @@
-package network.swan.ms.configuration;
+package network.swan.ms.configuration.feign;
 
 import feign.Logger;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package network.swan.ms.configuration;
+package network.swan.ms.configuration.feign;
 
 import feign.Feign;
 import network.swan.frame.annotation.IgnoreDuringSpringScan;
