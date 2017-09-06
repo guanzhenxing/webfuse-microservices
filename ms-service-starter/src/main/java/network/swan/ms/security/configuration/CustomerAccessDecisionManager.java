@@ -28,16 +28,16 @@ public class CustomerAccessDecisionManager implements AccessDecisionManager {
             return;
         }
 
-        //config url roles
+        //config url-authority
         Iterator<ConfigAttribute> iterator = configAttributes.iterator();
 
         while (iterator.hasNext()) {
 
             ConfigAttribute configAttribute = iterator.next();
-            String needRole = configAttribute.getAttribute();   // need role
+            String needAuthority = configAttribute.getAttribute();   // need authority
 
             for (GrantedAuthority ga : authentication.getAuthorities()) {
-                if (needRole.equals(ga.getAuthority())) {
+                if (needAuthority.equals(ga.getAuthority())) {
                     return;
                 }
             }
