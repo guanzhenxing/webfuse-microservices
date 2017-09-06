@@ -1,29 +1,60 @@
 package network.swan.ms.security.configuration;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.authentication.InsufficientAuthenticationException;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;
+import java.util.Iterator;
 
 /**
  * 权限管理决断器。在用户访问受保护的资源时，判断器判断用户拥有的角色是否对该资源具有访问权限；如果没有访问权限将被拒绝访问，并返回错误提示。
  */
 public class CustomerAccessDecisionManager implements AccessDecisionManager {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomerAccessDecisionManager.class);
+
     @Override
-    public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes) throws AccessDeniedException, InsufficientAuthenticationException {
+    public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes)
+            throws AccessDeniedException, InsufficientAuthenticationException {
+
+
+        if (configAttributes == null) {
+            return;
+        }
+
+        //config url roles
+        Iterator<ConfigAttribute> iterator = configAttributes.iterator();
+
+        while (iterator.hasNext()) {
+
+            ConfigAttribute configAttribute = iterator.next();
+            String needRole = configAttribute.getAttribute();   // need role
+
+            for (GrantedAuthority ga : authentication.getAuthorities()) {
+                if (needRole.equals(ga.getAuthority())) {
+                    return;
+                }
+            }
+
+        }
+        LOGGER.warn("Cannot Access!");
+        throw new AccessDeniedException("Cannot Access!");
 
     }
 
     @Override
     public boolean supports(ConfigAttribute attribute) {
-        return false;
+        return true;
     }
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return false;
+        return true;
     }
 }
