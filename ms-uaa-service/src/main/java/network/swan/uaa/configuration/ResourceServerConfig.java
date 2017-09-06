@@ -55,10 +55,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .anonymous().disable()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
-                .antMatchers("/api/hello").access("hasAnyRole('USER')")
-                .antMatchers("/api/me").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/api/admin").hasRole("ADMIN")
-                .antMatchers("/api/register").hasAuthority("ROLE_REGISTER")
                 .anyRequest().authenticated();
 
 

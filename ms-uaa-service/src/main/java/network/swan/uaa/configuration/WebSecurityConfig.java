@@ -45,12 +45,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .userDetailsService(userDetailsService())
                 .passwordEncoder(passwordEncoder());
+
+        auth.eraseCredentials(true);
     }
 
     @Override
@@ -60,6 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .and().httpBasic()
+                .and().cors()
                 .and().csrf().disable();
 
     }
