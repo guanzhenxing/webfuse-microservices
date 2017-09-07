@@ -1,4 +1,4 @@
-package network.swan.uaa.configuration;
+package network.swan.uaa.configuration.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -54,7 +54,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .requestMatcher(new OAuthRequestedMatcher())
                 .anonymous().disable()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .anyRequest().authenticated();
 
 

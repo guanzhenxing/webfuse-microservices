@@ -1,4 +1,4 @@
-package network.swan.uaa.configuration;
+package network.swan.uaa.configuration.db;
 
 import network.swan.frame.db.AbstractDBConfig;
 import org.springframework.context.annotation.Configuration;

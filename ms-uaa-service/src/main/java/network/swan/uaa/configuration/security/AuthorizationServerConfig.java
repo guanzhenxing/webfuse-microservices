@@ -1,6 +1,7 @@
-package network.swan.uaa.configuration;
+package network.swan.uaa.configuration.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,6 +31,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     private String resourceId;
 
     @Autowired
+    @Qualifier("authenticationManagerBean")
     private AuthenticationManager authenticationManager;
 
 
