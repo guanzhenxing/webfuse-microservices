@@ -60,8 +60,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .antMatchers("/api/admin").hasRole("ADMIN")
                 .antMatchers("/api/register").hasAuthority("ROLE_REGISTER")
                 .anyRequest().authenticated();
-
-
     }
 
     private static class OAuthRequestedMatcher implements RequestMatcher {
