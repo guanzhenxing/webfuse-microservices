@@ -1,4 +1,4 @@
-package network.swan.uaa.configuration;
+package network.swan.uaa.configuration.security;
 
 import network.swan.uaa.service.AccountService;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
@@ -17,6 +17,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * 配置WebSecurity
  */
@@ -25,6 +27,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+
+    @Override
+    @Bean
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -47,26 +55,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .userDetailsService(userDetailsService())
-                .passwordEncoder(passwordEncoder());
+        auth.authenticationProvider(authenticationProvider());
+        auth.eraseCredentials(true);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http
+                .cors().and()
+                .csrf().disable()
+                .exceptionHandling()
+                .and()
                 .authorizeRequests()
-                .anyRequest().authenticated()
-                .antMatchers(HttpMethod.OPTIONS).permitAll()
-                .and().httpBasic()
-                .and().csrf().disable();
+                .antMatchers("/**").authenticated()
+                .and()
+                .httpBasic();
 
 
     }
 
-    @Override
-    @Bean
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
 }

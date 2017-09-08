@@ -1,6 +1,7 @@
-package network.swan.uaa.configuration;
+package network.swan.uaa.configuration.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +20,7 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 
 
 /**
- * 认证配置
+ * OAuth2认证配置
  * Created by guanzhenxing on 2017/9/3.
  */
 @Configuration
@@ -30,6 +31,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     private String resourceId;
 
     @Autowired
+    @Qualifier("authenticationManagerBean")
     private AuthenticationManager authenticationManager;
 
 
@@ -91,7 +93,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     }
 
 
-
     /**
      * 定义TokenStore
      *
@@ -99,12 +100,12 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
      */
     @Bean
     public TokenStore tokenStore() {
-        return new InMemoryTokenStore();
+        return new InMemoryTokenStore();    //可以使用JDBC或者Redis
     }
 
 
     /**
-     * 定义JwtAccessTokenConverter
+     * 定义AccessTokenConverter
      *
      * @return
      */
@@ -126,7 +127,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         DefaultTokenServices tokenService = new DefaultTokenServices();
         tokenService.setTokenStore(tokenStore());
         tokenService.setSupportRefreshToken(true);
-//        tokenService.setTokenEnhancer(accessTokenConverter());
         return tokenService;
     }
 
