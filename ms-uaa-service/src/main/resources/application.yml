@@ -16,6 +16,7 @@ security:
   oauth2:
     resource:
       id: oauth2_id
+  filter-order: 5
 logging:
   level:
     org.springframework: DEBUG

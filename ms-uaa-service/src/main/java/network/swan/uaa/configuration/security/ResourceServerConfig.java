@@ -55,8 +55,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .anonymous().disable()
                 .authorizeRequests()
                 .anyRequest().authenticated();
-
-
     }
 
     private static class OAuthRequestedMatcher implements RequestMatcher {
