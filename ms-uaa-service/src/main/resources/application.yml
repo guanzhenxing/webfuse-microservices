@@ -8,6 +8,8 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
+#    schema: classpath:db/oauth-schema.sql
+    data: classpath:db/oauth-data.sql
 security:
   user:
     password: password

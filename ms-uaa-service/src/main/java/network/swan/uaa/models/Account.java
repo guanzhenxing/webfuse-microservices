@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by guanzhenxing on 2017/9/3.
+ * 账户信息
  */
 @Entity
 public class Account implements UserDetails {
