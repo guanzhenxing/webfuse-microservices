@@ -1,4 +1,4 @@
-package network.swan.ms.config;
+package network.swan.ms.configuration.feign;
 
 import feign.Logger;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
  * Created by guanzhenxing on 2017/8/5.
  */
 @Configuration
-public class FeignLogConfiguration {
+public class FeignLogConfig {
 
     @Bean
     Logger.Level feignLoggerLevel() {

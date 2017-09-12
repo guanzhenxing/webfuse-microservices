@@ -1,7 +1,7 @@
-package network.swan.ms.config;
+package network.swan.ms.configuration.feign;
 
 import feign.Feign;
-import network.swan.ms.annotation.IgnoreDuringScan;
+import network.swan.frame.annotation.IgnoreDuringSpringScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -18,8 +18,8 @@ import org.springframework.context.annotation.Scope;
  * Created by guanzhenxing on 2017/8/5.
  */
 @Configuration
-@IgnoreDuringScan
-public class FeignDisableHystrixConfiguration {
+@IgnoreDuringSpringScan
+public class FeignDisableHystrixConfig {
 
     @Bean
     @Scope("prototype")
