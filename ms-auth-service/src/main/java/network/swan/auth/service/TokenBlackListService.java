@@ -1,8 +1,8 @@
-package network.swan.uaa.service;
+package network.swan.auth.service;
 
 
-import network.swan.uaa.models.TokenBlackList;
-import network.swan.uaa.repository.TokenBlackListRepo;
+import network.swan.auth.models.TokenBlackList;
+import network.swan.auth.repository.TokenBlackListRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;

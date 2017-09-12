@@ -1,4 +1,4 @@
-package network.swan.uaa.configuration.security;
+package network.swan.auth.configuration.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

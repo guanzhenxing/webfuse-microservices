@@ -21,7 +21,7 @@
         <module>ms-tracking-service</module>
         <module>swan-core</module>
         <module>swan-common-frame</module>
-        <module>ms-uaa-service</module>
+        <module>ms-auth-service</module>
         <module>test-demo</module>
     </modules>
 

@@ -1,9 +1,9 @@
-package network.swan.uaa;
+package network.swan.auth;
 
 import network.swan.frame.annotation.IgnoreDuringSpringScan;
-import network.swan.uaa.models.Account;
-import network.swan.uaa.models.Role;
-import network.swan.uaa.service.AccountService;
+import network.swan.auth.models.Account;
+import network.swan.auth.models.Role;
+import network.swan.auth.service.AccountService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,10 +16,10 @@ import java.util.Arrays;
 @SpringBootApplication
 @EnableAspectJAutoProxy(exposeProxy = true)
 @ComponentScan(excludeFilters = @ComponentScan.Filter(IgnoreDuringSpringScan.class))
-public class UaaApplication {
+public class AuthApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(UaaApplication.class, args);
+        SpringApplication.run(AuthApplication.class, args);
     }
 
 

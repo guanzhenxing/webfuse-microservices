@@ -1,8 +1,8 @@
-package network.swan.uaa.service;
+package network.swan.auth.service;
 
-import network.swan.uaa.models.Account;
-import network.swan.uaa.models.Role;
-import network.swan.uaa.repository.AccountRepo;
+import network.swan.auth.models.Account;
+import network.swan.auth.models.Role;
+import network.swan.auth.repository.AccountRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;

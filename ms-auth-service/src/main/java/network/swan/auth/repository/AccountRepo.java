@@ -1,10 +1,10 @@
-package network.swan.uaa.repository;
+package network.swan.auth.repository;
 
 /**
  * Created by guanzhenxing on 2017/9/3.
  */
 
-import network.swan.uaa.models.Account;
+import network.swan.auth.models.Account;
 import org.springframework.data.repository.Repository;
 
 import java.util.Optional;

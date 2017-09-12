@@ -1,6 +1,6 @@
-package network.swan.uaa.service;
+package network.swan.auth.service;
 
-import network.swan.uaa.models.Account;
+import network.swan.auth.models.Account;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.AuthenticationException;

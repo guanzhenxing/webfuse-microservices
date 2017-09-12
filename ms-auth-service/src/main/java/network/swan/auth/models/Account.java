@@ -1,4 +1,4 @@
-package network.swan.uaa.models;
+package network.swan.auth.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;

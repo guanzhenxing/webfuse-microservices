@@ -1,6 +1,6 @@
-package network.swan.uaa.repository;
+package network.swan.auth.repository;
 
-import network.swan.uaa.models.TokenBlackList;
+import network.swan.auth.models.TokenBlackList;
 import org.springframework.data.repository.Repository;
 
 import java.util.List;

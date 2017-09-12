@@ -1,4 +1,4 @@
-package network.swan.uaa.models;
+package network.swan.auth.models;
 
 /**
  * Created by guanzhenxing on 2017/9/3.

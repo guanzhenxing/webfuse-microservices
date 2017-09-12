@@ -1,4 +1,4 @@
-package network.swan.uaa.models;
+package network.swan.auth.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
