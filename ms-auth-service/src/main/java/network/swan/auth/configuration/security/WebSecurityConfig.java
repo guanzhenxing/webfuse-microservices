@@ -16,6 +16,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.data.repository.query.SecurityEvaluationContextExtension;
 
 /**
  * 配置WebSecurity
@@ -32,11 +33,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
+    /**
+     * 获得用户详情的Service
+     *
+     * @return
+     */
     @Bean
     public UserDetailsService userDetailsService() {
         return new AccountService();
     }
 
+    /**
+     * 密码加密
+     *
+     * @return
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -57,6 +68,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.eraseCredentials(true);
     }
 
+    @Bean
+    public SecurityEvaluationContextExtension securityEvaluationContextExtension() {
+        return new SecurityEvaluationContextExtension();
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -64,15 +80,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().and()
                 .csrf().disable()   // we don't need CSRF because our token is invulnerable
                 .exceptionHandling() .and()
-                // don't create session
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests()
-                .antMatchers("/**").authenticated()
-                .and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and() // don't create session
+                .authorizeRequests().antMatchers("/**").authenticated().and()
                 .httpBasic();
 
-        // disable page caching
-        http.headers().cacheControl();
+
+        http.headers().cacheControl();   // disable page caching
 
     }
 
