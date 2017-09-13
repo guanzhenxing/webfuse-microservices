@@ -1,6 +1,8 @@
 package network.swan.auth.configuration.security;
 
 import network.swan.auth.service.AccountService;
+import network.swan.auth.service.LoginSuccessHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +19,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.data.repository.query.SecurityEvaluationContextExtension;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+
+import javax.sql.DataSource;
 
 /**
  * 配置WebSecurity
@@ -75,18 +80,42 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+//
+//        http
+//                .cors().and()
+//                .csrf().disable()   // we don't need CSRF because our token is invulnerable
+//                .exceptionHandling() .and()
+//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and() // don't create session
+//                .authorizeRequests().antMatchers("/**").authenticated().and()
+//                .httpBasic();
+//
+//
+//        http.headers().cacheControl();   // disable page caching
 
-        http
-                .cors().and()
-                .csrf().disable()   // we don't need CSRF because our token is invulnerable
-                .exceptionHandling() .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and() // don't create session
-                .authorizeRequests().antMatchers("/**").authenticated().and()
-                .httpBasic();
+        http.formLogin().loginPage("/login").permitAll().successHandler(loginSuccessHandler())
+                .and().authorizeRequests()
+                .antMatchers("/images/**", "/check_code", "/scripts/**", "/styles/**").permitAll()
+                .anyRequest().authenticated()
+                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER)
+                .and().exceptionHandling().accessDeniedPage("/deny")
+                .and().rememberMe().tokenValiditySeconds(86400).tokenRepository(tokenRepository());
 
+    }
 
-        http.headers().cacheControl();   // disable page caching
+    @Autowired
+    @SuppressWarnings("SpringJavaAutowiringInspection")
+    private DataSource dataSource;
 
+    @Bean
+    public JdbcTokenRepositoryImpl tokenRepository() {
+        JdbcTokenRepositoryImpl jtr = new JdbcTokenRepositoryImpl();
+        jtr.setDataSource(dataSource);
+        return jtr;
+    }
+
+    @Bean
+    public LoginSuccessHandler loginSuccessHandler() {
+        return new LoginSuccessHandler();
     }
 
 }

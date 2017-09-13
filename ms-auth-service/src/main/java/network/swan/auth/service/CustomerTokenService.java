@@ -16,11 +16,6 @@ public class CustomerTokenService extends DefaultTokenServices {
 
     Logger logger = LoggerFactory.getLogger(CustomerTokenService.class);
 
-    private TokenBlackListService blackListService;
-
-    public CustomerTokenService(TokenBlackListService blackListService) {
-        this.blackListService = blackListService;
-    }
 
     @Override
     public OAuth2AccessToken readAccessToken(String accessToken) {
@@ -34,10 +29,6 @@ public class CustomerTokenService extends DefaultTokenServices {
         Account account = (Account) authentication.getPrincipal();
         String jti = (String) token.getAdditionalInformation().get("jti");
 
-        blackListService.addToEnabledList(
-                account.getId(),
-                jti,
-                token.getExpiration().getTime());
         return token;
     }
 
@@ -45,17 +36,7 @@ public class CustomerTokenService extends DefaultTokenServices {
     public OAuth2AccessToken refreshAccessToken(String refreshTokenValue, TokenRequest tokenRequest) throws AuthenticationException {
         logger.info("refresh token:" + refreshTokenValue);
         String jti = tokenRequest.getRequestParameters().get("jti");
-        try {
-            if (jti != null)
-                if (blackListService.isBlackListed(jti)) return null;
-
-
-            OAuth2AccessToken token = super.refreshAccessToken(refreshTokenValue, tokenRequest);
-            blackListService.addToBlackList(jti);
-            return token;
-        } catch (TokenBlackListService.TokenNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        }
+        OAuth2AccessToken token = super.refreshAccessToken(refreshTokenValue, tokenRequest);
+        return token;
     }
 }
