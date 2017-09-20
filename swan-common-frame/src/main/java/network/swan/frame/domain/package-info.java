@@ -1,0 +1,1 @@
+package network.swan.frame.domain;
