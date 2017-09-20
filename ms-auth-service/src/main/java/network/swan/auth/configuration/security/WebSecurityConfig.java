@@ -80,25 +80,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//
-//        http
-//                .cors().and()
-//                .csrf().disable()   // we don't need CSRF because our token is invulnerable
-//                .exceptionHandling() .and()
-//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and() // don't create session
-//                .authorizeRequests().antMatchers("/**").authenticated().and()
-//                .httpBasic();
-//
-//
-//        http.headers().cacheControl();   // disable page caching
 
-        http.formLogin().loginPage("/login").permitAll().successHandler(loginSuccessHandler())
-                .and().authorizeRequests()
-                .antMatchers("/images/**", "/check_code", "/scripts/**", "/styles/**").permitAll()
-                .anyRequest().authenticated()
-                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER)
-                .and().exceptionHandling().accessDeniedPage("/deny")
-                .and().rememberMe().tokenValiditySeconds(86400).tokenRepository(tokenRepository());
+        http
+                .cors().and()
+                .csrf().disable()   // we don't need CSRF because our token is invulnerable
+                .exceptionHandling() .and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and() // don't create session
+                .authorizeRequests().antMatchers("/**").authenticated().and()
+                .httpBasic();
+
+        http.headers().cacheControl();   // disable page caching
 
     }
 
