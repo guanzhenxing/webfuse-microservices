@@ -85,8 +85,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()   // we don't need CSRF because our token is invulnerable
                 .exceptionHandling().and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and() // don't create session
-                .authorizeRequests().antMatchers("/**").authenticated().and()
-                .httpBasic();
+                .authorizeRequests().anyRequest().authenticated();
 
         http.headers().cacheControl();   // disable page caching
 
