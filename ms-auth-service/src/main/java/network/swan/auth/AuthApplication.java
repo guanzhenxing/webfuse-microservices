@@ -18,7 +18,7 @@ import java.util.Arrays;
 //@EnableDiscoveryClient
 @EnableAspectJAutoProxy(exposeProxy = true)
 @ComponentScan(excludeFilters = @ComponentScan.Filter(IgnoreDuringSpringScan.class))
-public class AuthApplication {
+public class AuthApplication  {
 
     public static void main(String[] args) {
         SpringApplication.run(AuthApplication.class, args);
