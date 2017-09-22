@@ -13,10 +13,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
-import org.springframework.security.oauth2.provider.token.AccessTokenConverter;
-import org.springframework.security.oauth2.provider.token.DefaultAccessTokenConverter;
-import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
-import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.*;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 
 import javax.sql.DataSource;
@@ -51,6 +48,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .authenticationManager(authenticationManager)
                 .tokenStore(tokenStore())
                 .tokenServices(tokenServices())
+                .tokenEnhancer(tokenEnhancer())
                 .accessTokenConverter(accessTokenConverter());
     }
 
@@ -112,8 +110,14 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         DefaultTokenServices tokenService = new DefaultTokenServices();
         tokenService.setTokenStore(tokenStore());
         tokenService.setClientDetailsService(clientDetailsService());
+        tokenService.setTokenEnhancer(tokenEnhancer());
         tokenService.setSupportRefreshToken(true);
         return tokenService;
+    }
+
+    @Bean
+    public TokenEnhancer tokenEnhancer() {
+        return new CustomTokenEnhancer();
     }
 
 

@@ -1,7 +1,6 @@
 package network.swan.auth.configuration.security;
 
 import network.swan.auth.service.AccountService;
-import network.swan.auth.service.LoginSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
@@ -84,10 +83,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .cors().and()
                 .csrf().disable()   // we don't need CSRF because our token is invulnerable
-                .exceptionHandling() .and()
+                .exceptionHandling().and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and() // don't create session
-                .authorizeRequests().antMatchers("/**").authenticated().and()
-                .httpBasic();
+                .authorizeRequests().anyRequest().authenticated();
 
         http.headers().cacheControl();   // disable page caching
 
@@ -104,9 +102,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return jtr;
     }
 
-    @Bean
-    public LoginSuccessHandler loginSuccessHandler() {
-        return new LoginSuccessHandler();
-    }
 
 }
