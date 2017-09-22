@@ -15,6 +15,11 @@ spring:
       password: zxguan
       profile: ${spring.profiles.active}
       label: master
+  jpa:
+      show-sql: true
+      generate-ddl: true
+      hibernate:
+          use-new-id-generator-mappings: true
 ---
 spring:
   profiles: test
