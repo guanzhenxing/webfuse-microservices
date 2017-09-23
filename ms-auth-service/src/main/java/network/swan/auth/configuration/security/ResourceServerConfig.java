@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.web.util.matcher.RequestMatcher;
@@ -40,20 +41,30 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         resources
                 .resourceId(resourceId)
                 .tokenServices(tokenServices)
-                .tokenStore(tokenStore);
+                .tokenStore(tokenStore).stateless(false);
     }
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
+
+
+        http.
+                anonymous().disable()
+                .requestMatchers().antMatchers("/user/**")
+                .and().authorizeRequests()
+                .antMatchers("/user/**").access("hasRole('ADMIN')")
+                .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
+
 //        http
 //
 //                .csrf().disable()
-//                .requestMatcher(new OAuthRequestedMatcher())
 //                .anonymous().disable()
+//                .requestMatcher(new OAuthRequestedMatcher())
 //                .authorizeRequests()
-//                .anyRequest().authenticated();
+//                .anyRequest().authenticated()
+//                .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
 
-        http.cors().and().csrf().disable().authorizeRequests().anyRequest().permitAll();
+
     }
 
 //    private static class OAuthRequestedMatcher implements RequestMatcher {

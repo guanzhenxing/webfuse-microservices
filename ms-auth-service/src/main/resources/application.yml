@@ -15,7 +15,7 @@ security:
     password: password
   oauth2:
     resource:
-      id: uaa-service
+      id: MS_UAA_SERVICE
   filter-order: 5
 logging:
   level:
