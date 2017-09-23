@@ -47,36 +47,27 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
 
-        http.cors().and().csrf().disable().authorizeRequests().anyRequest().permitAll();
+        http
+                .cors().and()
+                .csrf().disable()
+                .exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler())
 
-//        http.
-//                anonymous().disable()
-//                .requestMatchers().antMatchers("/user/**")
-//                .and().authorizeRequests()
-//                .antMatchers("/user/**").access("hasRole('ADMIN')")
-//                .antMatchers("/token").permitAll()
-//                .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
-
-//        http
-//
-//                .csrf().disable()
-//                .anonymous().disable()
-//                .requestMatcher(new OAuthRequestedMatcher())
-//                .authorizeRequests()
-//                .anyRequest().authenticated()
-//                .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
-
-
+                .and().antMatcher("/**")
+                .authorizeRequests()
+                .antMatchers("/token").permitAll()
+                .antMatchers("/user/**").access("hasRole('ADMIN')")
+                .anyRequest().authenticated()
+        ;
     }
 
-//    private static class OAuthRequestedMatcher implements RequestMatcher {
-//        public boolean matches(HttpServletRequest request) {
-//            String auth = request.getHeader("Authorization");
-//            // Determine if the client request contained an OAuth Authorization
-//            boolean haveOauth2Token = (auth != null) && auth.startsWith("Bearer");
-//            boolean haveAccessToken = request.getParameter("access_token") != null;
-//            return haveOauth2Token || haveAccessToken;
-//        }
-//    }
+    private static class OAuthRequestedMatcher implements RequestMatcher {
+        public boolean matches(HttpServletRequest request) {
+            String auth = request.getHeader("Authorization");
+            // Determine if the client request contained an OAuth Authorization
+            boolean haveOauth2Token = (auth != null) && auth.startsWith("Bearer");
+            boolean haveAccessToken = request.getParameter("access_token") != null;
+            return haveOauth2Token || haveAccessToken;
+        }
+    }
 
 }
