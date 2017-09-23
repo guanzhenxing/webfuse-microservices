@@ -15,9 +15,9 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import java.util.Arrays;
 
 @SpringBootApplication
-//@EnableDiscoveryClient
 @EnableAspectJAutoProxy(exposeProxy = true)
 @ComponentScan(excludeFilters = @ComponentScan.Filter(IgnoreDuringSpringScan.class))
+@ComponentScan(basePackages = "network.swan")
 public class AuthApplication  {
 
     public static void main(String[] args) {
