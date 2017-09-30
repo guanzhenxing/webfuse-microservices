@@ -3,6 +3,7 @@ package network.swan.auth.web.controller;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -47,11 +48,6 @@ public class TokenController {
         HttpEntity<String> request = new HttpEntity<>(getHeadersWithClientCredentials());
         ResponseEntity<Object> response = restTemplate.exchange(AUTH_SERVER_URI + QPM_PASSWORD_GRANT, HttpMethod.POST, request, Object.class);
         LinkedHashMap<String, Object> map = (LinkedHashMap<String, Object>) response.getBody();
-
-
-        System.out.println(map);
-//        AuthTokenInfo tokenInfo = null;
-
 
         return map;
     }

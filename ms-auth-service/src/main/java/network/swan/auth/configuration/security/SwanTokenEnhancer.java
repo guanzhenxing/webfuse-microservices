@@ -7,9 +7,9 @@ import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 
-public class CustomTokenEnhancer implements TokenEnhancer {
+public class SwanTokenEnhancer implements TokenEnhancer {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(CustomTokenEnhancer.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SwanTokenEnhancer.class);
 
     @Override
     public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
