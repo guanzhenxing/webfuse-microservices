@@ -1,0 +1,52 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: ms-auth-service
+  profiles:
+    active: @env@
+---
+spring:
+  profiles: dev
+  cloud:
+    config:
+      uri: http://127.0.0.1:2201/
+      username: zxguan
+      password: zxguan
+      profile: ${spring.profiles.active}
+      label: master
+  jpa:
+      show-sql: true
+      generate-ddl: true
+      hibernate:
+          use-new-id-generator-mappings: true
+---
+spring:
+  profiles: test
+  cloud:
+    config:
+      uri: http://127.0.0.1:2201/
+      username: zxguan
+      password: zxguan
+      profile: ${spring.profiles.active}
+      label: master
+---
+spring:
+  profiles: beta
+  cloud:
+    config:
+      uri: http://127.0.0.1:2201/
+      username: zxguan
+      password: zxguan
+      profile: ${spring.profiles.active}
+      label: master
+---
+spring:
+  profiles: prod
+  cloud:
+    config:
+      uri: http://127.0.0.1:2201/
+      username: zxguan
+      password: zxguan
+      profile: ${spring.profiles.active}
+      label: master

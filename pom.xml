@@ -12,6 +12,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>ms-auth-service</module>
         <module>ms-config-repo</module>
         <module>ms-service-registry</module>
         <module>ms-config-server</module>
@@ -21,7 +22,6 @@
         <module>ms-tracking-service</module>
         <module>swan-core</module>
         <module>swan-common-frame</module>
-        <module>ms-uaa-service</module>
         <module>test-demo</module>
     </modules>
 
