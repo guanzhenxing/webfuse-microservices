@@ -1,6 +1,8 @@
 spring:
   application:
     name: ms-service-registry
+  profiles:
+    active: @env@
 server:
   port: ${port}
 eureka:
@@ -10,3 +12,13 @@ eureka:
   instance:
 #    hostname: ${hostname}
     instance-id: ${spring.cloud.client.ipAddress}:${port}
+
+---
+spring:
+  profiles: dev
+eureka:
+  instance:
+    lease-expiration-duration-in-seconds: 30  #与注册中心的周期性心跳时间。仅在开发环境如此配置
+  server:
+    enable-self-preservation: false # 设为false，关闭自我保护。仅在开发环境如此配置
+    eviction-interval-timer-in-ms: 4000 # 清理间隔（单位毫秒，默认是60*1000）。仅在开发环境如此配置

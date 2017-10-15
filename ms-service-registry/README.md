@@ -9,8 +9,7 @@ Eureka支持Region和Zone的概念，其中一个Region可以包含多个Zone。
 
 ## 启动服务命令 ##
 
-    java -jar ms-service-registry-0.0.1-SNAPSHOT.jar --port=2101 --eureka.instance.hostname=eureka-peer-2101 --defaultZone=http://localhost:2102/eureka/,http://localhost:2103/eureka/
-    java -jar ms-service-registry-0.0.1-SNAPSHOT.jar --port=2102 --eureka.instance.hostname=eureka-peer-2102 --defaultZone=http://localhost:2101/eureka/,http://localhost:2103/eureka/
-    java -jar service-registry-0.0.1-SNAPSHOT.jar --port=2103 --eureka.instance.hostname=eureka-peer-2103 --defaultZone=http://localhost:2101/eureka/,http://localhost:2102/eureka/
+    java -jar ms-service-registry-0.0.1-SNAPSHOT.jar --port=2101 --eureka.instance.hostname=eureka-peer-2101 --defaultZone=http://localhost:2102/eureka/
+    java -jar ms-service-registry-0.0.1-SNAPSHOT.jar --port=2102 --eureka.instance.hostname=eureka-peer-2102 --defaultZone=http://localhost:2101/eureka/
     
 上面的代码中`eureka-peer-1`,`eureka-peer-2`,`eureka-peer-3`为域名

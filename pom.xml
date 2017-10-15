@@ -22,7 +22,8 @@
         <module>ms-tracking-service</module>
         <module>swan-core</module>
         <module>swan-common-frame</module>
-        <module>test-demo</module>
+        <module>test-provider-user</module>
+        <module>test-customer-movies</module>
     </modules>
 
     <properties>
