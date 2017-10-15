@@ -8,10 +8,10 @@ spring:
 ---
 spring:
   profiles: dev
-#  cloud:
-#    config:
-#      uri: http://127.0.0.1:2201/
-#      username: zxguan
-#      password: zxguan
-#      profile: ${spring.profiles.active}
-#      label: master
+  cloud:
+    config:
+      uri: http://127.0.0.1:2201/
+      username: zxguan
+      password: zxguan
+      profile: ${spring.profiles.active}
+      label: master
