@@ -1,6 +1,6 @@
 package network.swan.ms.configuration;
 
-import network.swan.frame.db.AbstractDBConfig;
+import network.swan.frame.db.config.AbstractDBConfig;
 import org.springframework.context.annotation.Configuration;
 
 /**

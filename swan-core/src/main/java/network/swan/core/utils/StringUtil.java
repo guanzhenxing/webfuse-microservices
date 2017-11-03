@@ -32,18 +32,27 @@ public class StringUtil {
      * </ul>
      */
     public static String lowerCaseWithUnderscores(String input) {
-
         return CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, input);
     }
 
     /**
      * 首字母小写
      *
-     * @param str
+     * @param input
      * @return
      */
-    public static String lowerFirstCharacter(String str) {
-        return CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_CAMEL, str);
+    public static String lowerFirstCharacter(String input) {
+        return CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_CAMEL, input);
+    }
+
+    /**
+     * 小写驼峰
+     *
+     * @param input
+     * @return
+     */
+    public static String lowerCamel(String input) {
+        return CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, input);
     }
 
     /**
@@ -82,6 +91,5 @@ public class StringUtil {
         }
         return htmlStr;
     }
-
 
 }

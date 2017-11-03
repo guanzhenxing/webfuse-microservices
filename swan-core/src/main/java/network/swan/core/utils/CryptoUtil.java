@@ -1,6 +1,10 @@
 package network.swan.core.utils;
 
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.digest.HmacUtils;
+
 import javax.crypto.Cipher;
+import javax.crypto.Mac;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
@@ -12,7 +16,6 @@ import java.security.MessageDigest;
  * <li>DES加密解密</li>
  * <li>MD5加密</li>
  * <li>SHA-1加密</li>
- *
  */
 public class CryptoUtil {
 
@@ -179,6 +182,21 @@ public class CryptoUtil {
 
         return retResult;
     }
+
+    /**
+     * 进行HMac256加密
+     *
+     * @param content 需要加密的内容
+     * @param key     密钥
+     * @return
+     */
+    public static String hmac256Encrypt(String content, String key) {
+        Mac sha256_HMAC = HmacUtils.getHmacSha256(key.getBytes());
+        byte[] digest = sha256_HMAC.doFinal(content.getBytes());
+        String hash = Base64.encodeBase64String(digest);
+        return hash;
+    }
+
 
     private static String encrypt(String algorithm, String data) {
         try {
