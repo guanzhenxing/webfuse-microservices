@@ -1,6 +1,6 @@
 package network.swan.service.uaa.config.security;
 
-import network.swan.service.uaa.service.AccountDetailsService;
+import network.swan.service.uaa.authentication.service.SecurityUserDetailsService;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Bean
     public UserDetailsService userDetailsService() {
-        return new AccountDetailsService();
+        return new SecurityUserDetailsService();
     }
 
     /**

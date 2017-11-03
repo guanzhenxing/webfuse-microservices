@@ -1,4 +1,4 @@
-package network.swan.service.uaa.domain;
+package network.swan.service.uaa.account.domain;
 
 import org.springframework.security.core.GrantedAuthority;
 
@@ -7,9 +7,9 @@ import java.util.Set;
 /**
  * Created by guanzhenxing on 2017/11/3.
  */
-public class Account {
+public class User {
 
-    private Long id;
+    private long id;
     private String password;
     private String username;
     private boolean accountNonExpired;
@@ -24,7 +24,7 @@ public class Account {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
