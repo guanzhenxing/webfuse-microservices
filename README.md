@@ -32,3 +32,5 @@ swan是基于Spring Cloud开发的微服务框架。可以在现有的基础上�
 
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
+
+ mvn mybatis-generator:generate
