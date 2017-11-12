@@ -1,7 +1,7 @@
-package network.swan.service.uaa.account.service;
+package network.swan.service.uaa.account.user.service;
 
-import network.swan.service.uaa.account.domain.User;
-import network.swan.service.uaa.account.repository.UserRepository;
+import network.swan.service.uaa.account.user.domain.User;
+import network.swan.service.uaa.account.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;

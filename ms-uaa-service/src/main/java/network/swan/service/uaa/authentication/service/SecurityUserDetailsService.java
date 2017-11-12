@@ -1,7 +1,7 @@
 package network.swan.service.uaa.authentication.service;
 
-import network.swan.service.uaa.account.domain.User;
-import network.swan.service.uaa.account.service.UserService;
+import network.swan.service.uaa.account.user.domain.User;
+import network.swan.service.uaa.account.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
