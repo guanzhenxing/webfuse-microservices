@@ -88,16 +88,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-//    @Autowired
-//    @SuppressWarnings("SpringJavaAutowiringInspection")
-//    private DataSource dataSource;
-
-//    @Bean
-//    public JdbcTokenRepositoryImpl tokenRepository() {
-//        JdbcTokenRepositoryImpl jtr = new JdbcTokenRepositoryImpl();
-//        jtr.setDataSource(dataSource);
-//        return jtr;
-//    }
-
 
 }
