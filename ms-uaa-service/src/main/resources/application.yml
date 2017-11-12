@@ -11,3 +11,13 @@ spring:
     driver-class-name: org.h2.Driver
     schema: classpath:db/schema.sql
     data: classpath:db/data.sql
+
+
+logging:
+  level:
+    org:
+      springframework: INFO
+
+
+
+
