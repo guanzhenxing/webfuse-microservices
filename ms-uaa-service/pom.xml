@@ -66,7 +66,7 @@
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>${mybatis-generator-maven-plugin.version}</version>
+                <version>1.3.5</version>
                 <configuration>
                     <configurationFile>${basedir}/src/main/resources/generator/generatorConfig.xml</configurationFile>
                     <overwrite>true</overwrite>
@@ -77,11 +77,6 @@
                         <groupId>com.h2database</groupId>
                         <artifactId>h2</artifactId>
                         <version>1.4.195</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>network.swan</groupId>
-                        <artifactId>ms-uaa-service</artifactId>
-                        <version>${project.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>

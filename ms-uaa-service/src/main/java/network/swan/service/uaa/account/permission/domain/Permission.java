@@ -7,22 +7,23 @@ import network.swan.frame.domain.BaseEntity;
  */
 public class Permission extends BaseEntity {
 
+
     private String name;
     private String displayName;
 
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
     }
+
 
     public String getDisplayName() {
         return displayName;
     }
-
     public void setDisplayName(String displayName) {
-        this.displayName = displayName;
+        this.displayName = displayName == null ? null : displayName.trim();
     }
+
 }
