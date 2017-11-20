@@ -1,9 +1,11 @@
 package network.swan.service.uaa.account.role.repository;
 
 import network.swan.service.uaa.account.role.domain.Role;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface RoleRepository {
 
     int delete(String id);

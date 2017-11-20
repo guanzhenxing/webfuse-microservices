@@ -12,6 +12,9 @@ spring:
     schema: classpath:db/schema.sql
     data: classpath:db/data.sql
 
+mybatis:
+  mapper-locations: classpath*:network/swan/service/uaa/**/repository/*.xml,classpath*:network/swan/service/uaa/**/mapper/*.xml
+
 
 logging:
   level:
