@@ -1,6 +1,7 @@
 package network.swan.service.uaa.account.role.repository;
 
 import network.swan.service.uaa.account.role.domain.Role;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

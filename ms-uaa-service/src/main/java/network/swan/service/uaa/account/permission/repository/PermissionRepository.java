@@ -1,6 +1,7 @@
 package network.swan.service.uaa.account.permission.repository;
 
 import network.swan.service.uaa.account.permission.domain.Permission;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
