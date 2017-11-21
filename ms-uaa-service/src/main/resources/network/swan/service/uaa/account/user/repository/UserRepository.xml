@@ -3,15 +3,15 @@
 
 <mapper namespace="network.swan.service.uaa.account.user.repository.UserRepository">
     <resultMap id="baseUserResultMap" type="network.swan.service.uaa.account.user.domain.User">
-        <id column="ID" jdbcType="VARCHAR" property="id" />
-        <result column="USERNAME" jdbcType="VARCHAR" property="username" />
-        <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
-        <result column="ACCOUNT_NON_EXPIRED" jdbcType="TINYINT" property="accountNonExpired" />
-        <result column="ACCOUNT_NON_LOCKED" jdbcType="TINYINT" property="accountNonLocked" />
-        <result column="CREDENTIALS_NON_EXPIRED" jdbcType="TINYINT" property="credentialsNonExpired" />
-        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
-        <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
-        <result column="ENABLED" jdbcType="TINYINT" property="enabled" />
+        <id column="ID" jdbcType="VARCHAR" property="id"/>
+        <result column="USERNAME" jdbcType="VARCHAR" property="username"/>
+        <result column="PASSWORD" jdbcType="VARCHAR" property="password"/>
+        <result column="ACCOUNT_NON_EXPIRED" jdbcType="TINYINT" property="accountNonExpired"/>
+        <result column="ACCOUNT_NON_LOCKED" jdbcType="TINYINT" property="accountNonLocked"/>
+        <result column="CREDENTIALS_NON_EXPIRED" jdbcType="TINYINT" property="credentialsNonExpired"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="ENABLED" jdbcType="TINYINT" property="enabled"/>
     </resultMap>
 
     <delete id="delete" parameterType="java.lang.String">
@@ -43,18 +43,30 @@
         where ID = #{id,jdbcType=VARCHAR}
     </update>
 
-    <select id="selectById" parameterType="java.lang.String" resultMap="baseUserResultMap">
+    <select id="selectById" parameterType="java.lang.String" resultMap="userRolesMapBySelect">
         select ID, USERNAME, `PASSWORD`, ACCOUNT_NON_EXPIRED, ACCOUNT_NON_LOCKED, CREDENTIALS_NON_EXPIRED,
         CREATE_TIME, UPDATE_TIME, ENABLED
         from USER
         where ID = #{id,jdbcType=VARCHAR}
     </select>
 
-    <select id="findByUsername" parameterType="java.lang.String" resultMap="baseUserResultMap">
+    <select id="findByUsername" parameterType="java.lang.String" resultMap="userRolesMapBySelect">
         select ID, USERNAME, `PASSWORD`, ACCOUNT_NON_EXPIRED, ACCOUNT_NON_LOCKED, CREDENTIALS_NON_EXPIRED,
         CREATE_TIME, UPDATE_TIME, ENABLED
         from USER
         where USERNAME = #{username,jdbcType=VARCHAR}
     </select>
+
+    <resultMap id="userRolesMapBySelect" type="network.swan.service.uaa.account.user.domain.User"
+               extends="baseUserResultMap">
+        <collection property="roles" fetchType="lazy" column="{userId=id}"
+                    select="network.swan.service.uaa.account.role.repository.RoleRepository.selectRolesByUserId"/>
+    </resultMap>
+
+    <select id="search" resultMap="baseUserResultMap">
+        select * from user
+        limit ${(pageNum -1) * pageSize},${pageNum * pageSize}
+    </select>
+
 
 </mapper>

@@ -41,5 +41,37 @@
         where ID = #{id,jdbcType=VARCHAR}
     </select>
 
+    <sql id="where_sql">
+        <where>
+            <if test="permission.name != null">
+                name like "%"#{permission.name}"%"
+            </if>
+            <if test="permission.displayName != null">
+                DISPLAY_NAME like "%"#{permission.displayName}"%"
+            </if>
+            <if test="permission.enabled != null">
+                enabled = #{permission.enabled}
+            </if>
+        </where>
+    </sql>
+    <select id="search" resultMap="basePermissionResult">
+        select ID, `NAME`, DISPLAY_NAME, CREATE_TIME, UPDATE_TIME, ENABLED
+        from PERMISSION
+        <include refid="where_sql"/>
+    </select>
+
+    <select id="countBySearch" resultType="int">
+        select count(1)
+        from PERMISSION
+        <include refid="where_sql"/>
+    </select>
+
+    <select id="selectPermissionsByRoleId" resultMap="basePermissionResult">
+        select p.*
+        from permission p
+        inner join role_permission rp on rp.permission_id = p.id
+        where rp.role_id = #{roleId}
+    </select>
+
 
 </mapper>

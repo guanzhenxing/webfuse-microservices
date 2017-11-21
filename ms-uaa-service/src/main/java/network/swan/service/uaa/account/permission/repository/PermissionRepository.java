@@ -2,6 +2,7 @@ package network.swan.service.uaa.account.permission.repository;
 
 import network.swan.service.uaa.account.permission.domain.Permission;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -47,7 +48,7 @@ public interface PermissionRepository {
      * @param queryParam
      * @return
      */
-    List<Permission> search(Permission queryParam, int pageNum, int pageSize);
+    List<Permission> search(@Param("permission") Permission queryParam, @Param("pageNum") int pageNum, @Param("pageSize") int pageSize);
 
     /**
      * 按照过滤条件统计
@@ -57,5 +58,7 @@ public interface PermissionRepository {
      */
     long countBySearch(Permission queryParam);
 
+
+    List<Permission> selectPermissionsByRoleId(String roleId);
 
 }

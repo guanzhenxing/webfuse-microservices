@@ -78,7 +78,7 @@ public class User extends BaseEntity implements UserDetails, CredentialsContaine
 
     @Override
     public boolean isEnabled() {
-        return isEnabled();
+        return super.isEnabled();
     }
 
     public void setPassword(String password) {

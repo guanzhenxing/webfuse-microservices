@@ -20,4 +20,6 @@ public interface RoleRepository {
     List<Role> search(Role queryParam, int pageNum, int pageSize);
 
     long countBySearch(Role queryParam);
+
+    List<Role> selectRolesByUserId(String userId);
 }

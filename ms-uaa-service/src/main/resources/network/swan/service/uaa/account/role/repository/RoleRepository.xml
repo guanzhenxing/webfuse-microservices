@@ -41,5 +41,18 @@
         where ID = #{id,jdbcType=VARCHAR}
     </select>
 
+    <resultMap id="rolePermissionsMapBySelect" type="network.swan.service.uaa.account.role.domain.Role"
+               extends="baseRoleResultMap">
+        <collection property="permissions" fetchType="lazy" column="{roleId=id}"
+                    select="network.swan.service.uaa.account.permission.repository.PermissionRepository.selectPermissionsByRoleId"/>
+    </resultMap>
+
+    <select id="selectRolesByUserId" resultMap="rolePermissionsMapBySelect">
+        select r.*
+        from role r
+        inner join user_role ur on ur.role_id = r.id
+        where ur.user_id = #{userId}
+    </select>
+
 
 </mapper>

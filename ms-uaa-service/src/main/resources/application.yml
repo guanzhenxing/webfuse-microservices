@@ -12,10 +12,15 @@ spring:
     schema: classpath:db/schema.sql
     data: classpath:db/data.sql
 
+
 logging:
   level:
     org:
-      springframework: INFO
+      springframework: DEBUG
+mybatis:
+  configuration:
+    aggressive-lazy-loading: false
+    lazy-loading-enabled: true
 
 
 
