@@ -1,5 +1,0 @@
-logging:
-  level:
-    org.springframework: INFO
-user:
-  userServicePath: http://localhost:8081/users
