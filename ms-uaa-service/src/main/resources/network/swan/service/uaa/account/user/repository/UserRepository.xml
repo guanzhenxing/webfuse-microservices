@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="network.swan.service.uaa.account.user.repository.UserRepository">
+    <resultMap id="baseUserResultMap" type="network.swan.service.uaa.account.user.domain.User">
+        <id column="ID" jdbcType="VARCHAR" property="id"/>
+        <result column="USERNAME" jdbcType="VARCHAR" property="username"/>
+        <result column="PASSWORD" jdbcType="VARCHAR" property="password"/>
+        <result column="ACCOUNT_NON_EXPIRED" jdbcType="TINYINT" property="accountNonExpired"/>
+        <result column="ACCOUNT_NON_LOCKED" jdbcType="TINYINT" property="accountNonLocked"/>
+        <result column="CREDENTIALS_NON_EXPIRED" jdbcType="TINYINT" property="credentialsNonExpired"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="ENABLED" jdbcType="TINYINT" property="enabled"/>
+    </resultMap>
+
+    <delete id="delete" parameterType="java.lang.String">
+        delete from USER
+        where ID = #{id,jdbcType=VARCHAR}
+    </delete>
+
+    <insert id="insert" parameterType="network.swan.service.uaa.account.user.domain.User">
+        insert into USER (ID, USERNAME, `PASSWORD`,
+        ACCOUNT_NON_EXPIRED, ACCOUNT_NON_LOCKED, CREDENTIALS_NON_EXPIRED,
+        CREATE_TIME, UPDATE_TIME, ENABLED
+        )
+        values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+        #{accountNonExpired,jdbcType=TINYINT}, #{accountNonLocked,jdbcType=TINYINT}, #{credentialsNonExpired,jdbcType=TINYINT},
+        #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{enabled,jdbcType=TINYINT}
+        )
+    </insert>
+
+    <update id="update" parameterType="network.swan.service.uaa.account.user.domain.User">
+        update USER
+        set USERNAME = #{username,jdbcType=VARCHAR},
+        `PASSWORD` = #{password,jdbcType=VARCHAR},
+        ACCOUNT_NON_EXPIRED = #{accountNonExpired,jdbcType=TINYINT},
+        ACCOUNT_NON_LOCKED = #{accountNonLocked,jdbcType=TINYINT},
+        CREDENTIALS_NON_EXPIRED = #{credentialsNonExpired,jdbcType=TINYINT},
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+        ENABLED = #{enabled,jdbcType=TINYINT}
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <select id="selectById" parameterType="java.lang.String" resultMap="userRolesMapBySelect">
+        select ID, USERNAME, `PASSWORD`, ACCOUNT_NON_EXPIRED, ACCOUNT_NON_LOCKED, CREDENTIALS_NON_EXPIRED,
+        CREATE_TIME, UPDATE_TIME, ENABLED
+        from USER
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="findByUsername" parameterType="java.lang.String" resultMap="userRolesMapBySelect">
+        select ID, USERNAME, `PASSWORD`, ACCOUNT_NON_EXPIRED, ACCOUNT_NON_LOCKED, CREDENTIALS_NON_EXPIRED,
+        CREATE_TIME, UPDATE_TIME, ENABLED
+        from USER
+        where USERNAME = #{username,jdbcType=VARCHAR}
+    </select>
+
+    <resultMap id="userRolesMapBySelect" type="network.swan.service.uaa.account.user.domain.User"
+               extends="baseUserResultMap">
+        <collection property="roles" fetchType="lazy" column="{userId=id}"
+                    select="network.swan.service.uaa.account.role.repository.RoleRepository.selectRolesByUserId"/>
+    </resultMap>
+
+    <select id="search" resultMap="baseUserResultMap">
+        select * from user
+        limit ${(pageNum -1) * pageSize},${pageNum * pageSize}
+    </select>
+
+
+</mapper>

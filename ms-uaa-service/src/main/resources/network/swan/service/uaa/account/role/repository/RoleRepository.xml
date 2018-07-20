@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="network.swan.service.uaa.account.role.repository.RoleRepository">
+    <resultMap id="baseRoleResultMap" type="network.swan.service.uaa.account.role.domain.Role">
+        <id column="ID" jdbcType="VARCHAR" property="id"/>
+        <result column="NAME" jdbcType="VARCHAR" property="name"/>
+        <result column="DISPLAY_NAME" jdbcType="VARCHAR" property="displayName"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="ENABLED" jdbcType="TINYINT" property="enabled"/>
+    </resultMap>
+
+    <delete id="delete" parameterType="java.lang.String">
+        delete from ROLE
+        where ID = #{id,jdbcType=VARCHAR}
+    </delete>
+
+    <insert id="insert" parameterType="network.swan.service.uaa.account.role.domain.Role">
+        insert into ROLE (ID, `NAME`, DISPLAY_NAME,
+        CREATE_TIME, UPDATE_TIME, ENABLED
+        )
+        values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{displayName,jdbcType=VARCHAR},
+        #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{enabled,jdbcType=TINYINT}
+        )
+    </insert>
+
+    <update id="update" parameterType="network.swan.service.uaa.account.role.domain.Role">
+        update ROLE
+        set `NAME` = #{name,jdbcType=VARCHAR},
+        DISPLAY_NAME = #{displayName,jdbcType=VARCHAR},
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+        ENABLED = #{enabled,jdbcType=TINYINT}
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <select id="selectById" parameterType="java.lang.String" resultMap="baseRoleResultMap">
+        select ID, `NAME`, DISPLAY_NAME, CREATE_TIME, UPDATE_TIME, ENABLED
+        from ROLE
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <resultMap id="rolePermissionsMapBySelect" type="network.swan.service.uaa.account.role.domain.Role"
+               extends="baseRoleResultMap">
+        <collection property="permissions" fetchType="lazy" column="{roleId=id}"
+                    select="network.swan.service.uaa.account.permission.repository.PermissionRepository.selectPermissionsByRoleId"/>
+    </resultMap>
+
+    <select id="selectRolesByUserId" resultMap="rolePermissionsMapBySelect">
+        select r.*
+        from role r
+        inner join user_role ur on ur.role_id = r.id
+        where ur.user_id = #{userId}
+    </select>
+
+
+</mapper>

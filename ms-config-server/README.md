@@ -9,11 +9,11 @@
 
 ## 部署 ##
 
-    java -jar center-config-server-1.0.0-SNAPSHOT.jar --spring.profiles.active=dev
+    java -jar ms-config-server-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev
 
 ## 刷新配置 ##
 
-对配置中心执行 curl -X POST http://localhost:2001/bus/refresh 
+对配置中心执行 curl -X POST http://localhost:2201/bus/refresh 
 
 ## 关于高可用 ##
 

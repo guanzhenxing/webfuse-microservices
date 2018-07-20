@@ -1,0 +1,27 @@
+spring:
+  h2:
+    console:
+      enabled: true
+      settings:
+        trace: true
+  datasource:
+    url: jdbc:h2:file:~/uaa
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    schema: classpath:db/schema.sql
+    data: classpath:db/data.sql
+
+
+logging:
+  level:
+    org:
+      springframework: DEBUG
+mybatis:
+  configuration:
+    aggressive-lazy-loading: false
+    lazy-loading-enabled: true
+
+
+
+

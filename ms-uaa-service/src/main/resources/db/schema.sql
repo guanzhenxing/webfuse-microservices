@@ -1,0 +1,63 @@
+
+DROP TABLE IF EXISTS user;
+CREATE TABLE IF NOT EXISTS user (
+  id VARCHAR(20) NOT NULL,
+  username VARCHAR(45) NOT NULL,
+  password VARCHAR(64) NOT NULL,
+  account_non_expired TINYINT NULL,
+  account_non_locked TINYINT NULL,
+  credentials_non_expired TINYINT NULL,
+  create_time DATETIME DEFAULT CURRENT_TIMESTAMP(),
+  update_time DATETIME DEFAULT CURRENT_TIMESTAMP(),
+  enabled TINYINT DEFAULT TRUE
+);
+CREATE PRIMARY KEY ON user (id);
+CREATE UNIQUE INDEX unique_user_username ON user(username);
+
+
+DROP TABLE IF EXISTS role;
+CREATE TABLE IF NOT EXISTS role (
+  id VARCHAR(20) NOT NULL,
+  name VARCHAR(32) NOT NULL,
+  display_name VARCHAR(32) NOT NULL,
+  create_time DATETIME DEFAULT CURRENT_TIMESTAMP(),
+  update_time DATETIME DEFAULT CURRENT_TIMESTAMP(),
+  enabled TINYINT DEFAULT TRUE
+);
+CREATE PRIMARY KEY ON role (id);
+CREATE UNIQUE INDEX unique_role_name ON role(name);
+
+
+DROP TABLE IF EXISTS permission;
+CREATE TABLE IF NOT EXISTS permission (
+  id VARCHAR(20) NOT NULL,
+  name VARCHAR(32) NOT NULL,
+  display_name VARCHAR(32) NOT NULL,
+  create_time DATETIME DEFAULT CURRENT_TIMESTAMP(),
+  update_time DATETIME DEFAULT CURRENT_TIMESTAMP(),
+  enabled TINYINT DEFAULT TRUE
+);
+CREATE PRIMARY KEY ON permission (id);
+CREATE UNIQUE INDEX unique_permission_name ON permission(name);
+
+
+DROP TABLE IF EXISTS user_role;
+CREATE TABLE IF NOT EXISTS user_role (
+  id BIGINT AUTO_INCREMENT,
+  user_id VARCHAR(20) NOT NULL,
+  role_id VARCHAR(20) NOT NULL
+);
+
+
+DROP TABLE IF EXISTS role_permission;
+CREATE TABLE IF NOT EXISTS role_permission (
+  id BIGINT AUTO_INCREMENT,
+  role_id VARCHAR(20) NOT NULL,
+  permission_id VARCHAR(20) NOT NULL
+);
+
+
+
+
+
+
