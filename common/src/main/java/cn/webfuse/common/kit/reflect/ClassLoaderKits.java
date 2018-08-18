@@ -8,6 +8,16 @@ package cn.webfuse.common.kit.reflect;
 public class ClassLoaderKits {
 
     /**
+     * 获取当前线程的{@link ClassLoader}
+     *
+     * @return 当前线程的class loader
+     * @see Thread#getContextClassLoader()
+     */
+    public static ClassLoader getContextClassLoader() {
+        return Thread.currentThread().getContextClassLoader();
+    }
+
+    /**
      * Copy from Spring, 按顺序获取默认ClassLoader
      * <p>
      * 1. Thread.currentThread().getContextClassLoader()
@@ -50,5 +60,6 @@ public class ClassLoaderKits {
             return false;
         }
     }
+
 
 }

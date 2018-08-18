@@ -1,6 +1,6 @@
 package cn.webfuse.common.kit.concurrent;
 
-import one.top.common.kit.RandomKits;
+import cn.webfuse.common.kit.RandomKits;
 import org.apache.commons.lang3.Validate;
 
 /**

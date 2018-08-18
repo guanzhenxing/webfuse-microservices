@@ -1,7 +1,7 @@
 package cn.webfuse.common.kit.concurrent;
 
 import com.google.common.util.concurrent.RateLimiter;
-import one.top.common.kit.concurrent.jsr166e.LongAdder;
+import cn.webfuse.common.kit.concurrent.jsr166e.LongAdder;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.CyclicBarrier;

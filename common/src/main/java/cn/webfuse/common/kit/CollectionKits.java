@@ -1,9 +1,9 @@
 package cn.webfuse.common.kit;
 
+import cn.webfuse.common.type.tuple.Pair;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Ordering;
-import one.top.common.type.tuple.Pair;
 
 import java.util.Collection;
 import java.util.Comparator;

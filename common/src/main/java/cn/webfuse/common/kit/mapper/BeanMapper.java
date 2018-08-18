@@ -1,11 +1,20 @@
 package cn.webfuse.common.kit.mapper;
 
+import cn.webfuse.common.kit.ArrayKits;
+import cn.webfuse.common.kit.ObjectKits;
+import cn.webfuse.common.kit.StringKits;
+import cn.webfuse.common.kit.reflect.ClassKits;
+import cn.webfuse.common.kit.reflect.ReflectionKits;
+import cn.webfuse.common.kit.test.T2;
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;
-import one.top.common.kit.ArrayKits;
+import com.github.dozermapper.core.util.ReflectionUtils;
+import org.apache.commons.lang3.ClassUtils;
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.reflect.FieldUtils;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.reflect.Field;
+import java.util.*;
 
 /**
  * 实现深度的BeanOfClasssA<->BeanOfClassB复制
@@ -50,4 +59,52 @@ public class BeanMapper {
         }
         return destinationArray;
     }
+
+    public static <T> Map<String, T> toMap(Object source) {
+        return toMap(source, false);
+    }
+
+    private static <T> Map<String, T> toMap(Object source, boolean ignoreParent) {
+        return toMap(source, ignoreParent, false);
+    }
+
+    private static <T> Map<String, T> toMap(Object source, boolean ignoreParent, boolean ignoreNull) {
+        return toMap(source, ignoreParent, ignoreNull, new String[0]);
+    }
+
+    private static <T> Map<String, T> toMap(Object source, boolean ignoreParent, boolean ignoreEmptyValue, String... ignoreProperties) {
+        Map<String, T> map = new HashMap<>();
+
+        List<Field> fieldList = FieldUtils.getAllFieldsList(source.getClass());
+        fieldList.stream().forEach(field -> {
+            if (ignoreParent) { //是否需要父类的字段
+                if (field.getDeclaringClass() != source.getClass()) {   //如果不是本类，下一个
+                    return;
+                }
+            }
+            T value = ReflectionKits.getFieldValue(source, field);
+
+            if (ignoreEmptyValue && value == null) {    //如果过滤掉空以及字段值为空
+                return;
+            }
+
+            boolean flag = true;
+            String key = field.getName();
+
+            for (String ignoreProperty : ignoreProperties) {
+                if (key.equals(ignoreProperty)) {
+                    flag = false;
+                    break;
+                }
+            }
+
+            if (flag) {
+                map.put(key, value);
+            }
+        });
+
+        return map;
+    }
+
+
 }

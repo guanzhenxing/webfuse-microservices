@@ -1,6 +1,6 @@
 package cn.webfuse.common.kit.concurrent.threadpool;
 
-import one.top.common.kit.concurrent.JstackKits;
+import cn.webfuse.common.kit.concurrent.JstackKits;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

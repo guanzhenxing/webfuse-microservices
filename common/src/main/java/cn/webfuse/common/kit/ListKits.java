@@ -1,6 +1,7 @@
 package cn.webfuse.common.kit;
 
-import one.top.common.type.SortedArrayList;
+
+import cn.webfuse.common.type.SortedArrayList;
 
 import java.util.*;
 

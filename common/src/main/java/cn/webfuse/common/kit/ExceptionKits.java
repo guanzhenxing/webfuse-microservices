@@ -1,8 +1,8 @@
 package cn.webfuse.common.kit;
 
+import cn.webfuse.common.exception.UncheckedException;
+import cn.webfuse.common.type.StringBuilderWriter;
 import com.google.common.base.Throwables;
-import one.top.common.type.StringBuilderWriter;
-import one.top.common.type.exception.UncheckedException;
 import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;

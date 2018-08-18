@@ -1,7 +1,7 @@
 package cn.webfuse.common.kit;
 
 import com.google.common.io.Resources;
-import one.top.common.kit.reflect.ClassLoaderKits;
+import cn.webfuse.common.kit.reflect.ClassLoaderKits;
 
 import java.io.IOException;
 import java.io.InputStream;

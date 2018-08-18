@@ -1,8 +1,9 @@
 package cn.webfuse.common.kit.reflect;
 
-import one.top.common.kit.ExceptionKits;
-import one.top.common.kit.ObjectKits;
-import one.top.common.type.exception.UncheckedException;
+
+import cn.webfuse.common.exception.UncheckedException;
+import cn.webfuse.common.kit.ExceptionKits;
+import cn.webfuse.common.kit.ObjectKits;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.StringUtils;

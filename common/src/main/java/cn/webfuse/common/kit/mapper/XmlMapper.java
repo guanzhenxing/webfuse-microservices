@@ -1,7 +1,8 @@
 package cn.webfuse.common.kit.mapper;
 
-import one.top.common.kit.ExceptionKits;
-import one.top.common.kit.reflect.ClassKits;
+
+import cn.webfuse.common.kit.ExceptionKits;
+import cn.webfuse.common.kit.reflect.ClassKits;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
 
