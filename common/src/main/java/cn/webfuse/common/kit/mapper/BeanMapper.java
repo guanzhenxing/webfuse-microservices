@@ -1,20 +1,16 @@
 package cn.webfuse.common.kit.mapper;
 
 import cn.webfuse.common.kit.ArrayKits;
-import cn.webfuse.common.kit.ObjectKits;
-import cn.webfuse.common.kit.StringKits;
-import cn.webfuse.common.kit.reflect.ClassKits;
 import cn.webfuse.common.kit.reflect.ReflectionKits;
-import cn.webfuse.common.kit.test.T2;
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;
-import com.github.dozermapper.core.util.ReflectionUtils;
-import org.apache.commons.lang3.ClassUtils;
-import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.reflect.FieldUtils;
 
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 实现深度的BeanOfClasssA<->BeanOfClassB复制
@@ -60,19 +56,31 @@ public class BeanMapper {
         return destinationArray;
     }
 
+    /**
+     * Bean对象转换为Map
+     */
     public static <T> Map<String, T> toMap(Object source) {
         return toMap(source, false);
     }
 
-    private static <T> Map<String, T> toMap(Object source, boolean ignoreParent) {
+    /**
+     * 将Bean对象转换为Map，并提供是否忽略父属性的参数
+     */
+    public static <T> Map<String, T> toMap(Object source, boolean ignoreParent) {
         return toMap(source, ignoreParent, false);
     }
 
-    private static <T> Map<String, T> toMap(Object source, boolean ignoreParent, boolean ignoreNull) {
+    /**
+     * 将Bean对象转换为Map，并提供 是否忽略父属性的参数 和 是否忽略值为null的参数
+     */
+    public static <T> Map<String, T> toMap(Object source, boolean ignoreParent, boolean ignoreNull) {
         return toMap(source, ignoreParent, ignoreNull, new String[0]);
     }
 
-    private static <T> Map<String, T> toMap(Object source, boolean ignoreParent, boolean ignoreEmptyValue, String... ignoreProperties) {
+    /**
+     * 将Bean对象转换为Map，并提供 是否忽略父属性的参数 和 是否忽略值为null的参数 还有 忽略哪些字段的参数
+     */
+    public static <T> Map<String, T> toMap(Object source, boolean ignoreParent, boolean ignoreEmptyValue, String... ignoreProperties) {
         Map<String, T> map = new HashMap<>();
 
         List<Field> fieldList = FieldUtils.getAllFieldsList(source.getClass());
@@ -82,6 +90,7 @@ public class BeanMapper {
                     return;
                 }
             }
+            field.setAccessible(true);  //设置为可以访问
             T value = ReflectionKits.getFieldValue(source, field);
 
             if (ignoreEmptyValue && value == null) {    //如果过滤掉空以及字段值为空
@@ -105,6 +114,5 @@ public class BeanMapper {
 
         return map;
     }
-
 
 }
