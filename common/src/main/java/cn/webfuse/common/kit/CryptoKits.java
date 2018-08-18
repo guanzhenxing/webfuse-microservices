@@ -1,11 +1,19 @@
 package cn.webfuse.common.kit;
 
+import com.sun.crypto.provider.AESKeyGenerator;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.codec.digest.HmacAlgorithms;
 import org.apache.commons.codec.digest.HmacUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 
-import javax.crypto.Mac;
+import javax.crypto.*;
+import javax.crypto.spec.DESKeySpec;
+import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
 
 /**
  * 加解密工具类
@@ -118,5 +126,98 @@ public class CryptoKits {
     public static String hmac512(String input, String key) {
         byte[] hmac = new HmacUtils(HmacAlgorithms.HMAC_SHA_512, key).hmac(input);
         return EncodeKits.encodeHex(hmac);
+    }
+
+
+    /**
+     * DES加密
+     *
+     * @param input 需要加密的数据
+     * @param key   秘钥
+     * @return DES加密后的结果
+     */
+    public static String encryptDES(String input, String key) {
+        try {
+            DESKeySpec keySpec = new DESKeySpec(key.getBytes());
+            SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
+            SecretKey secretKey = keyFactory.generateSecret(keySpec);
+
+            Cipher cipher = Cipher.getInstance("DES");
+            cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+            byte[] cipherData = cipher.doFinal(input.getBytes());
+            return EncodeKits.encodeBase64(cipherData);
+        } catch (InvalidKeyException | NoSuchAlgorithmException | InvalidKeySpecException |
+                NoSuchPaddingException | IllegalBlockSizeException | BadPaddingException e) {
+            e.printStackTrace();
+            throw ExceptionKits.unchecked(e);
+        }
+    }
+
+    /**
+     * DES解密
+     *
+     * @param input 需要解密的数据
+     * @param key   秘钥
+     * @return DES解密后的结果
+     */
+    public static String decryptDES(String input, String key) {
+        try {
+            DESKeySpec keySpec = new DESKeySpec(key.getBytes());
+            SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
+            SecretKey secretKey = keyFactory.generateSecret(keySpec);
+
+            Cipher cipher = Cipher.getInstance("DES");
+            cipher.init(Cipher.DECRYPT_MODE, secretKey);
+            byte[] cipherData = cipher.doFinal(input.getBytes());
+            return new String(cipherData);
+        } catch (InvalidKeyException | NoSuchAlgorithmException | InvalidKeySpecException |
+                NoSuchPaddingException | IllegalBlockSizeException | BadPaddingException e) {
+            e.printStackTrace();
+            throw ExceptionKits.unchecked(e);
+        }
+    }
+
+
+    /**
+     * AES加密
+     *
+     * @param input 需要加密的数据
+     * @param key   秘钥
+     * @return AES加密后的结果
+     */
+    public static String encryptAES(String input, String key) {
+
+        try {
+            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+            cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(key.getBytes(StandardCharsets.UTF_8), "AES"));
+            byte[] bytes = cipher.doFinal(input.getBytes(StandardCharsets.UTF_8));
+            return EncodeKits.encodeBase64(bytes);
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException |
+                IllegalBlockSizeException | BadPaddingException e) {
+            e.printStackTrace();
+            throw ExceptionKits.unchecked(e);
+        }
+
+    }
+
+    /**
+     * AES解密
+     *
+     * @param input 需要解密的数据
+     * @param key   秘钥
+     * @return AES解密后的结果
+     */
+    public static String decryptAES(String input, String key) {
+        try {
+            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+            cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(key.getBytes(StandardCharsets.UTF_8), "AES"));
+            byte[] bytes = cipher.doFinal(input.getBytes(StandardCharsets.UTF_8));
+            return new String(bytes);
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException |
+                IllegalBlockSizeException | BadPaddingException e) {
+            e.printStackTrace();
+            throw ExceptionKits.unchecked(e);
+        }
+
     }
 }
