@@ -13,7 +13,6 @@
     <artifactId>common</artifactId>
     <name>common</name>
     <description>The basic libraries and tools</description>
-    <url>https://github.com/guanzhenxing/webfuse/common</url>
 
     <properties>
         <guava.version>26.0-jre</guava.version>
