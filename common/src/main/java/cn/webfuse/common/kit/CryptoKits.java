@@ -1,10 +1,8 @@
 package cn.webfuse.common.kit;
 
-import com.sun.crypto.provider.AESKeyGenerator;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.codec.digest.HmacAlgorithms;
 import org.apache.commons.codec.digest.HmacUtils;
-import org.apache.commons.lang3.exception.ExceptionUtils;
 
 import javax.crypto.*;
 import javax.crypto.spec.DESKeySpec;
@@ -12,7 +10,6 @@ import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 
 /**
