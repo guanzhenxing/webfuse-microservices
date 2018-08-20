@@ -2,6 +2,8 @@ package cn.webfuse.common.kit.mapper;
 
 import cn.webfuse.common.kit.ArrayKits;
 import cn.webfuse.common.kit.reflect.ReflectionKits;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;
 import org.apache.commons.lang3.reflect.FieldUtils;
@@ -59,28 +61,28 @@ public class BeanMapper {
     /**
      * Bean对象转换为Map
      */
-    public static <T> Map<String, T> toMap(Object source) {
-        return toMap(source, false);
+    public static <T> Map<String, T> convertBeanToMap(Object source) {
+        return convertBeanToMap(source, false);
     }
 
     /**
      * 将Bean对象转换为Map，并提供是否忽略父属性的参数
      */
-    public static <T> Map<String, T> toMap(Object source, boolean ignoreParent) {
-        return toMap(source, ignoreParent, false);
+    public static <T> Map<String, T> convertBeanToMap(Object source, boolean ignoreParent) {
+        return convertBeanToMap(source, ignoreParent, false);
     }
 
     /**
      * 将Bean对象转换为Map，并提供 是否忽略父属性的参数 和 是否忽略值为null的参数
      */
-    public static <T> Map<String, T> toMap(Object source, boolean ignoreParent, boolean ignoreNull) {
-        return toMap(source, ignoreParent, ignoreNull, new String[0]);
+    public static <T> Map<String, T> convertBeanToMap(Object source, boolean ignoreParent, boolean ignoreNull) {
+        return convertBeanToMap(source, ignoreParent, ignoreNull, new String[0]);
     }
 
     /**
      * 将Bean对象转换为Map，并提供 是否忽略父属性的参数 和 是否忽略值为null的参数 还有 忽略哪些字段的参数
      */
-    public static <T> Map<String, T> toMap(Object source, boolean ignoreParent, boolean ignoreEmptyValue, String... ignoreProperties) {
+    public static <T> Map<String, T> convertBeanToMap(Object source, boolean ignoreParent, boolean ignoreEmptyValue, String... ignoreProperties) {
         Map<String, T> map = new HashMap<>();
 
         List<Field> fieldList = FieldUtils.getAllFieldsList(source.getClass());
@@ -113,6 +115,20 @@ public class BeanMapper {
         });
 
         return map;
+    }
+
+    /**
+     * 将Map对象转换成Bean对象
+     *
+     * @param fromValue   待转换的Map对象
+     * @param toValueType 待转换成的类型
+     * @param <T>
+     * @return 转换后的对象
+     */
+    public static <T> T convertMapToBean(Map<String, Object> fromValue, Class<T> toValueType) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        return objectMapper.convertValue(fromValue, toValueType);
     }
 
 }
