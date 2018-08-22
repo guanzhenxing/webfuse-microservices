@@ -18,7 +18,7 @@ public class AuthenticationTokenInterceptor extends BaseInterceptor {
     private AuthenticationTokenVerifier authenticationTokenVerifier;
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
 
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         Method method = handlerMethod.getMethod();

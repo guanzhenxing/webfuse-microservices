@@ -25,7 +25,7 @@ public class NonceCache {
                 .expireAfterWrite(nonceExpire, TimeUnit.MICROSECONDS)
                 .build(new CacheLoader<String, Byte>() {
                     @Override
-                    public Byte load(String key) throws Exception {
+                    public Byte load(String key) {
                         return NONCE_EXIST;
                     }
                 });

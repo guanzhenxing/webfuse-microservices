@@ -35,6 +35,7 @@ public class DebugTokenAuthenticationExtractor extends AbstractAuthenticationExt
         Validate.notBlank(account, "Debug token property userId is missing.");
 
         String realm = getValue(authMap, "realm");
+
         //TODO 对realm进行解析
 
         return new DebugAuthenticationToken(account, realm);

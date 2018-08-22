@@ -24,9 +24,11 @@ public class BearerAuthenticationTokenCheckService implements AuthenticationToke
     @Override
     public SecurityAuthToken verifyToken(Authentication wafAuthenticationToken) {
         LOGGER.debug("verify bearer token begin.");
+
         Validate.notNull(wafAuthenticationToken, "authenticationToken must not be null");
         BearerAuthenticationToken bearerPreAuthenticationToken = (BearerAuthenticationToken) wafAuthenticationToken;
         SecurityAuthToken securityAuthToken = checkAuthToken(bearerPreAuthenticationToken.getToken());
+
         LOGGER.debug("verify bearer token end.");
         return securityAuthToken;
     }

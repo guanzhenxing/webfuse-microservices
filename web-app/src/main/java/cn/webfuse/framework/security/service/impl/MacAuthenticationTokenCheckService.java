@@ -43,6 +43,7 @@ public class MacAuthenticationTokenCheckService implements AuthenticationTokenCh
     @Override
     public SecurityAuthToken verifyToken(Authentication wafAuthenticationToken) {
         LOGGER.debug("verify mac token begin.");
+
         Validate.notNull(wafAuthenticationToken, "authenticationToken must not be null");
         MacAuthenticationToken macAuthenticationToken = (MacAuthenticationToken) wafAuthenticationToken;
         SecurityAuthToken securityAuthToken = this.checkAuthToken(macAuthenticationToken.getId());   //获得UaaAccessToken

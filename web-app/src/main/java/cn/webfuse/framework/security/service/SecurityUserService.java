@@ -18,12 +18,12 @@ public interface SecurityUserService {
     SecurityUser loadUserDetailsByAccount(String account);
 
     /**
-     * 根据UaaAuthToken获得用户信息
+     * 根据accessToken获得用户信息
      *
-     * @param securityAuthToken
+     * @param accessToken
      * @return
      */
-    SecurityUser loadUserDetailsByAccessToken(SecurityAuthToken securityAuthToken);
+    SecurityUser loadUserDetailsByAccessToken(String accessToken);
 
     /**
      * 根据accessToken获得Token信息

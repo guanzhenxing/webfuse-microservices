@@ -1,8 +1,7 @@
 package cn.webfuse.framework.exception.handler;
 
-import com.vip.vjtools.vjkit.mapper.BeanMapper;
-import com.vip.vjtools.vjkit.mapper.JsonMapper;
-import org.apache.commons.collections4.MapUtils;
+import cn.webfuse.common.exception.AbstractBizException;
+import cn.webfuse.common.kit.mapper.JsonMapper;
 import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

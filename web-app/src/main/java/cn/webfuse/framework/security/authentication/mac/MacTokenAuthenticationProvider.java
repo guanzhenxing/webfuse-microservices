@@ -52,7 +52,7 @@ public class MacTokenAuthenticationProvider implements AuthenticationProvider {
 
         MacAuthenticationToken macAuthenticationToken = (MacAuthenticationToken) authentication;
         SecurityAuthToken securityAuthToken = macAuthenticationTokenCheckService.verifyToken(macAuthenticationToken); //校验token
-        SecurityUser user = securityUserService.loadUserDetailsByAccessToken(securityAuthToken);    //获得相关的用户信息
+        SecurityUser user = securityUserService.loadUserDetailsByAccessToken(securityAuthToken.getAccessToken());    //获得相关的用户信息
         user.setSecurityAuthToken(securityAuthToken);
         UserAuthenticationToken userAuthenticationToken = new UserAuthenticationToken(user, "MAC");
 
