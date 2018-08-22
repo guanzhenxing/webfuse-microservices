@@ -140,14 +140,14 @@
             </dependency>
 
 
-            <!-- optional for BeanMapper -->
+            <!--  for BeanMapper -->
             <dependency>
                 <groupId>com.github.dozermapper</groupId>
                 <artifactId>dozer-core</artifactId>
                 <version>${dozer.version}</version>
             </dependency>
 
-            <!-- optional for JsonMapper -->
+            <!-- for JsonMapper -->
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>

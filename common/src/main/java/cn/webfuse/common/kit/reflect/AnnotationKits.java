@@ -24,7 +24,7 @@ public class AnnotationKits {
         allTypes.addAll(ClassKits.getAllInterfaces(cls));
         allTypes.add(cls);
 
-        Set<Annotation> anns = new HashSet<Annotation>();
+        Set<Annotation> anns = new HashSet<>();
         for (Class<?> type : allTypes) {
             anns.addAll(Arrays.asList(type.getDeclaredAnnotations()));
         }
@@ -141,4 +141,5 @@ public class AnnotationKits {
         }
         return false;
     }
+
 }
