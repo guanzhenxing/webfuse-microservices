@@ -135,6 +135,6 @@ public class MacAuthenticationTokenCheckService implements AuthenticationTokenCh
 
 
     private SecurityAuthToken getAuthToken(String token) {
-        return securityUserService.loadUaaAccessToken(token);
+        return securityUserService.loadSecurityAuthTokenByAccessToken(token);
     }
 }

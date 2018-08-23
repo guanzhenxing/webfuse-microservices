@@ -33,7 +33,7 @@ public class AuthenticationTokenVerifier {
     }
 
 
-    public Object doTokenAuthentication() {
+    public Authentication doTokenAuthentication() {
 
         HttpServletRequest request = getHttpServletRequest();
 

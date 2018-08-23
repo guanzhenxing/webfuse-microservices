@@ -48,6 +48,6 @@ public class BearerAuthenticationTokenCheckService implements AuthenticationToke
     }
 
     private SecurityAuthToken getAuthToken(String token) {
-        return securityUserService.loadUaaAccessToken(token);
+        return securityUserService.loadSecurityAuthTokenByAccessToken(token);
     }
 }

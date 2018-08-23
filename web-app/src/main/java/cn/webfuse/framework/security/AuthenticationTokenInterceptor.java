@@ -3,6 +3,7 @@ package cn.webfuse.framework.security;
 
 import cn.webfuse.framework.web.interceptor.BaseInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.method.HandlerMethod;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,8 +27,9 @@ public class AuthenticationTokenInterceptor extends BaseInterceptor {
         if (securityVerification == null) { //如果不需要校验，则立马返回
             return true;
         }
-        authenticationTokenVerifier.doTokenAuthentication();
+        Authentication authentication = authenticationTokenVerifier.doTokenAuthentication();
         return false;
     }
+
 
 }

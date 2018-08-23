@@ -15,7 +15,7 @@ public interface SecurityUserService {
      * @param account
      * @return
      */
-    SecurityUser loadUserDetailsByAccount(String account);
+    SecurityUser loadSecurityUserByAccount(String account);
 
     /**
      * 根据accessToken获得用户信息
@@ -23,7 +23,7 @@ public interface SecurityUserService {
      * @param accessToken
      * @return
      */
-    SecurityUser loadUserDetailsByAccessToken(String accessToken);
+    SecurityUser loadSecurityUserByAccessToken(String accessToken);
 
     /**
      * 根据accessToken获得Token信息
@@ -31,7 +31,7 @@ public interface SecurityUserService {
      * @param accessToken
      * @return
      */
-    SecurityAuthToken loadUaaAccessToken(String accessToken);
+    SecurityAuthToken loadSecurityAuthTokenByAccessToken(String accessToken);
 
 
 }

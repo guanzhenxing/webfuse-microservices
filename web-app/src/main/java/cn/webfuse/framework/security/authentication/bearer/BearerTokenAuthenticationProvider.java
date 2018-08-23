@@ -58,7 +58,7 @@ public class BearerTokenAuthenticationProvider implements AuthenticationProvider
 
         BearerAuthenticationToken bearerPreAuthenticationToken = (BearerAuthenticationToken) authentication;
         SecurityAuthToken securityAuthToken = bearerAuthenticationTokenCheckService.verifyToken(bearerPreAuthenticationToken);
-        SecurityUser user = securityUserService.loadUserDetailsByAccessToken(securityAuthToken.getAccessToken());    //获得相关的用户信息
+        SecurityUser user = securityUserService.loadSecurityUserByAccessToken(securityAuthToken.getAccessToken());    //获得相关的用户信息
         user.setSecurityAuthToken(securityAuthToken);
         UserAuthenticationToken userAuthenticationToken = new UserAuthenticationToken(user, "BEARER");
 

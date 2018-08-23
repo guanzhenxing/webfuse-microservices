@@ -48,7 +48,7 @@ public class DebugTokenAuthenticationProvider implements AuthenticationProvider 
      * @return
      */
     private SecurityUser buildUaaUserDetails(DebugAuthenticationToken debugAuthenticationToken) {
-        return securityUserService.loadUserDetailsByAccount(debugAuthenticationToken.getAccount());
+        return securityUserService.loadSecurityUserByAccount(debugAuthenticationToken.getAccount());
     }
 
     /**
