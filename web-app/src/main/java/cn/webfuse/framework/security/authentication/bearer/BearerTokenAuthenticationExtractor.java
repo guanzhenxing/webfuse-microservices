@@ -31,7 +31,6 @@ public class BearerTokenAuthenticationExtractor extends AbstractAuthenticationEx
 
         String bearerToken = StringUtils.strip(authenticationValue, "\"");
         Validate.notBlank(bearerToken, "bearer token is missing.");
-
         LOGGER.debug("bearerToken:{}", bearerToken);
 
         return new BearerAuthenticationToken(bearerToken);

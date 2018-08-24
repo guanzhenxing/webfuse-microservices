@@ -24,7 +24,6 @@ public class AuthenticationTokenVerifier {
 
     private final AuthenticationManager authenticationManager;
     private final AuthenticationExtractorManager extractorManager;
-    private HttpServletRequest httpServletRequest;
 
     public AuthenticationTokenVerifier(AuthenticationManager authenticationManager,
                                        AuthenticationExtractorManager extractorManager) {
@@ -33,9 +32,8 @@ public class AuthenticationTokenVerifier {
     }
 
 
-    public Authentication doTokenAuthentication() {
+    public Authentication doTokenAuthentication(HttpServletRequest request) {
 
-        HttpServletRequest request = getHttpServletRequest();
 
         String authorization = request.getHeader("Authorization"); // 获得请求头
         LOGGER.debug("Header Authorization: {}", authorization);
@@ -55,11 +53,4 @@ public class AuthenticationTokenVerifier {
 
     }
 
-    public HttpServletRequest getHttpServletRequest() {
-        return httpServletRequest;
-    }
-
-    public void setHttpServletRequest(HttpServletRequest httpServletRequest) {
-        this.httpServletRequest = httpServletRequest;
-    }
 }
