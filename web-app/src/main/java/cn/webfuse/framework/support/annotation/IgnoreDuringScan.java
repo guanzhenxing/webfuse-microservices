@@ -1,4 +1,4 @@
-package cn.webfuse.framework.annotation;
+package cn.webfuse.framework.support.annotation;
 
 /**
  * 在Spring自动扫描的时候忽略。
