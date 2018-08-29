@@ -1,0 +1,24 @@
+server:
+  port: 2201
+spring:
+  profiles:
+    active: '@env@'
+  application:
+    name: microservice-gateway-service
+
+---
+spring:
+  profiles: dev
+
+---
+spring:
+  profiles: test
+
+
+---
+spring:
+  profiles: beta
+
+---
+spring:
+  profiles: prod
