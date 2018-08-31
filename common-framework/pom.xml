@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>web-app</artifactId>
+    <artifactId>common-framework</artifactId>
     <description>Basic framework for webApp develop</description>
 
     <dependencies>
