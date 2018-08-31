@@ -10,7 +10,7 @@
     <modules>
         <module>common</module>
         <module>common-webapp</module>
-        <module>ext-persistence</module>
+        <module>ext-data</module>
         <module>ext-security</module>
         <module>smart-webfuse</module>
     </modules>

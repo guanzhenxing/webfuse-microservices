@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>ext-persistence</artifactId>
+    <artifactId>ext-data</artifactId>
     <version>${project.version}</version>
     <packaging>jar</packaging>
 
