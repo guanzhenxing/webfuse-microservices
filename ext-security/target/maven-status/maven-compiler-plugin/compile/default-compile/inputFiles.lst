@@ -31,5 +31,6 @@
 /Workspace/mine/webfuse/ext-security/src/main/java/cn/webfuse/framework/security/service/AuthenticationTokenCheckService.java
 /Workspace/mine/webfuse/ext-security/src/main/java/cn/webfuse/framework/security/authentication/mac/MacTokenAuthenticationProvider.java
 /Workspace/mine/webfuse/ext-security/src/main/java/cn/webfuse/framework/security/SecurityVerification.java
+/Workspace/mine/webfuse/ext-security/src/main/java/cn/webfuse/framework/exception/AuthenticationTokenException.java
 /Workspace/mine/webfuse/ext-security/src/main/java/cn/webfuse/framework/security/entity/uaa/SecurityAuthToken.java
 /Workspace/mine/webfuse/ext-security/src/main/java/cn/webfuse/framework/security/authentication/bearer/BearerAuthenticationToken.java

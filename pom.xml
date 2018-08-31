@@ -12,6 +12,7 @@
         <module>common-webapp</module>
         <module>ext-persistence</module>
         <module>ext-security</module>
+        <module>smart-webfuse</module>
     </modules>
     <packaging>pom</packaging>
 
