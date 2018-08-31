@@ -1,0 +1,5 @@
+cn/webfuse/framework/datasource/DynamicDataSourceAspect.class
+cn/webfuse/framework/datasource/DynamicDataSourceRegister.class
+cn/webfuse/framework/datasource/DynamicDataSource.class
+cn/webfuse/framework/datasource/DynamicDataSourceContextHolder.class
+cn/webfuse/framework/datasource/TargetDataSource.class
