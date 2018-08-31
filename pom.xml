@@ -9,8 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>common</module>
-        <module>common-framework</module>
-        <module>microservice-config-service</module>
+        <module>web-app-framework</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -19,6 +18,9 @@
     <description>WebFuse - Fuse some thing for JavaWeb develop.</description>
 
     <properties>
+
+        <project.version>1.0-SNAPSHOT</project.version>
+
         <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
