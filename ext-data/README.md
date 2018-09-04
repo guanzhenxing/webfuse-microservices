@@ -4,7 +4,6 @@
 
 ## TODO LIST
 
-- 本地测试数据库
 - JPA的动态查询
 - MongoDB的动态查询
 - MyBatis封装

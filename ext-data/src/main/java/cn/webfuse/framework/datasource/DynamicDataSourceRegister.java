@@ -57,13 +57,24 @@ public class DynamicDataSourceRegister implements ImportBeanDefinitionRegistrar,
     private DataSource defaultDataSource;
     private Map<String, DataSource> customDataSources = new HashMap<>();
 
+    /**
+     * 加载多数据源配置
+     */
+    @Override
+    public void setEnvironment(Environment env) {
+        initDefaultDataSource(env);
+        initCustomDataSources(env);
+    }
+
+
     @Override
     public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
         Map<Object, Object> targetDataSources = new HashMap<>();
-        // 将主数据源添加到更多数据源中
+        // 将主数据源添加到targetDataSources中
         targetDataSources.put("dataSource", defaultDataSource);
         DynamicDataSourceContextHolder.dataSourceNames.add("dataSource");
-        // 添加更多数据源
+
+        // 添加更多数据源到targetDataSources中
         targetDataSources.putAll(customDataSources);
         for (String key : customDataSources.keySet()) {
             DynamicDataSourceContextHolder.dataSourceNames.add(key);
@@ -81,41 +92,6 @@ public class DynamicDataSourceRegister implements ImportBeanDefinitionRegistrar,
         logger.info("Dynamic DataSource Registry");
     }
 
-    /**
-     * 创建DataSource
-     */
-    @SuppressWarnings("unchecked")
-    public DataSource buildDataSource(Map<String, Object> dsMap) {
-        try {
-            Object type = dsMap.get("type");
-            if (type == null) {
-                type = DATASOURCE_TYPE_DEFAULT;// 默认DataSource
-            }
-
-            Class<? extends DataSource> dataSourceType;
-            dataSourceType = (Class<? extends DataSource>) Class.forName((String) type);
-
-            String driverClassName = dsMap.get("driver-class-name").toString();
-            String url = dsMap.get("url").toString();
-            String username = dsMap.get("username").toString();
-            String password = dsMap.get("password").toString();
-
-            DataSourceBuilder factory = DataSourceBuilder.create().driverClassName(driverClassName).url(url)
-                    .username(username).password(password).type(dataSourceType);
-            return factory.build();
-        } catch (ClassNotFoundException e) {
-            throw ExceptionKits.unchecked(e);
-        }
-    }
-
-    /**
-     * 加载多数据源配置
-     */
-    @Override
-    public void setEnvironment(Environment env) {
-        initDefaultDataSource(env);
-        initCustomDataSources(env);
-    }
 
     /**
      * 初始化主数据源
@@ -159,8 +135,35 @@ public class DynamicDataSourceRegister implements ImportBeanDefinitionRegistrar,
             DataSource dataSource = buildDataSource(dsMap);
             //为DataSource绑定更多数据
             Bindable<DataSource> bindAble = Bindable.ofInstance(dataSource);
-            DataSource customDataSource = Binder.get(env).bind("spring.datasource", bindAble).get();
+            DataSource customDataSource = Binder.get(env).bind("spring.custom.datasource", bindAble).get();
             customDataSources.put(dsPrefix, customDataSource);
+        }
+    }
+
+    /**
+     * 创建DataSource
+     */
+    @SuppressWarnings("unchecked")
+    private DataSource buildDataSource(Map<String, Object> dsMap) {
+        try {
+            Object type = dsMap.get("type");
+            if (type == null) {
+                type = DATASOURCE_TYPE_DEFAULT;// 默认DataSource
+            }
+
+            Class<? extends DataSource> dataSourceType;
+            dataSourceType = (Class<? extends DataSource>) Class.forName((String) type);
+
+            String driverClassName = dsMap.get("driver-class-name").toString();
+            String url = dsMap.get("url").toString();
+            String username = dsMap.get("username").toString();
+            String password = dsMap.get("password").toString();
+
+            DataSourceBuilder factory = DataSourceBuilder.create().driverClassName(driverClassName).url(url)
+                    .username(username).password(password).type(dataSourceType);
+            return factory.build();
+        } catch (ClassNotFoundException e) {
+            throw ExceptionKits.unchecked(e);
         }
     }
 
