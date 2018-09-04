@@ -1,3 +1,4 @@
 需要完成的功能：
 
-- yml中@的符号问题
+- 静态代码检查
+    - [checkStyle参考](https://gitee.com/wangkang/llsfw/tree/V2/)

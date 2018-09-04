@@ -29,7 +29,7 @@ mvnw.cmd
 !.mvn/wrapper/maven-wrapper.jar
 
 ### log ###
-.log
-.log.*
+*.log
+*.log.*
 
 *.class
