@@ -1,4 +1,4 @@
-package cn.webfuse.framework.support;
+package cn.webfuse.framework.context;
 
 /**
  * 基础的常量

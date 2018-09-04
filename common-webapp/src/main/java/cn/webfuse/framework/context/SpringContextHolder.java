@@ -1,4 +1,4 @@
-package cn.webfuse.framework.support;
+package cn.webfuse.framework.context;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;

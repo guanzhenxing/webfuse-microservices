@@ -7,3 +7,4 @@
 
 - token认证支持request body
 - 支持在注解中添加权限信息
+- 支持swagger
