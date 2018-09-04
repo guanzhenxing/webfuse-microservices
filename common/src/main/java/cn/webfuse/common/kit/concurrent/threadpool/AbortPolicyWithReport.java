@@ -68,7 +68,7 @@ public class AbortPolicyWithReport extends ThreadPoolExecutor.AbortPolicy {
 
                 String OS = System.getProperty("os.name").toLowerCase();
 
-                // window system don't support ":" in file name
+                // window system don't context ":" in file name
                 if (OS.contains("win")) {
                     sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
                 } else {

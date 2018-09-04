@@ -1,4 +1,4 @@
-package cn.webfuse.framework.web.interceptor;
+package cn.webfuse.framework.web;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +12,8 @@ import java.lang.invoke.MethodHandles;
 /**
  * 基础的拦截器
  */
-public class BaseInterceptor implements HandlerInterceptor {
+public abstract class AbstractBaseInterceptor implements HandlerInterceptor {
+    
     protected static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     @Override

@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
  * 基于snowflake的ID生成器
  * <p>
  * An object that generates IDs.
- * This is broken into a separate class in case we ever want to support multiple worker threads per process
+ * This is broken into a separate class in case we ever want to context multiple worker threads per process
  *
  * @author zhujuan
  */

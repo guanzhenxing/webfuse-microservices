@@ -1,4 +1,4 @@
-package cn.webfuse.framework.web.configuration;
+package cn.webfuse.framework.configuration;
 
 import cn.webfuse.framework.exception.handler.DefaultRestfulErrorResolver;
 import cn.webfuse.framework.exception.handler.HandlerRestfulExceptionResolver;
