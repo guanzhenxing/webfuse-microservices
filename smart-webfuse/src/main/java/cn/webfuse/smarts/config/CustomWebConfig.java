@@ -1,6 +1,7 @@
 package cn.webfuse.smarts.config;
 
 import cn.webfuse.framework.configuration.AbstractBaseCustomWebMvcConfigurer;
+import cn.webfuse.framework.web.support.CustomPropertyEditorRegistrarBuilder;
 import org.springframework.beans.PropertyEditorRegistrar;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -14,7 +15,10 @@ public class CustomWebConfig extends AbstractBaseCustomWebMvcConfigurer {
 
     @Override
     protected PropertyEditorRegistrar[] getCustomPropertyEditorRegistrarList() {
-        return new PropertyEditorRegistrar[0];
+
+        PropertyEditorRegistrar escapeString = CustomPropertyEditorRegistrarBuilder.escapeString();
+
+        return new PropertyEditorRegistrar[]{escapeString};
     }
 
     @Override

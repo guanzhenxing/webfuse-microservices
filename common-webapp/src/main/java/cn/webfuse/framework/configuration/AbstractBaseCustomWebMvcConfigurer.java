@@ -3,7 +3,7 @@ package cn.webfuse.framework.configuration;
 import cn.webfuse.framework.exception.handler.DefaultRestfulErrorResolver;
 import cn.webfuse.framework.exception.handler.HandlerRestfulExceptionResolver;
 import cn.webfuse.framework.web.support.WebFuseJsonMapper;
-import cn.webfuse.framework.web.support.bind.CustomServletModelAttributeMethodProcessor;
+import cn.webfuse.framework.web.support.CustomServletModelAttributeMethodProcessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.PropertyEditorRegistrar;
 import org.springframework.context.annotation.Bean;
@@ -83,6 +83,11 @@ public abstract class AbstractBaseCustomWebMvcConfigurer extends WebMvcConfigura
         return initializer;
     }
 
+
+    /**
+     * PropertyEditorRegistrar列表。主要是用来做请求参数转换的
+     * @return
+     */
     protected abstract PropertyEditorRegistrar[] getCustomPropertyEditorRegistrarList();
 
     /**

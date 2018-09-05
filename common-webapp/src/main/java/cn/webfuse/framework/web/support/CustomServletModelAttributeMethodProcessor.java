@@ -1,4 +1,4 @@
-package cn.webfuse.framework.web.support.bind;
+package cn.webfuse.framework.web.support;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

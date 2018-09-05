@@ -1,4 +1,4 @@
-package cn.webfuse.framework.security.configuration;
+package cn.webfuse.framework.configuration;
 
 import cn.webfuse.framework.security.authentication.AuthenticationExtractorManager;
 import org.slf4j.Logger;

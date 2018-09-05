@@ -1,4 +1,4 @@
-package cn.webfuse.framework.web;
+package cn.webfuse.framework.web.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
