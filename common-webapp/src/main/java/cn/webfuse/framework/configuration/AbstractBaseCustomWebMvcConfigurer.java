@@ -86,6 +86,7 @@ public abstract class AbstractBaseCustomWebMvcConfigurer extends WebMvcConfigura
 
     /**
      * PropertyEditorRegistrar列表。主要是用来做请求参数转换的
+     *
      * @return
      */
     protected abstract PropertyEditorRegistrar[] getCustomPropertyEditorRegistrarList();
@@ -166,7 +167,7 @@ public abstract class AbstractBaseCustomWebMvcConfigurer extends WebMvcConfigura
      */
     @Bean
     public LocaleResolver localeResolver() {
-        return new AcceptHeaderLocaleResolver();
+        return new AcceptHeaderLocaleResolver();    //通过检验HTTP请求的accept-language头部来解析区域。
     }
 
 
