@@ -12,18 +12,4 @@ public abstract class AbstractBaseFilter implements Filter {
     protected static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-
-    }
-
-    @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-
-    }
-
-    @Override
-    public void destroy() {
-
-    }
 }

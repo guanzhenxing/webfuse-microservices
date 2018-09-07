@@ -1,4 +1,4 @@
-package cn.webfuse.smarts;
+package cn.webfuse.framework;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

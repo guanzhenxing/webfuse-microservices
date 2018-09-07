@@ -13,3 +13,7 @@
 - 支持swagger
 - scheduler支持
 - AbstractBaseService支持
+- 包装一层request
+- response 201等的封装
+- xss filter
+- 二维码

@@ -42,7 +42,7 @@
             <AppenderRef ref="Common-File-Appender"/>
             <AppenderRef ref="Console-Appender"/>
         </Logger>
-        <Logger name="cn.webfuse.smarts" level="info" additivity="false">
+        <Logger name="cn.webfuse.framework" level="info" additivity="false">
             <AppenderRef ref="App-File-Appender"/>
             <AppenderRef ref="Console-Appender"/>
         </Logger>

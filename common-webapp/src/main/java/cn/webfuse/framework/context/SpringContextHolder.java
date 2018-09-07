@@ -1,28 +1,34 @@
 package cn.webfuse.framework.context;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Component;
 
 /**
  * Spring帮助类，实现了BeanFactoryPostProcessor接口
  */
-public class SpringContextHolder implements BeanFactoryPostProcessor {
+@Component
+public class SpringContextHolder implements ApplicationContextAware {
 
-    private static ConfigurableListableBeanFactory beanFactory; // Spring应用上下文环境
+    private static ApplicationContext applicationContext;
 
     @Override
-    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        SpringContextHolder.beanFactory = beanFactory;
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        SpringContextHolder.applicationContext = applicationContext;
     }
+
 
     /**
      * 获得spring应用上下文
      *
      * @return
      */
-    public static ConfigurableListableBeanFactory getBeanFactory() {
-        return beanFactory;
+    public static AutowireCapableBeanFactory getBeanFactory() {
+        return applicationContext.getAutowireCapableBeanFactory();
     }
 
     /**
@@ -33,7 +39,7 @@ public class SpringContextHolder implements BeanFactoryPostProcessor {
      */
     @SuppressWarnings("unchecked")
     public static <T> T getBean(String name) {
-        return (T) beanFactory.getBean(name);
+        return (T) applicationContext.getBean(name);
     }
 
     /**
@@ -43,7 +49,7 @@ public class SpringContextHolder implements BeanFactoryPostProcessor {
      * @return 类型为clz的对象
      */
     public static <T> T getBean(Class<T> requiredType) {
-        return beanFactory.getBean(requiredType);
+        return applicationContext.getBean(requiredType);
     }
 
     /**
@@ -54,7 +60,7 @@ public class SpringContextHolder implements BeanFactoryPostProcessor {
      * @return
      */
     public static <T> T getBean(String name, Class<T> requiredType) {
-        return beanFactory.getBean(name, requiredType);
+        return applicationContext.getBean(name, requiredType);
     }
 
     /**
@@ -64,7 +70,7 @@ public class SpringContextHolder implements BeanFactoryPostProcessor {
      * @return
      */
     public static boolean containsBean(String name) {
-        return beanFactory.containsBean(name);
+        return applicationContext.containsBean(name);
     }
 
     /**
@@ -74,7 +80,7 @@ public class SpringContextHolder implements BeanFactoryPostProcessor {
      * @return
      */
     public static boolean isSingleton(String name) {
-        return beanFactory.isSingleton(name);
+        return applicationContext.isSingleton(name);
     }
 
     /**
@@ -84,7 +90,8 @@ public class SpringContextHolder implements BeanFactoryPostProcessor {
      * @return Class 注册对象的类型
      */
     public static Class<?> getType(String name) {
-        return beanFactory.getType(name);
+        return applicationContext.getType(name);
     }
+
 
 }

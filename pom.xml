@@ -13,6 +13,7 @@
         <module>ext-data</module>
         <module>ext-security</module>
         <module>smart-webfuse</module>
+        <module>smart-webfuse-starter</module>
     </modules>
     <packaging>pom</packaging>
 
