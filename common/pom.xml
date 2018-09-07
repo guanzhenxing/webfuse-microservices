@@ -12,7 +12,6 @@
 
 
     <artifactId>common</artifactId>
-    <version>${project.version}</version>
     <name>common</name>
     <description>The basic libraries and tools</description>
 

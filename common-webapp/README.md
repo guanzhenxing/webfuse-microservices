@@ -12,3 +12,4 @@
 - 支持在注解中添加权限信息
 - 支持swagger
 - scheduler支持
+- AbstractBaseService支持

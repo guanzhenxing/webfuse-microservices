@@ -10,7 +10,6 @@
     </parent>
 
     <artifactId>smart-webfuse</artifactId>
-    <version>${project.version}</version>
     <packaging>jar</packaging>
 
     <name>smart-webfuse</name>
@@ -31,9 +30,9 @@
             <version>${project.version}</version>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>cn.webfuse</groupId>-->
-            <!--<artifactId>ext-security</artifactId>-->
-            <!--<version>${project.version}</version>-->
+        <!--<groupId>cn.webfuse</groupId>-->
+        <!--<artifactId>ext-security</artifactId>-->
+        <!--<version>${project.version}</version>-->
         <!--</dependency>-->
         <dependency>
             <groupId>cn.webfuse</groupId>

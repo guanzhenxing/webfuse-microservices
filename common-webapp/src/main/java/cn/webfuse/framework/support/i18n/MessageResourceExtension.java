@@ -41,8 +41,6 @@ public class MessageResourceExtension extends ResourceBundleMessageSource {
     @Value(value = "${spring.messages.basename:messages}")
     private String basename;
 
-    public static String I18N_ATTRIBUTE = "i18n_attribute";
-
     @PostConstruct
     public void init() {
         LOGGER.info("init MessageResourceExtension...");

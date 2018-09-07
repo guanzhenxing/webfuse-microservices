@@ -10,7 +10,6 @@
     </parent>
 
     <artifactId>ext-security</artifactId>
-    <version>${project.version}</version>
     <packaging>jar</packaging>
 
     <name>ext-security</name>

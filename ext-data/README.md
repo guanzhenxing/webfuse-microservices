@@ -4,6 +4,7 @@
 
 ## TODO LIST
 
+- 设计Repository的结构
 - JPA的动态查询
 - MongoDB的动态查询
 - MyBatis封装
@@ -12,3 +13,4 @@
 - 常用的本地缓存封装
 - Redis
 - 数据连接池实践
+- 分布式事务管理（Atomikos、Bitronix、Narayana Springboot都有提供对应的管理器）

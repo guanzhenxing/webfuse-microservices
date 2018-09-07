@@ -11,9 +11,11 @@ import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.ContextStartedEvent;
 import org.springframework.context.event.ContextStoppedEvent;
+import org.springframework.stereotype.Component;
 
 import java.lang.invoke.MethodHandles;
 
+@Component
 public class ApplicationContextListener implements ApplicationListener {
 
     protected static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());

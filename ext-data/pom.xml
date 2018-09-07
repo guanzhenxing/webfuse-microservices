@@ -10,7 +10,6 @@
     </parent>
 
     <artifactId>ext-data</artifactId>
-    <version>${project.version}</version>
     <packaging>jar</packaging>
 
     <name>ext-persistence</name>

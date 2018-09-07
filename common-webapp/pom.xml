@@ -10,7 +10,6 @@
     </parent>
 
     <artifactId>common-webapp</artifactId>
-    <version>${project.version}</version>
     <name>common-webapp</name>
     <description>Basic framework for webApp develop</description>
 
@@ -55,6 +54,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
         <dependency>
