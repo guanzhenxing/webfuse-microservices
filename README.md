@@ -2,10 +2,6 @@
 
 ## 需要完成的功能：
 
-- 静态代码检查
-    - [checkStyle参考](https://gitee.com/wangkang/llsfw/tree/V2/)
-- 代码生成工具
-
 
 ## 目录说明
 

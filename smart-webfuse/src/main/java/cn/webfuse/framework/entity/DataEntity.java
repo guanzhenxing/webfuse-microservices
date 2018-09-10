@@ -4,14 +4,15 @@ import java.util.Date;
 
 public abstract class DataEntity<ID> extends BaseEntity {
 
+    protected ID id;
     protected String remarks;
-    protected Date create_time;
-    protected Date update_time;
+    protected Date createTime;
+    protected Date updateTime;
     protected int deleted;
 
     public DataEntity() {
-        this.create_time = new Date();
-        this.update_time = new Date();
+        this.createTime = new Date();
+        this.updateTime = new Date();
         this.deleted = 0;
     }
 
@@ -23,20 +24,20 @@ public abstract class DataEntity<ID> extends BaseEntity {
         this.remarks = remarks;
     }
 
-    public Date getCreate_time() {
-        return create_time;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Date getUpdate_time() {
-        return update_time;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdate_time(Date update_time) {
-        this.update_time = update_time;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
     public int getDeleted() {
