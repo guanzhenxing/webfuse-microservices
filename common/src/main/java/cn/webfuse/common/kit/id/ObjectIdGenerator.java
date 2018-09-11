@@ -25,7 +25,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * <p>
  * copy from hutool(cn.hutool.core.lang.ObjectId)
  */
-public class ObjectIdKits {
+public class ObjectIdGenerator {
 
     /**
      * 线程安全的下一个随机数,每次生成自增+1

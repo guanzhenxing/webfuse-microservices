@@ -1,43 +1,33 @@
 package cn.webfuse.common.kit.id;
 
-import java.util.UUID;
+/**
+ * ID生成器
+ *
+ * @param <T>
+ */
+@FunctionalInterface
+public interface IdGenerator<T> {
 
-public class IdGenerator {
+    T generate();
 
+    /**
+     * 使用UUID生成id
+     */
+    IdGenerator<String> UUID = () -> java.util.UUID.randomUUID().toString();
 
-//    private static class SingleSnowflake {
-//        private SnowflakeKits kits;
-//
-//        private static class SingletonHolder {
-//            private static final SingleSnowflake INSTANCE = new SingleSnowflake();
-//        }
-//
-//        private SingleSnowflake() {
-//            kits = new SnowflakeKits(0, 0);
-//        }
-//
-//        public static final SingleSnowflake getInstance() {
-//            return SingletonHolder.INSTANCE;
-//        }
-//
-//        public SnowflakeKits getKits() {
-//            return kits;
-//        }
-//    }
-//
-//
-//
-//
-//
-//    public static String buildId(String type) {
-//        if ("SNOW_FLAKE".equalsIgnoreCase(type)) {
-//            long id = SingleSnowflake.getInstance().getKits().nextId();
-//            return String.valueOf(id);
-//        } else if ("OBJECT_ID".equalsIgnoreCase(type)) {
-//            return ObjectIdKits.next();
-//        }
-//        return UUID.randomUUID().toString();
-//    }
+    /**
+     * 雪花算法
+     */
+    IdGenerator<Long> SNOW_FLAKE = SnowflakeGenerator.getInstance()::nextId;
 
+    /**
+     * 雪花算法转String
+     */
+    IdGenerator<String> SNOW_FLAKE_STRING = () -> String.valueOf(SNOW_FLAKE.generate());
+
+    /**
+     * 类MongoDB的ObjectId
+     */
+    IdGenerator<String> OBJECT_ID = ObjectIdGenerator::next;
 
 }

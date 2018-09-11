@@ -3,6 +3,8 @@ package cn.webfuse.common.kit.id;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Random;
+
 /**
  * From: https://github.com/twitter/snowflake
  * <p>
@@ -14,8 +16,8 @@ import org.slf4j.LoggerFactory;
  * @author zhujuan
  */
 
-public class SnowflakeKits {
-    protected static final Logger LOG = LoggerFactory.getLogger(SnowflakeKits.class);
+public class SnowflakeGenerator {
+    protected static final Logger LOG = LoggerFactory.getLogger(SnowflakeGenerator.class);
 
     private long workerId;
     private long dataCenterId;
@@ -36,7 +38,23 @@ public class SnowflakeKits {
 
     private long lastTimestamp = -1L;
 
-    public SnowflakeKits(long workerId, long dataCenterId) {
+    private volatile static SnowflakeGenerator singleton = null;
+
+    public static SnowflakeGenerator getInstance() {
+        if (singleton == null) {
+            synchronized (SnowflakeGenerator.class) {
+                if (singleton == null) {
+                    Random random = new Random();
+                    long workerId = Long.getLong("id-worker", random.nextInt(31));
+                    long dataCenterId = Long.getLong("id-dataCenter", random.nextInt(31));
+                    singleton = new SnowflakeGenerator(workerId, dataCenterId);
+                }
+            }
+        }
+        return singleton;
+    }
+
+    public SnowflakeGenerator(long workerId, long dataCenterId) {
         // sanity check for workerId
         if (workerId > maxWorkerId || workerId < 0) {
             throw new IllegalArgumentException(String.format("worker Id can't be greater than %d or less than 0", maxWorkerId));
@@ -84,7 +102,7 @@ public class SnowflakeKits {
     }
 
 //    public static void main(String[] args) {
-//        System.out.println(new SnowflakeKits(0, 0).nextId());
+//        System.out.println(new SnowflakeGenerator(0, 0).nextId());
 //    }
 
 }

@@ -1,7 +1,7 @@
 
 | TODO                                                         | 备注                                                         | 时间期限   | 是否完成 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- | -------- |
-| 学习整理他人的系统                                           | 重点：<br />https://gitee.com/blind/maple √<br />https://gitee.com/hupeng/SpringBootUnity<br />https://gitee.com/liupeiyu/springbootadmin<br />https://gitee.com/hsweb/hsweb-framework<br />https://gitee.com/shuzheng/zheng<br />https://gitee.com/thinkgem/jeesite4<br />https://gitee.com/jeecg/jeecg<br />https://gitee.com/eova/eova<br />https://gitee.com/baomidou/SpringWind<br />https://gitee.com/iBase4J/iBase4J-SpringBoot<br />https://github.com/JeffLi1993/springboot-learning-example<br/> https://github.com/marcosbarbero/spring-boot-starter-purge-accesslog<br/> https://github.com/guanzhenxing/springmore| 2018.09.20 |          |
+| 学习整理他人的系统                                           | 重点：<br />https://gitee.com/blind/maple √<br />https://gitee.com/hupeng/SpringBootUnity √<br />https://gitee.com/liupeiyu/springbootadmin √<br />https://gitee.com/hsweb/hsweb-framework<br />https://gitee.com/shuzheng/zheng<br />https://gitee.com/thinkgem/jeesite4<br />https://gitee.com/jeecg/jeecg<br />https://gitee.com/eova/eova<br />https://gitee.com/baomidou/SpringWind<br />https://gitee.com/iBase4J/iBase4J-SpringBoot<br />https://github.com/JeffLi1993/springboot-learning-example<br/> https://github.com/marcosbarbero/spring-boot-starter-purge-accesslog<br/> https://github.com/guanzhenxing/springmore| 2018.09.20 |          |
 | smart-webfuse的功能点                                        | 整理出功能点，列出功能点的列表                               | 2018.09.20 |          |
 | smart-webfuse的功能点页面                                    | 整理出smart-webfuse的功能点页面，草稿或者产品图              | 2018.09.20 |          |
 | 转换工具类                                                   | 主要是一些类型的转换                                         | 2018.09.10 |      √    |
@@ -17,7 +17,7 @@
 | MongoDB的动态查询                                            |                                                              | 2018.09.19 |          |
 | MyBatis封装                                                  |                                                              | 2018.09.20 |          |
 | AbstractBaseService支持                                      | AbstractBaseService的公共方法                                | 2018.09.21 |          |
-| Id生产工具                                                   |                                                              | 2018.09.22 |          |
+| Id生产工具                                                   |                                                              | 2018.09.22 |    √      |
 | Request 和Response                                           | 1-包装一层request（xss request）<br />2-response 201等的封装<br />3-xss filter | 2018.09.23 |          |
 | 代码生成工具                                                 |                                                              | 2018.09.24 |          |
 | 支持swagger                                                  |                                                              | 2018.09.25 |          |
@@ -36,8 +36,8 @@
 |                                                              |                                                              |            |          |
 |                                                              |                                                              |            |          |
 |                                                              |                                                              |            |          |
-|                                                              |                                                              |            |          |
-|                                                              |                                                              |            |          |
+| 权限                                                             |     参考hsweb-framework                                                         |            |          |
+| 字典                                                             |            参考hsweb-framework                                                  |            |          |
 | 二维码                                                       |                                                              |            |          |
 | 短信                                                         | 参考jeeweb                                                   |            |          |
 | mail                                                         | 参考jeeweb                                                   |            |          |
