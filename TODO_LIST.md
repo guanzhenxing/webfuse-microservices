@@ -1,11 +1,11 @@
 
 | TODO                                                         | 备注                                                         | 时间期限   | 是否完成 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- | -------- |
-| 学习整理他人的系统                                           | 重点：<br />https://gitee.com/blind/maple<br />https://gitee.com/hupeng/SpringBootUnity<br />https://gitee.com/liupeiyu/springbootadmin<br />https://gitee.com/hsweb/hsweb-framework<br />https://gitee.com/shuzheng/zheng<br />https://gitee.com/thinkgem/jeesite4<br />https://gitee.com/jeecg/jeecg<br />https://gitee.com/eova/eova<br />https://gitee.com/baomidou/SpringWind<br />https://gitee.com/iBase4J/iBase4J-SpringBoot<br />https://github.com/JeffLi1993/springboot-learning-example<br/> https://github.com/marcosbarbero/spring-boot-starter-purge-accesslog<br/>| 2018.09.20 |          |
+| 学习整理他人的系统                                           | 重点：<br />https://gitee.com/blind/maple √<br />https://gitee.com/hupeng/SpringBootUnity<br />https://gitee.com/liupeiyu/springbootadmin<br />https://gitee.com/hsweb/hsweb-framework<br />https://gitee.com/shuzheng/zheng<br />https://gitee.com/thinkgem/jeesite4<br />https://gitee.com/jeecg/jeecg<br />https://gitee.com/eova/eova<br />https://gitee.com/baomidou/SpringWind<br />https://gitee.com/iBase4J/iBase4J-SpringBoot<br />https://github.com/JeffLi1993/springboot-learning-example<br/> https://github.com/marcosbarbero/spring-boot-starter-purge-accesslog<br/>| 2018.09.20 |          |
 | smart-webfuse的功能点                                        | 整理出功能点，列出功能点的列表                               | 2018.09.20 |          |
 | smart-webfuse的功能点页面                                    | 整理出smart-webfuse的功能点页面，草稿或者产品图              | 2018.09.20 |          |
-| 转换工具类                                                   | 主要是一些类型的转换                                         | 2018.09.10 |          |
-| Spring Actuator应用                                          |                                                              | 2018.09.11 |          |
+| 转换工具类                                                   | 主要是一些类型的转换                                         | 2018.09.10 |      √    |
+| Spring Actuator应用                                          |                                                              | 2018.09.11 |    √      |
 | 二级缓存                                                     | 1-直接使用J2Cache<br />2-自己写。参考springboot项目          | 2018.09.12 |          |
 | 本地测试数据库                                               | http://www.springboottutorial.com/spring-boot-and-h2-in-memory-database | 2018.09.10 |          |
 | JdbcTemplate封装                                             | 参考原来项目                                                 | 2018.09.13 |          |

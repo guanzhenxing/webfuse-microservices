@@ -50,7 +50,7 @@ public abstract class DataEntity<ID> extends BaseEntity {
 
     public abstract ID getId();
 
-    public abstract void setId();
+    public abstract void setId(ID id);
 
     public boolean isNew() {
         return null == getId();
