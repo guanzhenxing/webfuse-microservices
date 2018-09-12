@@ -13,16 +13,18 @@
 | 不需要用户，只需要验证验证参数                               |                                                              | 2018.09.15 |          |
 | token认证支持request body                                    | security中支持request body                                   | 2018.09.16 |          |
 | 设计Repository的结构                                         | 设计repository的结构                                         | 2018.09.17 |          |
-| JPA的动态查询                                                |                                                              | 2018.09.18 |          |
+| JPA的动态查询                                                |  http://www.spring4all.com/article/500?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io                                                            | 2018.09.18 |          |
 | MongoDB的动态查询                                            |                                                              | 2018.09.19 |          |
 | MyBatis封装                                                  |                                                              | 2018.09.20 |          |
 | AbstractBaseService支持                                      | AbstractBaseService的公共方法                                | 2018.09.21 |          |
-| Id生产工具                                                   |                                                              | 2018.09.22 |    √      |
+| Id生产工具       / 目录结构调整                                            |                                                              | 2018.09.22 |    √      |
 | Request 和Response                                           | 1-包装一层request（xss request）<br />2-response 201等的封装<br />3-xss filter | 2018.09.23 |          |
 | 代码生成工具                                                 |                                                              | 2018.09.24 |          |
 | 支持swagger                                                  |                                                              | 2018.09.25 |          |
 | 支持在注解中添加权限信息                                     |                                                              | 2018.09.26 |          |
 | 计划任务                                                     | -scheduler支持<br />-计划任务（quartz）                      |            |          |
+| 动态数据源（主从，读写分离）                                     |     sharing-jdbc                                                         |            |          |
+|      rpc(netty mina)                                                        |                                                              |            |          |
 |                                                              |                                                              |            |          |
 |                                                              |                                                              |            |          |
 |                                                              |                                                              |            |          |
@@ -33,9 +35,7 @@
 |                                                              |                                                              |            |          |
 |                                                              |                                                              |            |          |
 |                                                              |                                                              |            |          |
-|                                                              |                                                              |            |          |
-|                                                              |                                                              |            |          |
-|                                                              |                                                              |            |          |
+|  MathKits                                                            |                                                              |            |          |
 | 权限                                                             |     参考hsweb-framework                                                         |            |          |
 | 字典                                                             |            参考hsweb-framework                                                  |            |          |
 | 二维码                                                       |                                                              |            |          |
@@ -44,7 +44,7 @@
 | spring boot性能调优                                          | [SpringBoot JVM参数调优](https://blog.tengshe789.tech/2018/08/04/springboot/)<br />[Spring Boot Memory Performance](https://spring.io/blog/2015/12/10/spring-boot-memory-performance)<br /> |            |          |
 | 静态代码检查                                                 | [checkStyle参考](https://gitee.com/wangkang/llsfw/tree/V2/)<br /> |            |          |
 | 分布式事务管理（Atomikos、Bitronix、Narayana Springboot都有提供对应的管理器） |                                                              |            |          |
-
+|spring boot admin ui                                        |https://github.com/codecentric/spring-boot-admin                |         |            |
 
 
 ## 功能点TODO_LIST

@@ -42,6 +42,7 @@
         <jackson.version>2.9.6</jackson.version>
         <slf4j.version>1.7.25</slf4j.version>
         <log4j.version>2.11.1</log4j.version>
+        <dom4j.version>2.1.1</dom4j.version>
 
         <!--for test-->
         <junit.version>4.12</junit.version>
@@ -151,6 +152,13 @@
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
                 <version>${jackson.version}</version>
+            </dependency>
+
+            <!--for xml-->
+            <dependency>
+                <groupId>org.dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>${dom4j.version}</version>
             </dependency>
 
             <!-- Log -->

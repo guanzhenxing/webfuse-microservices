@@ -50,6 +50,12 @@
             <artifactId>jackson-databind</artifactId>
         </dependency>
 
+        <!--for xml -->
+        <dependency>
+            <groupId>org.dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+        </dependency>
+
         <!-- Log -->
         <dependency>
             <groupId>org.slf4j</groupId>
