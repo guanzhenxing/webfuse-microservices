@@ -1,8 +1,8 @@
-package cn.webfuse.framework.entity;
+package cn.webfuse.framework.model;
 
 import java.util.Date;
 
-public abstract class DataEntity<ID> extends BaseEntity {
+public abstract class DataModel<ID> extends BaseModel {
 
     protected ID id;
     protected String remarks;
@@ -10,7 +10,7 @@ public abstract class DataEntity<ID> extends BaseEntity {
     protected Date updateTime;
     protected int deleted;
 
-    public DataEntity() {
+    public DataModel() {
         this.createTime = new Date();
         this.updateTime = new Date();
         this.deleted = 0;

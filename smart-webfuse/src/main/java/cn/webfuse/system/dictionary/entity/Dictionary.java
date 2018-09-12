@@ -1,13 +1,13 @@
 package cn.webfuse.system.dictionary.entity;
 
-import cn.webfuse.framework.entity.DataEntity;
+import cn.webfuse.framework.model.DataModel;
 
 import java.io.Serializable;
 
 /**
  * 字典
  */
-public class Dictionary extends DataEntity<Integer> implements Serializable {
+public class Dictionary extends DataModel<Integer> implements Serializable {
 
 
     private String code;    //字典编码
