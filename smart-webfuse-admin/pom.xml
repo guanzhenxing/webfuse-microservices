@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>smart-webfuse</artifactId>
+    <artifactId>smart-webfuse-admin</artifactId>
     <packaging>jar</packaging>
 
     <name>smart-webfuse</name>

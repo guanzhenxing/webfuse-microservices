@@ -12,6 +12,8 @@
         <module>webfuse-core</module>
         <module>webfuse-security</module>
         <module>webfuse-data</module>
+        <module>smart-webfuse-admin</module>
+        <module>smart-webfuse-service</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -28,7 +30,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!--for spring-->
-        <spring-boot.version>2.0.4.RELEASE</spring-boot.version>
+        <spring-boot.version>2.0.5.RELEASE</spring-boot.version>
 
         <!--for utils-->
         <guava.version>26.0-jre</guava.version>
