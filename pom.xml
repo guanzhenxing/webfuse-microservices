@@ -8,12 +8,10 @@
     <artifactId>webfuse</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>common</module>
-        <module>common-webapp</module>
-        <module>ext-data</module>
-        <module>ext-security</module>
-        <module>smart-webfuse</module>
-        <module>smart-webfuse-starter</module>
+        <module>webfuse-commons</module>
+        <module>webfuse-core</module>
+        <module>webfuse-security</module>
+        <module>webfuse-data</module>
     </modules>
     <packaging>pom</packaging>
 

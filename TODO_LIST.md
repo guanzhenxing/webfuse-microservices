@@ -17,7 +17,7 @@
 | MongoDB的动态查询                                            |                                                              | 2018.09.19 |          |
 | MyBatis封装                                                  |                                                              | 2018.09.20 |          |
 | AbstractBaseService支持                                      | AbstractBaseService的公共方法                                | 2018.09.21 |          |
-| Id生产工具       / 目录结构调整                                            |                                                              | 2018.09.22 |    √      |
+| Id生产工具       / 目录结构调整                                            |                                                              | 2018.09.22 |    √    √``   |
 | Request 和Response                                           | 1-包装一层request（xss request）<br />2-response 201等的封装<br />3-xss filter | 2018.09.23 |          |
 | 代码生成工具                                                 |                                                              | 2018.09.24 |          |
 | 支持swagger                                                  |                                                              | 2018.09.25 |          |

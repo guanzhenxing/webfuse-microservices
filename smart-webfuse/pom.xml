@@ -19,19 +19,36 @@
 
         <dependency>
             <groupId>cn.webfuse</groupId>
-            <artifactId>smart-webfuse-starter</artifactId>
+            <artifactId>webfuse-commons-basic</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.webfuse</groupId>
+            <artifactId>webfuse-commons-exception</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.webfuse</groupId>
+            <artifactId>webfuse-data-datasource</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.webfuse</groupId>
+            <artifactId>webfuse-security-signature</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+
     </dependencies>
 
     <build>
