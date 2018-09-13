@@ -2,8 +2,9 @@ package cn.webfuse.framework.configuration;
 
 import cn.webfuse.framework.exception.handler.DefaultRestfulErrorResolver;
 import cn.webfuse.framework.exception.handler.HandlerRestfulExceptionResolver;
-import cn.webfuse.framework.web.mvc.WebFuseJsonMapper;
-import cn.webfuse.framework.web.mvc.method.CustomServletModelAttributeMethodProcessor;
+
+import cn.webfuse.framework.web.WebFuseJsonMapper;
+import cn.webfuse.framework.web.method.CustomServletModelAttributeMethodProcessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.PropertyEditorRegistrar;
 import org.springframework.context.annotation.Bean;

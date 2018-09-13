@@ -1,4 +1,4 @@
-package cn.webfuse.framework.web.mvc.method;
+package cn.webfuse.framework.web.method;
 
 import org.apache.commons.text.StringEscapeUtils;
 import org.springframework.beans.PropertyEditorRegistrar;

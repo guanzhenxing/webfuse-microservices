@@ -9,14 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>webfuse-data</artifactId>
+    <artifactId>webfuse-ext</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>webfuse-data-datasource</module>
-        <module>webfuse-data-jdbc</module>
-        <module>webfuse-data-jpa</module>
-        <module>webfuse-data-mybatis</module>
-        <module>webfuse-data-activerecord</module>
+        <module>webfuse-ext-odata</module>
     </modules>
 
 

@@ -1,4 +1,4 @@
-package cn.webfuse.framework.web.mvc.method;
+package cn.webfuse.framework.web.method;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.CaseFormat;

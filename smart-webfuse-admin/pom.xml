@@ -19,7 +19,7 @@
 
         <dependency>
             <groupId>cn.webfuse</groupId>
-            <artifactId>webfuse-commons-basic</artifactId>
+            <artifactId>webfuse-service-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

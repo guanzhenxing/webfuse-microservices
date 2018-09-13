@@ -1,7 +1,7 @@
 package cn.webfuse.framework.configuration;
 
 import cn.webfuse.framework.web.interceptor.MessageResourceInterceptor;
-import cn.webfuse.framework.web.mvc.method.CustomPropertyEditorRegistrarBuilder;
+import cn.webfuse.framework.web.method.CustomPropertyEditorRegistrarBuilder;
 import org.springframework.beans.PropertyEditorRegistrar;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;

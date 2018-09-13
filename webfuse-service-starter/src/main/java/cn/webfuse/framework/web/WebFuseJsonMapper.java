@@ -1,4 +1,4 @@
-package cn.webfuse.framework.web.mvc;
+package cn.webfuse.framework.web;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonGenerator;

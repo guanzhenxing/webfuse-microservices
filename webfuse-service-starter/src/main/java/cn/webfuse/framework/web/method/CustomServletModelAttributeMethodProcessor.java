@@ -1,4 +1,4 @@
-package cn.webfuse.framework.web.mvc.method;
+package cn.webfuse.framework.web.method;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
