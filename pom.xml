@@ -17,7 +17,7 @@
     </modules>
     <packaging>pom</packaging>
 
-    <name>WebFuse</name>
+    <name>webFuse</name>
 
     <description>WebFuse - Fuse some thing for JavaWeb develop.</description>
 

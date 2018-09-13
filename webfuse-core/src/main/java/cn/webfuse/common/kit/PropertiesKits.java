@@ -26,19 +26,19 @@ public class PropertiesKits {
     }
 
     public static Integer getInt(Properties p, String name, Integer defaultValue) {
-        return NumberKits.toIntObject(p.getProperty(name), defaultValue);
+        return NumberKits.parseNumber(p.getProperty(name), Integer.class, defaultValue);
     }
 
     public static Long getLong(Properties p, String name, Long defaultValue) {
-        return NumberKits.toLongObject(p.getProperty(name), defaultValue);
+        return NumberKits.parseNumber(p.getProperty(name), Long.class, defaultValue);
     }
 
     public static Double getDouble(Properties p, String name, Double defaultValue) {
-        return NumberKits.toDoubleObject(p.getProperty(name), defaultValue);
+        return NumberKits.parseNumber(p.getProperty(name), Double.class, defaultValue);
     }
 
     public static Float getFloat(Properties p, String name, Float defaultValue) {
-        return NumberKits.toFloatObject(p.getProperty(name), defaultValue);
+        return NumberKits.parseNumber(p.getProperty(name), Float.class, defaultValue);
     }
 
     public static String getString(Properties p, String name, String defaultValue) {

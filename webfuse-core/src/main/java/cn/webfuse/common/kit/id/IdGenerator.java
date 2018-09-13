@@ -1,5 +1,7 @@
 package cn.webfuse.common.kit.id;
 
+import cn.webfuse.common.kit.RandomKits;
+
 /**
  * ID生成器
  *

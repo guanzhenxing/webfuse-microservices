@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class BaseController extends AbstractBaseController {
+public class BaseController {
 
     protected static String REDIRECT = "redirect:";
     protected static String FORWARD = "forward:";

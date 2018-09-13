@@ -12,7 +12,7 @@
     <artifactId>smart-webfuse-admin</artifactId>
     <packaging>jar</packaging>
 
-    <name>smart-webfuse</name>
+    <name>smart-webfuse-admin</name>
     <description>聚合各个模块，能够运行的项目</description>
 
     <dependencies>
