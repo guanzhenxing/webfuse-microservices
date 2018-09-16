@@ -15,6 +15,7 @@
         <module>webfuse-commons-basic</module>
         <module>webfuse-commons-exception</module>
         <module>webfuse-commons-logging</module>
+        <module>webfuse-commons-model</module>
     </modules>
 
 </project>

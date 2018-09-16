@@ -1,32 +1,27 @@
 package cn.webfuse.framework.configuration;
 
-import cn.webfuse.framework.exception.handler.DefaultRestfulErrorResolver;
-import cn.webfuse.framework.exception.handler.HandlerRestfulExceptionResolver;
-
 import cn.webfuse.framework.web.WebFuseJsonMapper;
 import cn.webfuse.framework.web.method.CustomServletModelAttributeMethodProcessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.PropertyEditorRegistrar;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.bind.support.ConfigurableWebBindingInitializer;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
-import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 
 import javax.servlet.Filter;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
+@Configuration
 public abstract class AbstractBaseCustomWebMvcConfigurer extends WebMvcConfigurationSupport {
 
     @Override
@@ -110,65 +105,6 @@ public abstract class AbstractBaseCustomWebMvcConfigurer extends WebMvcConfigura
     @Bean
     protected CustomServletModelAttributeMethodProcessor customModelAttributeMethodProcessor() {
         return new CustomServletModelAttributeMethodProcessor(true);
-    }
-
-
-    /**
-     * 异常处理解析器
-     *
-     * @return
-     */
-    @Bean
-    public HandlerRestfulExceptionResolver handlerRestfulExceptionResolver() {
-
-        HandlerRestfulExceptionResolver handlerRestfulExceptionResolver = new HandlerRestfulExceptionResolver();
-        handlerRestfulExceptionResolver.setOrder(-1);
-        handlerRestfulExceptionResolver.setRestfulErrorResolver(defaultRestfulErrorResolver());
-
-        return handlerRestfulExceptionResolver;
-    }
-
-    /**
-     * 默认的错误解析
-     *
-     * @return
-     */
-    @Bean
-    public DefaultRestfulErrorResolver defaultRestfulErrorResolver() {
-        DefaultRestfulErrorResolver defaultRestfulErrorResolver = new DefaultRestfulErrorResolver();
-        defaultRestfulErrorResolver.setLocaleResolver(localeResolver());
-        defaultRestfulErrorResolver.setExceptionMappingDefinitions(getExceptionMappingDefinitions());
-        return defaultRestfulErrorResolver;
-    }
-
-    /**
-     * 异常处理方式的定义
-     *
-     * @return
-     */
-    public Map<String, String> getExceptionMappingDefinitions() {
-        Map<String, String> exceptionMappingDefinitions = new HashMap<>();
-        exceptionMappingDefinitions.put("Throwable", "{\"status\":500}");
-        exceptionMappingDefinitions.put("RuntimeException", "{\"status\":500}");
-        exceptionMappingDefinitions.put("cn.webfuse.framework.exception.AbstractBizException", "{\"status\":500,\"code\":\"INTERNAL SERVER ERROR\",\"message\":\"\",\"developerMessage\":\"\"}");
-
-        Map<String, String> customExceptionMappingDefinitions = getCustomExceptionMappingDefinitions();
-        if (customExceptionMappingDefinitions != null) {
-            exceptionMappingDefinitions.putAll(customExceptionMappingDefinitions);
-        }
-        return exceptionMappingDefinitions;
-    }
-
-    public abstract Map<String, String> getCustomExceptionMappingDefinitions();
-
-    /**
-     * 定义本地化
-     *
-     * @return
-     */
-    @Bean
-    public LocaleResolver localeResolver() {
-        return new AcceptHeaderLocaleResolver();    //通过检验HTTP请求的accept-language头部来解析区域。
     }
 
 
