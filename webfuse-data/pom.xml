@@ -17,6 +17,7 @@
         <module>webfuse-data-jpa</module>
         <module>webfuse-data-mybatis</module>
         <module>webfuse-data-activerecord</module>
+        <module>webfuse-data-mongo</module>
     </modules>
 
 
