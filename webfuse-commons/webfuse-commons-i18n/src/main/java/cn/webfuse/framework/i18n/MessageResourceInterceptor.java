@@ -1,6 +1,6 @@
 package cn.webfuse.framework.i18n;
 
-import cn.webfuse.framework.web.interceptor.AbstractBaseInterceptor;
+import cn.webfuse.framework.web.AbstractBaseInterceptor;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;

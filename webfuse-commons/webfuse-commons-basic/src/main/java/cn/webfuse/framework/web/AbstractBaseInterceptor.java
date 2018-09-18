@@ -1,12 +1,15 @@
-package cn.webfuse.framework.web.filter;
+package cn.webfuse.framework.web;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.servlet.HandlerInterceptor;
 
-import javax.servlet.*;
 import java.lang.invoke.MethodHandles;
 
-public abstract class AbstractBaseFilter implements Filter {
+/**
+ * 基础的拦截器
+ */
+public abstract class AbstractBaseInterceptor implements HandlerInterceptor {
 
     protected static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
