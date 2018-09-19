@@ -12,7 +12,6 @@
 
     <artifactId>webfuse-service-starter</artifactId>
 
-
     <dependencies>
         <dependency>
             <groupId>cn.webfuse</groupId>

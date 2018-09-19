@@ -27,6 +27,11 @@
             <artifactId>webfuse-commons-i18n</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>cn.webfuse</groupId>
+            <artifactId>webfuse-commons-logging</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
         <!--for swagger2-->
 
