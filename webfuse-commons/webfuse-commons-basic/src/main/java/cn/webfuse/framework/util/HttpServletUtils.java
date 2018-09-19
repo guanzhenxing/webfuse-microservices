@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.lang.invoke.MethodHandles;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class HttpServletUtils {
@@ -96,5 +97,22 @@ public class HttpServletUtils {
         return request;
     }
 
+
+    /**
+     * 获得请求头
+     *
+     * @param request
+     * @return
+     */
+    public static Map<String, String> getRequestHeaders(HttpServletRequest request) {
+        Map<String, String> map = new LinkedHashMap<>();
+        Enumeration<String> enumeration = request.getHeaderNames();
+        while (enumeration.hasMoreElements()) {
+            String key = enumeration.nextElement();
+            String value = request.getHeader(key);
+            map.put(key, value);
+        }
+        return map;
+    }
 
 }
