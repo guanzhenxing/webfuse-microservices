@@ -1,4 +1,4 @@
-package cn.webfuse.framework.util;
+package cn.webfuse.framework.kit;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -7,7 +7,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 
-public class CookieUtils {
+public class CookieKits {
     /**
      * Cookie的存活时间
      */

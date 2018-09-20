@@ -1,4 +1,4 @@
-package cn.webfuse.framework.util;
+package cn.webfuse.framework.kit;
 
 import cn.webfuse.common.kit.ExceptionKits;
 import cn.webfuse.common.kit.reflect.ReflectionKits;
@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class AspectjUtils {
+public class AspectjKitls {
 
     public static Class<?> getClass(JoinPoint joinPoint) {
         try {

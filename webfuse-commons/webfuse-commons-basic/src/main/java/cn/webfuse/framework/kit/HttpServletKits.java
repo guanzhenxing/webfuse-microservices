@@ -1,4 +1,4 @@
-package cn.webfuse.framework.util;
+package cn.webfuse.framework.kit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class HttpServletUtils {
+public class HttpServletKits {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
@@ -68,7 +68,7 @@ public class HttpServletUtils {
      */
     public static Map<String, String> getRequestParameters() {
         HashMap<String, String> values = new HashMap<>();
-        HttpServletRequest request = HttpServletUtils.getRequest();
+        HttpServletRequest request = HttpServletKits.getRequest();
         Enumeration enums = request.getParameterNames();
         while (enums.hasMoreElements()) {
             String paramName = (String) enums.nextElement();

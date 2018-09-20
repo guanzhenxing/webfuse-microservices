@@ -2,8 +2,8 @@ package cn.webfuse.framework.logging.access;
 
 import cn.webfuse.common.kit.id.IdGenerator;
 import cn.webfuse.framework.logging.LoggerAspect;
-import cn.webfuse.framework.util.AspectjUtils;
-import cn.webfuse.framework.util.HttpServletUtils;
+import cn.webfuse.framework.kit.AspectjKitls;
+import cn.webfuse.framework.kit.HttpServletKits;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -54,20 +54,20 @@ public class AccessLoggerAspect extends LoggerAspect {
     }
 
     private void buildHttpRequestInfo(AccessLoggerInfo info) {
-        HttpServletRequest request = HttpServletUtils.getRequest();
+        HttpServletRequest request = HttpServletKits.getRequest();
         if (request != null) {
             info.setHttpMethod(request.getMethod());
-            info.setIp(HttpServletUtils.getIpAddress(request));
+            info.setIp(HttpServletKits.getIpAddress(request));
             info.setUrl(request.getRequestURL().toString());
-            info.setRequestHeaders(HttpServletUtils.getRequestHeaders(request));
+            info.setRequestHeaders(HttpServletKits.getRequestHeaders(request));
         }
     }
 
 
     private void buildAspectInfo(AccessLoggerInfo info, ProceedingJoinPoint joinPoint) {
-        Class target = AspectjUtils.getClass(joinPoint);
-        Method method = AspectjUtils.getMethod(joinPoint);
-        Map<String, Object> argsMap = AspectjUtils.getArgsMap(joinPoint);
+        Class target = AspectjKitls.getClass(joinPoint);
+        Method method = AspectjKitls.getMethod(joinPoint);
+        Map<String, Object> argsMap = AspectjKitls.getArgsMap(joinPoint);
 
         info.setTarget(target);
         info.setMethod(method);
@@ -75,8 +75,8 @@ public class AccessLoggerAspect extends LoggerAspect {
     }
 
     private void buildAnnotationInfo(AccessLoggerInfo info, ProceedingJoinPoint joinPoint) {
-        Method method = AspectjUtils.getMethod(joinPoint);
-        Class clazz = AspectjUtils.getClass(joinPoint);
+        Method method = AspectjKitls.getMethod(joinPoint);
+        Class clazz = AspectjKitls.getClass(joinPoint);
 
         AccessLogger methodAnnotation = method.getAnnotation(AccessLogger.class);
         AccessLogger clazzAnnotation = clazz.getClass().getAnnotation(AccessLogger.class);
