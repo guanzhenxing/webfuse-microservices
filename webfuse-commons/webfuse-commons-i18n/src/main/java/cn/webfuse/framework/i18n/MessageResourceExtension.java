@@ -32,7 +32,7 @@ public class MessageResourceExtension extends ResourceBundleMessageSource {
     /**
      * 指定的国际化文件目录
      */
-    @Value(value = "${spring.messages.baseFolder:i18n}")
+    @Value(value = "${spring.messages.base-folder:i18n}")
     private String baseFolder;
 
     /**
