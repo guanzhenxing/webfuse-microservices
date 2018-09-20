@@ -42,4 +42,6 @@ public abstract class AbstarctBaseDO<T> implements Serializable {
     public void setDeleted(Boolean deleted) {
         this.deleted = deleted;
     }
+
+
 }

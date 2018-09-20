@@ -11,5 +11,24 @@
 
     <artifactId>webfuse-commons-model</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>cn.webfuse</groupId>
+            <artifactId>webfuse-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
 
 </project>

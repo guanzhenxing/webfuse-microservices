@@ -1,6 +1,27 @@
 package cn.webfuse.framework.model;
 
-import java.io.Serializable;
+import cn.webfuse.common.kit.mapper.BeanMapper;
 
-public abstract class AbstractBaseDTO<T> implements Serializable {
+import java.io.Serializable;
+import java.util.Map;
+
+public abstract class AbstractBaseDTO implements Serializable {
+
+    public <E extends AbstractBaseVO> E toVO() {
+        return (E) BeanMapper.map(this, AbstractBaseVO.class);
+    }
+
+    public Map<String, Object> toMap(boolean ignoreParent, boolean ignoreEmptyValue, String... ignoreProperties) {
+        return BeanMapper.convertBeanToMap(this, ignoreParent, ignoreEmptyValue, ignoreProperties);
+    }
+
+    public Map<String, Object> toMap() {
+        return toMap(false, false, null);
+    }
+
+    public <E extends AbstractBaseDTO> E fromMap(Map<String, Object> map) {
+        return (E) BeanMapper.convertMapToBean(map, AbstractBaseDTO.class);
+    }
+
+
 }
