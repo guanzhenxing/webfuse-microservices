@@ -8,9 +8,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @SpringBootApplication(scanBasePackages = {"cn.webfuse"})
 @EnableAsync
 @EnableAccessLogger
-public class SmartWebfuseApplication {
+public class SmartWebFuseApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SmartWebfuseApplication.class, args);
+        SpringApplication.run(SmartWebFuseApplication.class, args);
     }
 }

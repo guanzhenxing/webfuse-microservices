@@ -16,7 +16,6 @@
     <description>聚合各个模块，能够运行的项目</description>
 
     <dependencies>
-
         <dependency>
             <groupId>cn.webfuse</groupId>
             <artifactId>webfuse-service-starter</artifactId>
@@ -30,6 +29,12 @@
         <dependency>
             <groupId>cn.webfuse</groupId>
             <artifactId>webfuse-commons-logging</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.webfuse</groupId>
+            <artifactId>webfuse-data-mybatis</artifactId>
             <version>${project.version}</version>
         </dependency>
 
@@ -50,6 +55,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>

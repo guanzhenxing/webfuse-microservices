@@ -8,7 +8,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SmartWebfuseApplicationTests {
+public class SmartWebFuseApplicationTests {
 
     private MockMvc mvc;
 

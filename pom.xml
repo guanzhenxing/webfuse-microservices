@@ -52,6 +52,8 @@
         <assertj.version>2.6.0</assertj.version>
         <mockito.version>2.18.3</mockito.version>
 
+        <mybatis-plus.version>3.0.3</mybatis-plus.version>
+
     </properties>
 
     <url>https://github.com/guanzhenxing/webfuse</url>
@@ -197,6 +199,13 @@
                 <artifactId>mockito-core</artifactId>
                 <version>${mockito.version}</version>
                 <scope>test</scope>
+            </dependency>
+
+            <!--for mybatis-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
             </dependency>
 
 
