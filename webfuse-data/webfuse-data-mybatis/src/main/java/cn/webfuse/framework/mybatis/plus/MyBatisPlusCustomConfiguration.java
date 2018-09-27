@@ -1,19 +1,17 @@
 package cn.webfuse.framework.mybatis.plus;
 
-import com.baomidou.mybatisplus.autoconfigure.ConfigurationCustomizer;
 import com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration;
 import com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties;
-import org.apache.ibatis.mapping.DatabaseIdProvider;
-import org.apache.ibatis.plugin.Interceptor;
-import org.springframework.beans.factory.ObjectProvider;
+import com.baomidou.mybatisplus.extension.MybatisMapWrapperFactory;
+import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ResourceLoader;
+import org.springframework.context.annotation.Profile;
 
 import javax.annotation.PostConstruct;
-import java.util.List;
 
 
 /**
@@ -26,34 +24,35 @@ public class MyBatisPlusCustomConfiguration {
 
     private final MybatisPlusProperties properties;
 
-    private final Interceptor[] interceptors;
 
-    private final ResourceLoader resourceLoader;
-
-    private final DatabaseIdProvider databaseIdProvider;
-
-    private final List<ConfigurationCustomizer> configurationCustomizers;
-
-    private final ApplicationContext applicationContext;
-
-    public MyBatisPlusCustomConfiguration(MybatisPlusProperties properties,
-                                          ObjectProvider<Interceptor[]> interceptorsProvider,
-                                          ResourceLoader resourceLoader,
-                                          ObjectProvider<DatabaseIdProvider> databaseIdProvider,
-                                          ObjectProvider<List<ConfigurationCustomizer>> configurationCustomizersProvider,
-                                          ApplicationContext applicationContext) {
+    public MyBatisPlusCustomConfiguration(MybatisPlusProperties properties) {
         this.properties = properties;
-        this.interceptors = interceptorsProvider.getIfAvailable();
-        this.resourceLoader = resourceLoader;
-        this.databaseIdProvider = databaseIdProvider.getIfAvailable();
-        this.configurationCustomizers = configurationCustomizersProvider.getIfAvailable();
-        this.applicationContext = applicationContext;
     }
 
     @PostConstruct
     public void doCustomConfig() {
-        this.properties.getGlobalConfig().setBanner(false); //设置banner为false，不打印
+        //设置banner为false，不打印
+        this.properties.getGlobalConfig().setBanner(false);
+        //*注册Map 下划线转驼峰*
+        this.properties.getConfiguration().setObjectWrapperFactory(new MybatisMapWrapperFactory());
     }
 
+    /**
+     * SQL执行效率插件
+     */
+    @Bean
+    @Profile({"dev", "test"})// 设置 dev test 环境开启
+    public PerformanceInterceptor performanceInterceptor() {
+        return new PerformanceInterceptor();
+    }
+
+
+    /**
+     * 分页插件
+     */
+    @Bean
+    public PaginationInterceptor paginationInterceptor() {
+        return new PaginationInterceptor();
+    }
 
 }
