@@ -38,11 +38,6 @@
             <artifactId>commons-codec</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-        </dependency>
-
         <!-- for BeanMapper -->
         <dependency>
             <groupId>com.github.dozermapper</groupId>

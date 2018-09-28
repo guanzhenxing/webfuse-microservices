@@ -6,6 +6,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -242,6 +243,43 @@ public class NumberKits {
      */
     public static String to2DigitString(double d) {
         return String.format(Locale.ROOT, "%.2f", d);
+    }
+
+    /**
+     * 保留固定位数小数<br>
+     * 例如保留四位小数：123.456789 =》 123.4567
+     *
+     * @param number       数字值
+     * @param scale        保留小数位数，如果传入小于0，则默认0
+     * @param roundingMode 保留小数的模式 {@link RoundingMode}，如果传入null则默认四舍五入
+     * @return 新值
+     */
+    public static BigDecimal round(Number number, int scale, RoundingMode roundingMode) {
+        if (null == number) {
+            number = BigDecimal.ZERO;
+        }
+        if (scale < 0) {
+            scale = 0;
+        }
+        if (null == roundingMode) {
+            roundingMode = RoundingMode.HALF_UP;
+        }
+        BigDecimal num = convertNumberToTargetClass(number, BigDecimal.class);
+
+        return num.setScale(scale, roundingMode);
+    }
+
+    /**
+     * 保留固定位数小数<br>
+     * 例如保留四位小数：123.456789 =》 123.4567
+     *
+     * @param number       数字值
+     * @param scale        保留小数位数，如果传入小于0，则默认0
+     * @param roundingMode 保留小数的模式 {@link RoundingMode}，如果传入null则默认四舍五入
+     * @return 新值
+     */
+    public static BigDecimal round(String number, int scale, RoundingMode roundingMode) {
+        return round(NumberUtils.createNumber(number), scale, roundingMode);
     }
 
     /////////// 杂项 ///////

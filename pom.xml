@@ -45,7 +45,6 @@
         <jackson.version>2.9.6</jackson.version>
         <slf4j.version>1.7.25</slf4j.version>
         <log4j.version>2.11.1</log4j.version>
-        <httpclient.version>4.5.6</httpclient.version>
 
         <!--for test-->
         <junit.version>4.12</junit.version>
@@ -142,11 +141,6 @@
                 <groupId>commons-codec</groupId>
                 <artifactId>commons-codec</artifactId>
                 <version>${commons-codec.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpclient</artifactId>
-                <version>${httpclient.version}</version>
             </dependency>
 
 
