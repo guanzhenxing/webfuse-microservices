@@ -53,14 +53,12 @@ https://gitee.com/Leytton/ThinkJD
 
 https://gitee.com/sxjun1904/MiniJdbc
 
-http://www.spring4all.com/article/500
-
 https://www.odata.org/
-
-https://github.com/SpringForAll/spring-boot-starter-mongodb-plus
 
 https://github.com/YeautyYE/netty-websocket-spring-boot-starter/blob/master/README_zh.md
 
 https://gitee.com/zhocuhenglin
 
 https://github.com/Arronlong/httpclientutil
+
+https://github.com/2388386839/syj-ratelimit

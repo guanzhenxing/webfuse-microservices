@@ -7,9 +7,6 @@ import java.util.Map;
 
 public abstract class AbstractBaseDTO implements Serializable {
 
-    public <E extends AbstractBaseVO> E toVO() {
-        return (E) BeanMapper.map(this, AbstractBaseVO.class);
-    }
 
     public Map<String, Object> toMap(boolean ignoreParent, boolean ignoreEmptyValue, String... ignoreProperties) {
         return BeanMapper.convertBeanToMap(this, ignoreParent, ignoreEmptyValue, ignoreProperties);

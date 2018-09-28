@@ -1,5 +1,7 @@
 package cn.webfuse.framework.model;
 
+import cn.webfuse.common.kit.mapper.BeanMapper;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -43,5 +45,12 @@ public abstract class AbstarctBaseDO<T> implements Serializable {
         this.deleted = deleted;
     }
 
+    public <E extends AbstarctBaseDO> E fromEntity(AbstractBaseEntity entity) {
+        return (E) BeanMapper.map(entity, AbstarctBaseDO.class);
+    }
+
+    public <E extends AbstractBaseEntity> E toEntity() {
+        return (E) BeanMapper.map(this, AbstractBaseEntity.class);
+    }
 
 }
