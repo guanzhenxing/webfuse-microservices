@@ -14,7 +14,7 @@
     <modules>
         <module>webfuse-ext-odata</module>
         <module>webfuse-ext-excel</module>
-        <module>webfuse-ext-kits</module>
+        <module>webfuse-ext-kit</module>
     </modules>
 
 
