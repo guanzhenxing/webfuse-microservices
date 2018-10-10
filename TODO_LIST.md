@@ -21,7 +21,7 @@
 |                       计划任务                       | -scheduler支持<br />-计划任务（quartz）                      |            |          |
 |             动态数据源（主从，读写分离）             | sharing-jdbc                                                 |            |          |
 |                   rpc(netty mina)                    |                                                              |            |          |
-| Number2RMBUtils，PinyinUtils,QrCodeUtils,IDCardUtils | ibase4j-common                                               |            |          |
+|                                                |            |          |
 |                                                      |                                                              |            |          |
 |                                                      |                                                              |            |          |
 |                                                      |                                                              |            |          |
