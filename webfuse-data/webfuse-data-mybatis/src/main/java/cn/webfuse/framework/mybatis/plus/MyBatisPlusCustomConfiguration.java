@@ -33,8 +33,6 @@ public class MyBatisPlusCustomConfiguration {
     public void doCustomConfig() {
         //设置banner为false，不打印
         this.properties.getGlobalConfig().setBanner(false);
-        //*注册Map 下划线转驼峰*
-        this.properties.getConfiguration().setObjectWrapperFactory(new MybatisMapWrapperFactory());
     }
 
     /**
