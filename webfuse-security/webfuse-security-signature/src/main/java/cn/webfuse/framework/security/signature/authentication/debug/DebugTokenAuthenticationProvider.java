@@ -1,8 +1,9 @@
 package cn.webfuse.framework.security.signature.authentication.debug;
 
+
+import cn.webfuse.framework.security.signature.entity.SecurityToken;
+import cn.webfuse.framework.security.signature.entity.SecurityUser;
 import cn.webfuse.framework.security.signature.entity.UserAuthenticationToken;
-import cn.webfuse.framework.security.signature.entity.uaa.SecurityAuthToken;
-import cn.webfuse.framework.security.signature.entity.uaa.SecurityUser;
 import cn.webfuse.framework.security.signature.service.SecurityUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,9 +32,9 @@ public class DebugTokenAuthenticationProvider implements AuthenticationProvider 
         Assert.notNull(authentication, "authentication cannot be null.");
         DebugAuthenticationToken debugAuthenticationToken = (DebugAuthenticationToken) authentication;
 
-        SecurityAuthToken securityAuthToken = buildUaaAccessToken(debugAuthenticationToken);
-        SecurityUser user = buildUaaUserDetails(debugAuthenticationToken);
-        user.setSecurityAuthToken(securityAuthToken);
+        SecurityToken securityToken = buildAuthenticationToken(debugAuthenticationToken);
+        SecurityUser user = buildUser(debugAuthenticationToken);
+        user.setSecurityToken(securityToken);
         UserAuthenticationToken userAuthenticationToken = new UserAuthenticationToken(user, "Debug");
 
         LOGGER.debug("Debug signature authenticate end.");
@@ -47,8 +48,8 @@ public class DebugTokenAuthenticationProvider implements AuthenticationProvider 
      * @param debugAuthenticationToken
      * @return
      */
-    private SecurityUser buildUaaUserDetails(DebugAuthenticationToken debugAuthenticationToken) {
-        return securityUserService.loadSecurityUserByAccount(debugAuthenticationToken.getAccount());
+    private SecurityUser buildUser(DebugAuthenticationToken debugAuthenticationToken) {
+        return securityUserService.loadUserByAccount(debugAuthenticationToken.getAccount());
     }
 
     /**
@@ -57,10 +58,10 @@ public class DebugTokenAuthenticationProvider implements AuthenticationProvider 
      * @param debugAuthenticationToken
      * @return
      */
-    private SecurityAuthToken buildUaaAccessToken(DebugAuthenticationToken debugAuthenticationToken) {
-        SecurityAuthToken securityAuthToken = new SecurityAuthToken();
-        securityAuthToken.setAccount(debugAuthenticationToken.getAccount());
-        return securityAuthToken;
+    private SecurityToken buildAuthenticationToken(DebugAuthenticationToken debugAuthenticationToken) {
+        SecurityToken securityToken = new SecurityToken();
+        securityToken.setAccount(debugAuthenticationToken.getAccount());
+        return securityToken;
     }
 
     @Override

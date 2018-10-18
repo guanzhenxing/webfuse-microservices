@@ -2,9 +2,9 @@ package cn.webfuse.framework.security.signature.authentication.mac;
 
 import cn.webfuse.framework.security.signature.authentication.AuthenticationInterceptor;
 import cn.webfuse.framework.security.signature.authentication.AuthenticationInterceptorImpl;
+import cn.webfuse.framework.security.signature.entity.SecurityUser;
 import cn.webfuse.framework.security.signature.entity.UserAuthenticationToken;
-import cn.webfuse.framework.security.signature.entity.uaa.SecurityAuthToken;
-import cn.webfuse.framework.security.signature.entity.uaa.SecurityUser;
+import cn.webfuse.framework.security.signature.entity.SecurityToken;
 import cn.webfuse.framework.security.signature.service.SecurityUserService;
 import cn.webfuse.framework.security.signature.service.impl.MacAuthenticationTokenCheckService;
 import org.slf4j.Logger;
@@ -51,9 +51,9 @@ public class MacTokenAuthenticationProvider implements AuthenticationProvider {
         authenticationInterceptor.preHandle(authentication);
 
         MacAuthenticationToken macAuthenticationToken = (MacAuthenticationToken) authentication;
-        SecurityAuthToken securityAuthToken = macAuthenticationTokenCheckService.verifyToken(macAuthenticationToken); //校验token
-        SecurityUser user = securityUserService.loadSecurityUserByAccessToken(securityAuthToken.getAccessToken());    //获得相关的用户信息
-        user.setSecurityAuthToken(securityAuthToken);
+        SecurityToken securityToken = macAuthenticationTokenCheckService.verifyToken(macAuthenticationToken); //校验token
+        SecurityUser user = securityUserService.loadUserByAccessToken(securityToken.getAccessToken());    //获得相关的用户信息
+        user.setSecurityToken(securityToken);
         UserAuthenticationToken userAuthenticationToken = new UserAuthenticationToken(user, "MAC");
 
         authenticationInterceptor.postHandle(userAuthenticationToken);

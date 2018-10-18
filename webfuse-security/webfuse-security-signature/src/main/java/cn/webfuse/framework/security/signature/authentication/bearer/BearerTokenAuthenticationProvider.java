@@ -2,9 +2,9 @@ package cn.webfuse.framework.security.signature.authentication.bearer;
 
 import cn.webfuse.framework.security.signature.authentication.AuthenticationInterceptor;
 import cn.webfuse.framework.security.signature.authentication.AuthenticationInterceptorImpl;
+import cn.webfuse.framework.security.signature.entity.SecurityUser;
 import cn.webfuse.framework.security.signature.entity.UserAuthenticationToken;
-import cn.webfuse.framework.security.signature.entity.uaa.SecurityAuthToken;
-import cn.webfuse.framework.security.signature.entity.uaa.SecurityUser;
+import cn.webfuse.framework.security.signature.entity.SecurityToken;
 import cn.webfuse.framework.security.signature.service.impl.BearerAuthenticationTokenCheckService;
 import cn.webfuse.framework.security.signature.service.SecurityUserService;
 import org.slf4j.Logger;
@@ -57,9 +57,9 @@ public class BearerTokenAuthenticationProvider implements AuthenticationProvider
         authenticationInterceptor.preHandle(authentication);
 
         BearerAuthenticationToken bearerPreAuthenticationToken = (BearerAuthenticationToken) authentication;
-        SecurityAuthToken securityAuthToken = bearerAuthenticationTokenCheckService.verifyToken(bearerPreAuthenticationToken);
-        SecurityUser user = securityUserService.loadSecurityUserByAccessToken(securityAuthToken.getAccessToken());    //获得相关的用户信息
-        user.setSecurityAuthToken(securityAuthToken);
+        SecurityToken securityToken = bearerAuthenticationTokenCheckService.verifyToken(bearerPreAuthenticationToken);
+        SecurityUser user = securityUserService.loadUserByAccessToken(securityToken.getAccessToken());    //获得相关的用户信息
+        user.setSecurityToken(securityToken);
         UserAuthenticationToken userAuthenticationToken = new UserAuthenticationToken(user, "BEARER");
 
         authenticationInterceptor.postHandle(userAuthenticationToken);

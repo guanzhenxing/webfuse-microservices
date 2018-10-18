@@ -1,8 +1,6 @@
 package cn.webfuse.framework.security.signature.entity;
 
 
-import cn.webfuse.framework.security.signature.entity.uaa.SecurityUser;
-
 public class UserAuthenticationToken extends AbstractUserAuthenticationToken {
 
     private SecurityUser user;
@@ -16,7 +14,7 @@ public class UserAuthenticationToken extends AbstractUserAuthenticationToken {
 
     @Override
     public Object getCredentials() {
-        return this.user.getSecurityAuthToken();
+        return this.user.getSecurityToken();
     }
 
     @Override

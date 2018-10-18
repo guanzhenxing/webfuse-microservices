@@ -3,7 +3,7 @@ package cn.webfuse.framework.security.signature.service.impl;
 import cn.webfuse.common.kit.mapper.JsonMapper;
 import cn.webfuse.framework.security.signature.AuthenticationTokenException;
 import cn.webfuse.framework.security.signature.authentication.mac.MacAuthenticationToken;
-import cn.webfuse.framework.security.signature.entity.uaa.SecurityAuthToken;
+import cn.webfuse.framework.security.signature.entity.SecurityToken;
 import cn.webfuse.framework.security.signature.service.AuthenticationTokenCheckService;
 import cn.webfuse.framework.security.signature.service.SecurityUserService;
 import cn.webfuse.framework.security.signature.service.cache.NonceCache;
@@ -41,12 +41,12 @@ public class MacAuthenticationTokenCheckService implements AuthenticationTokenCh
     }
 
     @Override
-    public SecurityAuthToken verifyToken(Authentication wafAuthenticationToken) {
+    public SecurityToken verifyToken(Authentication wafAuthenticationToken) {
         LOGGER.debug("verify mac signature begin.");
 
         Validate.notNull(wafAuthenticationToken, "authenticationToken must not be null");
         MacAuthenticationToken macAuthenticationToken = (MacAuthenticationToken) wafAuthenticationToken;
-        SecurityAuthToken securityAuthToken = this.checkAuthToken(macAuthenticationToken.getId());   //获得UaaAccessToken
+        SecurityToken securityAuthToken = this.checkAuthToken(macAuthenticationToken.getId());   //获得UaaAccessToken
         this.checkMac(macAuthenticationToken, securityAuthToken.getSecret());
         this.checkNonce(macAuthenticationToken.getNonce());
 
@@ -55,8 +55,8 @@ public class MacAuthenticationTokenCheckService implements AuthenticationTokenCh
         return securityAuthToken;
     }
 
-    private SecurityAuthToken checkAuthToken(String token) {
-        SecurityAuthToken securityAuthToken = getAuthToken(token);
+    private SecurityToken checkAuthToken(String token) {
+        SecurityToken securityAuthToken = getAuthToken(token);
         if (securityAuthToken.isExpire()) {
             throw new AuthenticationTokenException(403, "AUTH_TOKEN_EXPIRED", "The signature has expired");
         }
@@ -134,7 +134,7 @@ public class MacAuthenticationTokenCheckService implements AuthenticationTokenCh
     }
 
 
-    private SecurityAuthToken getAuthToken(String token) {
-        return securityUserService.loadSecurityAuthTokenByAccessToken(token);
+    private SecurityToken getAuthToken(String token) {
+        return securityUserService.loadSecurityTokenByAccessToken(token);
     }
 }

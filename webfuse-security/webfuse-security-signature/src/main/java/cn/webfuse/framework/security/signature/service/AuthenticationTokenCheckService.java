@@ -1,11 +1,8 @@
 package cn.webfuse.framework.security.signature.service;
 
-import cn.webfuse.framework.security.signature.entity.uaa.SecurityAuthToken;
+import cn.webfuse.framework.security.signature.entity.SecurityToken;
 import org.springframework.security.core.Authentication;
 
-/**
- * Uaa验证token的逻辑
- */
 public interface AuthenticationTokenCheckService {
     /**
      * 校验Token
@@ -13,5 +10,5 @@ public interface AuthenticationTokenCheckService {
      * @param wafAuthenticationToken
      * @return
      */
-    SecurityAuthToken verifyToken(Authentication wafAuthenticationToken);
+    SecurityToken verifyToken(Authentication wafAuthenticationToken);
 }

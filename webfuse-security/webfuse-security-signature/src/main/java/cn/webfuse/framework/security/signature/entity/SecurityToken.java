@@ -1,11 +1,9 @@
-package cn.webfuse.framework.security.signature.entity.uaa;
+package cn.webfuse.framework.security.signature.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-/**
- * UAA的认证信息
- */
-public class SecurityAuthToken {
+public class SecurityToken implements Serializable {
 
     /**
      * 认证后的用户账号

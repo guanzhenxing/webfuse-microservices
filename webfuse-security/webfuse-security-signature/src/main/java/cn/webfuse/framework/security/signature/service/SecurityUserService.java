@@ -1,37 +1,14 @@
 package cn.webfuse.framework.security.signature.service;
 
-import cn.webfuse.framework.security.signature.entity.uaa.SecurityAuthToken;
-import cn.webfuse.framework.security.signature.entity.uaa.SecurityUser;
 
-/**
- * 从Uaa中获得数据的服务接口
- */
+import cn.webfuse.framework.security.signature.entity.SecurityToken;
+import cn.webfuse.framework.security.signature.entity.SecurityUser;
+
 public interface SecurityUserService {
 
+    SecurityUser loadUserByAccount(String account);
 
-    /**
-     * 根据用户账号获得用户信息
-     *
-     * @param account
-     * @return
-     */
-    SecurityUser loadSecurityUserByAccount(String account);
+    SecurityUser loadUserByAccessToken(String accessToken);
 
-    /**
-     * 根据accessToken获得用户信息
-     *
-     * @param accessToken
-     * @return
-     */
-    SecurityUser loadSecurityUserByAccessToken(String accessToken);
-
-    /**
-     * 根据accessToken获得Token信息
-     *
-     * @param accessToken
-     * @return
-     */
-    SecurityAuthToken loadSecurityAuthTokenByAccessToken(String accessToken);
-
-
+    SecurityToken loadSecurityTokenByAccessToken(String token);
 }
