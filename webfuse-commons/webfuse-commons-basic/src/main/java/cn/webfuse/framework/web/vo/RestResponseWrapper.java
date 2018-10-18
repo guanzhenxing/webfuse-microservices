@@ -1,4 +1,4 @@
-package cn.webfuse.framework.web;
+package cn.webfuse.framework.web.vo;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
