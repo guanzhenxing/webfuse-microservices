@@ -52,6 +52,8 @@
         <assertj.version>2.6.0</assertj.version>
         <mockito.version>2.18.3</mockito.version>
 
+        <mybatis-mapper-starter.version>2.0.4</mybatis-mapper-starter.version>
+
 
 
 
@@ -205,7 +207,11 @@
             </dependency>
 
             <!--for mybatis-->
-
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>${mybatis-mapper-starter.version}</version>
+            </dependency>
 
 
         </dependencies>
