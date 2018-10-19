@@ -36,7 +36,7 @@
         <spring-boot.version>2.0.5.RELEASE</spring-boot.version>
 
         <!--for utils-->
-        <guava.version>26.0-jre</guava.version>
+        <guava.version>27.0-jre</guava.version>
         <commons-lang3.version>3.7</commons-lang3.version>
         <commons-text.version>1.4</commons-text.version>
         <commons-io.version>2.6</commons-io.version>
@@ -45,15 +45,15 @@
         <jackson.version>2.9.6</jackson.version>
         <slf4j.version>1.7.25</slf4j.version>
         <log4j.version>2.11.1</log4j.version>
+        <lombok.version>1.18.2</lombok.version>
 
         <!--for test-->
         <junit.version>4.12</junit.version>
         <assertj.version>2.6.0</assertj.version>
         <mockito.version>2.18.3</mockito.version>
 
-        <mybatis-plus.version>3.0.5</mybatis-plus.version>
 
-        <lombok.version>1.18.2</lombok.version>
+
 
     </properties>
 
@@ -205,11 +205,7 @@
             </dependency>
 
             <!--for mybatis-->
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>${mybatis-plus.version}</version>
-            </dependency>
+
 
 
         </dependencies>
