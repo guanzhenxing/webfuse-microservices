@@ -1,8 +1,16 @@
 package cn.webfuse.admin.upms.mapper;
 
-import cn.webfuse.admin.upms.model.UserGroup;
-import org.apache.ibatis.annotations.Select;
-import tk.mybatis.mapper.common.Mapper;
+import cn.webfuse.admin.upms.entity.UserGroup;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-public interface UserGroupMapper extends Mapper<UserGroup> {
+/**
+ * <p>
+ *  Mapper 接口
+ * </p>
+ *
+ * @author ${author}
+ * @since 2018-10-22
+ */
+public interface UserGroupMapper extends BaseMapper<UserGroup> {
+
 }

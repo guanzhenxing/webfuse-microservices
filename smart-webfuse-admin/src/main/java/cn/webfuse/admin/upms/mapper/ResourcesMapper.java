@@ -1,8 +1,16 @@
 package cn.webfuse.admin.upms.mapper;
 
-import cn.webfuse.admin.upms.model.Resources;
-import org.apache.ibatis.annotations.Select;
-import tk.mybatis.mapper.common.Mapper;
+import cn.webfuse.admin.upms.entity.Resources;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-public interface ResourcesMapper extends Mapper<Resources> {
+/**
+ * <p>
+ *  Mapper 接口
+ * </p>
+ *
+ * @author ${author}
+ * @since 2018-10-22
+ */
+public interface ResourcesMapper extends BaseMapper<Resources> {
+
 }
