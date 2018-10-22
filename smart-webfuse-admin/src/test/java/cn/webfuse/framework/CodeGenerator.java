@@ -45,6 +45,7 @@ public class CodeGenerator {
         gc.setOutputDir(projectPath + "/smart-webfuse-admin/src/main/java");
         gc.setOpen(false);
         gc.setIdType(IdType.AUTO);
+        gc.setActiveRecord(true);
         mpg.setGlobalConfig(gc);
 
         // 包配置
@@ -70,8 +71,6 @@ public class CodeGenerator {
         strategy.setTablePrefix(pc.getModuleName() + "_");
         mpg.setStrategy(strategy);
         mpg.execute();
-
-
 
 
     }
