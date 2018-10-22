@@ -1,5 +1,5 @@
 create table users (
-  id BIGINT(20) NOT NULL auto_increment,
+  id BIGINT(20) NOT NULL auto_increment comment 'ID' ,
   username VARCHAR(30) not null COMMENT '用户名',
   password varchar(200) not null comment '密码',
   email varchar(50) null default null comment '邮箱',
@@ -7,14 +7,14 @@ create table users (
   status varchar(20) not null default 'ENABLE' comment '状态',
   remark varchar(200) null comment '备注',
   PRIMARY KEY (id)
-);
+) comment ='用户';
 
 create table groups(
-  id BIGINT(20) NOT NULL auto_increment,
-  name VARCHAR(30) NOT NULL,
+  id BIGINT(20) NOT NULL auto_increment comment 'ID' ,
+  name VARCHAR(30) NOT NULL comment '用户组名' ,
   remark varchar(200) null comment '备注',
   PRIMARY KEY (id)
-);
+)  comment ='用户组';
 
 create table user_group(
   id BIGINT(20) NOT NULL auto_increment,
