@@ -17,6 +17,7 @@
         <module>webfuse-service-starter</module>
         <module>smart-webfuse-demos</module>
         <module>webfuse-mq</module>
+        <module>webfuse-code-generator</module>
     </modules>
     <packaging>pom</packaging>
 
