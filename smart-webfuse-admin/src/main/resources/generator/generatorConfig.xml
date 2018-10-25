@@ -9,7 +9,7 @@
             location="/Users/Jesen/.m2/repository/mysql/mysql-connector-java/5.1.47/mysql-connector-java-5.1.47.jar"/>
 
 
-    <context id="MySQLTables" targetRuntime="MyBatis3">
+    <context id="MySQLTables" targetRuntime="MyBatis3DynamicSQL">
 
         <property name="autoDelimitKeywords" value="false"/>
         <property name="javaFileEncoding" value="UTF-8"/>
