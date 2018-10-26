@@ -37,6 +37,11 @@
             <artifactId>webfuse-data-mybatis</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.mybatis.dynamic-sql</groupId>
+            <artifactId>mybatis-dynamic-sql</artifactId>
+            <version>1.1.0</version>
+        </dependency>
 
         <!--for swagger2-->
 

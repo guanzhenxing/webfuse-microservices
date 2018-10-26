@@ -18,6 +18,7 @@
         <module>webfuse-data-mybatis</module>
         <module>webfuse-data-activerecord</module>
         <module>webfuse-data-mongo</module>
+        <module>webfuse-data-dynamic-sql</module>
     </modules>
 
 
