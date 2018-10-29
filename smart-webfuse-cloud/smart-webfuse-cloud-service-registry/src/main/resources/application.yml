@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: smart-webfuse-cloud-service-registry
+server:
+  port: ${port}
+eureka:
+  client:
+    service-url:
+      defaultZone: ${defaultZone}
+  instance:
+    hostname: ${hostname}
+    #    instance-id: ${spring.cloud.client.ipAddress}:${port}
+    prefer-ip-address: true
