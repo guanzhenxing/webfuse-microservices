@@ -11,6 +11,9 @@
 
     <artifactId>smart-webfuse-demos</artifactId>
     <packaging>pom</packaging>
+    <modules>
+        <module>smart-webfuse-demos-mybatis-interceptor</module>
+    </modules>
 
 
 </project>
