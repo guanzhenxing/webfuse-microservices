@@ -1,13 +1,21 @@
+# 以下的port,defaultZone和hostname来自于系统启动时候传入的参数
+
 spring:
   application:
     name: smart-webfuse-cloud-service-registry
 server:
   port: ${port}
+
 eureka:
+  server:
+    peer-eureka-nodes-update-interval-ms: 60000
+    enable-self-preservation: true
   client:
     service-url:
       defaultZone: ${defaultZone}
+    healthcheck: true
+    eureka-service-url-poll-interval-seconds: 60
   instance:
-    hostname: ${hostname}
+    hostname: ${hostname:localhost}
     #    instance-id: ${spring.cloud.client.ipAddress}:${port}
     prefer-ip-address: true
