@@ -6,7 +6,7 @@ management:
     enabled-by-default: true
     web:
       exposure:
-        include: *
+        include: "*"
   endpoint:
     health:
       show-details: always
@@ -23,17 +23,18 @@ spring:
     user:
       name: eureka-admin
       password: eureka-admin-pwd
-
+  mvc:
+    favicon:
+      enabled: false
 ##########################
 ## eureka公共配置
 ##########################
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka-peer-1:2001/eureka/,http://eureka-peer-2:2002/eureka/,http://eureka-peer-3:2003/eureka/
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@eureka-peer-1:2001/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@eureka-peer-2:2002/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@eureka-peer-3:2003/eureka/
   instance:
     prefer-ip-address: true
-#    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
 
 ---
 spring:
