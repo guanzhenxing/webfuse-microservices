@@ -1,0 +1,96 @@
+##########################
+## Actuator监控配置
+##########################
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+    env:
+      enabled: true
+##########################
+## 基本配置
+##########################
+logging:
+  level: info
+server:
+  port: 8080
+spring:
+  application:
+    name: smart-webfuse-cloud-service-client
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+  jackson:
+    deserialization: true
+    generator: true
+    mapper: true
+    parser: true
+    property-naming-strategy: SNAKE_CASE
+    default-property-inclusion: always
+    serialization: true
+  http:
+    converters:
+      preferred-json-mapper: jackson
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  profiles:
+    active: @env@
+
+##########################
+## eureka配置
+##########################
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${webfuse.eureka-server.user.name}:${webfuse.eureka-server.user.password}@eureka-peer-1:2001/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@eureka-peer-2:2002/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@eureka-peer-3:2003/eureka/
+  instance:
+    prefer-ip-address: true
+
+
+---
+spring:
+  profiles: dev
+
+webfuse:
+  eureka-server:
+    user:
+      name: eureka-admin
+      password: eureka-admin-pwd
+
+---
+spring:
+  profiles: test
+
+webfuse:
+  eureka-server:
+    user:
+      name: eureka-admin
+      password: eureka-admin-pwd
+---
+spring:
+  profiles: beta
+
+webfuse:
+  eureka-server:
+    user:
+      name: eureka-admin
+      password: eureka-admin-pwd
+---
+spring:
+  profiles: prod
+
+webfuse:
+  eureka-server:
+    user:
+      name: eureka-admin
+      password: eureka-admin-pwd

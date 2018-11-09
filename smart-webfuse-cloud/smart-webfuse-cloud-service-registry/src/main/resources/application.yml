@@ -1,18 +1,19 @@
 ##########################
-## actuator配置
+## Actuator监控配置
 ##########################
 management:
   endpoints:
     enabled-by-default: true
     web:
       exposure:
-        include: "*"
+        include: '*'
   endpoint:
     health:
       show-details: always
+    shutdown:
+      enabled: true
     env:
       enabled: true
-
 ##########################
 ## 基本配置
 ##########################

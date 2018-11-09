@@ -78,25 +78,11 @@
         </filter>
     </appender>
 
-    <!--    <appender name="ALL" class="ch.qos.logback.core.rolling.RollingFileAppender">
-            <encoder>
-                <pattern>${FILE_LOG_PATTERN}</pattern>
-            </encoder>
-            <file>${LOG_FILE_HOME}/all.log</file>
-            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-                <fileNamePattern>${LOG_FILE_HOME}/all.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
-                <maxFileSize>${LOG_FILE_MAX_SIZE:-10MB}</maxFileSize>
-                <maxHistory>${LOG_FILE_MAX_HISTORY:-0}</maxHistory>
-            </rollingPolicy>
-        </appender>-->
-
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="INFO_FILE"/>
         <appender-ref ref="WARN_FILE"/>
         <appender-ref ref="ERROR_FILE"/>
-
-        <!--<appender-ref ref="ALL" />-->
     </root>
 
 
