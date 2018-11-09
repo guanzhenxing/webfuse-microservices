@@ -1,4 +1,4 @@
-package cn.webfuse.framework.configuration;
+package cn.webfuse.framework.web.config;
 
 import cn.webfuse.framework.web.WebFuseJsonMapper;
 import cn.webfuse.framework.web.method.CustomServletModelAttributeMethodProcessor;
@@ -22,7 +22,7 @@ import java.util.List;
 
 
 @Configuration
-public abstract class AbstractBaseCustomWebMvcConfigurer extends WebMvcConfigurationSupport {
+public abstract class AbstractBaseCustomWebMvcConfiguration extends WebMvcConfigurationSupport {
 
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {

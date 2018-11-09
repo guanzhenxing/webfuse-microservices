@@ -55,6 +55,8 @@
         <assertj.version>2.6.0</assertj.version>
         <mockito.version>2.18.3</mockito.version>
 
+        <swagger.version>2.9.2</swagger.version>
+
 
     </properties>
 
@@ -157,7 +159,6 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
-                <scope>provided</scope>
             </dependency>
 
 
@@ -191,6 +192,19 @@
                 <artifactId>log4j-core</artifactId>
                 <version>${log4j.version}</version>
             </dependency>
+
+            <!--for swagger-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
 
             <!-- Test -->
             <dependency>

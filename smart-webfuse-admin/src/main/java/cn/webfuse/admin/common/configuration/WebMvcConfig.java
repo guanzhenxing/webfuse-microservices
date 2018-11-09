@@ -1,7 +1,7 @@
 package cn.webfuse.admin.common.configuration;
 
-import cn.webfuse.framework.configuration.AbstractBaseCustomWebMvcConfigurer;
 import cn.webfuse.framework.i18n.MessageResourceInterceptor;
+import cn.webfuse.framework.web.config.AbstractBaseCustomWebMvcConfiguration;
 import cn.webfuse.framework.web.method.CustomPropertyEditorRegistrarBuilder;
 import org.springframework.beans.PropertyEditorRegistrar;
 import org.springframework.context.annotation.Bean;
@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 @Configuration
-public class WebMvcConfig extends AbstractBaseCustomWebMvcConfigurer {
+public class WebMvcConfig extends AbstractBaseCustomWebMvcConfiguration {
 
     @Override
     protected PropertyEditorRegistrar[] getCustomPropertyEditorRegistrarList() {
