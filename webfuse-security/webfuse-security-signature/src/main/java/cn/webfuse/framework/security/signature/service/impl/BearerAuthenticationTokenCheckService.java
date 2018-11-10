@@ -1,6 +1,6 @@
 package cn.webfuse.framework.security.signature.service.impl;
 
-import cn.webfuse.common.kit.mapper.JsonMapper;
+import cn.webfuse.framework.core.kit.mapper.JsonMapper;
 import cn.webfuse.framework.security.signature.AuthenticationTokenException;
 import cn.webfuse.framework.security.signature.authentication.bearer.BearerAuthenticationToken;
 import cn.webfuse.framework.security.signature.entity.SecurityToken;

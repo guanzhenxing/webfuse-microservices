@@ -1,6 +1,6 @@
 package cn.webfuse.framework.exception;
 
-import cn.webfuse.common.exception.AbstractBizException;
+import cn.webfuse.framework.core.exception.AbstractBizException;
 
 /**
  * 没有发现资源异常

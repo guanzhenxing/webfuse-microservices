@@ -1,6 +1,6 @@
 package cn.webfuse.framework.jpa.exception;
 
-import cn.webfuse.common.exception.AbstractBizException;
+import cn.webfuse.framework.core.exception.AbstractBizException;
 
 /**
  * Jpa数据异常

@@ -1,6 +1,6 @@
 package cn.webfuse.framework.datasource;
 
-import cn.webfuse.common.kit.ExceptionKits;
+import cn.webfuse.framework.core.kit.ExceptionKits;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.MutablePropertyValues;

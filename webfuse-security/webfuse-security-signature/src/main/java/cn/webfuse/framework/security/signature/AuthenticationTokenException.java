@@ -1,6 +1,6 @@
 package cn.webfuse.framework.security.signature;
 
-import cn.webfuse.common.exception.AbstractBizException;
+import cn.webfuse.framework.core.exception.AbstractBizException;
 
 public class AuthenticationTokenException extends AbstractBizException {
 

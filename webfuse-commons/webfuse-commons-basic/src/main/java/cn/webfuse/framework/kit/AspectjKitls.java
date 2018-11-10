@@ -1,7 +1,7 @@
 package cn.webfuse.framework.kit;
 
-import cn.webfuse.common.kit.ExceptionKits;
-import cn.webfuse.common.kit.reflect.ReflectionKits;
+import cn.webfuse.framework.core.kit.ExceptionKits;
+import cn.webfuse.framework.core.kit.reflect.ReflectionKits;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.LocalVariableTableParameterNameDiscoverer;

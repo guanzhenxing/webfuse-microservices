@@ -1,9 +1,8 @@
 package cn.webfuse.framework.model;
 
-import cn.webfuse.common.kit.mapper.BeanMapper;
+import cn.webfuse.framework.core.kit.mapper.BeanMapper;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * DO的抽象基类

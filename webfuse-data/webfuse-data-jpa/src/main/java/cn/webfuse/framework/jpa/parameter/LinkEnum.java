@@ -1,6 +1,6 @@
 package cn.webfuse.framework.jpa.parameter;
 
-import cn.webfuse.common.kit.StringKits;
+import cn.webfuse.framework.core.kit.StringKits;
 
 import javax.persistence.Query;
 

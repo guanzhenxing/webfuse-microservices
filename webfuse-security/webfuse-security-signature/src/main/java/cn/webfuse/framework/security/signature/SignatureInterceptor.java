@@ -1,12 +1,11 @@
 package cn.webfuse.framework.security.signature;
 
 
-import cn.webfuse.common.kit.mapper.JsonMapper;
+import cn.webfuse.framework.core.kit.mapper.JsonMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;

@@ -1,6 +1,6 @@
 package cn.webfuse.framework.security.signature;
 
-import cn.webfuse.common.kit.mapper.JsonMapper;
+import cn.webfuse.framework.core.kit.mapper.JsonMapper;
 import cn.webfuse.framework.security.signature.authentication.AuthenticationExtractorManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

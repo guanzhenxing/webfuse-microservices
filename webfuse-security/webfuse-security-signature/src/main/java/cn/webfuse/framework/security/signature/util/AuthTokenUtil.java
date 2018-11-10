@@ -1,7 +1,7 @@
 package cn.webfuse.framework.security.signature.util;
 
-import cn.webfuse.common.kit.CryptoKits;
-import cn.webfuse.common.kit.mapper.JsonMapper;
+import cn.webfuse.framework.core.kit.CryptoKits;
+import cn.webfuse.framework.core.kit.mapper.JsonMapper;
 import org.apache.commons.collections.MapUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

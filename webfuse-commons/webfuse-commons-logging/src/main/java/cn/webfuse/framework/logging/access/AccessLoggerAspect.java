@@ -1,6 +1,6 @@
 package cn.webfuse.framework.logging.access;
 
-import cn.webfuse.common.kit.id.IdGenerator;
+import cn.webfuse.framework.core.kit.id.IdGenerator;
 import cn.webfuse.framework.logging.LoggerAspect;
 import cn.webfuse.framework.kit.AspectjKitls;
 import cn.webfuse.framework.kit.HttpServletKits;
