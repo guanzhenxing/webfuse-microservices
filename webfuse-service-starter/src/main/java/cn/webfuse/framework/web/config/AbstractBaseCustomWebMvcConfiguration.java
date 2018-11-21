@@ -2,6 +2,7 @@ package cn.webfuse.framework.web.config;
 
 import cn.webfuse.framework.web.WebFuseJsonMapper;
 import cn.webfuse.framework.web.method.CustomServletModelAttributeMethodProcessor;
+import cn.webfuse.framework.web.version.ApiVersionRequestMappingHandlerMapping;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.PropertyEditorRegistrar;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.config.annotation.ContentNegotiationConfi
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import javax.servlet.Filter;
 import java.util.List;
@@ -105,6 +107,20 @@ public abstract class AbstractBaseCustomWebMvcConfiguration extends WebMvcConfig
     @Bean
     protected CustomServletModelAttributeMethodProcessor customModelAttributeMethodProcessor() {
         return new CustomServletModelAttributeMethodProcessor(true);
+    }
+
+    /**
+     * 设置版本管理
+     *
+     * @return
+     */
+    @Override
+    @Bean
+    public RequestMappingHandlerMapping requestMappingHandlerMapping() {
+        RequestMappingHandlerMapping mapping = new ApiVersionRequestMappingHandlerMapping();
+        mapping.setOrder(0);
+        mapping.setInterceptors(getInterceptors());
+        return mapping;
     }
 
 
