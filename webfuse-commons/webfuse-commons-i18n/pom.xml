@@ -17,6 +17,11 @@
             <artifactId>webfuse-commons-basic</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>cn.webfuse</groupId>
+            <artifactId>webfuse-commons-web</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

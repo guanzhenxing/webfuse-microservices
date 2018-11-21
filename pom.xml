@@ -22,7 +22,7 @@
     </modules>
     <packaging>pom</packaging>
 
-    <name>webFuse</name>
+    <name>webfuse</name>
 
     <description>WebFuse - Fuse some thing for JavaWeb develop.</description>
 

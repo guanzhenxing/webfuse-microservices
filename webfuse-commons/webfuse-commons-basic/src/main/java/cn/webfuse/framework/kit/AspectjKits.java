@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class AspectjKitls {
+public class AspectjKits {
 
     public static Class<?> getClass(JoinPoint joinPoint) {
         try {

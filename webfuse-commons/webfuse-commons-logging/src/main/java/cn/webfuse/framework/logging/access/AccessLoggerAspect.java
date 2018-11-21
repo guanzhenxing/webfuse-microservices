@@ -2,7 +2,7 @@ package cn.webfuse.framework.logging.access;
 
 import cn.webfuse.framework.core.kit.id.IdGenerator;
 import cn.webfuse.framework.logging.LoggerAspect;
-import cn.webfuse.framework.kit.AspectjKitls;
+import cn.webfuse.framework.kit.AspectjKits;
 import cn.webfuse.framework.kit.HttpServletKits;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -65,9 +65,9 @@ public class AccessLoggerAspect extends LoggerAspect {
 
 
     private void buildAspectInfo(AccessLoggerInfo info, ProceedingJoinPoint joinPoint) {
-        Class target = AspectjKitls.getClass(joinPoint);
-        Method method = AspectjKitls.getMethod(joinPoint);
-        Map<String, Object> argsMap = AspectjKitls.getArgsMap(joinPoint);
+        Class target = AspectjKits.getClass(joinPoint);
+        Method method = AspectjKits.getMethod(joinPoint);
+        Map<String, Object> argsMap = AspectjKits.getArgsMap(joinPoint);
 
         info.setTarget(target);
         info.setMethod(method);
@@ -75,8 +75,8 @@ public class AccessLoggerAspect extends LoggerAspect {
     }
 
     private void buildAnnotationInfo(AccessLoggerInfo info, ProceedingJoinPoint joinPoint) {
-        Method method = AspectjKitls.getMethod(joinPoint);
-        Class clazz = AspectjKitls.getClass(joinPoint);
+        Method method = AspectjKits.getMethod(joinPoint);
+        Class clazz = AspectjKits.getClass(joinPoint);
 
         AccessLogger methodAnnotation = method.getAnnotation(AccessLogger.class);
         AccessLogger clazzAnnotation = clazz.getClass().getAnnotation(AccessLogger.class);

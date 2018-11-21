@@ -44,6 +44,11 @@
         </dependency>
         <dependency>
             <groupId>cn.webfuse</groupId>
+            <artifactId>webfuse-commons-web</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.webfuse</groupId>
             <artifactId>webfuse-commons-exception</artifactId>
             <version>${project.version}</version>
         </dependency>
