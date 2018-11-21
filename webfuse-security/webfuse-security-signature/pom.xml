@@ -15,12 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.webfuse</groupId>
-            <artifactId>webfuse-commons-basic</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.webfuse</groupId>
-            <artifactId>webfuse-commons-web</artifactId>
+            <artifactId>webfuse-commons-framework</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
