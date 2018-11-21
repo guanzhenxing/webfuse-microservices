@@ -18,3 +18,8 @@ https://blog.csdn.net/zhxdick
 
 https://www.cnblogs.com/dragonflyyi/p/4245250.html
 https://blog.csdn.net/shouhuzhezhishen/article/details/64443287
+
+zuul+websocket:
+
+https://github.com/mthizo247/spring-cloud-netflix-zuul-websocket
+https://jmnarloch.wordpress.com/2015/11/11/spring-cloud-sock-js-stomp-zuul-no-websockets/
