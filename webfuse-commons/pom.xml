@@ -17,6 +17,8 @@
         <module>webfuse-commons-logging</module>
         <module>webfuse-commons-model</module>
         <module>webfuse-commons-i18n</module>
+        <module>webfuse-commons-version</module>
+        <module>webfuse-commons-web</module>
     </modules>
 
 </project>
