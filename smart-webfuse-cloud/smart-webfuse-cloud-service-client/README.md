@@ -11,10 +11,6 @@
 
 采用的是默认的Eureka配置。
 
-### 服务发现
-
-服务发现在这里可以理解为发现其他服务。包括负载均衡等等
-
 #### Ribbon
 
 1. Ribbon的主要功能是提供客户端负载均衡算法。
@@ -27,3 +23,14 @@
    * Ribbon的负载均衡，主要通过LoadBalancerClient来实现的，而LoadBalancerClient具体交给了ILoadBalancer来处理，
    * ILoadBalancer通过配置IRule、IPing等信息，并向EurekaClient获取注册列表的信息，并默认10秒一次向EurekaClient发送“ping”,进而检查是否更新服务列表，最后，得到注册列表后，ILoadBalancer根据IRule的策略进行负载均衡。
    * 而RestTemplate 被@LoadBalance注解后，能过用负载均衡，主要是维护了一个被@LoadBalance注解的RestTemplate列表，并给列表中的RestTemplate添加拦截器，进而交给负载均衡器去处理。
+5. 策略说明
+   * RoundRobinRule ： 轮询
+   * RandomRule ： 随机
+   * AvailabilityFilteringRule ： 会先过滤掉由于多次访问故障而处于断路器跳闸状态的服务，还有并发的连接数量超过阈值的服务，然后对剩余的服务列表按照轮询策略进行访问
+   * WeightedResponseTimeRule ： 根据平均响应时间计算所有服务的权重，响应时间越快服务权重越大被选中的概率越高。刚启动时如果统计信息不足，则使用RoundRobinRule策略，等统计信息足够，会切换到WeightedResponseTimeRule
+   * RetryRule ： 先按照RoundRobinRule的策略获取服务，如果获取服务失败则在指定时间内会进行重试，获取可用的服务
+   * BestAvailableRule ： 会先过滤掉由于多次访问故障而处于断路器跳闸状态的服务，然后选择一个并发量最小的服务
+   * ZoneAvoidanceRule ： 默认规则,复合判断server所在区域的性能和server的可用性选择服务器
+6. 注意点
+   * 针对某个客户端的自定义策略配置类不能放在@ComponentScan所扫描的当前包下以及子包。见：https://cloud.spring.io/spring-cloud-static/Finchley.SR2/single/spring-cloud.html#_customizing_the_ribbon_client
+                        
