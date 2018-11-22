@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>smart-webfuse-demos-mybatis-interceptor</module>
+        <module>smart-webfuse-demos-quartz</module>
     </modules>
 
 
