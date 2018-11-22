@@ -17,25 +17,7 @@ management:
 ##########################
 ## 基本配置
 ##########################
-logging:
-  level: info
-server:
-  port: 8080
 spring:
-  application:
-    name: webfuse-service-starter
-  cloud:
-    loadbalancer:
-      retry:
-        enabled: true
-  jackson:
-    deserialization: true
-    generator: true
-    mapper: true
-    parser: true
-    property-naming-strategy: SNAKE_CASE
-    default-property-inclusion: always
-    serialization: true
   http:
     converters:
       preferred-json-mapper: jackson
@@ -43,27 +25,3 @@ spring:
       charset: UTF-8
       enabled: true
       force: true
-  profiles:
-    active: @env@
-
-
----
-spring:
-  profiles: dev
-
-
-
----
-spring:
-  profiles: test
-
-
----
-spring:
-  profiles: beta
-
-
----
-spring:
-  profiles: prod
-

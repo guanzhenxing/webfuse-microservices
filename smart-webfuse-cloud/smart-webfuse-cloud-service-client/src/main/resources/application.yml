@@ -20,8 +20,6 @@ management:
 server:
   port: 8080
 spring:
-  application:
-    name: smart-webfuse-cloud-service-client
   cloud:
     loadbalancer:
       retry:
