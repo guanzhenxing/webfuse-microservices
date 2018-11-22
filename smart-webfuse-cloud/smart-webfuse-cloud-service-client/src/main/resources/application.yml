@@ -17,8 +17,6 @@ management:
 ##########################
 ## 基本配置
 ##########################
-logging:
-  level: info
 server:
   port: 8080
 spring:
@@ -28,14 +26,6 @@ spring:
     loadbalancer:
       retry:
         enabled: true
-  jackson:
-    deserialization: true
-    generator: true
-    mapper: true
-    parser: true
-    property-naming-strategy: SNAKE_CASE
-    default-property-inclusion: always
-    serialization: true
   http:
     converters:
       preferred-json-mapper: jackson

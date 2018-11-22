@@ -1,4 +1,4 @@
-package cn.webfuse.framework.web.config;
+package cn.webfuse.framework.config;
 
 import cn.webfuse.framework.web.WebFuseJsonMapper;
 import cn.webfuse.framework.web.method.CustomServletModelAttributeMethodProcessor;

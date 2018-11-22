@@ -1,7 +1,7 @@
 package cn.webfuse.admin.common.configuration;
 
 import cn.webfuse.framework.i18n.MessageResourceInterceptor;
-import cn.webfuse.framework.web.config.AbstractBaseCustomWebMvcConfiguration;
+import cn.webfuse.framework.config.AbstractBaseCustomWebMvcConfiguration;
 import cn.webfuse.framework.web.method.CustomPropertyEditorRegistrarBuilder;
 import org.springframework.beans.PropertyEditorRegistrar;
 import org.springframework.context.annotation.Bean;

@@ -8,7 +8,7 @@
    - [ ] sharing-jdbc了解以及实践
 3. 
 
-
+需要做出成自动加载的，然后默认的配置使用java进行配置
 
 https://www.rainbond.com/
 
@@ -23,3 +23,7 @@ zuul+websocket:
 
 https://github.com/mthizo247/spring-cloud-netflix-zuul-websocket
 https://jmnarloch.wordpress.com/2015/11/11/spring-cloud-sock-js-stomp-zuul-no-websockets/
+
+http://blueskykong.com/categories/Security/
+http://blueskykong.com/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/
+https://segmentfault.com/a/1190000011591559

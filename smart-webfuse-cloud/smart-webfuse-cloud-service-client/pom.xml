@@ -19,10 +19,12 @@
             <artifactId>webfuse-service-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <!--添加Eureka客户端-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
+        <!--添加Ribbon-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
