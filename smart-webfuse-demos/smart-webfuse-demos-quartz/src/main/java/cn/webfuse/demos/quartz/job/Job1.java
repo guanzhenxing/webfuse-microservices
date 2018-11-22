@@ -1,5 +1,6 @@
 package cn.webfuse.demos.quartz.job;
 
+import org.quartz.DisallowConcurrentExecution;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.scheduling.quartz.QuartzJobBean;
@@ -16,6 +17,7 @@ import java.util.Date;
  * @date 2017/12/17
  */
 @Component
+@DisallowConcurrentExecution
 public class Job1 extends QuartzJobBean {
 
     @Override
