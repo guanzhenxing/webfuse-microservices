@@ -23,7 +23,7 @@ spring:
   cloud:
     loadbalancer:
       retry:
-        enabled: true
+        enabled: true #开启负载均衡的重试机制
   http:
     converters:
       preferred-json-mapper: jackson
@@ -46,9 +46,34 @@ eureka:
 ## ribbon配置
 ##########################
 ribbon:
-  OkToRetryOnAllOperations: true  #对所有操作请求都进行重试
-  MaxAutoRetries: 1 #对当前实例的重试次数
+  OkToRetryOnAllOperations: false  #对所有操作请求都进行重试
+  MaxAutoRetries: 1 #同一台实例最大重试次数,不包括首次调用
+  MaxAutoRetriesNextServer: 2 #重试负载均衡其他的实例最大重试次数,不包括首次server
+  ServerListRefreshInterval: 2000
+  ConnectTimeout: 3000
+  ReadTimeout: 5000
+##########################
+## Feign配置
+##########################
+feign:
+  compression:  # 开启请求与响应的GZIP压缩
+    request:
+      enabled: true
+    response:
+      enabled: true
+  hystrix:
+    enabled: true
 
+##########################
+## Hystrix配置
+##########################
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
 ---
 spring:
   profiles: dev

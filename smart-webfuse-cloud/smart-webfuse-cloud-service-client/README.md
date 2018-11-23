@@ -33,4 +33,19 @@
    * ZoneAvoidanceRule ： 默认规则,复合判断server所在区域的性能和server的可用性选择服务器
 6. 注意点
    * 针对某个客户端的自定义策略配置类不能放在@ComponentScan所扫描的当前包下以及子包。见：https://cloud.spring.io/spring-cloud-static/Finchley.SR2/single/spring-cloud.html#_customizing_the_ribbon_client
+   
+#### Feign
+
+1. 运行过程如下：
+   * 首先通过@EnableFeignCleints注解开启FeignCleint
+   * 根据Feign的规则实现接口，并加@FeignCleint注解
+   * 程序启动后，会进行包扫描，扫描所有的@FeignClient的注解的类，并将这些信息注入到ioc容器中
+   * 当接口的方法被调用，通过jdk的代理，来生成具体的RequestTemplate
+   * RequestTemplate在生成Request
+   * Request交给Client去处理，其中Client可以是HttpUrlConnection、HttpClient也可以是OkHttp
+   * 最后Client被封装到LoadBalanceClient类，这个类结合类Ribbon做到了负载均衡
+   
+#### Hystrix
+
+1. Hystrix断路器的原理很简单可以实现快速失败，如果它在一段时间内侦测到许多类似的错误，会强迫其以后的多个调用快速失败，不再访问远程服务器，从而防止应用程序不断地尝试执行可能会失败的操作，熔断器也可以使应用程序能够诊断错误是否已经修正，如果已经修正，应用程序会再次尝试调用操作。
                         
