@@ -49,9 +49,11 @@ ribbon:
   OkToRetryOnAllOperations: false  #对所有操作请求都进行重试
   MaxAutoRetries: 1 #同一台实例最大重试次数,不包括首次调用
   MaxAutoRetriesNextServer: 2 #重试负载均衡其他的实例最大重试次数,不包括首次server
+  ConnectTimeout: 3000  #请求连接的超时时间
+  ReadTimeout: 5000 #请求处理的超时时间
   ServerListRefreshInterval: 2000
-  ConnectTimeout: 3000
-  ReadTimeout: 5000
+  eager-load:
+    enabled: true #开启饥饿加载(eager-load)模式
 ##########################
 ## Feign配置
 ##########################
@@ -73,7 +75,7 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 10000
+            timeoutInMilliseconds: 10000  #断路器的超时时间需要大于ribbon的超时时间，不然不会触发重试
 ---
 spring:
   profiles: dev

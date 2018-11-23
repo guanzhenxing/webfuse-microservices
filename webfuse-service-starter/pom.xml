@@ -13,6 +13,14 @@
     <artifactId>webfuse-service-starter</artifactId>
 
     <dependencies>
+
+
+        <dependency>
+            <groupId>cn.webfuse</groupId>
+            <artifactId>webfuse-commons-framework</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!--springboot base-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -36,15 +44,6 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
-
-        <dependency>
-            <groupId>cn.webfuse</groupId>
-            <artifactId>webfuse-commons-framework</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-
-
         <!--for swagger-->
         <dependency>
             <groupId>io.springfox</groupId>
