@@ -53,4 +53,20 @@
 4. 断路器是在什么情况下开始起作用呢？这里涉及到断路器的三个重要参数：快照时间窗、请求总数下限、错误百分比下限。这个参数的作用分别是： 
    * 快照时间窗：断路器确定是否打开需要统计一些请求和错误数据，而统计的时间范围就是快照时间窗，默认为最近的10秒。
    * 请求总数下限：在快照时间窗内，必须满足请求总数下限才有资格根据熔断。默认为20，意味着在10秒内，如果该hystrix命令的调用此时不足20次，即时所有的请求都超时或其他原因失败，断路器都不会打开。
-   * 错误百分比下限：当请求总数在快照时间窗内超过了下限，比如发生了30次调用，如果在这30次调用中，有16次发生了超时异常，也就是超过50%的错误百分比，在默认设定50%下限情况下，这时候就会将断路器打开。                      
+   * 错误百分比下限：当请求总数在快照时间窗内超过了下限，比如发生了30次调用，如果在这30次调用中，有16次发生了超时异常，也就是超过50%的错误百分比，在默认设定50%下限情况下，这时候就会将断路器打开。   
+   
+#### 重试机制
+
+ * hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds：断路器的超时时间需要大于ribbon的超时时间，不然不会触发重试。   
+ * xxx-service.ribbon.ConnectTimeout：请求连接的超时时间
+ * xxx-service.ribbon.ReadTimeout：请求处理的超时时间
+ * xxx-service.ribbon.OkToRetryOnAllOperations：对所有操作请求都进行重试
+ * xxx-service.ribbon.MaxAutoRetriesNextServer：切换实例的重试次数
+ * xxx-service.ribbon.MaxAutoRetries：对当前实例的重试次数
+ 
+参考文章：
+
+- [Spring Cloud各组件重试总结](http://www.itmuch.com/spring-cloud-sum/spring-cloud-retry/)
+- [SpringCloud | FeignClient和Ribbon重试机制区别与联系](https://blog.csdn.net/woshilijiuyi/article/details/78959759)
+- [SpringCloud Feign重试详解](http://www.cnblogs.com/zhangjianbin/p/7228628.html)
+                             
