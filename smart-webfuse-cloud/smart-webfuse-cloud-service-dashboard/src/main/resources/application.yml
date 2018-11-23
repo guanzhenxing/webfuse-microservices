@@ -1,0 +1,45 @@
+##########################
+## Actuator监控配置
+##########################
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+    env:
+      enabled: true
+##########################
+## 基本配置
+##########################
+server:
+  port: 7001
+spring:
+  profiles:
+    active: @env@
+
+
+---
+spring:
+  profiles: dev
+
+
+---
+spring:
+  profiles: test
+
+
+---
+spring:
+  profiles: beta
+
+
+---
+spring:
+  profiles: prod
+

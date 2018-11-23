@@ -16,6 +16,7 @@
     <modules>
         <module>smart-webfuse-cloud-service-client</module>
         <module>smart-webfuse-cloud-service-config</module>
+        <module>smart-webfuse-cloud-service-dashboard</module>
         <module>smart-webfuse-cloud-service-registry</module>
     </modules>
 
