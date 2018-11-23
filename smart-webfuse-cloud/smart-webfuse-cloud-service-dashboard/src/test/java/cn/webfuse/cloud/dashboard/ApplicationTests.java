@@ -1,4 +1,4 @@
-package cn.webfuse.smartwebfusecloudservicedashboard;
+package cn.webfuse.cloud.dashboard;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

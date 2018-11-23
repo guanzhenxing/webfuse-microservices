@@ -33,6 +33,8 @@ spring:
       force: true
   profiles:
     active: @env@
+  application:
+    name: smart-webfuse-cloud-service-client
 ##########################
 ## eureka配置
 ##########################

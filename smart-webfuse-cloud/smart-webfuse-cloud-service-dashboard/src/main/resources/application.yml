@@ -22,6 +22,8 @@ server:
 spring:
   profiles:
     active: @env@
+  application:
+    name: smart-webfuse-cloud-service-dashboard
 
 
 ---

@@ -1,2 +1,5 @@
 server:
   port: 2101
+spring:
+  application:
+    name: smart-webfuse-cloud-service-config
