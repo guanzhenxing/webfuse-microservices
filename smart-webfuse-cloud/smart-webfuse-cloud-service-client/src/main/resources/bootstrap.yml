@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: smart-webfuse-cloud-service-client
+
+---
+spring:
+  profiles: dev
+  cloud:
+    config:
+      uri: http://120.78.13.239:1101/
+      username: dynamax
+      password: dynamax
+      profile: ${spring.profiles.active}
+      label: master
+---
+spring:
+  profiles: test
+  cloud:
+    config:
+      uri: http://120.78.14.27:1101/
+      username: dynamax
+      password: dynamax
+      profile: ${spring.profiles.active}
+      label: master
+---
+spring:
+  profiles: pre
+  cloud:
+    config:
+      uri: http://120.77.217.102:1101/
+      username: dynamax
+      password: dynamax
+      profile: ${spring.profiles.active}
+      label: master
+---
+spring:
+  profiles: prod
+  cloud:
+    config:
+      uri: http://120.79.68.55:1101/
+      username: dynamax
+      password: dynamax
+      profile: ${spring.profiles.active}
+      label: master
