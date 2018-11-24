@@ -1,5 +1,86 @@
+##########################
+## Actuator监控配置
+##########################
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+    env:
+      enabled: true
+##########################
+## 基本配置
+##########################
 server:
   port: 2101
 spring:
+  http:
+    converters:
+      preferred-json-mapper: jackson
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
   application:
     name: smart-webfuse-cloud-service-config
+  security:
+    user:
+      name: config-admin
+      password: config-admin-pwd
+  cloud:
+    config:
+      server:
+        git:
+          search-paths: '{application}'   # 配置仓库路径下的相对搜索位置，这里使用的是项目名称作为占位符进行搜索。
+          clone-on-start: true            # 启动的时候就clone Git仓库
+          force-pull: true                # 如果本地副本是脏的，将使Spring Cloud Config Server强制从远程存储库拉
+
+
+---
+spring:
+  profiles: dev
+  cloud:
+    config:
+      server:
+        git:
+          uri: http://git.dynamax.io/backend/dynamax-config.git
+          username: xm-dev
+          password: 123456
+
+
+---
+spring:
+  profiles: test
+  cloud:
+    config:
+      server:
+        git:
+          uri: http://git.dynamax.io/backend/dynamax-config.git
+          username: xm-dev@dynamaxcn.com
+          password: DynaMax@2015
+---
+spring:
+  profiles: beta
+  cloud:
+    config:
+      server:
+        git:
+          uri: http://git.dynamax.io/backend/dynamax-config.git
+          username: xm-dev@dynamaxcn.com
+          password: DynaMax@2015
+---
+spring:
+  profiles: prod
+  cloud:
+    config:
+      server:
+        git:
+          uri: http://git.dynamax.io/backend/dynamax-config.git
+          username: xm-dev@dynamaxcn.com
+          password: DynaMax@2015

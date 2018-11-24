@@ -22,8 +22,6 @@ server:
 spring:
   application:
     name: smart-webfuse-cloud-service-turbine
-  profiles:
-    active: @env@
 ##########################
 ## eureka配置
 ##########################

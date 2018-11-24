@@ -19,9 +19,6 @@ management:
 ##########################
 server:
   port: 7001
-spring:
-  profiles:
-    active: @env@
   application:
     name: smart-webfuse-cloud-service-hystrix-dashboard
 

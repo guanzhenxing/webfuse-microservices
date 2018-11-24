@@ -31,8 +31,6 @@ spring:
       charset: UTF-8
       enabled: true
       force: true
-  profiles:
-    active: @env@
   application:
     name: smart-webfuse-cloud-service-client
 ##########################
