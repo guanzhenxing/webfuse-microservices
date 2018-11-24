@@ -64,6 +64,11 @@
  * xxx-service.ribbon.MaxAutoRetriesNextServer：切换实例的重试次数
  * xxx-service.ribbon.MaxAutoRetries：对当前实例的重试次数
  
+#### 配置管理
+
+ * 现有的配置使用的是SpringCloudConfig，可以使用的有apollo等
+ 
+ 
 参考文章：
 
 - [Spring Cloud各组件重试总结](http://www.itmuch.com/spring-cloud-sum/spring-cloud-retry/)
