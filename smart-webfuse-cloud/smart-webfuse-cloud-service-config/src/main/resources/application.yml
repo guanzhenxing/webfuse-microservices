@@ -36,6 +36,8 @@ spring:
   cloud:
     config:
       server:
+#        jdbc:  #通过数据库的方式
+#          sql: 'SELECT KEY, VALUE from PROPERTIES where APPLICATION=? and PROFILE=? and LABEL=?'
         git:
           search-paths: '{application}'   # 配置仓库路径下的相对搜索位置，这里使用的是项目名称作为占位符进行搜索。
           clone-on-start: true            # 启动的时候就clone Git仓库
