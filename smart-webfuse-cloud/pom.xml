@@ -20,6 +20,7 @@
         <module>smart-webfuse-cloud-service-hystrix-dashboard</module>
         <module>smart-webfuse-cloud-service-registry</module>
         <module>smart-webfuse-cloud-service-turbine</module>
+        <module>smart-webfuse-cloud-service-zipkin-server</module>
     </modules>
 
 
