@@ -1,4 +1,4 @@
-package cn.webfuse.framework.exception.configuration;
+package cn.webfuse.framework.config;
 
 import cn.webfuse.framework.exception.handler.DefaultRestfulErrorResolver;
 import cn.webfuse.framework.exception.handler.HandlerRestfulExceptionResolver;
@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-public abstract class AbstractBaseRestfulExceptionConfig {
+public abstract class AbstractBaseRestfulExceptionConfiguration {
 
     /**
      * 异常处理解析器
