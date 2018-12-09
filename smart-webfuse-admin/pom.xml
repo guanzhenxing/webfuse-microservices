@@ -96,9 +96,25 @@
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.2.0</version>
+                <!--插件绑定到phase-->
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
+                    <!--配置变量，包括是否build、imageName、imageTag，非常灵活-->
                     <imageName>${docker-image-prefix}/${project.artifactId}</imageName>
-                    <!--<dockerDirectory>/</dockerDirectory>-->
+                    <!--最后镜像产生了两个tag，版本和和最新的-->
+                    <imageTags>
+                        <imageTag>${project.version}</imageTag>
+                        <imageTag>latest</imageTag>
+                    </imageTags>
+                    <forceTags>true</forceTags>
+                    <dockerDirectory>${project.basedir}</dockerDirectory>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
@@ -107,15 +123,6 @@
                         </resource>
                     </resources>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>default</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
