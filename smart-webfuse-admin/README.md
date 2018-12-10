@@ -41,7 +41,3 @@
 
 - 分库分表：shardingdbc分库分表策略
 - 数据权限: 使用mybatis对原查询做增强，业务代码不用控制，即可实现。
-
-
-
-mvn clean package docker:build
