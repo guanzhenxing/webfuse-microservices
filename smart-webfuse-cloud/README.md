@@ -22,3 +22,17 @@
 - 2201~2299 监控收集服务
 - 7001~7999 Dashboard服务
 - 8000~9999 应用服务系列
+
+#### 已使用的端口
+
+- 2001，2002，2003 -> Eureka注册中心
+- 2101 -> Config配置中心
+- 2201 -> service-turbine服务
+- 7001 -> hystrix-dashboard
+- 7002 -> zipkin-server
+
+
+### 关于SpringCloud
+
+- [Compendium of Configuration Properties - SpringCloud所有的配置项](https://cloud.spring.io/spring-cloud-static/Finchley.RELEASE/multi/multi__appendix_compendium_of_configuration_properties.html)
+- [使用Spring Cloud与Docker实战微服务](http://book.itmuch.com/)
