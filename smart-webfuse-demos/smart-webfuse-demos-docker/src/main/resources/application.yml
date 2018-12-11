@@ -1,0 +1,51 @@
+##########################
+## Actuator监控配置
+##########################
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+    env:
+      enabled: true
+##########################
+## 基本配置
+##########################
+spring:
+  application:
+    name: smart-webfuse-demos-docker
+  mvc:
+    favicon:
+      enabled: false
+
+
+---
+spring:
+  profiles: dev
+
+demos:
+  value1: dev
+
+
+---
+spring:
+  profiles: test
+
+demos:
+  value1: test
+
+
+---
+spring:
+  profiles: prod
+
+demos:
+  value1: prod
+
+
