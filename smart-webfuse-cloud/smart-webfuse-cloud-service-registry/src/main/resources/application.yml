@@ -40,16 +40,28 @@ spring:
 
 ##这个是单端点时候的配置--start
 eureka:
+  server:
+    enable-self-preservation: false  # 中小规模下，自我保护模式坑比好处多，所以关闭它
+    renewal-threshold-update-interval-ms: 120000  # 心跳阈值计算周期，如果开启自我保护模式，可以改一下这个配置
+    eviction-interval-timer-in-ms: 5000 # 主动失效检测间隔,配置成5秒
+    use-read-only-response-cache: false # 禁用readOnlyCacheMap
   client:
+    healthcheck: true
     service-url:
       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:2001/eureka/
+    registry-fetch-interval-seconds: 5  # 定时刷新本地缓存时间
     register-with-eureka: false #表示是否将自己注册到Eureka Server，默认为true。由于当前这个应用就是Eureka Server，故而设为false。
     fetch-registry: false #表示是否从Eureka Server获取注册信息，默认为true。因为这是一个单点的Eureka Server，不需要同步其他的Eureka Server节点的数据，故而设为false。
   instance:
+    hostname: ${hostname:localhost}
+    instance-id: ${spring.application.name}@${spring.cloud.client.ipAddress}:${server.port}    # 自定义实例ID
     prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 10  #  没有心跳的淘汰时间，10秒
+    lease-renewal-interval-in-seconds: 5  # 心跳间隔，5秒
 server:
   port: 2001
 ##这个是单端点时候的配置--end
+
 ---
 spring:
   profiles: eureka-peer-1
