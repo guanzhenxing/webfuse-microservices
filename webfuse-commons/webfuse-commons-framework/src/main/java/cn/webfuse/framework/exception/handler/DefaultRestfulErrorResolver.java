@@ -254,8 +254,12 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
             }
         }
 
-        if (StringUtils.isEmpty(message)) message = ex.getMessage();
-        if (StringUtils.isEmpty(developerMessage)) developerMessage = ex.toString();
+        if (StringUtils.isEmpty(message)) {
+            message = ex.getMessage();
+        }
+        if (StringUtils.isEmpty(developerMessage)) {
+            developerMessage = ex.toString();
+        }
 
         RestfulError.Builder builder = new RestfulError.Builder();
         builder.setStatus(httpStatus);

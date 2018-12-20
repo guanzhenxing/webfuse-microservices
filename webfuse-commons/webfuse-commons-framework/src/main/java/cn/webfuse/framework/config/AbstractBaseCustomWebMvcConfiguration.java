@@ -1,6 +1,5 @@
 package cn.webfuse.framework.config;
 
-import cn.webfuse.framework.web.WebFuseJsonMapper;
 import cn.webfuse.framework.web.method.CustomServletModelAttributeMethodProcessor;
 import cn.webfuse.framework.web.version.ApiVersionRequestMappingHandlerMapping;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -44,7 +43,7 @@ public abstract class AbstractBaseCustomWebMvcConfiguration extends WebMvcConfig
     @Bean
     public MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter() {
         MappingJackson2HttpMessageConverter jsonConverter = new MappingJackson2HttpMessageConverter();
-        ObjectMapper objectMapper = WebFuseJsonMapper.getMapper();
+        ObjectMapper objectMapper = JacksonMapper.getMapper();
         jsonConverter.setObjectMapper(objectMapper);
         return jsonConverter;
     }

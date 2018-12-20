@@ -1,4 +1,4 @@
-package cn.webfuse.framework.web;
+package cn.webfuse.framework.config;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -12,25 +12,24 @@ import org.springframework.util.Assert;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class WebFuseJsonMapper {
+public class JacksonMapper {
 
-    private WebFuseJsonMapper() {
+    private JacksonMapper() {
     }
 
     private static ObjectMapper mapper;
 
     static {
         mapper = new ObjectMapper();
-        mapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);    //小写下划线输出
+        //小写下划线输出
+        mapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
         mapper.setDefaultPropertyInclusion(JsonInclude.Value.construct(JsonInclude.Include.ALWAYS, JsonInclude.Include.ALWAYS));
 
-//        mapper.setTimeZone(TimeZone.getDefault());    //设置时区
-//        mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);// 设置时间格式为ISO-8601
+        mapper.configure(SerializationFeature.WRITE_ENUMS_USING_TO_STRING, true);
 
         // 序列化BigDecimal时之间输出原始数字还是科学计数，默认false，即是否以toPlainString()科学计数方式来输出
-        mapper.configure(JsonGenerator.Feature.WRITE_BIGDECIMAL_AS_PLAIN, false);
+        mapper.configure(JsonGenerator.Feature.WRITE_BIGDECIMAL_AS_PLAIN, true);
 
-        mapper.configure(SerializationFeature.WRITE_ENUMS_USING_TO_STRING, true);
         //设定是否使用Enum的toString函数来读取Enum, 为False时使用Enum的name()函数来读取Enum,
         mapper.configure(DeserializationFeature.READ_ENUMS_USING_TO_STRING, true);
 
@@ -39,6 +38,9 @@ public class WebFuseJsonMapper {
 
         // 使用默认的Jsckson注解
         mapper.setAnnotationIntrospector(new JacksonAnnotationIntrospector());
+
+        // 忽略无法转换的对象
+        mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
     }
 
     public static ObjectMapper getMapper() {
@@ -46,7 +48,7 @@ public class WebFuseJsonMapper {
     }
 
     public static void setMapper(ObjectMapper mapper) {
-        WebFuseJsonMapper.mapper = mapper;
+        JacksonMapper.mapper = mapper;
     }
 
     public static <T> T parse(String json, Class<T> objectType) throws IOException {
