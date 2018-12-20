@@ -30,15 +30,16 @@ spring:
 ##########################
 ## eureka公共配置
 ##########################
-##这个是多端点时候的配置
-#eureka:
-#  client:
-#    service-url:
-#      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@eureka-peer-1:2001/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@eureka-peer-2:2002/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@eureka-peer-3:2003/eureka/
-#  instance:
-#    prefer-ip-address: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@eureka-peer-1:2001/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@eureka-peer-2:2002/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@eureka-peer-3:2003/eureka/
+  instance:
+    prefer-ip-address: true
 
-##这个是单端点时候的配置--start
+---
+spring:
+  profiles: singleton
 eureka:
   server:
     enable-self-preservation: false  # 中小规模下，自我保护模式坑比好处多，所以关闭它
@@ -60,7 +61,6 @@ eureka:
     lease-renewal-interval-in-seconds: 5  # 心跳间隔，5秒
 server:
   port: 2001
-##这个是单端点时候的配置--end
 
 ---
 spring:
