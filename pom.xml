@@ -82,7 +82,7 @@
 
     <profiles>
         <profile>
-            <id>develop</id>
+            <id>dev</id>
             <properties>
                 <env>dev</env>
                 <spring.profiles.active>dev</spring.profiles.active>

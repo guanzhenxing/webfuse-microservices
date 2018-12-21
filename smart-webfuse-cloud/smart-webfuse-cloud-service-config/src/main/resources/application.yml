@@ -18,7 +18,7 @@ management:
 ## 基本配置
 ##########################
 server:
-  port: 2101
+  port: 2100
 spring:
   http:
     converters:
@@ -36,53 +36,11 @@ spring:
   cloud:
     config:
       server:
+        native: #通过本地的方式
+          search-locations: classpath:/app-config/
 #        jdbc:  #通过数据库的方式
 #          sql: 'SELECT KEY, VALUE from PROPERTIES where APPLICATION=? and PROFILE=? and LABEL=?'
-        git:
-          search-paths: '{application}'   # 配置仓库路径下的相对搜索位置，这里使用的是项目名称作为占位符进行搜索。
-          clone-on-start: true            # 启动的时候就clone Git仓库
-          force-pull: true                # 如果本地副本是脏的，将使Spring Cloud Config Server强制从远程存储库拉
-
-
----
-spring:
-  profiles: dev
-  cloud:
-    config:
-      server:
-        git:
-          uri: http://git.dynamax.io/backend/dynamax-config.git
-          username: xm-dev
-          password: 123456
-
-
----
-spring:
-  profiles: test
-  cloud:
-    config:
-      server:
-        git:
-          uri: http://git.dynamax.io/backend/dynamax-config.git
-          username: xm-dev@dynamaxcn.com
-          password: DynaMax@2015
----
-spring:
-  profiles: beta
-  cloud:
-    config:
-      server:
-        git:
-          uri: http://git.dynamax.io/backend/dynamax-config.git
-          username: xm-dev@dynamaxcn.com
-          password: DynaMax@2015
----
-spring:
-  profiles: prod
-  cloud:
-    config:
-      server:
-        git:
-          uri: http://git.dynamax.io/backend/dynamax-config.git
-          username: xm-dev@dynamaxcn.com
-          password: DynaMax@2015
+#        git:   #通过git的方式
+#          search-paths: '{application}'   # 配置仓库路径下的相对搜索位置，这里使用的是项目名称作为占位符进行搜索。
+#          clone-on-start: true            # 启动的时候就clone Git仓库
+#          force-pull: true                # 如果本地副本是脏的，将使Spring Cloud Config Server强制从远程存储库拉

@@ -5,11 +5,11 @@ FROM openjdk:8-jdk-alpine
 VOLUME /tmp
 
 # 拷贝文件到容器
-ADD ./target/smart-webfuse-cloud-service-registry-1.0-SNAPSHOT.jar app.jar
+ADD ./target/smart-webfuse-cloud-service-config-1.0-SNAPSHOT.jar app.jar
 #RUN bash -c 'touch /app.jar'
 
-# 开放2001端口
-EXPOSE 2000
+# 开放2100端口
+EXPOSE 2100
 
 # 配置容器启动后执行的命令
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]

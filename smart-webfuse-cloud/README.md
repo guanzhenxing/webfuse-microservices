@@ -17,8 +17,8 @@
 
 ### 端口说明
 
-- 2001，2002，2003 -> Eureka注册中心
-- 2101 -> Config配置中心
+- 2000 -> Eureka注册中心
+- 2100 -> Config配置中心
 - 2201 -> service-turbine服务
 - 7001 -> hystrix-dashboard
 - 7002 -> zipkin-server

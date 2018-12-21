@@ -14,13 +14,14 @@
 
     <name>smart-webfuse-cloud</name>
     <modules>
-        <module>smart-webfuse-cloud-service-client</module>
+        <module>smart-webfuse-cloud-service-clients</module>
         <module>smart-webfuse-cloud-service-config</module>
         <module>smart-webfuse-cloud-service-gateway</module>
         <module>smart-webfuse-cloud-service-hystrix-dashboard</module>
         <module>smart-webfuse-cloud-service-registry</module>
         <module>smart-webfuse-cloud-service-turbine</module>
         <module>smart-webfuse-cloud-service-zipkin-server</module>
+        <module>smart-webfuse-cloud-service-clients</module>
     </modules>
 
     <build>
