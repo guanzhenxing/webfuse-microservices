@@ -22,3 +22,8 @@ https://github.com/kazuki43zoo/mybatis-common-mapper-demo
 ## 分库分表
 
 https://gitee.com/mirrors/TSharding-Client
+
+
+## 文章
+
+http://www.cnblogs.com/fangjian0423/p/mybaits-dynamic-sql-analysis.html
