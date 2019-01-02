@@ -10,13 +10,16 @@ import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 自定义的异常处理配置
+ *
+ * @author Jesen
+ */
 @Configuration
 public abstract class AbstractBaseRestfulExceptionConfiguration {
 
     /**
      * 异常处理解析器
-     *
-     * @return
      */
     @Bean
     public HandlerRestfulExceptionResolver handlerRestfulExceptionResolver() {
@@ -30,8 +33,6 @@ public abstract class AbstractBaseRestfulExceptionConfiguration {
 
     /**
      * 默认的错误解析
-     *
-     * @return
      */
     @Bean
     public DefaultRestfulErrorResolver defaultRestfulErrorResolver() {
@@ -43,8 +44,6 @@ public abstract class AbstractBaseRestfulExceptionConfiguration {
 
     /**
      * 异常处理方式的定义
-     *
-     * @return
      */
     public Map<String, String> getExceptionMappingDefinitions() {
         Map<String, String> exceptionMappingDefinitions = new HashMap<>();
@@ -59,12 +58,13 @@ public abstract class AbstractBaseRestfulExceptionConfiguration {
         return exceptionMappingDefinitions;
     }
 
+    /**
+     * 获得自定义的异常处理mapping
+     */
     public abstract Map<String, String> getCustomExceptionMappingDefinitions();
 
     /**
      * 定义本地化
-     *
-     * @return
      */
     @Bean
     public LocaleResolver localeResolver() {

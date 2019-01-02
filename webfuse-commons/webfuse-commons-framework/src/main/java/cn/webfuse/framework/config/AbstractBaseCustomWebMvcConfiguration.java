@@ -21,7 +21,11 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import javax.servlet.Filter;
 import java.util.List;
 
-
+/**
+ * 自定义的mvc配置
+ *
+ * @author Jesen
+ */
 @Configuration
 public abstract class AbstractBaseCustomWebMvcConfiguration extends WebMvcConfigurationSupport {
 
@@ -66,8 +70,6 @@ public abstract class AbstractBaseCustomWebMvcConfiguration extends WebMvcConfig
 
     /**
      * 添加CORS映射
-     *
-     * @param registry
      */
     @Override
     public void addCorsMappings(CorsRegistry registry) {
@@ -80,8 +82,6 @@ public abstract class AbstractBaseCustomWebMvcConfiguration extends WebMvcConfig
 
     /**
      * 配置HiddenHttpMethodFilter过滤器
-     *
-     * @return
      */
     @Bean
     public Filter hiddenHttpMethodFilter() {
@@ -99,15 +99,13 @@ public abstract class AbstractBaseCustomWebMvcConfiguration extends WebMvcConfig
 
     /**
      * PropertyEditorRegistrar列表。主要是用来做请求参数转换的
-     *
-     * @return
+     * <p>
+     * return PropertyEditorRegistrar列表
      */
     protected abstract PropertyEditorRegistrar[] getCustomPropertyEditorRegistrarList();
 
     /**
      * 添加参数解析
-     *
-     * @param argumentResolvers
      */
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
@@ -116,8 +114,6 @@ public abstract class AbstractBaseCustomWebMvcConfiguration extends WebMvcConfig
 
     /**
      * 自定义请求参数模型处理
-     *
-     * @return
      */
     @Bean
     protected CustomServletModelAttributeMethodProcessor customModelAttributeMethodProcessor() {
@@ -126,8 +122,6 @@ public abstract class AbstractBaseCustomWebMvcConfiguration extends WebMvcConfig
 
     /**
      * 设置版本管理
-     *
-     * @return
      */
     @Override
     @Bean
@@ -141,13 +135,16 @@ public abstract class AbstractBaseCustomWebMvcConfiguration extends WebMvcConfig
 
     /**
      * 添加拦截器
-     *
-     * @param registry
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         addCustomInterceptors(registry);
     }
 
+    /**
+     * 添加自定义的拦截器
+     *
+     * @param registry InterceptorRegistry
+     */
     public abstract void addCustomInterceptors(InterceptorRegistry registry);
 }

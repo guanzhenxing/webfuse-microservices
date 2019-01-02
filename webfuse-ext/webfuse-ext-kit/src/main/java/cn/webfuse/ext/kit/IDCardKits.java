@@ -114,13 +114,21 @@ public class IDCardKits {
      * @throws Throwable 无效的身份证号
      */
     public static final String getIDCode(String idCode) {
-        if (idCode == null) throw new RuntimeException("输入的身份证号无效，请检查");
+        if (idCode == null) {
+            throw new RuntimeException("输入的身份证号无效，请检查");
+        }
 
         if (idCode.length() == 18) {
-            if (isIdentity(idCode)) return idCode;
-            else throw new RuntimeException("输入的身份证号无效，请检查");
-        } else if (idCode.length() == 15) return convertFifteenToEighteen(idCode);
-        else throw new RuntimeException("输入的身份证号无效，请检查");
+            if (isIdentity(idCode)) {
+                return idCode;
+            } else {
+                throw new RuntimeException("输入的身份证号无效，请检查");
+            }
+        } else if (idCode.length() == 15) {
+            return convertFifteenToEighteen(idCode);
+        } else {
+            throw new RuntimeException("输入的身份证号无效，请检查");
+        }
     }
 
     /**

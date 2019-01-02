@@ -89,8 +89,9 @@ public class GlobalThreadLocalHolder {
      */
     public static void delete(String key) {
         Map<String, Object> currentContextMap = currentContextMap();
-        if (currentContextMap.containsKey(key))
+        if (currentContextMap.containsKey(key)) {
             currentContextMap.remove(key);
+        }
     }
 
     /**

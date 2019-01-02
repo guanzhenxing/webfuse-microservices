@@ -74,8 +74,9 @@ public class LongAdder extends Striped64 implements Serializable {
         if ((as = cells) != null || !casBase(b = base, b + x)) {
             boolean uncontended = true;
             if ((hc = threadHashCode.get()) == null || as == null || (n = as.length) < 1
-                    || (a = as[(n - 1) & hc[0]]) == null || !(uncontended = a.cas(v = a.value, v + x)))
+                    || (a = as[(n - 1) & hc[0]]) == null || !(uncontended = a.cas(v = a.value, v + x))) {
                 retryUpdate(x, hc, uncontended);
+            }
         }
     }
 
@@ -109,7 +110,9 @@ public class LongAdder extends Striped64 implements Serializable {
             int n = as.length;
             for (int i = 0; i < n; ++i) {
                 Cell a = as[i];
-                if (a != null) sum += a.value;
+                if (a != null){
+                    sum += a.value;
+                }
             }
         }
         return sum;
