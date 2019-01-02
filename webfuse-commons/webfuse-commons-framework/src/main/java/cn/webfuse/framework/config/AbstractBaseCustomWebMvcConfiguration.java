@@ -36,9 +36,7 @@ public abstract class AbstractBaseCustomWebMvcConfiguration extends WebMvcConfig
     }
 
     /**
-     * 定义Json的转换格式
-     *
-     * @return
+     * 定义JackJson的转换格式
      */
     @Bean
     public MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter() {
@@ -47,6 +45,24 @@ public abstract class AbstractBaseCustomWebMvcConfiguration extends WebMvcConfig
         jsonConverter.setObjectMapper(objectMapper);
         return jsonConverter;
     }
+
+//    /**
+//     * 定义FastJson的转换格式
+//     */
+//    @Bean
+//    public  FastJsonHttpMessageConverter mappingFastJsonHttpMessageConverter(){
+//        FastJsonHttpMessageConverter converter = new FastJsonHttpMessageConverter();
+//        FastJsonConfig config = new FastJsonConfig();
+//        config.setSerializerFeatures(SerializerFeature.WriteMapNullValue);//保留空的字段
+//        //SerializerFeature.WriteNullStringAsEmpty,//String null -> ""
+//        //SerializerFeature.WriteNullNumberAsZero//Number null -> 0
+//        // 按需配置，更多参考FastJson文档哈
+//
+//        converter.setFastJsonConfig(config);
+//        converter.setDefaultCharset(Charset.forName("UTF-8"));
+//        converter.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_JSON_UTF8));
+//        converters.add(converter);
+//    }
 
     /**
      * 添加CORS映射
