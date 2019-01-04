@@ -14,6 +14,7 @@ public class CustomPropertyEditorRegistrarBuilder {
 
     public static PropertyEditorRegistrar escapeString() {
         return registry -> registry.registerCustomEditor(String.class, new PropertyEditorSupport() {
+            @Override
             public void setAsText(String text) {
                 // String类型转换，将所有传递进来的String进行HTML编码，防止XSS攻击
                 setValue(text == null ? null : StringEscapeUtils.escapeHtml4(text.trim()));

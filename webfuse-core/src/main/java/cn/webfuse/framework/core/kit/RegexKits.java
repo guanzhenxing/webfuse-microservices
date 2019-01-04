@@ -32,7 +32,9 @@ public class RegexKits {
      * 返回与正则表达式匹配的列表
      */
     public static List<String> getMatches(final String regex, final CharSequence input) {
-        if (input == null) return Collections.emptyList();
+        if (input == null) {
+            return Collections.emptyList();
+        }
         List<String> matches = new ArrayList<>();
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(input);

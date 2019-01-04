@@ -58,44 +58,40 @@ public class AbortPolicyWithReport extends ThreadPoolExecutor.AbortPolicy {
         if (!guard.tryAcquire()) {
             return;
         }
+        Executors.newSingleThreadExecutor().execute(() -> {
+            String dumpPath = System.getProperty("user.home");
 
-        Executors.newSingleThreadExecutor().execute(new Runnable() {
-            @Override
-            public void run() {
-                String dumpPath = System.getProperty("user.home");
+            SimpleDateFormat sdf;
 
-                SimpleDateFormat sdf;
+            String OS = System.getProperty("os.name").toLowerCase();
 
-                String OS = System.getProperty("os.name").toLowerCase();
+            // window system don't context ":" in file name
+            if (OS.contains("win")) {
+                sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+            } else {
+                sdf = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+            }
 
-                // window system don't context ":" in file name
-                if (OS.contains("win")) {
-                    sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
-                } else {
-                    sdf = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
-                }
+            String dateStr = sdf.format(new Date());
+            FileOutputStream jstackStream = null;
+            try {
+                jstackStream = new FileOutputStream(new File(dumpPath, threadName + "_JStack.log" + "." + dateStr));
+                JstackKits.jstack(jstackStream);
 
-                String dateStr = sdf.format(new Date());
-                FileOutputStream jstackStream = null;
-                try {
-                    jstackStream = new FileOutputStream(new File(dumpPath, threadName + "_JStack.log" + "." + dateStr));
-                    JstackKits.jstack(jstackStream);
-
-                } catch (Throwable t) {
-                    logger.error("dump jstack error", t);
-                } finally {
-                    guard.release();
-                    if (jstackStream != null) {
-                        try {
-                            jstackStream.flush();
-                            jstackStream.close();
-                        } catch (IOException e) {
-                        }
+            } catch (Throwable t) {
+                logger.error("dump jstack error", t);
+            } finally {
+                guard.release();
+                if (jstackStream != null) {
+                    try {
+                        jstackStream.flush();
+                        jstackStream.close();
+                    } catch (IOException e) {
                     }
                 }
-
-                lastPrintTime = System.currentTimeMillis();
             }
+
+            lastPrintTime = System.currentTimeMillis();
         });
 
     }

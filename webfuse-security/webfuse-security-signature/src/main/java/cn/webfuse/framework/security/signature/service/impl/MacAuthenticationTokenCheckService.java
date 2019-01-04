@@ -33,6 +33,8 @@ public class MacAuthenticationTokenCheckService implements AuthenticationTokenCh
 
     private NonceCache nonceCache;
 
+    private static final Pattern NONCE_PATTERN = Pattern.compile("[0-9]*");
+
     @Value("${webfuse.security.nonce-expire:300000}")
     private long nonceExpire;   //默认5分钟
 
@@ -96,11 +98,12 @@ public class MacAuthenticationTokenCheckService implements AuthenticationTokenCh
         }
 
         String[] strs = nonce.split(":");
-        if (strs.length != 2 || StringUtils.isEmpty(strs[0]) || !Pattern.compile("[0-9]*").matcher(strs[0]).matches()) {
+
+        if (strs.length != 2 || StringUtils.isEmpty(strs[0]) || !NONCE_PATTERN.matcher(strs[0]).matches()) {
             throw new AuthenticationTokenException(403, "NONCE_INVALID", "The Nonce format is not correct.");
         }
 
-        long diff = new Date().getTime() - Long.parseLong(strs[0]);
+        long diff = System.currentTimeMillis() - Long.parseLong(strs[0]);
         if (diff > nonceExpire || diff < -nonceExpire) {
             throw new AuthenticationTokenException(403, "NONCE_INVALID",
                     "The Nonce string is invalid. The difference between the time and the system time is greater than 5 minutes");

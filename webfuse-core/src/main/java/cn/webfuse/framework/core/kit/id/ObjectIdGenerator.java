@@ -48,9 +48,9 @@ public class ObjectIdGenerator {
         }
         StringUtils.removeAll(s, "-");
         final int len = s.length();
-        if (len != 24)
+        if (len != 24) {
             return false;
-
+        }
         char c;
         for (int i = 0; i < len; i++) {
             c = s.charAt(i);

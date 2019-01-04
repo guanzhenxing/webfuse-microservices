@@ -4,6 +4,7 @@ import cn.webfuse.framework.core.exception.AbstractBizException;
 
 /**
  * 错误的参数异常
+ * @author jesen
  */
 public class BadParameterException extends AbstractBizException {
 

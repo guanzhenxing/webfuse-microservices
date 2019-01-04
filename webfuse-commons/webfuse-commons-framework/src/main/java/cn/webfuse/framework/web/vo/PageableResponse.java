@@ -80,14 +80,24 @@ public class PageableResponse<T> implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         PageableResponse<?> that = (PageableResponse<?>) o;
 
-        if (page != that.page) return false;
-        if (size != that.size) return false;
-        if (total != that.total) return false;
+        if (page != that.page) {
+            return false;
+        }
+        if (size != that.size) {
+            return false;
+        }
+        if (total != that.total) {
+            return false;
+        }
         return content != null ? content.equals(that.content) : that.content == null;
     }
 

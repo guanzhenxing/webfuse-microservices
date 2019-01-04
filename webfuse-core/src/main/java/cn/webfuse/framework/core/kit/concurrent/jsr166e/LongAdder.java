@@ -43,12 +43,13 @@ import java.util.concurrent.atomic.AtomicLong;
  * @author Doug Lea
  * @since 1.8
  */
-public class LongAdder extends Striped64 implements Serializable {
+public class LongAdder extends AbstractStriped64 implements Serializable {
     private static final long serialVersionUID = 7249069246863182397L;
 
     /**
      * Version of plus for use in retryUpdate
      */
+    @Override
     final long fn(long v, long x) {
         return v + x;
     }
@@ -73,7 +74,7 @@ public class LongAdder extends Striped64 implements Serializable {
         int n;
         if ((as = cells) != null || !casBase(b = base, b + x)) {
             boolean uncontended = true;
-            if ((hc = threadHashCode.get()) == null || as == null || (n = as.length) < 1
+            if ((hc = THREAD_HASH_CODE.get()) == null || as == null || (n = as.length) < 1
                     || (a = as[(n - 1) & hc[0]]) == null || !(uncontended = a.cas(v = a.value, v + x))) {
                 retryUpdate(x, hc, uncontended);
             }
@@ -161,6 +162,7 @@ public class LongAdder extends Striped64 implements Serializable {
      *
      * @return the String representation of the {@link #sum}
      */
+    @Override
     public String toString() {
         return Long.toString(sum());
     }
@@ -170,6 +172,7 @@ public class LongAdder extends Striped64 implements Serializable {
      *
      * @return the sum
      */
+    @Override
     public long longValue() {
         return sum();
     }
@@ -178,6 +181,7 @@ public class LongAdder extends Striped64 implements Serializable {
      * Returns the {@link #sum} as an {@code int} after a narrowing
      * primitive conversion.
      */
+    @Override
     public int intValue() {
         return (int) sum();
     }
@@ -186,6 +190,7 @@ public class LongAdder extends Striped64 implements Serializable {
      * Returns the {@link #sum} as a {@code float}
      * after a widening primitive conversion.
      */
+    @Override
     public float floatValue() {
         return (float) sum();
     }
@@ -194,6 +199,7 @@ public class LongAdder extends Striped64 implements Serializable {
      * Returns the {@link #sum} as a {@code double} after a widening
      * primitive conversion.
      */
+    @Override
     public double doubleValue() {
         return (double) sum();
     }

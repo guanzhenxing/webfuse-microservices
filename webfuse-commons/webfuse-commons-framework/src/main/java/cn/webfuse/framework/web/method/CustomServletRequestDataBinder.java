@@ -20,6 +20,7 @@ public class CustomServletRequestDataBinder extends ExtendedServletRequestDataBi
         super(target, objectName);
     }
 
+    @Override
     protected void addBindValues(MutablePropertyValues mpv, ServletRequest request) {
         super.addBindValues(mpv, request);
 

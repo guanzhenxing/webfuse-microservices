@@ -92,8 +92,11 @@ public class Number2RMBKits {
                 rmbStr += hanDiviStr[i]; // 非零值后加进位，个位为空
                 hasvalue = true; // 置万进位前有值标记
             } else {
-                if ((i % 8) == 0 || ((i % 8) == 4 && hasvalue)) // 亿万之间必须有非零值方显示万
-                    rmbStr += hanDiviStr[i]; // “亿”或“万”
+                // 亿万之间必须有非零值方显示万
+                if ((i % 8) == 0 || ((i % 8) == 4 && hasvalue)){
+                    // “亿”或“万”
+                    rmbStr += hanDiviStr[i];
+                }
             }
             if (i % 8 == 0) {
                 hasvalue = false; // 万进位前有值标记逢亿复位

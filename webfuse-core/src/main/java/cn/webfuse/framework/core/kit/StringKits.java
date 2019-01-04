@@ -203,7 +203,9 @@ public class StringKits {
     public static String getReplaceFirst(final String input,
                                          final String regex,
                                          final String replacement) {
-        if (input == null) return "";
+        if (input == null){
+            return "";
+        }
         return Pattern.compile(regex).matcher(input).replaceFirst(replacement);
     }
 
@@ -221,7 +223,9 @@ public class StringKits {
     public static String getReplaceAll(final String input,
                                        final String regex,
                                        final String replacement) {
-        if (input == null) return "";
+        if (input == null){
+            return "";
+        }
         return Pattern.compile(regex).matcher(input).replaceAll(replacement);
     }
 
