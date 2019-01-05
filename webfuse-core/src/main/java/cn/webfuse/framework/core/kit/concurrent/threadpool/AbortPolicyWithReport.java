@@ -63,10 +63,10 @@ public class AbortPolicyWithReport extends ThreadPoolExecutor.AbortPolicy {
 
             SimpleDateFormat sdf;
 
-            String OS = System.getProperty("os.name").toLowerCase();
+            String os = System.getProperty("os.name").toLowerCase();
 
             // window system don't context ":" in file name
-            if (OS.contains("win")) {
+            if (os.contains("win")) {
                 sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
             } else {
                 sdf = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
