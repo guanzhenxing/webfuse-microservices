@@ -72,7 +72,7 @@ public class MessageResourceExtension extends ResourceBundleMessageSource {
         }
 
         List<String> baseNames = new ArrayList<>();
-        if (url.getProtocol().equalsIgnoreCase("file")) {
+        if ("file".equalsIgnoreCase(url.getProtocol())) {
             // 文件夹形式,用File获取资源路径
             File file = new File(url.getFile());
             if (file.exists() && file.isDirectory()) {
@@ -86,7 +86,7 @@ public class MessageResourceExtension extends ResourceBundleMessageSource {
             } else {
                 LOGGER.error("指定的baseFile不存在或者不是文件夹");
             }
-        } else if (url.getProtocol().equalsIgnoreCase("jar")) {
+        } else if ("jar".equalsIgnoreCase(url.getProtocol())) {
             // jar包形式，用JarEntry获取资源路径
             String jarPath = url.getFile().substring(url.getFile().indexOf(":") + 2, url.getFile().indexOf("!"));
             JarFile jarFile = new JarFile(new File(jarPath));

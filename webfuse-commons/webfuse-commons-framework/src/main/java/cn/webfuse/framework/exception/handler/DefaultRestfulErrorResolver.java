@@ -289,7 +289,7 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
 
     private String getMessage(String message, HttpServletRequest request) {
         if (message != null) {
-            if (message.equalsIgnoreCase("null") || message.equalsIgnoreCase("off")) {
+            if ("null".equalsIgnoreCase(message) || "off".equalsIgnoreCase(message)) {
                 return "";
             }
             if (messageSource != null) {
