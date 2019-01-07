@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class LoggerAspect {
+public abstract class AbstractLoggerAspect {
 
     protected final List<LoggerWriter> loggerWriters = new ArrayList<>();
 

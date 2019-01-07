@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * 关于文件的工具集
- *
+ * <p>
  * copy from vipshop VJTools(com.vip.vjtools.vjkit.io.FileUtil) and made some changes.
  */
 public class FileKits {
@@ -46,7 +46,7 @@ public class FileKits {
      * 读取文件到String.
      */
     public static String toString(final File file) throws IOException {
-        return com.google.common.io.Files.toString(file, StandardCharsets.UTF_8);
+        return com.google.common.io.Files.asCharSource(file, StandardCharsets.UTF_8).read();
     }
 
     /**

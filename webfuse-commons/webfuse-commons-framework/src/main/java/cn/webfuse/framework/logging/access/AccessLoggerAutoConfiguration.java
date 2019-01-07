@@ -14,8 +14,8 @@ import org.springframework.context.annotation.Configuration;
 public class AccessLoggerAutoConfiguration {
 
     @Bean
-    public AccessLoggerAspect accessLoggerAspect() {
-        return new AccessLoggerAspect();
+    public AccessAbstractLoggerAspect accessLoggerAspect() {
+        return new AccessAbstractLoggerAspect();
     }
 
     @Bean

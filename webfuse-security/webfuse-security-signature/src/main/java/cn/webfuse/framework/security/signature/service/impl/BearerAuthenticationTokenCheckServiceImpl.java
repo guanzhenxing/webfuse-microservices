@@ -14,10 +14,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BearerAuthenticationTokenCheckService implements AuthenticationTokenCheckService {
+public class BearerAuthenticationTokenCheckServiceImpl implements AuthenticationTokenCheckService {
 
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(BearerAuthenticationTokenCheckService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(BearerAuthenticationTokenCheckServiceImpl.class);
 
 
     @Autowired

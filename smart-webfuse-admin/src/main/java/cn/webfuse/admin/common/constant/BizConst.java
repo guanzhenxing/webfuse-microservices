@@ -7,7 +7,15 @@ public class BizConst {
      */
     public enum YesOrNo {
 
-        NO(0, "否"), YES(1, "是");
+        /**
+         * 否
+         */
+        NO(0, "否"),
+
+        /**
+         * 是
+         */
+        YES(1, "是");
 
         YesOrNo(Integer value, String name) {
             this.value = value;

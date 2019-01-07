@@ -44,15 +44,15 @@ public class IDCardKits {
     /**
      * 数字正则
      **/
-    public static final String regexNum = "^[0-9]*$";
+    public static final String REGEX_NUM = "^[0-9]*$";
     /**
      * 闰年生日正则
      **/
-    public static final String regexBirthdayInLeapYear = "^((19[0-9]{2})|(200[0-9])|(201[0-5]))((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|[1-2][0-9]))$";
+    public static final String REGEX_BIRTHDAY_IN_LEAP_YEAR = "^((19[0-9]{2})|(200[0-9])|(201[0-5]))((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|[1-2][0-9]))$";
     /**
      * 平年生日正则
      **/
-    public static final String regexBirthdayInCommonYear = "^((19[0-9]{2})|(200[0-9])|(201[0-5]))((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|1[0-9]|2[0-8]))$";
+    public static final String REGEX_BIRTHDAY_IN_COMMON_YEAR = "^((19[0-9]{2})|(200[0-9])|(201[0-5]))((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|1[0-9]|2[0-8]))$";
 
     @SuppressWarnings("serial")
     private static final Set<String> BLACK_SET = new HashSet<String>() {
@@ -177,22 +177,22 @@ public class IDCardKits {
         return idNumber;
     }
 
-    static final char[] code = {'1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'}; // 11个校验码字符
-    static final int[] factor = {7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2, 1}; // 18个加权因子
+    static final char[] CODE = {'1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'}; // 11个校验码字符
+    static final int[] FACTOR = {7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2, 1}; // 18个加权因子
 
     /**
      * 根据身份证前17位计算身份证校验码
      */
     private static String getVerifyCode(String idNumber) {
-        if (!Pattern.matches(regexNum, idNumber.substring(0, 17))) {
+        if (!Pattern.matches(REGEX_NUM, idNumber.substring(0, 17))) {
             return null;
         }
 
         int sum = 0;
         for (int i = 0; i < 17; i++) {
-            sum = sum + Integer.parseInt(String.valueOf(idNumber.charAt(i))) * factor[i];
+            sum = sum + Integer.parseInt(String.valueOf(idNumber.charAt(i))) * FACTOR[i];
         }
-        return String.valueOf(code[sum % 11]);
+        return String.valueOf(CODE[sum % 11]);
     }
 
     /**
@@ -208,9 +208,9 @@ public class IDCardKits {
             return false;
         }
         if (isLeapYear(year)) {
-            return Pattern.matches(regexBirthdayInLeapYear, idNumberBirthdayStr);
+            return Pattern.matches(REGEX_BIRTHDAY_IN_LEAP_YEAR, idNumberBirthdayStr);
         } else {
-            return Pattern.matches(regexBirthdayInCommonYear, idNumberBirthdayStr);
+            return Pattern.matches(REGEX_BIRTHDAY_IN_COMMON_YEAR, idNumberBirthdayStr);
         }
     }
 

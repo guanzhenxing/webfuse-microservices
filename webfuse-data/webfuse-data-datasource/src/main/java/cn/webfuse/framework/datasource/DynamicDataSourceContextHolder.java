@@ -8,19 +8,19 @@ import java.util.List;
  */
 public class DynamicDataSourceContextHolder {
 
-    private static final ThreadLocal<String> contextHolder = new ThreadLocal<>();
+    private static final ThreadLocal<String> CONTEXT_HOLDER = new ThreadLocal<>();
     public static List<String> dataSourceNames = new ArrayList<>();
 
     public static void setDataSourceName(String name) {
-        contextHolder.set(name);
+        CONTEXT_HOLDER.set(name);
     }
 
     public static String getDataSourceName() {
-        return contextHolder.get();
+        return CONTEXT_HOLDER.get();
     }
 
     public static void clearDataSourceName() {
-        contextHolder.remove();
+        CONTEXT_HOLDER.remove();
     }
 
     public static boolean containsDataSource(String dataSourceName) {

@@ -31,7 +31,7 @@ import java.util.concurrent.*;
  * <p>
  * 不过HC用的是callback，这里用的是继承
  */
-public abstract class BasicFuture<T> implements Future<T> {
+public abstract class AbstractBasicFuture<T> implements Future<T> {
 
     private volatile boolean completed; // NOSONAR
     private volatile boolean cancelled;

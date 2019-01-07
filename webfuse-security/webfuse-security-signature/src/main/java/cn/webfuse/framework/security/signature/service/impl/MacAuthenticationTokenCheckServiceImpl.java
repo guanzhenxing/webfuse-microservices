@@ -17,15 +17,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
 @Service
-public class MacAuthenticationTokenCheckService implements AuthenticationTokenCheckService {
+public class MacAuthenticationTokenCheckServiceImpl implements AuthenticationTokenCheckService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(MacAuthenticationTokenCheckService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MacAuthenticationTokenCheckServiceImpl.class);
 
 
     @Autowired
@@ -38,7 +37,7 @@ public class MacAuthenticationTokenCheckService implements AuthenticationTokenCh
     @Value("${webfuse.security.nonce-expire:300000}")
     private long nonceExpire;   //默认5分钟
 
-    public MacAuthenticationTokenCheckService() {
+    public MacAuthenticationTokenCheckServiceImpl() {
         nonceCache = new NonceCache();
     }
 

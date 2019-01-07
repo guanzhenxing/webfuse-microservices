@@ -3,7 +3,7 @@ package cn.webfuse.framework.logging.access;
 import cn.webfuse.framework.core.kit.id.IdGenerator;
 import cn.webfuse.framework.kit.AspectjKits;
 import cn.webfuse.framework.kit.HttpServletKits;
-import cn.webfuse.framework.logging.LoggerAspect;
+import cn.webfuse.framework.logging.AbstractLoggerAspect;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -16,7 +16,7 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 @Aspect
-public class AccessLoggerAspect extends LoggerAspect {
+public class AccessAbstractLoggerAspect extends AbstractLoggerAspect {
 
 
     @Pointcut("@annotation(cn.webfuse.framework.logging.access.AccessLogger)")

@@ -6,7 +6,7 @@ import cn.webfuse.framework.security.signature.entity.SecurityUser;
 import cn.webfuse.framework.security.signature.entity.UserAuthenticationToken;
 import cn.webfuse.framework.security.signature.entity.SecurityToken;
 import cn.webfuse.framework.security.signature.service.SecurityUserService;
-import cn.webfuse.framework.security.signature.service.impl.MacAuthenticationTokenCheckService;
+import cn.webfuse.framework.security.signature.service.impl.MacAuthenticationTokenCheckServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class MacTokenAuthenticationProvider implements AuthenticationProvider {
     private AuthenticationInterceptor authenticationInterceptor = new AuthenticationInterceptorImpl();
 
     @Autowired
-    private MacAuthenticationTokenCheckService macAuthenticationTokenCheckService;
+    private MacAuthenticationTokenCheckServiceImpl macAuthenticationTokenCheckServiceImpl;
 
     @Autowired
     private SecurityUserService securityUserService;
@@ -51,7 +51,7 @@ public class MacTokenAuthenticationProvider implements AuthenticationProvider {
         authenticationInterceptor.preHandle(authentication);
 
         MacAuthenticationToken macAuthenticationToken = (MacAuthenticationToken) authentication;
-        SecurityToken securityToken = macAuthenticationTokenCheckService.verifyToken(macAuthenticationToken); //校验token
+        SecurityToken securityToken = macAuthenticationTokenCheckServiceImpl.verifyToken(macAuthenticationToken); //校验token
         SecurityUser user = securityUserService.loadUserByAccessToken(securityToken.getAccessToken());    //获得相关的用户信息
         user.setSecurityToken(securityToken);
         UserAuthenticationToken userAuthenticationToken = new UserAuthenticationToken(user, "MAC");

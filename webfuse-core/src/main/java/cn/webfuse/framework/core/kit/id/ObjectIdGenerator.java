@@ -34,7 +34,7 @@ public class ObjectIdGenerator {
     /**
      * 机器信息
      */
-    private static final int machine = getMachinePiece() | getProcessPiece();
+    private static final int MACHINE = getMachinePiece() | getProcessPiece();
 
     /**
      * 给定的字符串是否为有效的ObjectId
@@ -85,7 +85,7 @@ public class ObjectIdGenerator {
     public static String next(boolean withHyphen) {
         ByteBuffer bb = ByteBuffer.wrap(new byte[12]);
         bb.putInt((int) System.currentTimeMillis() / 1000);// 4位
-        bb.putInt(machine);// 4位
+        bb.putInt(MACHINE);// 4位
         bb.putInt(nextInc.getAndIncrement());// 4位
 
         // 原来objectId格式化太慢

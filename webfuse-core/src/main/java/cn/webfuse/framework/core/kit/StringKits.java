@@ -185,7 +185,7 @@ public class StringKits {
     /**
      * 大写驼峰（UpperCamel）-> 小写下划线（lower_underscore）
      */
-    public static String UpperCamelToLowerUnderscore(final String input) {
+    public static String upperCamelToLowerUnderscore(final String input) {
         return CaseFormat.UPPER_CAMEL.converterTo(CaseFormat.LOWER_UNDERSCORE).convert(input);
     }
 
