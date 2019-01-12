@@ -35,7 +35,7 @@ eureka:
 ## turbine配置
 ##########################
 turbine:
-  app-config: smart-webfuse-cloud-service-client
+  app-config: smart-webfuse-cloud-service-client-demo1,smart-webfuse-cloud-service-client-demo2,smart-webfuse-cloud-service-client-demo3
   cluster-name-expression: 'default'
   combine-host-port: true
 ---

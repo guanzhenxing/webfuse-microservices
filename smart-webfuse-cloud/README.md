@@ -17,10 +17,10 @@
 
 ### 端口说明
 
-- 2000 -> Eureka注册中心
-- 2100 -> Config配置中心
-- 2201 -> service-turbine服务
-- 7001 -> hystrix-dashboard
+- 2000 -> Eureka注册中心（smart-webfuse-cloud-service-registry）
+- 2100 -> Config配置中心（smart-webfuse-cloud-service-config）
+- 2201 -> service-turbine服务（smart-webfuse-cloud-service-turbine）
+- 7001 -> hystrix-dashboard（smart-webfuse-cloud-service-hystrix-dashboard）
 - 7002 -> zipkin-server
 
 
