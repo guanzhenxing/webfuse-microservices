@@ -10,3 +10,4 @@ Spring Profiles运行：`$ docker run -e "SPRING_PROFILES_ACTIVE=prod" -p 8080:8
 ## 参考
 
 - [Spring Boot with Docker](https://spring.io/guides/gs/spring-boot-docker/)
+- [使用docker快速搭建本地环境](https://my.oschina.net/wangkang80/blog/1543369)
