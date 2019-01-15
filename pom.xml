@@ -56,7 +56,7 @@
         <assertj.version>2.6.0</assertj.version>
         <mockito.version>2.18.3</mockito.version>
 
-        <swagger.version>2.9.2</swagger.version>
+        <swagger-spring-boot-starter.version>1.8.0.RELEASE</swagger-spring-boot-starter.version>
 
         <docker-image-prefix>webfuse</docker-image-prefix>
 
@@ -204,14 +204,9 @@
 
             <!--for swagger-->
             <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger2</artifactId>
-                <version>${swagger.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger-ui</artifactId>
-                <version>${swagger.version}</version>
+                <groupId>com.spring4all</groupId>
+                <artifactId>swagger-spring-boot-starter</artifactId>
+                <version>${swagger-spring-boot-starter.version}</version>
             </dependency>
 
 
@@ -347,7 +342,6 @@
                         </execution>
                     </executions>
                 </plugin>
-
 
 
             </plugins>

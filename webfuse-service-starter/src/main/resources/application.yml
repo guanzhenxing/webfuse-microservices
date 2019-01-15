@@ -25,9 +25,3 @@ spring:
       charset: UTF-8
       enabled: true
       force: true
-
-webfuse:
-  swagger2:
-    project-name:
-    project-version:
-    project-description:

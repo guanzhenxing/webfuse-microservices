@@ -1,6 +1,8 @@
 # webfuse-service-starter
 
+## 功能
 
+- [swagger2支持](https://github.com/SpringForAll/spring-boot-starter-swagger)
 
 ## 运维
 
