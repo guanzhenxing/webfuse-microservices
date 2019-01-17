@@ -1,6 +1,7 @@
 package cn.webfuse.admin.upms.model;
 
 import javax.annotation.Generated;
+import java.util.Date;
 
 public class GroupRole {
 
@@ -11,6 +12,9 @@ public class GroupRole {
 
 
     private Long roleId;
+
+
+    private Date createTime;
 
 
     public Long getId() {
@@ -40,5 +44,14 @@ public class GroupRole {
 
     public void setRoleId(Long roleId) {
         this.roleId = roleId;
+    }
+
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

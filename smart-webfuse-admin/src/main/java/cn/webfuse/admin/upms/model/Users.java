@@ -1,7 +1,5 @@
 package cn.webfuse.admin.upms.model;
 
-import javax.annotation.Generated;
-
 public class Users {
 
     private Long id;
