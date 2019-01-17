@@ -2,12 +2,8 @@ package cn.webfuse.framework.web.method;
 
 import org.apache.commons.text.StringEscapeUtils;
 import org.springframework.beans.PropertyEditorRegistrar;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.support.ConfigurableWebBindingInitializer;
 
 import java.beans.PropertyEditorSupport;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 扩展web初始化的数据绑定配置

@@ -9,6 +9,9 @@ import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Restful异常配置
+ */
 public abstract class RestfulExceptionConfig {
 
     /**
