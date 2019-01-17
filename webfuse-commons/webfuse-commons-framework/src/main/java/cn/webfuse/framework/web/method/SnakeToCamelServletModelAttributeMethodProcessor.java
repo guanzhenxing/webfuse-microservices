@@ -13,17 +13,17 @@ import javax.servlet.ServletRequest;
 /**
  * 自定义请求参数模型处理。主要用于url参数的转换，对于requestBody无效
  */
-public class CustomServletModelAttributeMethodProcessor extends ServletModelAttributeMethodProcessor implements ApplicationContextAware {
+public class SnakeToCamelServletModelAttributeMethodProcessor extends ServletModelAttributeMethodProcessor implements ApplicationContextAware {
 
     ApplicationContext applicationContext;
 
-    public CustomServletModelAttributeMethodProcessor(boolean annotationNotRequired) {
+    public SnakeToCamelServletModelAttributeMethodProcessor(boolean annotationNotRequired) {
         super(annotationNotRequired);
     }
 
     @Override
     protected void bindRequestParameters(WebDataBinder binder, NativeWebRequest request) {
-        CustomServletRequestDataBinder camelBinder = new CustomServletRequestDataBinder(binder.getTarget(), binder.getObjectName());
+        SnakeToCamelServletRequestDataBinder camelBinder = new SnakeToCamelServletRequestDataBinder(binder.getTarget(), binder.getObjectName());
         RequestMappingHandlerAdapter requestMappingHandlerAdapter = applicationContext.getBean(RequestMappingHandlerAdapter.class);
         requestMappingHandlerAdapter.getWebBindingInitializer().initBinder(camelBinder);
         camelBinder.bind(request.getNativeRequest(ServletRequest.class));

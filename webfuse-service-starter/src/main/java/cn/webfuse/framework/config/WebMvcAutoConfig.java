@@ -1,37 +1,36 @@
 package cn.webfuse.framework.config;
 
 import cn.webfuse.framework.config.properties.MvcProperties;
-import org.springframework.beans.PropertyEditorRegistrar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.method.support.HandlerMethodArgumentResolver;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableConfigurationProperties(MvcProperties.class)
-public class WebMvcAutoConfig extends AbstractWebMvcConfig {
+@ServletComponentScan(basePackages = "cn.webfuse")
+public class WebMvcAutoConfig implements WebMvcConfigurer {
 
     @Autowired
     private MvcProperties mvcProperties;
 
 
-    @Override
-    public List<HandlerMethodArgumentResolver> getCustomHandlerMethodArgumentResolverList() {
-        return new ArrayList<>();
+    @Bean
+    public ArgumentSnakeToCamelResolverConfig snakeToCamelArgumentResolverConfig() {
+        return new ArgumentSnakeToCamelResolverConfig();
     }
 
-    @Override
-    public List<PropertyEditorRegistrar> getCustomPropertyEditorRegistrarList() {
-        return new ArrayList<>();
-    }
+//    @Bean
+//    public RestfulExceptionConfig restfulExceptionConfig() {
+//        return new RestfulExceptionConfig() {
+//            @Override
+//            public Map<String, String> getCustomExceptionMappingDefinitions() {
+//                return null;
+//            }
+//        };
+//    }
 
-    @Override
-    public Map<String, String> getCustomExceptionMappingDefinitions() {
-        return new HashMap<>();
-    }
+
 }

@@ -14,9 +14,9 @@ import java.util.List;
 /**
  * 自定义的请求参数数据绑定（url上的）
  */
-public class CustomServletRequestDataBinder extends ExtendedServletRequestDataBinder {
+public class SnakeToCamelServletRequestDataBinder extends ExtendedServletRequestDataBinder {
 
-    public CustomServletRequestDataBinder(Object target, String objectName) {
+    public SnakeToCamelServletRequestDataBinder(Object target, String objectName) {
         super(target, objectName);
     }
 

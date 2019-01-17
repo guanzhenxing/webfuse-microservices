@@ -3,6 +3,7 @@ package cn.webfuse.framework.web.xss;
 import cn.webfuse.framework.web.AbstractBaseFilter;
 
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 /**
  * 防止XSS攻击的过滤器
  */
+@WebFilter(filterName = "xssFilter", value = "/**")
 public class XssFilter extends AbstractBaseFilter {
 
     private FilterConfig filterConfig = null;
