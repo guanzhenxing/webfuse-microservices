@@ -23,12 +23,15 @@ management:
        -H "Content-Type: application/vnd.spring-boot.actuator.v2+json;charset=UTF-8"
 `
 
+
+
+TODO LIST
+
+- 版本控制配置
+
 spring-boot-autoconfigure：
 
-- [Springboot之spring-boot-autoconfigure模块](http://ifeve.com/spring-boot-autoconfigure/)
-- [spring-boot-starter-swagger](https://github.com/SpringForAll/spring-boot-starter-swagger)
 - [了解 Spring Boot AutoConfiguration](https://www.cnblogs.com/oopsguy/p/7484398.html)
-- [springboot-autoconfig自动配置原理](https://blog.csdn.net/seashouwang/article/details/80299571)
 - [SpringBoot使用AutoConfiguration自定义Starter](https://www.jianshu.com/p/188065e1137b) *
 
 -----

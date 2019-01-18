@@ -5,8 +5,14 @@ import org.springframework.web.servlet.mvc.condition.RequestCondition;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import java.lang.reflect.Method;
+import java.util.regex.Pattern;
 
 public class ApiVersionRequestMappingHandlerMapping extends RequestMappingHandlerMapping {
+
+    /**
+     * 版本控制的前缀
+     */
+    private String versionPrefix;
 
     @Override
     protected RequestCondition<ApiVersionCondition> getCustomTypeCondition(Class<?> handlerType) {
@@ -21,7 +27,17 @@ public class ApiVersionRequestMappingHandlerMapping extends RequestMappingHandle
     }
 
     private RequestCondition<ApiVersionCondition> createCondition(ApiVersion apiVersion) {
-        return apiVersion == null ? null : new ApiVersionCondition(apiVersion.value());
+        if (apiVersion == null) {
+            return null;
+        }
+        ApiVersionCondition apiVersionCondition = new ApiVersionCondition(apiVersion.value());
+        if (versionPrefix != null) {
+            apiVersionCondition.setVersionPrefixPattern(Pattern.compile(versionPrefix));
+        }
+        return apiVersionCondition;
     }
 
+    public void setVersionPrefix(String versionPrefix) {
+        this.versionPrefix = versionPrefix;
+    }
 }

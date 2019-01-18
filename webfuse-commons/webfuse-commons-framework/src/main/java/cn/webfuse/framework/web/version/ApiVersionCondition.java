@@ -11,11 +11,13 @@ import java.util.regex.Pattern;
  */
 public class ApiVersionCondition implements RequestCondition<ApiVersionCondition> {
 
-    // 路径中版本的前缀， 这里用 /v[1-9]/的形式
-    private final static Pattern VERSION_PREFIX_PATTERN = Pattern.compile("v(\\d+)/");
-
+    // 路径中版本的前缀， 这里用 vxx.xxx的形式
+    private final static Pattern DEFAULT_VERSION_PREFIX_PATTERN = Pattern.compile("^v([0-9]*)+(.[0-9]{1,3})?$");
 
     private int apiVersion;
+
+    private Pattern versionPrefixPattern;
+
 
     public ApiVersionCondition(int apiVersion) {
         this.apiVersion = apiVersion;
@@ -29,7 +31,7 @@ public class ApiVersionCondition implements RequestCondition<ApiVersionCondition
 
     @Override
     public ApiVersionCondition getMatchingCondition(HttpServletRequest request) {
-        Matcher m = VERSION_PREFIX_PATTERN.matcher(request.getPathInfo());
+        Matcher m = getVersionPrefixPattern().matcher(request.getPathInfo());
         if (m.find()) {
             Integer version = Integer.valueOf(m.group(1));
             // 如果请求的版本号大于配置版本号， 则满足
@@ -48,6 +50,14 @@ public class ApiVersionCondition implements RequestCondition<ApiVersionCondition
 
     public int getApiVersion() {
         return apiVersion;
+    }
+
+    public Pattern getVersionPrefixPattern() {
+        return versionPrefixPattern != null ? versionPrefixPattern : DEFAULT_VERSION_PREFIX_PATTERN;
+    }
+
+    public void setVersionPrefixPattern(Pattern versionPrefixPattern) {
+        this.versionPrefixPattern = versionPrefixPattern;
     }
 
 }
