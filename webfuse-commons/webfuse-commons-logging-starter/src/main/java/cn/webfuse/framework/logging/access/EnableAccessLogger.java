@@ -1,6 +1,5 @@
 package cn.webfuse.framework.logging.access;
 
-import cn.webfuse.framework.logging.access.AccessLoggerAutoConfig;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 
 import java.lang.annotation.*;
