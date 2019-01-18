@@ -1,5 +1,6 @@
 package cn.webfuse.framework.logging.access;
 
+import cn.webfuse.framework.logging.access.AccessLoggerAutoConfig;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 
 import java.lang.annotation.*;
@@ -11,6 +12,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-@ImportAutoConfiguration(AccessLoggerAutoConfiguration.class)
+@ImportAutoConfiguration(AccessLoggerAutoConfig.class)
 public @interface EnableAccessLogger {
 }

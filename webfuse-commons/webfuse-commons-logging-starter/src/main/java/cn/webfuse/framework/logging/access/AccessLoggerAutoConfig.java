@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 
 @ConditionalOnClass(LoggerWriter.class)
 @Configuration
-public class AccessLoggerAutoConfiguration {
+public class AccessLoggerAutoConfig {
 
     @Bean
     public AccessAbstractLoggerAspect accessLoggerAspect() {
@@ -22,7 +22,7 @@ public class AccessLoggerAutoConfiguration {
     @ConditionalOnMissingBean(LoggerWriter.class)
     public LoggerWriter defaultLoggerWriter() {
         return new LoggerWriter() {
-            Logger logger = LoggerFactory.getLogger("LOGGER_WRITER");
+            Logger logger = LoggerFactory.getLogger("ACCESS_LOGGER");
 
             @Override
             public void write(LoggerInfo loggerInfo) {

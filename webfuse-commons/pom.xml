@@ -13,6 +13,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>webfuse-commons-framework</module>
+        <module>webfuse-commons-logging-starter</module>
+        <module>webfuse-commons-web-starter</module>
     </modules>
 
 </project>
