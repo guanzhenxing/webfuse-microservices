@@ -1,6 +1,7 @@
 package cn.webfuse.framework.config;
 
 import cn.webfuse.framework.config.properties.WebMvcProperties;
+import cn.webfuse.framework.exception.RestfulExceptionConfig;
 import cn.webfuse.framework.web.method.SnakeToCamelServletModelAttributeMethodProcessor;
 import cn.webfuse.framework.web.version.ApiVersionRequestMappingHandlerMapping;
 import org.springframework.beans.factory.annotation.Autowired;
