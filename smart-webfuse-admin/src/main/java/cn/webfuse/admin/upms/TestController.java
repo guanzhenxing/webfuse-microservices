@@ -1,6 +1,7 @@
 package cn.webfuse.admin.upms;
 
 import cn.webfuse.admin.upms.model.GroupRole;
+import cn.webfuse.framework.logging.access.AccessLogger;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,7 @@ import java.util.Date;
 public class TestController {
 
     @GetMapping("/one")
+    @AccessLogger("测试")
     public GroupRole getOne() {
 
 
