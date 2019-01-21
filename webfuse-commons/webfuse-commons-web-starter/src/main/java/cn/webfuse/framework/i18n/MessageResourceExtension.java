@@ -3,6 +3,7 @@ package cn.webfuse.framework.i18n;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.context.support.ResourceBundleMessageSource;
@@ -29,16 +30,11 @@ public class MessageResourceExtension extends ResourceBundleMessageSource {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(MessageResourceExtension.class);
 
-    /**
-     * 指定的国际化文件目录
-     */
-    @Value(value = "${spring.messages.base-folder:i18n}")
+
+    @Value(value = "${webfuse.i18n.base-folder:i18n}")
     private String baseFolder;
 
-    /**
-     * 父MessageSource指定的国际化文件
-     */
-    @Value(value = "${spring.messages.basename:messages}")
+    @Value(value = "${webfuse.i18n.base-name:messages}")
     private String basename;
 
     @PostConstruct

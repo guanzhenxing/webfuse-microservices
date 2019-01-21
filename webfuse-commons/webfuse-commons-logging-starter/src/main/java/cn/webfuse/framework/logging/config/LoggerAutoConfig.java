@@ -1,18 +1,20 @@
-package cn.webfuse.framework.logging.access;
+package cn.webfuse.framework.logging.config;
 
 import cn.webfuse.framework.core.kit.mapper.JsonMapper;
 import cn.webfuse.framework.logging.LoggerInfo;
 import cn.webfuse.framework.logging.LoggerWriter;
+import cn.webfuse.framework.logging.access.AccessAbstractLoggerAspect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@ConditionalOnClass(LoggerWriter.class)
+
 @Configuration
-public class AccessLoggerAutoConfig {
+@ConditionalOnProperty(prefix = "webfuse.logging", value = "enabled", havingValue = "true", matchIfMissing = false)
+public class LoggerAutoConfig {
 
     @Bean
     public AccessAbstractLoggerAspect accessLoggerAspect() {
@@ -23,7 +25,7 @@ public class AccessLoggerAutoConfig {
     @ConditionalOnMissingBean(LoggerWriter.class)
     public LoggerWriter defaultLoggerWriter() {
         return new LoggerWriter() {
-            Logger logger = LoggerFactory.getLogger("ACCESS_LOGGER");
+            Logger logger = LoggerFactory.getLogger("LOGGER");
 
             @Override
             public void write(LoggerInfo loggerInfo) {

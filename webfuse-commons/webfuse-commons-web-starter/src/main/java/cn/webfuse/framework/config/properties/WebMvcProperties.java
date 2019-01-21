@@ -37,7 +37,7 @@ public class WebMvcProperties {
         /**
          * 是否使用API版本控制
          */
-        private boolean enable = false;
+        private boolean enabled = false;
         /**
          * API版本控制前缀正则表达式
          */
@@ -51,7 +51,7 @@ public class WebMvcProperties {
         /**
          * 是否使用Restful异常处理
          */
-        private boolean enable = true;
+        private boolean enabled = true;
 
         /**
          * 异常处理匹配

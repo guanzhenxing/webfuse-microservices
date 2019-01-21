@@ -50,7 +50,7 @@ server:
 
 eureka:
   server:
-    enable-self-preservation: false  # 中小规模下，自我保护模式坑比好处多，所以关闭它
+    enabled-self-preservation: false  # 中小规模下，自我保护模式坑比好处多，所以关闭它
     renewal-threshold-update-interval-ms: 120000  # 心跳阈值计算周期，如果开启自我保护模式，可以改一下这个配置
     eviction-interval-timer-in-ms: 5000 # 主动失效检测间隔,配置成5秒
     use-read-only-response-cache: false # 禁用readOnlyCacheMap

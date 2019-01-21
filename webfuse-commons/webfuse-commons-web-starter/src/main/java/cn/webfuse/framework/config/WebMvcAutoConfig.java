@@ -57,7 +57,7 @@ public class WebMvcAutoConfig {
      * API版本控制
      */
     @Bean
-    @ConditionalOnProperty(prefix = PROPERTIES_PREFIX, name = "api-version.enable", matchIfMissing = true)
+    @ConditionalOnProperty(prefix = PROPERTIES_PREFIX, name = "api-version.enabled", matchIfMissing = true)
     public WebMvcRegistrations apiVersionConfig() {
         return new WebMvcRegistrations() {
             @Override
@@ -73,7 +73,7 @@ public class WebMvcAutoConfig {
      * 异常处理解析器
      */
     @Bean
-    @ConditionalOnProperty(prefix = PROPERTIES_PREFIX, name = "restful-exception-handle.enable", matchIfMissing = true)
+    @ConditionalOnProperty(prefix = PROPERTIES_PREFIX, name = "restful-exception-handle.enabled", matchIfMissing = true)
     public HandlerRestfulExceptionResolver handlerRestfulExceptionResolver() {
         HandlerRestfulExceptionResolver handlerRestfulExceptionResolver = new HandlerRestfulExceptionResolver();
 
