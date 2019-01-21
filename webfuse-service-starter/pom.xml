@@ -16,14 +16,10 @@
 
         <dependency>
             <groupId>cn.webfuse</groupId>
-            <artifactId>webfuse-commons-web-starter</artifactId>
+            <artifactId>webfuse-commons-framework</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>cn.webfuse</groupId>
-            <artifactId>webfuse-commons-logging-starter</artifactId>
-            <version>${project.version}</version>
-        </dependency>
+
 
         <!--for springboot-->
         <dependency>

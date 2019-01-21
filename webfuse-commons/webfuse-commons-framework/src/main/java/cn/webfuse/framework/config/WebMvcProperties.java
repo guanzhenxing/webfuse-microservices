@@ -1,13 +1,11 @@
-package cn.webfuse.framework.config.properties;
+package cn.webfuse.framework.config;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * webfuse框架mvc的基本配置
@@ -37,7 +35,7 @@ public class WebMvcProperties {
         /**
          * 是否使用API版本控制
          */
-        private boolean enabled = false;
+        private boolean enabled = true;
         /**
          * API版本控制前缀正则表达式
          */
