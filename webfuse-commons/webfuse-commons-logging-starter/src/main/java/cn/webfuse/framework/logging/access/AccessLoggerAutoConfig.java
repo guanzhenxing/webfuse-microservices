@@ -1,5 +1,6 @@
 package cn.webfuse.framework.logging.access;
 
+import cn.webfuse.framework.core.kit.mapper.JsonMapper;
 import cn.webfuse.framework.logging.LoggerInfo;
 import cn.webfuse.framework.logging.LoggerWriter;
 import org.slf4j.Logger;
@@ -26,7 +27,7 @@ public class AccessLoggerAutoConfig {
 
             @Override
             public void write(LoggerInfo loggerInfo) {
-                logger.info(loggerInfo.toString());
+                logger.info(JsonMapper.defaultMapper().toJson(loggerInfo));
             }
         };
     }
