@@ -19,7 +19,8 @@ import java.util.stream.Stream;
 public class AccessAbstractLoggerAspect extends AbstractLoggerAspect {
 
 
-    @Pointcut("@annotation(cn.webfuse.framework.logging.access.AccessLogger)")
+    @Pointcut(value = "@within(cn.webfuse.framework.logging.access.AccessLogger) || "
+                    + "@annotation(cn.webfuse.framework.logging.access.AccessLogger)")
     public void recordLog() {
     }
 
@@ -79,7 +80,7 @@ public class AccessAbstractLoggerAspect extends AbstractLoggerAspect {
         Class clazz = AspectjKits.getClass(joinPoint);
 
         AccessLogger methodAnnotation = method.getAnnotation(AccessLogger.class);
-        AccessLogger clazzAnnotation = clazz.getClass().getAnnotation(AccessLogger.class);
+        AccessLogger clazzAnnotation = (AccessLogger) clazz.getAnnotation(AccessLogger.class);
 
         String action = Stream.of(clazzAnnotation, methodAnnotation)
                 .filter(Objects::nonNull)
