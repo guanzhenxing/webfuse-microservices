@@ -3,11 +3,8 @@ package cn.webfuse.framework.i18n;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.context.support.ResourceBundleMessageSource;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.io.File;
@@ -25,21 +22,24 @@ import java.util.zip.ZipEntry;
 /**
  * 代码来源：https://github.com/zzzzbw/Spring-Boot-I18n-Pro
  */
-@Component("messageSource")
 public class MessageResourceExtension extends ResourceBundleMessageSource {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(MessageResourceExtension.class);
 
+    /**
+     * 指定的国际化文件目录
+     */
+    private String baseFolder = "i18n";
 
-    @Value(value = "${webfuse.i18n.base-folder:i18n}")
-    private String baseFolder;
+    /**
+     * 指定MessageSource指定的国际化文件
+     */
+    private String basename = "messages";
 
-    @Value(value = "${webfuse.i18n.base-name:messages}")
-    private String basename;
 
     @PostConstruct
     public void init() {
-        LOGGER.info("init MessageResourceExtension...");
+        LOGGER.info("init MessageResourceExtension");
         if (!StringUtils.isEmpty(baseFolder)) {
             try {
                 this.setBasenames(getAllBaseNames(baseFolder));
@@ -134,5 +134,13 @@ public class MessageResourceExtension extends ResourceBundleMessageSource {
         return this.getMessage(code, null, locale);
     }
 
+    public void setBaseFolder(String baseFolder) {
+        this.baseFolder = baseFolder;
+    }
+
+    @Override
+    public void setBasename(String basename) {
+        this.basename = basename;
+    }
 }
 
