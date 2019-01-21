@@ -11,6 +11,7 @@ import org.springframework.beans.TypeMismatchException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.MessageSource;
 import org.springframework.context.MessageSourceAware;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
@@ -296,6 +297,8 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
                 Locale locale = null;
                 if (localeResolver != null) {
                     locale = localeResolver.resolveLocale(request);
+                } else {
+                    locale = LocaleContextHolder.getLocale();
                 }
                 message = messageSource.getMessage(message, null, message, locale);
             }
