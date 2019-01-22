@@ -2,6 +2,8 @@ package cn.webfuse.framework.core.constant;
 
 /**
  * 正则的常量
+ *
+ * 手机号码正则参考：https://github.com/VincentSit/ChinaMobilePhoneNumberRegex/blob/master/README-CN.md
  */
 public class RegexConstants {
 
@@ -9,25 +11,16 @@ public class RegexConstants {
      * 正则：手机号（简单）, 1字头＋10位数字即可.
      */
     private static final String REGEX_MOBILE_SIMPLE = "^[1]\\d{10}$";
+
     /**
-     * 正则：手机号（精确）, 已知3位前缀＋8位数字
-     * <p>
-     * 移动：134(0-8)、135、136、137、138、139、147、150、151、152、157、158、159、178、182、183、184、187、188、198
-     * </p>
-     * <p>
-     * 联通：130、131、132、145、155、156、166、171、175、176、185、186
-     * </p>
-     * <p>
-     * 电信：133、153、173、177、180、181、189、199
-     * </p>
-     * <p>
-     * 全球星：1349
-     * </p>
-     * <p>
-     * 虚拟运营商：170
-     * </p>
+     * 正则：匹配所有号码（手机卡 + 数据卡 + 上网卡）
      */
-    public static final String REGEX_MOBILE_EXACT = "^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(16[6])|(17[0,1,3,5-8])|(18[0-9])|(19[8,9]))\\d{8}$";
+    public static final String REGEX_MOBILE_ALL = "^(?:\\+?86)?1(?:3\\d{3}|5[^4\\D]\\d{2}|8\\d{3}|7(?:[01356789]\\d{2}|4(?:0\\d|1[0-2]|9\\d))|9[189]\\d{2}|6[567]\\d{2}|4(?:[14]0\\d{3}|[68]\\d{4}|[579]\\d{2}))\\d{6}$";
+
+    /**
+     * 正则：匹配所有支持短信功能的号码（手机卡 + 上网卡）
+     */
+    public static final String REGEX_MOBILE_SMS = "^(?:\\+?86)?1(?:3\\d{3}|5[^4\\D]\\d{2}|8\\d{3}|7(?:[01356789]\\d{2}|4(?:0\\d|1[0-2]|9\\d))|9[189]\\d{2}|6[567]\\d{2}|4[579]\\d{2})\\d{6}$";
 
     /**
      * 正则：固定电话号码，可带区号，然后6至少8位数字
@@ -132,6 +125,8 @@ public class RegexConstants {
      * <p>length is between 6 to 20</p>
      */
     public static final String REGEX_USERNAME = "^[\\w\\u4e00-\\u9fa5]{6,20}(?<!_)$";
+
+
 
 
 }
