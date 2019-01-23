@@ -9,10 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.Executors;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.*;
 
 /**
  * copy from vipshop VJTools
@@ -58,7 +55,8 @@ public class AbortPolicyWithReport extends ThreadPoolExecutor.AbortPolicy {
         if (!guard.tryAcquire()) {
             return;
         }
-        Executors.newSingleThreadExecutor().execute(() -> {
+        ExecutorService pool = Executors.newSingleThreadExecutor();
+        pool.execute(() -> {
             String dumpPath = System.getProperty("user.home");
 
             SimpleDateFormat sdf;
