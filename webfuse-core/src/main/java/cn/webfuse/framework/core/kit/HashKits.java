@@ -24,7 +24,12 @@ public class HashKits {
 
     private static SecureRandom random = new SecureRandom();
 
-    // ThreadLocal重用MessageDigest
+    /**
+     * ThreadLocal重用MessageDigest
+     *
+     * @param digest
+     * @return
+     */
     private static ThreadLocal<MessageDigest> createThreadLocalMessageDigest(final String digest) {
         return ThreadLocal.withInitial(() -> {
             try {

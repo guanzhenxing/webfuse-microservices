@@ -7,9 +7,9 @@ package cn.webfuse.ext.kit;
  */
 public class Number2RMBKits {
 
-    private static String hanDigiStr[] = new String[]{"零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"};
+    private static String[] hanDigiStr = new String[]{"零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"};
 
-    private static String hanDiviStr[] = new String[]{"", "拾", "佰", "仟", "万", "拾", "佰", "仟", "亿", "拾", "佰", "仟", "万",
+    private static String[] hanDiviStr = new String[]{"", "拾", "佰", "仟", "万", "拾", "佰", "仟", "亿", "拾", "佰", "仟", "万",
             "拾", "佰", "仟", "亿", "拾", "佰", "仟", "万", "拾", "佰", "仟"};
 
     /**
@@ -93,7 +93,7 @@ public class Number2RMBKits {
                 hasvalue = true; // 置万进位前有值标记
             } else {
                 // 亿万之间必须有非零值方显示万
-                if ((i % 8) == 0 || ((i % 8) == 4 && hasvalue)){
+                if ((i % 8) == 0 || ((i % 8) == 4 && hasvalue)) {
                     // “亿”或“万”
                     rmbStr += hanDiviStr[i];
                 }
