@@ -1,5 +1,6 @@
 package cn.webfuse.demos.springevents;
 
+import cn.webfuse.demos.springevents.synchronous.publisher.CustomSpringEventPublisher;
 import cn.webfuse.demos.springevents.userdemo.model.UserBean;
 import cn.webfuse.demos.springevents.userdemo.publisher.UserPublisher;
 import org.apache.commons.collections.map.SingletonMap;
@@ -24,12 +25,23 @@ public class Application {
     @Autowired
     private UserPublisher userPublisher;
 
+    @Autowired
+    private CustomSpringEventPublisher customSpringEventPublisher;
+
     @GetMapping("/test_user_event")
-    public Map<String, Object> testUserEvent() {
+    public Map<String, String> testUserEvent() {
         UserBean userBean = new UserBean();
         userBean.setUsername("jesen");
         userBean.setPassword("13");
         userPublisher.register(userBean);
+        return new SingletonMap("result", "success");
+    }
+
+    @GetMapping("/test_spring_event")
+    public Map<String, String> testCustomSpringEvent() {
+        customSpringEventPublisher.publishEvent("CustomSpringEvent");
+        customSpringEventPublisher.publishGenericAppEvent("GenericStringSpringAppEvent");
+        customSpringEventPublisher.publishGenericEvent("GenericStringSpringEvent", true);
         return new SingletonMap("result", "success");
     }
 
