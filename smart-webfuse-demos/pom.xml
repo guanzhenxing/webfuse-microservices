@@ -15,6 +15,7 @@
         <module>smart-webfuse-demos-mybatis-interceptor</module>
         <module>smart-webfuse-demos-quartz</module>
         <module>smart-webfuse-demos-docker</module>
+        <module>smart-webfuse-demos-event</module>
     </modules>
 
 
