@@ -1,4 +1,4 @@
-package cn.webfuse.demos.events.listener;
+package cn.webfuse.demos.events.custom.listener;
 
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;

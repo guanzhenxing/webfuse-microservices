@@ -1,4 +1,4 @@
-package cn.webfuse.demos.events.event;
+package cn.webfuse.demos.events.custom.event;
 
 import org.springframework.context.ApplicationEvent;
 

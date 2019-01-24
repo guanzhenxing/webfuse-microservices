@@ -1,6 +1,7 @@
 package cn.webfuse.demos.events;
 
-import cn.webfuse.demos.events.publisher.CustomSpringEventPublisher;
+import cn.webfuse.demos.events.custom.publisher.CustomSpringEventPublisher;
+import cn.webfuse.demos.events.generic.publish.GenericSpringEventPublisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,10 +21,19 @@ public class Application {
     @Autowired
     CustomSpringEventPublisher customSpringEventPublisher;
 
+    @Autowired
+    GenericSpringEventPublisher genericSpringEventPublisher;
 
-    @RequestMapping("/register")
-    public String register() {
+    @RequestMapping("/test_custom")
+    public String testCustom() {
         customSpringEventPublisher.doStuffAndPublishAnEvent("fuck....");
+        return "success";
+    }
+
+
+    @RequestMapping("/test_generic")
+    public String testGeneric() {
+        genericSpringEventPublisher.doStuffAndPublishAnEvent();
         return "success";
     }
 

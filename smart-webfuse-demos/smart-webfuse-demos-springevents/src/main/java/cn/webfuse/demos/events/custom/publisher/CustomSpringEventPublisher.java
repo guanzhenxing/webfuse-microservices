@@ -1,6 +1,6 @@
-package cn.webfuse.demos.events.publisher;
+package cn.webfuse.demos.events.custom.publisher;
 
-import cn.webfuse.demos.events.event.CustomSpringEvent;
+import cn.webfuse.demos.events.custom.event.CustomSpringEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;

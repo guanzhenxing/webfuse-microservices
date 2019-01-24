@@ -1,6 +1,6 @@
-package cn.webfuse.demos.events.listener;
+package cn.webfuse.demos.events.custom.listener;
 
-import cn.webfuse.demos.events.event.CustomSpringEvent;
+import cn.webfuse.demos.events.custom.event.CustomSpringEvent;
 import org.springframework.context.event.ContextStartedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
