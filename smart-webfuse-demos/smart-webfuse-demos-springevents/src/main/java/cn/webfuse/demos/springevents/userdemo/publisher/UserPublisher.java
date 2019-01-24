@@ -3,17 +3,20 @@ package cn.webfuse.demos.springevents.userdemo.publisher;
 import cn.webfuse.demos.springevents.userdemo.event.UserRegisterEvent;
 import cn.webfuse.demos.springevents.userdemo.model.UserBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserPublisher {
 
+    //    @Autowired
+//    ApplicationContext applicationContext;
+
     @Autowired
-    ApplicationContext applicationContext;
+    private ApplicationEventPublisher applicationEventPublisher;
 
     public void register(UserBean user) {
-        applicationContext.publishEvent(new UserRegisterEvent(this, user));
+        applicationEventPublisher.publishEvent(new UserRegisterEvent(this, user));
     }
 
 
