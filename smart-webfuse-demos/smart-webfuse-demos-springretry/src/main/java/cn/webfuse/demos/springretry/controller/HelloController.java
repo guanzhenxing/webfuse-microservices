@@ -3,6 +3,7 @@ package cn.webfuse.demos.springretry.controller;
 import cn.webfuse.demos.springretry.service.HelloService;
 import org.apache.commons.collections.map.SingletonMap;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.retry.support.RetryTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,23 @@ public class HelloController {
     public Map<String, Object> testRetry(@RequestParam int num) throws Exception {
         int res = helloService.minGoodsNum(num);
         return new SingletonMap("res", res);
+    }
+
+
+    @Autowired
+    RetryTemplate retryTemplate;
+
+    /**
+     * 使用RetryTemplate
+     */
+    public void testRetryTemplate() {
+        retryTemplate.execute(retryContext -> {
+            helloService.testRetryTemplate(-1);
+            return null;
+        }, recoveryCallback -> {
+            System.out.println(">>>>>");
+            return null;
+        });
     }
 
 

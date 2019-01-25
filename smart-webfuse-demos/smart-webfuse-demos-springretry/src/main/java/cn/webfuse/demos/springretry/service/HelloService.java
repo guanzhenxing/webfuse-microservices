@@ -2,9 +2,13 @@ package cn.webfuse.demos.springretry.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.retry.RetryCallback;
+import org.springframework.retry.RetryContext;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.annotation.Retryable;
+import org.springframework.retry.support.RetryTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
@@ -39,7 +43,6 @@ public class HelloService {
         }
         if (num <= 0) {
             throw new IllegalArgumentException("数量不对");
-//            logger.error("illegal");
         }
         logger.info("减库存执行结束" + LocalTime.now());
         return totalNum - num;
@@ -51,8 +54,21 @@ public class HelloService {
         return totalNum;
     }
 
-    @Recover
-    public void recoverIllegalArgumentException(IllegalArgumentException e) {
-        logger.warn("数量不对的回滚" + LocalTime.now());
+    public int testRetryTemplate(int num) {
+        logger.info("Test begin" + LocalTime.now());
+        try {
+            int i = 1 / 0;
+        } catch (Exception e) {
+            logger.error("illegal");
+        }
+        if (num <= 0) {
+            throw new IllegalArgumentException("Num illegal");
+        }
+        logger.info("Test end" + LocalTime.now());
+        return totalNum - num;
     }
+
+
+
+
 }
