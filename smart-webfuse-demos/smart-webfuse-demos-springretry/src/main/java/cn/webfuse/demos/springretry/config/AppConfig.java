@@ -1,5 +1,6 @@
 package cn.webfuse.demos.springretry.config;
 
+import cn.webfuse.demos.springretry.listener.DefaultListenerSupport;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.retry.backoff.FixedBackOffPolicy;
@@ -20,6 +21,9 @@ public class AppConfig {
         SimpleRetryPolicy retryPolicy = new SimpleRetryPolicy();
         retryPolicy.setMaxAttempts(2);
         retryTemplate.setRetryPolicy(retryPolicy);
+
+
+        retryTemplate.registerListener(new DefaultListenerSupport());
 
         return retryTemplate;
     }

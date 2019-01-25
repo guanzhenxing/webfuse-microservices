@@ -34,5 +34,14 @@ public class ApplicationTest {
         helloController.testRetryTemplate();
     }
 
+
+    @Test(expected = RuntimeException.class)
+    public void givenTemplateRetryService_whenCallWithException_thenRetry() {
+        retryTemplate.execute(arg0 -> {
+            helloService.testRetryTemplate(-2);
+            return null;
+        });
+    }
+
 }
 
