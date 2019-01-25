@@ -16,6 +16,7 @@
         <module>smart-webfuse-demos-quartz</module>
         <module>smart-webfuse-demos-docker</module>
         <module>smart-webfuse-demos-springevents</module>
+        <module>smart-webfuse-demos-springretry</module>
     </modules>
 
 
