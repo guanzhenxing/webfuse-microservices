@@ -41,3 +41,5 @@ https://segmentfault.com/a/1190000011591559
 - [Spring Cloud 源码学习之 Hystrix 熔断器](https://chenyongjun.vip/articles/90)
 - [Spring5源码解析-@Autowired](https://muyinchen.github.io/2017/08/23/Spring5%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90-@Autowired/)
 https://www.cnblogs.com/dennyzhangdd/p/8028950.html
+
+[zuul的各种配置](https://huan1993.iteye.com/blog/2424676)
