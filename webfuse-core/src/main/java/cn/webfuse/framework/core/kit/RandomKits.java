@@ -65,21 +65,21 @@ public class RandomKits {
     }
 
     /**
-     * 返回0到max的随机Int, 使用ThreadLocalRandom.
+     * 返回0到max(不含)的随机Int, 使用ThreadLocalRandom.
      */
     public static int nextInt(int max) {
         return nextInt(ThreadLocalRandom.current(), max);
     }
 
     /**
-     * 返回0到max的随机Int, 可传入SecureRandom或ThreadLocalRandom
+     * 返回0到max(不含)的随机Int, 可传入SecureRandom或ThreadLocalRandom
      */
     public static int nextInt(Random random, int max) {
         return random.nextInt(max);
     }
 
     /**
-     * 返回min到max的随机Int, 使用ThreadLocalRandom.
+     * 返回min到max(不含)的随机Int, 使用ThreadLocalRandom.
      * <p>
      * min必须大于0.
      */
@@ -88,7 +88,7 @@ public class RandomKits {
     }
 
     /**
-     * 返回min到max的随机Int,可传入SecureRandom或ThreadLocalRandom.
+     * 返回min到max(不含)的随机Int,可传入SecureRandom或ThreadLocalRandom.
      * <p>
      * min必须大于0.
      * <p>
@@ -102,6 +102,21 @@ public class RandomKits {
 
         return min + random.nextInt(max - min);
     }
+
+    /**
+     * 返回min(含)到max(含)的随机Int
+     */
+    public static int getRandomNumberInRange(int min, int max) {
+
+        Validate.isTrue(max >= min, "Start value must be smaller or equal to end value.");
+        if (min == max) {
+            return min;
+        }
+
+        Random r = new Random();
+        return r.nextInt((max - min) + 1) + min;
+    }
+
 
     ////////////////// long 相关/////////
 
