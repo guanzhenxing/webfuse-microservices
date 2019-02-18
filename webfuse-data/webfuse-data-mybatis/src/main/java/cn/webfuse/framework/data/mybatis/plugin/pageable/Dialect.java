@@ -1,4 +1,4 @@
-package cn.webfuse.framework.data.mybatis.pageable;
+package cn.webfuse.framework.data.mybatis.plugin.pageable;
 
 import org.apache.ibatis.cache.CacheKey;
 import org.apache.ibatis.mapping.BoundSql;

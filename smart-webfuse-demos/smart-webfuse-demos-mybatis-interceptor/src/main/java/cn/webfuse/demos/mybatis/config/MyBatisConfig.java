@@ -1,6 +1,6 @@
 package cn.webfuse.demos.mybatis.config;
 
-import cn.webfuse.framework.data.mybatis.pageable.PageInterceptor;
+import cn.webfuse.framework.data.mybatis.plugin.pageable.PageInterceptor;
 import cn.webfuse.demos.mybatis.interceptor.SimpleInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

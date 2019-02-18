@@ -1,6 +1,6 @@
 package cn.webfuse.demos.mybatis.upms.controller;
 
-import cn.webfuse.framework.data.mybatis.pageable.PageRowBounds;
+import cn.webfuse.framework.data.mybatis.plugin.pageable.PageRowBounds;
 import cn.webfuse.demos.mybatis.upms.mapper.ActionsMapper;
 import cn.webfuse.demos.mybatis.upms.model.Actions;
 import org.springframework.beans.factory.annotation.Autowired;

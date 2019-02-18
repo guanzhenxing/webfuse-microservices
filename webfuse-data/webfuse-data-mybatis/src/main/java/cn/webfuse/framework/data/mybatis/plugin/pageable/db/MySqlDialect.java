@@ -1,7 +1,7 @@
-package cn.webfuse.framework.data.mybatis.pageable.db;
+package cn.webfuse.framework.data.mybatis.plugin.pageable.db;
 
-import cn.webfuse.framework.data.mybatis.pageable.Dialect;
-import cn.webfuse.framework.data.mybatis.pageable.PageRowBounds;
+import cn.webfuse.framework.data.mybatis.plugin.pageable.Dialect;
+import cn.webfuse.framework.data.mybatis.plugin.pageable.PageRowBounds;
 import org.apache.ibatis.cache.CacheKey;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.session.RowBounds;
