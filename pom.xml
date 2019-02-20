@@ -15,7 +15,6 @@
         <module>webfuse-data</module>
         <module>webfuse-ext</module>
         <module>webfuse-service-starter</module>
-        <module>smart-webfuse-demos</module>
         <module>webfuse-mq</module>
         <module>webfuse-code-generator</module>
         <module>smart-webfuse-cloud</module>
