@@ -15,7 +15,6 @@ Webfuse是基于SpringBoot 2的敏捷开发框架，包含了JavaWeb项目开发
 ```
 .
 ├── smart-webfuse-admin                 管理台项目
-├── smart-webfuse-demos                 各种示例代码
 ├── webfuse-commons                     公共模块包
 │   ├── webfuse-commons-basic           WEB基础模块
 │   ├── webfuse-commons-exception       异常模块
