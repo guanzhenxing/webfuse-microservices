@@ -1,4 +1,4 @@
-package cn.webfuse.framework.data.mybatis.ext;
+package cn.webfuse.framework.data.mybatis;
 
 import cn.webfuse.framework.data.mybatis.ext.camelcase.CamelCaseMappingWrapperFactory;
 import org.mybatis.spring.boot.autoconfigure.ConfigurationCustomizer;
