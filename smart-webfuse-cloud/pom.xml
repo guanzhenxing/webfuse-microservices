@@ -21,7 +21,6 @@
         <module>smart-webfuse-cloud-service-registry</module>
         <module>smart-webfuse-cloud-service-turbine</module>
         <module>smart-webfuse-cloud-service-zipkin-server</module>
-        <module>smart-webfuse-cloud-service-security</module>
     </modules>
 
     <build>
