@@ -8,7 +8,7 @@ VOLUME /tmp
 ADD ./target/smart-webfuse-cloud-service-registry-1.0-SNAPSHOT.jar app.jar
 #RUN bash -c 'touch /app.jar'
 
-# 开放2001端口
+# 开放2000端口
 EXPOSE 2000
 
 # 配置容器启动后执行的命令
