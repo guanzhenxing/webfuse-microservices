@@ -23,7 +23,8 @@ deployFunc(){
 
   # deploy 完成,提交
   cd $DEPLOY_PATH
-  git add -am 'deploy'
+  git add --all
+  git commit -m 'deploy'
   git push origin $br
 
   # 合并master分支
