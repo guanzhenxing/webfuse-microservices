@@ -8,7 +8,6 @@
     <artifactId>webfuse</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>smart-webfuse-admin</module>
         <module>webfuse-commons</module>
         <module>webfuse-core</module>
         <module>webfuse-security</module>
@@ -17,7 +16,6 @@
         <module>webfuse-service-starter</module>
         <module>webfuse-mq</module>
         <module>webfuse-code-generator</module>
-        <module>smart-webfuse-cloud</module>
     </modules>
     <packaging>pom</packaging>
 
