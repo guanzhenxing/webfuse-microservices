@@ -16,7 +16,7 @@ public class CloneableException extends Exception implements Cloneable {
 
     private static final long serialVersionUID = -6270471689928560417L;
 
-    protected String message; // NOSONAR
+    protected String message;
 
     public CloneableException() {
         super((Throwable) null);
@@ -33,10 +33,10 @@ public class CloneableException extends Exception implements Cloneable {
     }
 
     @Override
-    public CloneableException clone() { // NOSONAR
+    public CloneableException clone() {
         try {
             return (CloneableException) super.clone();
-        } catch (CloneNotSupportedException e) {// NOSONAR
+        } catch (CloneNotSupportedException e) {
             return null;
         }
     }

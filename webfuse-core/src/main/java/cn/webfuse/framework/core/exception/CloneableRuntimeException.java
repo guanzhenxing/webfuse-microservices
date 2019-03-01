@@ -14,7 +14,7 @@ public class CloneableRuntimeException extends RuntimeException implements Clone
 
     private static final long serialVersionUID = 3984796576627959400L;
 
-    protected String message; // NOSONAR
+    protected String message;
 
     public CloneableRuntimeException() {
         super((Throwable) null);
@@ -31,10 +31,10 @@ public class CloneableRuntimeException extends RuntimeException implements Clone
     }
 
     @Override
-    public CloneableRuntimeException clone() { // NOSONAR
+    public CloneableRuntimeException clone() {
         try {
             return (CloneableRuntimeException) super.clone();
-        } catch (CloneNotSupportedException e) { // NOSONAR
+        } catch (CloneNotSupportedException e) {
             return null;
         }
     }

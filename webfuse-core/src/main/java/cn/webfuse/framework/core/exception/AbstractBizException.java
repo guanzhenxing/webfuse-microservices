@@ -5,11 +5,27 @@ package cn.webfuse.framework.core.exception;
  */
 public abstract class AbstractBizException extends RuntimeException {
 
-    private int status; //状态码
-    private String code;   //错误代码
-    private String message; //错误消息（针对用户）
-    private Throwable throwable;    //异常堆栈
-    private String developerMessage;    //给开发者的错误消息
+    /**
+     * 状态码
+     */
+    private int status;
+
+    /**
+     * 错误代码
+     */
+    private String code;
+    /**
+     * 错误消息（针对用户）
+     */
+    private String message;
+    /**
+     * 异常堆栈
+     */
+    private Throwable throwable;
+    /**
+     * 给开发者的错误消息
+     */
+    private String developerMessage;
 
     public AbstractBizException(int status, String code, String message, Throwable throwable, String developerMessage) {
         this.status = status;
