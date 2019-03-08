@@ -1,8 +1,10 @@
 package cn.webfuse.framework.config;
 
 import cn.webfuse.framework.core.kit.mapper.JsonMapper;
+import cn.webfuse.framework.exception.handler.RestfulErrorConverter;
+import cn.webfuse.framework.exception.handler.RestfulErrorResolver;
+import cn.webfuse.framework.exception.handler.impl.DefaultRestfulErrorConverter;
 import cn.webfuse.framework.exception.handler.impl.DefaultRestfulErrorResolver;
-import cn.webfuse.framework.exception.handler.HandlerRestfulExceptionResolver;
 import cn.webfuse.framework.web.method.SnakeToCamelServletModelAttributeMethodProcessor;
 import cn.webfuse.framework.web.version.ApiVersionRequestMappingHandlerMapping;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,20 +73,23 @@ public class WebMvcAutoConfig {
     /**
      * 异常处理解析器
      */
+
     @Bean
     @ConditionalOnProperty(prefix = PROPERTIES_PREFIX, name = "restful-exception-handle.enabled", matchIfMissing = true)
-    public HandlerRestfulExceptionResolver handlerRestfulExceptionResolver() {
-        HandlerRestfulExceptionResolver handlerRestfulExceptionResolver = new HandlerRestfulExceptionResolver();
-
+    public RestfulErrorResolver defaultRestfulErrorResolver() {
         DefaultRestfulErrorResolver defaultRestfulErrorResolver = new DefaultRestfulErrorResolver();
         defaultRestfulErrorResolver.setLocaleResolver(localeResolver());
         defaultRestfulErrorResolver.setExceptionMappingDefinitions(getExceptionMappingDefinitions());
 
-        handlerRestfulExceptionResolver.setRestfulErrorResolver(defaultRestfulErrorResolver);
-        handlerRestfulExceptionResolver.setOrder(-1);
-
-        return handlerRestfulExceptionResolver;
+        return defaultRestfulErrorResolver;
     }
+
+    @Bean
+    @ConditionalOnProperty(prefix = PROPERTIES_PREFIX, name = "restful-exception-handle.enabled", matchIfMissing = true)
+    public RestfulErrorConverter defaultRestfulErrorConverter() {
+        return new DefaultRestfulErrorConverter();
+    }
+
 
     private Map<String, String> getExceptionMappingDefinitions() {
         Map<String, String> exceptionMappingDefinitions = new HashMap<>();

@@ -77,7 +77,7 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
 
 
     @Override
-    public RestfulError resolveError(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
+    public RestfulError resolveError(HttpServletRequest request, HttpServletResponse response, Exception ex) {
 
         /**
          * 获得运行时期的异常
