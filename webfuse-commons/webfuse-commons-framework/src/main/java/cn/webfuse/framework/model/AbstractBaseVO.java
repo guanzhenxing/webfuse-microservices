@@ -27,7 +27,7 @@ public abstract class AbstractBaseVO implements Serializable {
     }
 
     public Map<String, Object> toMap() {
-        return toMap(false, false, null);
+        return toMap(false, false, new String[0]);
     }
 
     public String toJson() {
