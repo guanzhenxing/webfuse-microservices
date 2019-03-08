@@ -11,10 +11,7 @@
 
     <artifactId>webfuse-security</artifactId>
     <packaging>pom</packaging>
-    <modules>
-        <module>webfuse-security-signature</module>
-        <module>webfuse-security-oauth2</module>
-    </modules>
+
 
 
 </project>
