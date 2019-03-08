@@ -45,12 +45,24 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
 
     public static final String DEFAULT_MESSAGE_VALUE = "";
     public static final String DEFAULT_EXCEPTION_MESSAGE_VALUE = "";
+    /**
+     * 异常对应
+     */
+    private Map<String, RestfulError> exceptionMappings = Collections.emptyMap();
 
-    private Map<String, RestfulError> exceptionMappings = Collections.emptyMap();   //异常对应
-    private Map<String, String> exceptionMappingDefinitions = Collections.emptyMap();   //异常与解析的对应
+    /**
+     * 异常与解析的对应
+     */
+    private Map<String, String> exceptionMappingDefinitions = Collections.emptyMap();
 
-    private String defaultPrefixCode;   //默认的前缀
-    //以下两个为国际化做准备
+    /**
+     * 默认的前缀
+     */
+    private String defaultPrefixCode;
+
+    /**
+     * 以下两个为国际化做准备
+     */
     private MessageSource messageSource;
     private LocaleResolver localeResolver;
 
@@ -67,7 +79,10 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
     @Override
     public RestfulError resolveError(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
 
-        RestfulError template = buildRuntimeError(ex);  //获得运行时期的异常
+        /**
+         * 获得运行时期的异常
+         */
+        RestfulError template = buildRuntimeError(ex);
 
         RestfulError.Builder builder = new RestfulError.Builder();
         builder.setThrowable(ex);
@@ -135,10 +150,13 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
 
     private void applyDef(Map<String, String> map, String name, HttpStatus status) {
 
-        //将status转换成定义的字符串格式
+        /**
+         * 将status转换成定义的字符串格式
+         */
         Map<String, String> res = new ConcurrentHashMap<>();
         String code = status.getReasonPhrase().toUpperCase().replaceAll(" ", "_");
-        res.put("code", code);  //此处设置默认的code
+        //此处设置默认的code
+        res.put("code", code);
         res.put("status", status.toString());
         res.put("message", DEFAULT_MESSAGE_VALUE);
 
@@ -160,8 +178,10 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
 
         Map<String, RestfulError> res = new LinkedHashMap<>(definitions.size());
         for (Map.Entry<String, String> entry : definitions.entrySet()) {
-            String key = entry.getKey();    //异常的类名
-            String value = entry.getValue();    //定义好的异常的处理格式
+            //异常的类名
+            String key = entry.getKey();
+            //定义好的异常的处理格式
+            String value = entry.getValue();
             RestfulError template = definitionRestError(value);
             res.put(key, template);
         }
@@ -179,13 +199,15 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
 
         Map<String, String> error = JsonMapper.defaultMapper().fromJson(value, Map.class);
         String code = error.get("code");
-        if (StringUtils.isEmpty(code)) {    //如果没有定义code，那么默认就是INTERNAL_SERVER_ERROR
+        //如果没有定义code，那么默认就是INTERNAL_SERVER_ERROR
+        if (StringUtils.isEmpty(code)) {
             code = "INTERNAL_SERVER_ERROR";
         }
 
         String message = error.get("message");
         if (StringUtils.isEmpty(message)) {
-            message = DEFAULT_MESSAGE_VALUE;    //如果没有定义message,默认为 ""
+            //如果没有定义message,默认为 ""
+            message = DEFAULT_MESSAGE_VALUE;
         }
 
         String status = String.valueOf(error.get("status"));
@@ -193,12 +215,14 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
         try {
             httpStatus = HttpStatus.valueOf(Integer.valueOf(status));
         } catch (Exception e) {
-            httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;  //默认使用 HttpStatus.INTERNAL_SERVER_ERROR
+            //默认使用 HttpStatus.INTERNAL_SERVER_ERROR
+            httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
         }
 
         String developerMessage = error.get("developerMessage");
         if (StringUtils.isEmpty(message)) {
-            developerMessage = DEFAULT_EXCEPTION_MESSAGE_VALUE;    //如果没有定义developerMessage,默认为 ""
+            //如果没有定义developerMessage,默认为 ""
+            developerMessage = DEFAULT_EXCEPTION_MESSAGE_VALUE;
         }
 
         RestfulError.Builder builder = new RestfulError.Builder();
@@ -223,12 +247,16 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
             return null;
         }
         if (ex == null) {
-            ex = new RuntimeException();   //如果为空，就直接用RuntimeException
+            //如果为空，就直接用RuntimeException
+            ex = new RuntimeException();
         }
 
-        Class clazz = ex.getClass();    //获得异常的类
-        RestfulError restfulError = mappings.get(clazz.getName());  //获得定义好的异常的处理格式
-        if (restfulError == null) { //如果没有定义，那么就一直追溯它的父类，直到获得定义的格式为止
+        //获得异常的类
+        Class clazz = ex.getClass();
+        //获得定义好的异常的处理格式
+        RestfulError restfulError = mappings.get(clazz.getName());
+        //如果没有定义，那么就一直追溯它的父类，直到获得定义的格式为止
+        if (restfulError == null) {
             List<Class<?>> superClasses = ClassUtils.getAllSuperclasses(clazz);
             for (Class superClass : superClasses) {
                 restfulError = mappings.get(superClass.getName());
@@ -238,12 +266,15 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
             }
         }
 
-        String code = restfulError.getCode();   //获得异常业务代码
-        HttpStatus httpStatus = restfulError.getStatus();   //获得异常的HTTP代码
+        //获得异常业务代码
+        String code = restfulError.getCode();
+        //获得异常的HTTP代码
+        HttpStatus httpStatus = restfulError.getStatus();
         String message = restfulError.getMessage();
         String developerMessage = restfulError.getDeveloperMessage();
 
-        if (ex instanceof AbstractBizException) {   //如果异常继承于AbstractBizException时的处理
+        //如果异常继承于AbstractBizException时的处理
+        if (ex instanceof AbstractBizException) {
             code = ((AbstractBizException) ex).getCode();
             if (((AbstractBizException) ex).getStatus() != 0) {
                 httpStatus = HttpStatus.valueOf(((AbstractBizException) ex).getStatus());
