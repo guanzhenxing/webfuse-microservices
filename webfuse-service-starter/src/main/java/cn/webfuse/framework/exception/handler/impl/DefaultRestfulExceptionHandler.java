@@ -1,6 +1,7 @@
 package cn.webfuse.framework.exception.handler.impl;
 
 
+import cn.webfuse.framework.config.WebMvcAutoConfig;
 import cn.webfuse.framework.exception.handler.RestfulError;
 import cn.webfuse.framework.exception.handler.RestfulErrorConverter;
 import cn.webfuse.framework.exception.handler.RestfulErrorResolver;
@@ -18,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  * https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/bind/annotation/ExceptionHandler.html
  */
 @RestControllerAdvice
-@ConditionalOnProperty(prefix = "webfuse.mvc", name = "restful-exception-handle.enabled", matchIfMissing = true)
+@ConditionalOnProperty(prefix = WebMvcAutoConfig.PROPERTIES_PREFIX, name = "restful-exception-handle.enabled", matchIfMissing = true)
 public class DefaultRestfulExceptionHandler {
 
     /**

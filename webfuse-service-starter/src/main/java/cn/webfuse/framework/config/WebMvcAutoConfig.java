@@ -29,7 +29,7 @@ import java.util.Map;
 @ServletComponentScan(basePackages = "cn.webfuse")
 public class WebMvcAutoConfig {
 
-    private static final String PROPERTIES_PREFIX = "webfuse.mvc";
+    public static final String PROPERTIES_PREFIX = "webfuse.mvc";
 
     @Autowired
     private WebMvcProperties webMvcProperties;
