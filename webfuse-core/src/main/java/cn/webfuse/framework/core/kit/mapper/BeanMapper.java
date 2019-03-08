@@ -87,15 +87,19 @@ public class BeanMapper {
 
         List<Field> fieldList = FieldUtils.getAllFieldsList(source.getClass());
         fieldList.stream().forEach(field -> {
-            if (ignoreParent) { //是否需要父类的字段
-                if (field.getDeclaringClass() != source.getClass()) {   //如果不是本类，下一个
+            //是否需要父类的字段
+            if (ignoreParent) {
+                //如果不是本类，下一个
+                if (field.getDeclaringClass() != source.getClass()) {
                     return;
                 }
             }
-            field.setAccessible(true);  //设置为可以访问
+            //设置为可以访问
+            field.setAccessible(true);
             T value = ReflectionKits.getFieldValue(source, field);
 
-            if (ignoreEmptyValue && value == null) {    //如果过滤掉空以及字段值为空
+            //如果过滤掉空以及字段值为空
+            if (ignoreEmptyValue && value == null) {
                 return;
             }
 
