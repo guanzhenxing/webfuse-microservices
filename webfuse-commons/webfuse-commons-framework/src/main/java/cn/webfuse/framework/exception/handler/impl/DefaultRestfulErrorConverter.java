@@ -1,9 +1,8 @@
-package cn.webfuse.framework.exception.handler;
+package cn.webfuse.framework.exception.handler.impl;
 
+import cn.webfuse.framework.exception.handler.RestfulError;
+import cn.webfuse.framework.exception.handler.RestfulErrorConverter;
 import org.apache.commons.lang3.StringUtils;
-
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 默认的RestfulError转换器，默认转换为Map。也就是在这里输出异常的格式。<br/>
@@ -16,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * host_id: 服务器实例ID(如果有)<br/>
  * document: 错误解决的文档(如果有)<br/>
  */
-public class DefaultRestfulErrorConverter implements RestfulErrorConverter<Map> {
+public class DefaultRestfulErrorConverter implements RestfulErrorConverter<DefaultRestfulErrorVO> {
 
     private String codeKey = "code";
     private String messageKey = "message";
@@ -24,19 +23,13 @@ public class DefaultRestfulErrorConverter implements RestfulErrorConverter<Map> 
     private String developerMessageKey = "developer_message";
 
     @Override
-    public Map convert(RestfulError restfulError) {
-
-        Map<String, Object> map = new ConcurrentHashMap<>();
-        map.put(getCodeKey(), restfulError.getCode());
-        map.put(getServerTimeKey(), restfulError.getServerTime());
-
-        if (!StringUtils.isEmpty(restfulError.getMessage())) {
-            map.put(getMessageKey(), restfulError.getMessage());
-        }
-        if (!StringUtils.isEmpty(developerMessageKey)) {
-            map.put(getDeveloperMessageKey(), restfulError.getDeveloperMessage());
-        }
-        return map;
+    public DefaultRestfulErrorVO convert(RestfulError restfulError) {
+        DefaultRestfulErrorVO vo = new DefaultRestfulErrorVO();
+        vo.setCode(restfulError.getCode());
+        vo.setServerTime(restfulError.getServerTime());
+        vo.setMessage(restfulError.getMessage());
+        vo.setDeveloperMessage(restfulError.getDeveloperMessage());
+        return vo;
     }
 
 

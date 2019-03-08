@@ -1,5 +1,7 @@
 package cn.webfuse.framework.exception.handler;
 
+import cn.webfuse.framework.exception.handler.impl.DefaultRestfulErrorConverter;
+import cn.webfuse.framework.exception.handler.impl.DefaultRestfulErrorResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
@@ -31,8 +33,14 @@ public class HandlerRestfulExceptionResolver extends AbstractHandlerExceptionRes
     private List<HttpMessageConverter<?>> allMessageConverters = null;
 
     private HttpMessageConverter<?>[] messageConverters = null;
-    private RestfulErrorConverter<?> restfulErrorConverter; //RestfulError错误转换器
-    private RestfulErrorResolver restfulErrorResolver;  //RestfulError错误解析器
+    /**
+     * RestfulError错误转换器
+     */
+    private RestfulErrorConverter<?> restfulErrorConverter;
+    /**
+     * RestfulError错误解析器
+     */
+    private RestfulErrorResolver restfulErrorResolver;
 
     public HandlerRestfulExceptionResolver() {
         this.restfulErrorConverter = new DefaultRestfulErrorConverter();
@@ -44,7 +52,9 @@ public class HandlerRestfulExceptionResolver extends AbstractHandlerExceptionRes
         ensureMessageConverters();
     }
 
-    //获得所有的MessageConverters
+    /**
+     * 获得所有的MessageConverters
+     */
     private void ensureMessageConverters() {
         List<HttpMessageConverter<?>> converters = new ArrayList<>();
         if (this.messageConverters != null && this.messageConverters.length > 0) {
@@ -54,7 +64,9 @@ public class HandlerRestfulExceptionResolver extends AbstractHandlerExceptionRes
         this.allMessageConverters = converters;
     }
 
-    //继承自WebMvcConfigurationSupport，在SpringMVC默认的MessageConverters基础上添加自定义的MessageConverters
+    /**
+     * 继承自WebMvcConfigurationSupport，在SpringMVC默认的MessageConverters基础上添加自定义的MessageConverters
+     */
     private static final class HttpMessageConverterHelper extends WebMvcConfigurationSupport {
         public void addDefaultMessageConverters(List<HttpMessageConverter<?>> converters) {
             addDefaultHttpMessageConverters(converters);
@@ -64,7 +76,8 @@ public class HandlerRestfulExceptionResolver extends AbstractHandlerExceptionRes
     @Override
     protected ModelAndView doResolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
         RestfulErrorResolver resolver = getRestfulErrorResolver();
-        RestfulError restfulError = resolver.resolveError(request, response, handler, ex);  //获得RestfulError实例
+        //获得RestfulError实例
+        RestfulError restfulError = resolver.resolveError(request, response, handler, ex);
         if (restfulError == null) {
             return null;
         }
@@ -82,7 +95,8 @@ public class HandlerRestfulExceptionResolver extends AbstractHandlerExceptionRes
         Object body = restfulError;
         RestfulErrorConverter converter = getRestfulErrorConverter();
         if (converter != null) {
-            body = converter.convert(restfulError); //转换成对应的返回
+            //转换成对应的返回
+            body = converter.convert(restfulError);
         }
         return handleResponseBody(body, request, response);
     }
@@ -102,7 +116,8 @@ public class HandlerRestfulExceptionResolver extends AbstractHandlerExceptionRes
         if (converters != null) {
             for (MediaType acceptedMediaType : acceptedMediaTypes) {
                 for (HttpMessageConverter messageConverter : converters) {
-                    if (messageConverter.canWrite(bodyType, acceptedMediaType)) {   //如果能够使用对应的格式输出的话
+                    //如果能够使用对应的格式输出的话
+                    if (messageConverter.canWrite(bodyType, acceptedMediaType)) {
                         messageConverter.write(body, acceptedMediaType, outputMessage);
                         return new ModelAndView();
                     }

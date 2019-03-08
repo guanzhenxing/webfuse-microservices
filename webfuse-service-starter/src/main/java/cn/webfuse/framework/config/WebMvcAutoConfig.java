@@ -1,7 +1,7 @@
 package cn.webfuse.framework.config;
 
 import cn.webfuse.framework.core.kit.mapper.JsonMapper;
-import cn.webfuse.framework.exception.handler.DefaultRestfulErrorResolver;
+import cn.webfuse.framework.exception.handler.impl.DefaultRestfulErrorResolver;
 import cn.webfuse.framework.exception.handler.HandlerRestfulExceptionResolver;
 import cn.webfuse.framework.web.method.SnakeToCamelServletModelAttributeMethodProcessor;
 import cn.webfuse.framework.web.version.ApiVersionRequestMappingHandlerMapping;

@@ -1,7 +1,9 @@
-package cn.webfuse.framework.exception.handler;
+package cn.webfuse.framework.exception.handler.impl;
 
 import cn.webfuse.framework.core.exception.AbstractBizException;
 import cn.webfuse.framework.core.kit.mapper.JsonMapper;
+import cn.webfuse.framework.exception.handler.RestfulError;
+import cn.webfuse.framework.exception.handler.RestfulErrorResolver;
 import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
