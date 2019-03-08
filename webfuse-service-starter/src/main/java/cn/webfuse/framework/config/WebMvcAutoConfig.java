@@ -73,7 +73,6 @@ public class WebMvcAutoConfig {
     /**
      * 异常处理解析器
      */
-
     @Bean
     @ConditionalOnProperty(prefix = PROPERTIES_PREFIX, name = "restful-exception-handle.enabled", matchIfMissing = true)
     public RestfulErrorResolver defaultRestfulErrorResolver() {
@@ -121,7 +120,8 @@ public class WebMvcAutoConfig {
      */
     @Bean
     public LocaleResolver localeResolver() {
-        return new AcceptHeaderLocaleResolver();    //通过检验HTTP请求的accept-language头部来解析区域。
+        //通过检验HTTP请求的accept-language头部来解析区域。
+        return new AcceptHeaderLocaleResolver();
     }
 
 

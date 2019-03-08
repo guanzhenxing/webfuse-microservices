@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * https://www.cnblogs.com/raichen/p/8371867.html
+ * <p>
+ * https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/bind/annotation/ExceptionHandler.html
+ */
 @RestControllerAdvice
 @ConditionalOnProperty(prefix = "webfuse.mvc", name = "restful-exception-handle.enabled", matchIfMissing = true)
 public class DefaultRestfulExceptionHandler {
