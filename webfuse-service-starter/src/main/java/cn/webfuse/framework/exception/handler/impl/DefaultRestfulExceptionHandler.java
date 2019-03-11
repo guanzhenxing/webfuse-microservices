@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * 采用这样的方式，不需要再在配置文件中进行配置
+ * <p>
  * https://www.cnblogs.com/raichen/p/8371867.html
  * <p>
  * https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/bind/annotation/ExceptionHandler.html
@@ -36,7 +38,7 @@ public class DefaultRestfulExceptionHandler {
     @ExceptionHandler(Exception.class)
     public DefaultRestfulErrorVO handleException(Exception ex, HttpServletRequest request, HttpServletResponse response) {
         //获得RestfulError实例
-        RestfulError restfulError = defaultRestfulErrorResolver.resolveError(request, response, ex);
+        RestfulError restfulError = defaultRestfulErrorResolver.resolveError(request, response, null, ex);
         if (restfulError == null) {
             return null;
         }
