@@ -1,6 +1,7 @@
 package cn.webfuse.framework.web.filter;
 
 import cn.webfuse.framework.kit.HttpServletKits;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -25,7 +26,13 @@ public class RequestIdSettingFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
         RequestIdSettingRequestWrapper requestWrapper = new RequestIdSettingRequestWrapper((HttpServletRequest) servletRequest);
-        requestWrapper.addHeader("X-Request-Id", HttpServletKits.buildRequestId());
+
+        String xRequestId = ((HttpServletRequest) servletRequest).getHeader("X-Request-Id");
+        //如果还没有X-Request-Id，则进行设置
+        if (StringUtils.isEmpty(xRequestId)) {
+            requestWrapper.addHeader("X-Request-Id", HttpServletKits.buildRequestId());
+        }
+
         filterChain.doFilter(requestWrapper, servletResponse);
     }
 
