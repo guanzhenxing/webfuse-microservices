@@ -4,6 +4,7 @@ import cn.webfuse.framework.core.exception.AbstractBizException;
 import cn.webfuse.framework.core.kit.mapper.JsonMapper;
 import cn.webfuse.framework.exception.handler.RestfulError;
 import cn.webfuse.framework.exception.handler.RestfulErrorResolver;
+import cn.webfuse.framework.kit.LocalIpAddressKits;
 import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -41,7 +42,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class DefaultRestfulErrorResolver implements RestfulErrorResolver, MessageSourceAware, InitializingBean {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(DefaultRestfulErrorResolver.class);
+    private Logger logger = LoggerFactory.getLogger(DefaultRestfulErrorResolver.class);
 
     public static final String DEFAULT_MESSAGE_VALUE = "";
     public static final String DEFAULT_EXCEPTION_MESSAGE_VALUE = "";
@@ -66,8 +67,14 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
     private MessageSource messageSource;
     private LocaleResolver localeResolver;
 
+    private String defaultDocument;
+
     public DefaultRestfulErrorResolver() {
         this.defaultPrefixCode = "";
+    }
+
+    public void setDefaultDocument(String defaultDocument) {
+        this.defaultDocument = defaultDocument;
     }
 
     @Override
@@ -90,6 +97,10 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
         builder.setCode(getCode(template));
         builder.setMessage(getMessage(template, request));
         builder.setDeveloperMessage(getDeveloperMessage(template, request));
+        builder.setRequestId(getRequestId(request));
+        builder.setHostId(getHostId());
+        builder.setDocument(getDocument(template));
+
 
         return builder.build();
     }
@@ -225,11 +236,17 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
             developerMessage = DEFAULT_EXCEPTION_MESSAGE_VALUE;
         }
 
+        String document = error.get("document");
+        if (StringUtils.isEmpty(document)) {
+            document = this.defaultDocument;
+        }
+
         RestfulError.Builder builder = new RestfulError.Builder();
         builder.setCode(code);
         builder.setMessage(message);
         builder.setStatus(httpStatus);
         builder.setDeveloperMessage(developerMessage);
+        builder.setDocument(document);
 
         return builder.build();
     }
@@ -301,6 +318,7 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
         builder.setMessage(message);
         builder.setDeveloperMessage(developerMessage);
         builder.setThrowable(ex);
+        builder.setDocument(this.defaultDocument);
 
         return builder.build();
     }
@@ -338,6 +356,20 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
         }
         return message;
     }
+
+    private String getDocument(RestfulError template) {
+        return template.getDocument();
+    }
+
+
+    private String getHostId() {
+        return LocalIpAddressKits.getLocalAddress();
+    }
+
+    private String getRequestId(HttpServletRequest request) {
+        return request.getHeader("X-Request-Id");
+    }
+
 
     public void setExceptionMappingDefinitions(Map<String, String> exceptionMappingDefinitions) {
         this.exceptionMappingDefinitions = exceptionMappingDefinitions;

@@ -5,6 +5,8 @@ import cn.webfuse.framework.config.WebMvcAutoConfig;
 import cn.webfuse.framework.exception.handler.RestfulError;
 import cn.webfuse.framework.exception.handler.RestfulErrorConverter;
 import cn.webfuse.framework.exception.handler.RestfulErrorResolver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -23,6 +25,12 @@ import javax.servlet.http.HttpServletResponse;
 @RestControllerAdvice
 @ConditionalOnProperty(prefix = WebMvcAutoConfig.PROPERTIES_PREFIX, name = "restful-exception-handle.enabled", matchIfMissing = true)
 public class DefaultRestfulExceptionHandler {
+
+    private Logger logger = LoggerFactory.getLogger(DefaultRestfulExceptionHandler.class);
+
+    public DefaultRestfulExceptionHandler() {
+        logger.info("========== Init DefaultRestfulExceptionHandler Success! ==========");
+    }
 
     /**
      * RestfulError错误转换器

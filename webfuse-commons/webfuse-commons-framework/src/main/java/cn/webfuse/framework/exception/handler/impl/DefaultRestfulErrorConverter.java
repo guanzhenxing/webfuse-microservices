@@ -17,10 +17,6 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class DefaultRestfulErrorConverter implements RestfulErrorConverter<DefaultRestfulErrorVO> {
 
-    private String codeKey = "code";
-    private String messageKey = "message";
-    private String serverTimeKey = "server_time";
-    private String developerMessageKey = "developer_message";
 
     @Override
     public DefaultRestfulErrorVO convert(RestfulError restfulError) {
@@ -29,41 +25,13 @@ public class DefaultRestfulErrorConverter implements RestfulErrorConverter<Defau
         vo.setServerTime(restfulError.getServerTime());
         vo.setMessage(restfulError.getMessage());
         vo.setDeveloperMessage(restfulError.getDeveloperMessage());
+        vo.setHostId(restfulError.getHostId());
+        vo.setRequestId(restfulError.getRequestId());
+        vo.setDocument(restfulError.getDocument());
+
         return vo;
     }
 
 
-    public String getCodeKey() {
-        return codeKey;
-    }
-
-    public void setCodeKey(String codeKey) {
-        this.codeKey = codeKey;
-    }
-
-    public String getMessageKey() {
-        return messageKey;
-    }
-
-    public void setMessageKey(String messageKey) {
-        this.messageKey = messageKey;
-    }
-
-    public String getServerTimeKey() {
-        return serverTimeKey;
-    }
-
-    public void setServerTimeKey(String serverTimeKey) {
-        this.serverTimeKey = serverTimeKey;
-    }
-
-
-    public String getDeveloperMessageKey() {
-        return developerMessageKey;
-    }
-
-    public void setDeveloperMessageKey(String developerMessageKey) {
-        this.developerMessageKey = developerMessageKey;
-    }
 }
 

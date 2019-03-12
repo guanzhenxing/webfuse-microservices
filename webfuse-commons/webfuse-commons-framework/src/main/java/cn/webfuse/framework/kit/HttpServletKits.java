@@ -8,10 +8,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.invoke.MethodHandles;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class HttpServletKits {
 
@@ -114,5 +112,18 @@ public class HttpServletKits {
         }
         return map;
     }
+
+
+    /**
+     * 获得requestId
+     * <p>
+     * 参考：https://segmentfault.com/a/1190000002916843
+     *
+     * @return request id
+     */
+    public static String buildRequestId() {
+        return UUID.randomUUID().toString();
+    }
+
 
 }

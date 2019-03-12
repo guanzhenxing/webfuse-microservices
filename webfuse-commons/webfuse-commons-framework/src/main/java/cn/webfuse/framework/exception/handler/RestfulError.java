@@ -1,5 +1,7 @@
 package cn.webfuse.framework.exception.handler;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
 import java.util.Date;
@@ -7,6 +9,8 @@ import java.util.Date;
 /**
  * Restful错误
  */
+@Getter
+@AllArgsConstructor
 public class RestfulError {
 
     private final HttpStatus status;
@@ -15,39 +19,10 @@ public class RestfulError {
     private final String developerMessage;
     private final Throwable throwable;
     private final Date serverTime = new Date();
+    private String requestId;
+    private String hostId;
+    private String document;
 
-
-    private RestfulError(HttpStatus status, String code, String message, String developerMessage, Throwable throwable) {
-        this.status = status;
-        this.code = code;
-        this.message = message;
-        this.developerMessage = developerMessage;
-        this.throwable = throwable;
-    }
-
-    public HttpStatus getStatus() {
-        return status;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public String getDeveloperMessage() {
-        return developerMessage;
-    }
-
-    public Throwable getThrowable() {
-        return throwable;
-    }
-
-    public Date getServerTime() {
-        return serverTime;
-    }
 
     public static class Builder {
         private HttpStatus status;
@@ -55,6 +30,9 @@ public class RestfulError {
         private String message;
         private String developerMessage;
         private Throwable throwable;
+        private String requestId;
+        private String hostId;
+        private String document;
 
         public Builder() {
         }
@@ -84,11 +62,26 @@ public class RestfulError {
             return this;
         }
 
+        public void setRequestId(String requestId) {
+            this.requestId = requestId;
+        }
+
+        public void setHostId(String hostId) {
+            this.hostId = hostId;
+        }
+
+        public void setDocument(String document) {
+            this.document = document;
+        }
+
         public RestfulError build() {
             if (this.status == null) {
                 this.status = HttpStatus.INTERNAL_SERVER_ERROR;
             }
-            return new RestfulError(this.status, this.code, this.message, this.developerMessage, this.throwable);
+            return new RestfulError(
+                    this.status, this.code, this.message, this.developerMessage, this.throwable,
+                    this.requestId, this.hostId, this.document
+            );
         }
 
     }
