@@ -289,6 +289,7 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
         HttpStatus httpStatus = restfulError.getStatus();
         String message = restfulError.getMessage();
         String developerMessage = restfulError.getDeveloperMessage();
+        String document = restfulError.getDocument();
 
         //如果异常继承于AbstractBizException时的处理
         if (ex instanceof AbstractBizException) {
@@ -311,6 +312,9 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
         if (StringUtils.isEmpty(developerMessage)) {
             developerMessage = ex.toString();
         }
+        if(StringUtils.isEmpty(document)){
+            document = this.defaultDocument;
+        }
 
         RestfulError.Builder builder = new RestfulError.Builder();
         builder.setStatus(httpStatus);
@@ -318,7 +322,7 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
         builder.setMessage(message);
         builder.setDeveloperMessage(developerMessage);
         builder.setThrowable(ex);
-        builder.setDocument(this.defaultDocument);
+        builder.setDocument(document);
 
         return builder.build();
     }

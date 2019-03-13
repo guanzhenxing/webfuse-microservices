@@ -43,9 +43,10 @@ public class DefaultHandlerRestfulExceptionResolver extends AbstractHandlerExcep
      */
     private RestfulErrorResolver restfulErrorResolver;
 
-    public DefaultHandlerRestfulExceptionResolver() {
-        this.restfulErrorConverter = new DefaultRestfulErrorConverter();
-        this.restfulErrorResolver = new DefaultRestfulErrorResolver();
+    public DefaultHandlerRestfulExceptionResolver(RestfulErrorConverter<?> restfulErrorConverter,
+                                                  RestfulErrorResolver restfulErrorResolver) {
+        this.restfulErrorConverter = restfulErrorConverter;
+        this.restfulErrorResolver = restfulErrorResolver;
     }
 
     @Override

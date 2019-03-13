@@ -1,10 +1,18 @@
 package cn.webfuse.framework.exception.handler.impl;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Date;
 
 /**
  * RestfulError的返回信息
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class DefaultRestfulErrorVO {
 
     /**
@@ -37,77 +45,8 @@ public class DefaultRestfulErrorVO {
     /**
      * 错误解决的文档(如果有)
      */
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private String document;
 
-    public DefaultRestfulErrorVO() {
 
-    }
-
-    public DefaultRestfulErrorVO(String code, String message, String developerMessage,
-                                 Date serverTime, String requestId, String hostId,
-                                 String document) {
-        this.code = code;
-        this.message = message;
-        this.developerMessage = developerMessage;
-        this.serverTime = serverTime;
-        this.requestId = requestId;
-        this.hostId = hostId;
-        this.document = document;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public String getDeveloperMessage() {
-        return developerMessage;
-    }
-
-    public void setDeveloperMessage(String developerMessage) {
-        this.developerMessage = developerMessage;
-    }
-
-    public Date getServerTime() {
-        return serverTime;
-    }
-
-    public void setServerTime(Date serverTime) {
-        this.serverTime = serverTime;
-    }
-
-    public String getRequestId() {
-        return requestId;
-    }
-
-    public void setRequestId(String requestId) {
-        this.requestId = requestId;
-    }
-
-    public String getHostId() {
-        return hostId;
-    }
-
-    public void setHostId(String hostId) {
-        this.hostId = hostId;
-    }
-
-    public String getDocument() {
-        return document;
-    }
-
-    public void setDocument(String document) {
-        this.document = document;
-    }
 }

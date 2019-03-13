@@ -79,6 +79,8 @@ public class WebMvcAutoConfig {
         DefaultRestfulErrorResolver defaultRestfulErrorResolver = new DefaultRestfulErrorResolver();
         defaultRestfulErrorResolver.setLocaleResolver(localeResolver());
         defaultRestfulErrorResolver.setExceptionMappingDefinitions(getExceptionMappingDefinitions());
+        //设置默认的错误文档
+        defaultRestfulErrorResolver.setDefaultDocument(webMvcProperties.getRestfulExceptionHandle().getDefaultDocument());
 
         return defaultRestfulErrorResolver;
     }

@@ -28,7 +28,6 @@ public class DefaultRestfulErrorConverter implements RestfulErrorConverter<Defau
         vo.setHostId(restfulError.getHostId());
         vo.setRequestId(restfulError.getRequestId());
         vo.setDocument(restfulError.getDocument());
-
         return vo;
     }
 

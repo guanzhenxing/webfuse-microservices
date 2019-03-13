@@ -52,6 +52,11 @@ public class WebMvcProperties {
         private boolean enabled = true;
 
         /**
+         * 默认的错误文档
+         */
+        private String defaultDocument;
+
+        /**
          * 异常处理匹配
          */
         private List<Mapping> mappings = new ArrayList<>();
@@ -64,6 +69,7 @@ public class WebMvcProperties {
             private String code = "INTERNAL SERVER ERROR";
             private String message = "";
             private String developerMessage = "";
+            private String document = "";
         }
 
     }
