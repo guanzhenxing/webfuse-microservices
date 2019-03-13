@@ -37,12 +37,14 @@ public class DefaultRestfulErrorVO {
     /**
      * 请求的ID(如果有)
      */
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private String requestId;
 
     /**
      * 服务器实例ID(如果有)
      */
     private String hostId;
+
     /**
      * 错误解决的文档(如果有)
      */
