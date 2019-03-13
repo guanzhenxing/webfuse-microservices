@@ -57,6 +57,11 @@ public class WebMvcProperties {
         private String defaultDocument;
 
         /**
+         * 显示开发者错误信息
+         */
+        private boolean showDeveloperMessage = false;
+
+        /**
          * 异常处理匹配
          */
         private List<Mapping> mappings = new ArrayList<>();

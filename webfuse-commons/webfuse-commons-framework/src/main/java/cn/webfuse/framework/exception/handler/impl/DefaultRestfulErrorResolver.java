@@ -68,6 +68,7 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
     private LocaleResolver localeResolver;
 
     private String defaultDocument;
+    private boolean showDeveloperMessage;
 
     public DefaultRestfulErrorResolver() {
         this.defaultPrefixCode = "";
@@ -75,6 +76,10 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
 
     public void setDefaultDocument(String defaultDocument) {
         this.defaultDocument = defaultDocument;
+    }
+
+    public void setShowDeveloperMessage(boolean showDeveloperMessage) {
+        this.showDeveloperMessage = showDeveloperMessage;
     }
 
     @Override
@@ -96,10 +101,12 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
         builder.setStatus(getStatus(template));
         builder.setCode(getCode(template));
         builder.setMessage(getMessage(template, request));
-        builder.setDeveloperMessage(getDeveloperMessage(template, request));
         builder.setRequestId(getRequestId(request));
         builder.setHostId(getHostId());
         builder.setDocument(getDocument(template));
+        if (showDeveloperMessage) {
+            builder.setDeveloperMessage(getDeveloperMessage(template, request));
+        }
 
 
         return builder.build();
@@ -312,11 +319,12 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
         if (StringUtils.isEmpty(developerMessage)) {
             developerMessage = ex.toString();
         }
-        if(StringUtils.isEmpty(document)){
+        if (StringUtils.isEmpty(document)) {
             document = this.defaultDocument;
         }
 
         RestfulError.Builder builder = new RestfulError.Builder();
+
         builder.setStatus(httpStatus);
         builder.setCode(code);
         builder.setMessage(message);

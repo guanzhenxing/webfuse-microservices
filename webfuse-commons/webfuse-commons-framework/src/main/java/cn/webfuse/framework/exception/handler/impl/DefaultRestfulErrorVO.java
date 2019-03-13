@@ -26,6 +26,7 @@ public class DefaultRestfulErrorVO {
     /**
      * 开发者信息
      */
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private String developerMessage;
 
     /**

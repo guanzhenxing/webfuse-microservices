@@ -25,3 +25,6 @@ spring:
       charset: UTF-8
       enabled: true
       force: true
+  mvc:
+    favicon:
+      enabled: false

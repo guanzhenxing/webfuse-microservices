@@ -81,6 +81,7 @@ public class WebMvcAutoConfig {
         defaultRestfulErrorResolver.setExceptionMappingDefinitions(getExceptionMappingDefinitions());
         //设置默认的错误文档
         defaultRestfulErrorResolver.setDefaultDocument(webMvcProperties.getRestfulExceptionHandle().getDefaultDocument());
+        defaultRestfulErrorResolver.setShowDeveloperMessage(webMvcProperties.getRestfulExceptionHandle().isShowDeveloperMessage());
 
         return defaultRestfulErrorResolver;
     }
