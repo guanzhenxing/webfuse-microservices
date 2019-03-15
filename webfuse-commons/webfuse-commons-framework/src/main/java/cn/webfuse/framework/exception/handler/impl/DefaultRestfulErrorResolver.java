@@ -40,7 +40,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 默认的RestfulError解析器。
  */
-public class DefaultRestfulErrorResolver implements RestfulErrorResolver, MessageSourceAware, InitializingBean {
+public class DefaultRestfulErrorResolver implements RestfulErrorResolver, MessageSourceAware {
 
     private Logger logger = LoggerFactory.getLogger(DefaultRestfulErrorResolver.class);
 
@@ -72,6 +72,7 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
 
     public DefaultRestfulErrorResolver() {
         this.defaultPrefixCode = "";
+        this.afterPropertiesSet();
     }
 
     public void setDefaultDocument(String defaultDocument) {
@@ -113,8 +114,7 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
     }
 
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
+    private void afterPropertiesSet() {
         Map<String, String> definitions = createDefaultExceptionMappingDefinitions();
         if (this.exceptionMappingDefinitions != null && !this.exceptionMappingDefinitions.isEmpty()) {
             definitions.putAll(this.exceptionMappingDefinitions);

@@ -1,11 +1,10 @@
 package cn.webfuse.framework.config;
 
 import cn.webfuse.framework.core.kit.mapper.JsonMapper;
-import cn.webfuse.framework.exception.handler.RestfulErrorConverter;
-import cn.webfuse.framework.exception.handler.RestfulErrorResolver;
 import cn.webfuse.framework.exception.handler.impl.DefaultRestfulErrorController;
 import cn.webfuse.framework.exception.handler.impl.DefaultRestfulErrorConverter;
 import cn.webfuse.framework.exception.handler.impl.DefaultRestfulErrorResolver;
+import cn.webfuse.framework.exception.handler.impl.DefaultRestfulExceptionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -78,22 +77,24 @@ public class ErrorMvcAutoConfig {
      */
     @Bean
     @ConditionalOnProperty(prefix = PROPERTIES_PREFIX, name = "restful-exception-handle.enabled", matchIfMissing = true)
-    public RestfulErrorResolver defaultRestfulErrorResolver() {
+    public DefaultRestfulExceptionHandler defaultHandlerRestfulExceptionResolver() {
+
         DefaultRestfulErrorResolver defaultRestfulErrorResolver = new DefaultRestfulErrorResolver();
         defaultRestfulErrorResolver.setLocaleResolver(localeResolver());
         defaultRestfulErrorResolver.setExceptionMappingDefinitions(getExceptionMappingDefinitions());
-        //设置默认的错误文档
         defaultRestfulErrorResolver.setDefaultDocument(webMvcProperties.getRestfulExceptionHandle().getDefaultDocument());
         defaultRestfulErrorResolver.setShowDeveloperMessage(webMvcProperties.getRestfulExceptionHandle().isShowDeveloperMessage());
 
-        return defaultRestfulErrorResolver;
+        DefaultRestfulErrorConverter defaultRestfulErrorConverter = new DefaultRestfulErrorConverter();
+
+
+        DefaultRestfulExceptionHandler handlerRestfulExceptionResolver =
+                new DefaultRestfulExceptionHandler(defaultRestfulErrorConverter, defaultRestfulErrorResolver);
+        handlerRestfulExceptionResolver.setOrder(-1);
+
+        return handlerRestfulExceptionResolver;
     }
 
-    @Bean
-    @ConditionalOnProperty(prefix = PROPERTIES_PREFIX, name = "restful-exception-handle.enabled", matchIfMissing = true)
-    public RestfulErrorConverter defaultRestfulErrorConverter() {
-        return new DefaultRestfulErrorConverter();
-    }
 
     private Map<String, String> getExceptionMappingDefinitions() {
         Map<String, String> exceptionMappingDefinitions = new HashMap<>();

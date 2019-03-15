@@ -6,6 +6,7 @@ import cn.webfuse.framework.exception.handler.RestfulErrorResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.MediaType;
@@ -25,11 +26,11 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Restful异常处理分析器，需要再在配置文件中进行配置。当前并没有需要
+ * Restful异常处理分析器，需要再在配置文件中进行配置。
  */
-public class DefaultHandlerRestfulExceptionResolver extends AbstractHandlerExceptionResolver implements InitializingBean {
+public class DefaultRestfulExceptionHandler extends AbstractHandlerExceptionResolver implements InitializingBean {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(DefaultHandlerRestfulExceptionResolver.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(DefaultRestfulExceptionHandler.class);
 
     private List<HttpMessageConverter<?>> allMessageConverters = null;
 
@@ -38,15 +39,17 @@ public class DefaultHandlerRestfulExceptionResolver extends AbstractHandlerExcep
      * RestfulError错误转换器
      */
     private RestfulErrorConverter<?> restfulErrorConverter;
+
     /**
      * RestfulError错误解析器
      */
     private RestfulErrorResolver restfulErrorResolver;
 
-    public DefaultHandlerRestfulExceptionResolver(RestfulErrorConverter<?> restfulErrorConverter,
-                                                  RestfulErrorResolver restfulErrorResolver) {
+    public DefaultRestfulExceptionHandler(RestfulErrorConverter<?> restfulErrorConverter, RestfulErrorResolver restfulErrorResolver) {
         this.restfulErrorConverter = restfulErrorConverter;
         this.restfulErrorResolver = restfulErrorResolver;
+
+        LOGGER.info("++++++++++++++++++++");
     }
 
     @Override
@@ -135,6 +138,7 @@ public class DefaultHandlerRestfulExceptionResolver extends AbstractHandlerExcep
 
     public void setMessageConverters(HttpMessageConverter<?>[] messageConverters) {
         this.messageConverters = messageConverters;
+        ensureMessageConverters();
     }
 
     public void setRestfulErrorConverter(RestfulErrorConverter<?> restfulErrorConverter) {
