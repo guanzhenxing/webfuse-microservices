@@ -19,6 +19,7 @@
         <module>webfuse-data-activerecord</module>
         <module>webfuse-data-mongo</module>
         <module>webfuse-data-dynamic-sql</module>
+        <module>webfuse-data-redis</module>
     </modules>
 
 
