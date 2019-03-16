@@ -1,4 +1,4 @@
-package cn.webfuse.framework.exception.handler.impl;
+package cn.webfuse.framework.exception.handle.impl;
 
 import cn.webfuse.framework.kit.LocalIpAddressKits;
 import org.springframework.boot.autoconfigure.web.ErrorProperties;

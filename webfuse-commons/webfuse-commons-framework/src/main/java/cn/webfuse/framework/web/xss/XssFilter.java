@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * 防止XSS攻击的过滤器
  */
-@WebFilter(filterName = "xssFilter", value = "/**")
+@WebFilter(filterName = "xssFilter", value = "/**", asyncSupported = true)
 public class XssFilter extends AbstractBaseFilter {
 
     private FilterConfig filterConfig = null;
@@ -27,7 +27,7 @@ public class XssFilter extends AbstractBaseFilter {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         String servletPath = httpServletRequest.getServletPath();
 
-        if (urlExclusion != null && urlExclusion.contains(servletPath)) {
+        if (getUrlExclusion() != null && getUrlExclusion().contains(servletPath)) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
             filterChain.doFilter(new XssHttpServletRequestWrapper((HttpServletRequest) servletRequest), servletResponse);

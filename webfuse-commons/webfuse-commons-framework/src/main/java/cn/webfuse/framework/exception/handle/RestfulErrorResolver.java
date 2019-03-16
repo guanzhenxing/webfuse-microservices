@@ -1,4 +1,4 @@
-package cn.webfuse.framework.exception.handler;
+package cn.webfuse.framework.exception.handle;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

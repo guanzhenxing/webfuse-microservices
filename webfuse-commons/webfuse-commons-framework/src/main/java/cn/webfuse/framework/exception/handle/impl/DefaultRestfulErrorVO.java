@@ -1,4 +1,4 @@
-package cn.webfuse.framework.exception.handler.impl;
+package cn.webfuse.framework.exception.handle.impl;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;

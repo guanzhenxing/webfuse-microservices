@@ -1,12 +1,11 @@
-package cn.webfuse.framework.exception.handler.impl;
+package cn.webfuse.framework.exception.handle.impl;
 
-import cn.webfuse.framework.exception.handler.RestfulError;
-import cn.webfuse.framework.exception.handler.RestfulErrorConverter;
-import cn.webfuse.framework.exception.handler.RestfulErrorResolver;
+import cn.webfuse.framework.exception.handle.RestfulError;
+import cn.webfuse.framework.exception.handle.RestfulErrorConverter;
+import cn.webfuse.framework.exception.handle.RestfulErrorResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.MediaType;

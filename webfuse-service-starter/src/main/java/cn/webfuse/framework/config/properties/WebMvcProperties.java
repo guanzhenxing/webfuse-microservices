@@ -1,4 +1,4 @@
-package cn.webfuse.framework.config;
+package cn.webfuse.framework.config.properties;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

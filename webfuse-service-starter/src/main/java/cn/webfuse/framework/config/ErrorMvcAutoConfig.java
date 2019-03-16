@@ -1,10 +1,11 @@
 package cn.webfuse.framework.config;
 
+import cn.webfuse.framework.config.properties.WebMvcProperties;
 import cn.webfuse.framework.core.kit.mapper.JsonMapper;
-import cn.webfuse.framework.exception.handler.impl.DefaultRestfulErrorController;
-import cn.webfuse.framework.exception.handler.impl.DefaultRestfulErrorConverter;
-import cn.webfuse.framework.exception.handler.impl.DefaultRestfulErrorResolver;
-import cn.webfuse.framework.exception.handler.impl.DefaultRestfulExceptionHandler;
+import cn.webfuse.framework.exception.handle.impl.DefaultRestfulErrorController;
+import cn.webfuse.framework.exception.handle.impl.DefaultRestfulErrorConverter;
+import cn.webfuse.framework.exception.handle.impl.DefaultRestfulErrorResolver;
+import cn.webfuse.framework.exception.handle.impl.DefaultRestfulExceptionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;

@@ -14,11 +14,13 @@
     <name>webfuse-commons-framework</name>
 
     <dependencies>
+        <!--  for webfuse-core -->
         <dependency>
             <groupId>cn.webfuse</groupId>
             <artifactId>webfuse-core</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <!-- for basic spring-boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -27,22 +29,20 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-        </dependency>
+        <!-- for spring-boot-actuator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <!-- for spring-boot-web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!-- for spring-boot-configuration -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
+            <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -54,6 +54,13 @@
             <artifactId>spring-boot-autoconfigure-processor</artifactId>
             <optional>true</optional>
         </dependency>
+        <!-- for develop -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!-- for test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

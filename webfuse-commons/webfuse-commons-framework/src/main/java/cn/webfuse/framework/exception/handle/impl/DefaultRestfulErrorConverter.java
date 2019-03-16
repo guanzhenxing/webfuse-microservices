@@ -1,8 +1,7 @@
-package cn.webfuse.framework.exception.handler.impl;
+package cn.webfuse.framework.exception.handle.impl;
 
-import cn.webfuse.framework.exception.handler.RestfulError;
-import cn.webfuse.framework.exception.handler.RestfulErrorConverter;
-import org.apache.commons.lang3.StringUtils;
+import cn.webfuse.framework.exception.handle.RestfulError;
+import cn.webfuse.framework.exception.handle.RestfulErrorConverter;
 
 /**
  * 默认的RestfulError转换器，默认转换为Map。也就是在这里输出异常的格式。<br/>

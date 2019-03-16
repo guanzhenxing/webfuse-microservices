@@ -1,4 +1,4 @@
-package cn.webfuse.framework.exception.handler;
+package cn.webfuse.framework.exception.handle;
 
 
 import org.springframework.core.convert.converter.Converter;

@@ -1,9 +1,9 @@
-package cn.webfuse.framework.exception.handler.impl;
+package cn.webfuse.framework.exception.handle.impl;
 
 import cn.webfuse.framework.core.exception.AbstractBizException;
 import cn.webfuse.framework.core.kit.mapper.JsonMapper;
-import cn.webfuse.framework.exception.handler.RestfulError;
-import cn.webfuse.framework.exception.handler.RestfulErrorResolver;
+import cn.webfuse.framework.exception.handle.RestfulError;
+import cn.webfuse.framework.exception.handle.RestfulErrorResolver;
 import cn.webfuse.framework.kit.LocalIpAddressKits;
 import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -11,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.ConversionNotSupportedException;
 import org.springframework.beans.TypeMismatchException;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.MessageSource;
 import org.springframework.context.MessageSourceAware;
 import org.springframework.context.i18n.LocaleContextHolder;
