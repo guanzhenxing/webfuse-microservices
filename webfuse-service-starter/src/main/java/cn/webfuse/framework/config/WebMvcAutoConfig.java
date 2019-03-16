@@ -3,6 +3,7 @@ package cn.webfuse.framework.config;
 import cn.webfuse.framework.config.properties.WebMvcProperties;
 import cn.webfuse.framework.web.method.SnakeToCamelServletModelAttributeMethodProcessor;
 import cn.webfuse.framework.web.version.ApiVersionRequestMappingHandlerMapping;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcRegistrations;
@@ -10,11 +11,15 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.servlet.config.annotation.CorsRegistration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import java.util.List;
+import java.util.Map;
 
 @Configuration
 @EnableConfigurationProperties(WebMvcProperties.class)
@@ -58,6 +63,34 @@ public class WebMvcAutoConfig {
                 ApiVersionRequestMappingHandlerMapping mapping = new ApiVersionRequestMappingHandlerMapping();
                 mapping.setVersionPrefix(webMvcProperties.getApiVersion().getPrefix());
                 return mapping;
+            }
+        };
+    }
+
+    @Bean
+    @ConditionalOnProperty(prefix = PROPERTIES_PREFIX, name = "cors.enabled", matchIfMissing = true)
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                Map<String, WebMvcProperties.Cors.RegistrationConfig> configMap = webMvcProperties.getCors().getRegistrationConfig();
+                if (!CollectionUtils.isEmpty(configMap)) {
+                    configMap.forEach((key, config) -> {
+                        CorsRegistration corsRegistration = registry.addMapping(config.getMapping());
+                        if (config.getAllowCredentials() != null) {
+                            corsRegistration.allowCredentials(config.getAllowCredentials());
+                        }
+                        if (StringUtils.isNotBlank(config.getAllowedOrigins())) {
+                            corsRegistration.allowedOrigins(config.getAllowedOrigins().split(","));
+                        }
+                        if (StringUtils.isNotBlank(config.getAllowedMethods())) {
+                            corsRegistration.allowedMethods(config.getAllowedMethods().split(","));
+                        }
+                        if (StringUtils.isNotBlank(config.getAllowedHeaders())) {
+                            corsRegistration.allowedHeaders(config.getAllowedHeaders().split(","));
+                        }
+                    });
+                }
             }
         };
     }

@@ -6,6 +6,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * webfuse框架mvc的基本配置
@@ -28,6 +30,11 @@ public class WebMvcProperties {
      * Restful异常处理
      */
     private RestfulExceptionHandle restfulExceptionHandle = new RestfulExceptionHandle();
+
+    /**
+     * cors
+     */
+    private Cors cors = new Cors();
 
     @Data
     @NoArgsConstructor
@@ -80,4 +87,49 @@ public class WebMvcProperties {
     }
 
 
+    @Data
+    @NoArgsConstructor
+    public static class Cors {
+        /**
+         * 是否使用CORS
+         */
+        private boolean enabled = true;
+
+        /**
+         * 跨域信息
+         */
+        private Map<String, RegistrationConfig> registrationConfig = new ConcurrentHashMap<>();
+
+        /**
+         * 描述 : 跨域信息
+         */
+        @Data
+        public static class RegistrationConfig {
+            /**
+             * 描述 : 扫描地址
+             */
+            private String mapping = "/**";
+
+            /**
+             * 描述 : 允许cookie
+             */
+            private Boolean allowCredentials = true;
+
+            /**
+             * 描述 : 允许的域
+             */
+            private String allowedOrigins = "*";
+
+            /**
+             * 描述 : 允许的方法
+             */
+            private String allowedMethods = "GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS, TRACE";
+
+            /**
+             * 描述 : 允许的头信息
+             */
+            private String allowedHeaders = "*";
+
+        }
+    }
 }
