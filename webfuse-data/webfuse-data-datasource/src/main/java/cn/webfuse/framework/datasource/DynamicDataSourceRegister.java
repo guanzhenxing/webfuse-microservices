@@ -50,10 +50,14 @@ public class DynamicDataSourceRegister implements ImportBeanDefinitionRegistrar,
 
     private static final Logger logger = LoggerFactory.getLogger(DynamicDataSourceRegister.class);
 
-    // 如配置文件中未指定数据源类型，使用该默认值
+    /**
+     * 如配置文件中未指定数据源类型，使用该默认值
+     */
     private static final Object DATASOURCE_TYPE_DEFAULT = "com.zaxxer.hikari.HikariDataSource";
 
-    // 数据源
+    /**
+     * 默认数据源
+     */
     private DataSource defaultDataSource;
     private Map<String, DataSource> customDataSources = new HashMap<>();
 
@@ -122,21 +126,22 @@ public class DynamicDataSourceRegister implements ImportBeanDefinitionRegistrar,
         if (dsPrefixes == null) {
             return;
         }
-        for (String dsPrefix : dsPrefixes.split(",")) {// 多个数据源
+        // 多个数据源
+        for (String dsName : dsPrefixes.split(",")) {
 
             // 读取主数据源
             Map<String, Object> dsMap = new HashMap<>();
-            dsMap.put("type", env.getProperty(customPrefix + "." + dsPrefix + ".type"));
-            dsMap.put("driver-class-name", env.getProperty(customPrefix + "." + dsPrefix + ".driver-class-name"));
-            dsMap.put("url", env.getProperty(customPrefix + "." + dsPrefix + ".url"));
-            dsMap.put("username", env.getProperty(customPrefix + "." + dsPrefix + ".username"));
-            dsMap.put("password", env.getProperty(customPrefix + "." + dsPrefix + ".password"));
+            dsMap.put("type", env.getProperty(customPrefix + "." + dsName + ".type"));
+            dsMap.put("driver-class-name", env.getProperty(customPrefix + "." + dsName + ".driver-class-name"));
+            dsMap.put("url", env.getProperty(customPrefix + "." + dsName + ".url"));
+            dsMap.put("username", env.getProperty(customPrefix + "." + dsName + ".username"));
+            dsMap.put("password", env.getProperty(customPrefix + "." + dsName + ".password"));
 
             DataSource dataSource = buildDataSource(dsMap);
             //为DataSource绑定更多数据
             Bindable<DataSource> bindAble = Bindable.ofInstance(dataSource);
             DataSource customDataSource = Binder.get(env).bind("spring.custom.datasource", bindAble).get();
-            customDataSources.put(dsPrefix, customDataSource);
+            customDataSources.put(dsName, customDataSource);
         }
     }
 
@@ -148,7 +153,8 @@ public class DynamicDataSourceRegister implements ImportBeanDefinitionRegistrar,
         try {
             Object type = dsMap.get("type");
             if (type == null) {
-                type = DATASOURCE_TYPE_DEFAULT;// 默认DataSource
+                // 默认DataSource
+                type = DATASOURCE_TYPE_DEFAULT;
             }
 
             Class<? extends DataSource> dataSourceType;
