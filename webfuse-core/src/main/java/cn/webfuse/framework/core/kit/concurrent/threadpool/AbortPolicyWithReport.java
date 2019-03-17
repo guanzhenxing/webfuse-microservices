@@ -17,10 +17,12 @@ import java.util.concurrent.*;
  * <p>
  * Abort Policy.
  * Log warn info when abort.
+ * <p>
+ * 任务饱和时, 抛弃任务，抛出异常
  */
 public class AbortPolicyWithReport extends ThreadPoolExecutor.AbortPolicy {
 
-    protected static final Logger logger = LoggerFactory.getLogger(AbortPolicyWithReport.class);
+    protected static final Logger LOGGER = LoggerFactory.getLogger(AbortPolicyWithReport.class);
 
     private final String threadName;
 
@@ -39,7 +41,7 @@ public class AbortPolicyWithReport extends ThreadPoolExecutor.AbortPolicy {
                         " Executor status:(isShutdown:%s, isTerminated:%s, isTerminating:%s)!",
                 threadName, e.getPoolSize(), e.getActiveCount(), e.getCorePoolSize(), e.getMaximumPoolSize(), e.getLargestPoolSize(),
                 e.getTaskCount(), e.getCompletedTaskCount(), e.isShutdown(), e.isTerminated(), e.isTerminating());
-        logger.warn(msg);
+        LOGGER.warn(msg);
         dumpJStack();
         throw new RejectedExecutionException(msg);
     }
@@ -77,7 +79,7 @@ public class AbortPolicyWithReport extends ThreadPoolExecutor.AbortPolicy {
                 JstackKits.jstack(jstackStream);
 
             } catch (Throwable t) {
-                logger.error("dump jstack error", t);
+                LOGGER.error("dump jstack error", t);
             } finally {
                 guard.release();
                 if (jstackStream != null) {

@@ -1,6 +1,6 @@
 package cn.webfuse.framework.exception.handle.impl;
 
-import cn.webfuse.framework.kit.LocalIpAddressKits;
+import cn.webfuse.framework.kit.LocalHostInfoKits;
 import org.springframework.boot.autoconfigure.web.ErrorProperties;
 import org.springframework.boot.autoconfigure.web.servlet.error.AbstractErrorController;
 import org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController;
@@ -85,7 +85,7 @@ public class DefaultRestfulErrorController extends AbstractErrorController {
         vo.setCode("URL_NOT_FOUND");
         vo.setServerTime(new Date());
         vo.setMessage("Not Found");
-        vo.setHostId(LocalIpAddressKits.getLocalAddress());
+        vo.setHostId(LocalHostInfoKits.getLocalAddress());
         vo.setRequestId(request.getHeader("X-Request-Id"));
         vo.setDocument(this.defaultDocument);
 

@@ -4,7 +4,7 @@ import cn.webfuse.framework.core.exception.AbstractBizException;
 import cn.webfuse.framework.core.kit.mapper.JsonMapper;
 import cn.webfuse.framework.exception.handle.RestfulError;
 import cn.webfuse.framework.exception.handle.RestfulErrorResolver;
-import cn.webfuse.framework.kit.LocalIpAddressKits;
+import cn.webfuse.framework.kit.LocalHostInfoKits;
 import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -374,7 +374,7 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
 
 
     private String getHostId() {
-        return LocalIpAddressKits.getLocalAddress();
+        return LocalHostInfoKits.getLocalAddress();
     }
 
     private String getRequestId(HttpServletRequest request) {

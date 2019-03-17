@@ -1,5 +1,7 @@
 package cn.webfuse.framework.core.kit;
 
+import com.google.common.primitives.Ints;
+import com.google.common.primitives.Longs;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -294,6 +296,37 @@ public class NumberKits {
         throw new IllegalArgumentException("Int " + x + " out of range");
     }
 
+    ///////////// bytes[] 与原始类型数字转换 ///////
+
+    public static byte[] toBytes(int value) {
+        return Ints.toByteArray(value);
+    }
+
+    public static byte[] toBytes(long value) {
+        return Longs.toByteArray(value);
+    }
+
+    /**
+     * copy from ElasticSearch Numbers
+     */
+    public static byte[] toBytes(double val) {
+        return toBytes(Double.doubleToRawLongBits(val));
+    }
+
+    public static int toInt(byte[] bytes) {
+        return Ints.fromByteArray(bytes);
+    }
+
+    public static long toLong(byte[] bytes) {
+        return Longs.fromByteArray(bytes);
+    }
+
+    /**
+     * copy from ElasticSearch Numbers
+     */
+    public static double toDouble(byte[] bytes) {
+        return Double.longBitsToDouble(toLong(bytes));
+    }
 
     /**
      * Check for a {@code BigInteger}/{@code BigDecimal} long overflow

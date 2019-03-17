@@ -8,6 +8,7 @@ import javax.crypto.*;
 import javax.crypto.spec.DESKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
+import java.security.GeneralSecurityException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -125,6 +126,20 @@ public class CryptoKits {
         return EncodeKits.encodeHex(hmac);
     }
 
+    /**
+     * 生成HMAC-SHA1密钥,返回字节数组,长度为160位(20字节). HMAC-SHA1算法对密钥无特殊要求, RFC2401建议最少长度为160位(20字节).
+     */
+    public static byte[] generateHmacSha1Key() {
+        try {
+            KeyGenerator keyGenerator = KeyGenerator.getInstance(HmacAlgorithms.HMAC_SHA_1.toString());
+            keyGenerator.init(160);
+            SecretKey secretKey = keyGenerator.generateKey();
+            return secretKey.getEncoded();
+        } catch (GeneralSecurityException e) {
+            throw ExceptionKits.unchecked(e);
+        }
+    }
+
 
     /**
      * DES加密
@@ -217,4 +232,27 @@ public class CryptoKits {
         }
 
     }
+
+    /**
+     * 生成AES密钥,返回字节数组, 默认长度为128位(16字节).
+     */
+    public static byte[] generateAesKey() {
+        return generateAesKey(128);
+    }
+
+    /**
+     * 生成AES密钥,可选长度为128,192,256位.
+     */
+    public static byte[] generateAesKey(int keysize) {
+        try {
+            KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+            keyGenerator.init(keysize);
+            SecretKey secretKey = keyGenerator.generateKey();
+            return secretKey.getEncoded();
+        } catch (GeneralSecurityException e) {
+            throw ExceptionKits.unchecked(e);
+        }
+    }
+
+
 }

@@ -1,11 +1,15 @@
 package cn.webfuse.framework.core.kit;
 
 import com.google.common.base.Preconditions;
+import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
 import org.apache.commons.lang3.Validate;
 
+import javax.annotation.Nullable;
 import java.util.*;
 import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentSkipListMap;
 
 /**
  * 关于Map的工具集合
@@ -29,6 +33,19 @@ public class MapKits {
      */
     public static boolean isNotEmpty(final Map<?, ?> map) {
         return (map != null) && !map.isEmpty();
+    }
+
+
+    /**
+     * 根据等号左边的类型, 构造类型正确的HashMap.
+     * <p>
+     * 注意HashMap中有0.75的加载因子的影响, 需要进行运算后才能正确初始化HashMap的大小.
+     * <p>
+     * 加载因子也是HashMap中减少Hash冲突的重要一环，如果读写频繁，总记录数不多的Map，可以比默认值0.75进一步降低，建议0.5
+     */
+    public static <K, V> HashMap<K, V> newHashMapWithCapacity(int expectedSize, float loadFactor) {
+        int finalSize = (int) (expectedSize / loadFactor + 1.0F);
+        return new HashMap<>(finalSize, loadFactor);
     }
 
     /**
@@ -75,10 +92,44 @@ public class MapKits {
     }
 
     /**
+     * 构造类型正确的TreeMap.
+     *
+     * @see com.google.common.collect.Maps#newTreeMap()
+     */
+    @SuppressWarnings("rawtypes")
+    public static <K extends Comparable, V> TreeMap<K, V> newSortedMap() {
+        return Maps.newTreeMap();
+    }
+
+    /**
+     * 构造类型正确的TreeMap.
+     *
+     * @see com.google.common.collect.Maps#newTreeMap(Comparator)
+     */
+    public static <C, K extends C, V> TreeMap<K, V> newSortedMap(@Nullable Comparator<C> comparator) {
+        return Maps.newTreeMap(comparator);
+    }
+
+    /**
      * 相比HashMap，当key是枚举类时, 性能与空间占用俱佳.
      */
     public static <K extends Enum<K>, V> EnumMap<K, V> newEnumMap(Class<K> type) {
         return new EnumMap<>(Preconditions.checkNotNull(type));
+    }
+
+
+    /**
+     * 根据等号左边的类型，构造类型正确的ConcurrentHashMap.
+     */
+    public static <K, V> ConcurrentHashMap<K, V> newConcurrentHashMap() {
+        return new ConcurrentHashMap<>();
+    }
+
+    /**
+     * 根据等号左边的类型，构造类型正确的ConcurrentSkipListMap.
+     */
+    public static <K, V> ConcurrentSkipListMap<K, V> newConcurrentSortedMap() {
+        return new ConcurrentSkipListMap<>();
     }
 
 
