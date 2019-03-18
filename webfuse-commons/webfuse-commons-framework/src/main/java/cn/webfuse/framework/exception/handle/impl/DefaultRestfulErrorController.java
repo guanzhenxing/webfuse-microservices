@@ -85,7 +85,7 @@ public class DefaultRestfulErrorController extends AbstractErrorController {
         vo.setCode("URL_NOT_FOUND");
         vo.setServerTime(new Date());
         vo.setMessage("Not Found");
-        vo.setHostId(LocalHostInfoKits.getLocalAddress());
+        vo.setHostId(LocalHostInfoKits.getLocalHost());
         vo.setRequestId(request.getHeader("X-Request-Id"));
         vo.setDocument(this.defaultDocument);
 

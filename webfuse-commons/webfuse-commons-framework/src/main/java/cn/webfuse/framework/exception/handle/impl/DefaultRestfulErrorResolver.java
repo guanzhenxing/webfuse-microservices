@@ -374,7 +374,7 @@ public class DefaultRestfulErrorResolver implements RestfulErrorResolver, Messag
 
 
     private String getHostId() {
-        return LocalHostInfoKits.getLocalAddress();
+        return LocalHostInfoKits.getLocalHost();
     }
 
     private String getRequestId(HttpServletRequest request) {
