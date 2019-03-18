@@ -38,16 +38,21 @@ public class PageableResponse<T> implements Serializable {
         return Collections.unmodifiableList(content);
     }
 
-    public int getTotalPages() {
+    public int getTotalPage() {
         return getSize() == 0 ? 1 : (int) Math.ceil((double) total / (double) getSize());
     }
 
-    public long getTotalElements() {
+    public long getTotalElement() {
         return total;
     }
 
+    public long getOffset() {
+        return (page - 1) * size;
+    }
+
+
     public boolean hasNext() {
-        return getPage() + 1 < getTotalPages();
+        return getPage() + 1 < getTotalPage();
     }
 
     public boolean isLast() {
@@ -78,35 +83,35 @@ public class PageableResponse<T> implements Serializable {
         this.content = content;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        PageableResponse<?> that = (PageableResponse<?>) o;
-
-        if (page != that.page) {
-            return false;
-        }
-        if (size != that.size) {
-            return false;
-        }
-        if (total != that.total) {
-            return false;
-        }
-        return content != null ? content.equals(that.content) : that.content == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = page;
-        result = 31 * result + size;
-        result = 31 * result + (int) (total ^ (total >>> 32));
-        result = 31 * result + (content != null ? content.hashCode() : 0);
-        return result;
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) {
+//            return true;
+//        }
+//        if (o == null || getClass() != o.getClass()) {
+//            return false;
+//        }
+//
+//        PageableResponse<?> that = (PageableResponse<?>) o;
+//
+//        if (page != that.page) {
+//            return false;
+//        }
+//        if (size != that.size) {
+//            return false;
+//        }
+//        if (total != that.total) {
+//            return false;
+//        }
+//        return content != null ? content.equals(that.content) : that.content == null;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        int result = page;
+//        result = 31 * result + size;
+//        result = 31 * result + (int) (total ^ (total >>> 32));
+//        result = 31 * result + (content != null ? content.hashCode() : 0);
+//        return result;
+//    }
 }
