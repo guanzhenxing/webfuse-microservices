@@ -12,7 +12,7 @@
     <artifactId>webfuse-ext-kit</artifactId>
 
     <properties>
-        <commons-compress.version>1.5</commons-compress.version>
+        <commons-compress.version>1.18</commons-compress.version>
     </properties>
 
 
