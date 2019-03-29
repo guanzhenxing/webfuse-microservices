@@ -3,7 +3,9 @@ package cn.webfuse.framework.core.kit;
 import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.apache.commons.lang3.time.FastDateFormat;
 
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -13,20 +15,43 @@ import java.util.Date;
  */
 public class DateFormatKits {
 
-    // 以T分隔日期和时间，并带时区信息，符合ISO8601规范
+    /**
+     * 以T分隔日期和时间，并带时区信息，符合ISO8601规范
+     */
     public static final String PATTERN_ISO = "yyyy-MM-dd'T'HH:mm:ss.SSSZZ";
     public static final String PATTERN_ISO_ON_SECOND = "yyyy-MM-dd'T'HH:mm:ssZZ";
 
-    // 以空格分隔日期和时间，不带时区信息
+    /**
+     * 以空格分隔日期和时间，不带时区信息
+     */
     public static final String PATTERN_DEFAULT = "yyyy-MM-dd HH:mm:ss.SSS";
     public static final String PATTERN_DEFAULT_ON_SECOND = "yyyy-MM-dd HH:mm:ss";
     public static final String PATTERN_DEFAULT_DATE = "yyyy-MM-dd";
 
 
+    /**
+     * "yyyy-MM-dd'T'HH:mm:ss.SSSZZ"格式
+     */
     public static final FastDateFormat ISO_FORMAT = FastDateFormat.getInstance(PATTERN_ISO);
+
+    /**
+     * "yyyy-MM-dd'T'HH:mm:ssZZ"格式
+     */
     public static final FastDateFormat ISO_ON_SECOND_FORMAT = FastDateFormat.getInstance(PATTERN_ISO_ON_SECOND);
+
+    /**
+     * "yyyy-MM-dd HH:mm:ss.SSS" 格式
+     */
     public static final FastDateFormat DEFAULT_FORMAT = FastDateFormat.getInstance(PATTERN_DEFAULT);
+
+    /**
+     * "yyyy-MM-dd HH:mm:ss" 格式
+     */
     public static final FastDateFormat DEFAULT_ON_SECOND_FORMAT = FastDateFormat.getInstance(PATTERN_DEFAULT_ON_SECOND);
+
+    /**
+     * "yyyy-MM-dd" 格式
+     */
     public static final FastDateFormat DEFAULT_DATE_FORMAT = FastDateFormat.getInstance(PATTERN_DEFAULT_DATE);
 
     /**
