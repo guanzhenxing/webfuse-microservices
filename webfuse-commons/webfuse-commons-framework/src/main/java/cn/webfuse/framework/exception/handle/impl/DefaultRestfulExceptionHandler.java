@@ -47,8 +47,6 @@ public class DefaultRestfulExceptionHandler extends AbstractHandlerExceptionReso
     public DefaultRestfulExceptionHandler(RestfulErrorConverter<?> restfulErrorConverter, RestfulErrorResolver restfulErrorResolver) {
         this.restfulErrorConverter = restfulErrorConverter;
         this.restfulErrorResolver = restfulErrorResolver;
-
-        LOGGER.info("++++++++++++++++++++");
     }
 
     @Override

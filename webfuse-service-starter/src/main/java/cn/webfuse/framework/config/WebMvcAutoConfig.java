@@ -73,24 +73,32 @@ public class WebMvcAutoConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                Map<String, WebMvcProperties.Cors.RegistrationConfig> configMap = webMvcProperties.getCors().getRegistrationConfig();
-                if (!CollectionUtils.isEmpty(configMap)) {
-                    configMap.forEach((key, config) -> {
-                        CorsRegistration corsRegistration = registry.addMapping(config.getMapping());
-                        if (config.getAllowCredentials() != null) {
-                            corsRegistration.allowCredentials(config.getAllowCredentials());
-                        }
-                        if (StringUtils.isNotBlank(config.getAllowedOrigins())) {
-                            corsRegistration.allowedOrigins(config.getAllowedOrigins().split(","));
-                        }
-                        if (StringUtils.isNotBlank(config.getAllowedMethods())) {
-                            corsRegistration.allowedMethods(config.getAllowedMethods().split(","));
-                        }
-                        if (StringUtils.isNotBlank(config.getAllowedHeaders())) {
-                            corsRegistration.allowedHeaders(config.getAllowedHeaders().split(","));
-                        }
-                    });
-                }
+                List<WebMvcProperties.Cors.RegistrationConfig> registrationConfigList = webMvcProperties.getCors().getRegistrationConfig();
+
+                registrationConfigList.stream().forEach(config -> {
+
+                    CorsRegistration corsRegistration = registry.addMapping(config.getMapping());
+
+                    if (config.getAllowCredentials() != null) {
+                        corsRegistration.allowCredentials(config.getAllowCredentials());
+                    }
+                    if (StringUtils.isNotBlank(config.getAllowedOrigins())) {
+                        corsRegistration.allowedOrigins(config.getAllowedOrigins().split(","));
+                    }
+                    if (StringUtils.isNotBlank(config.getAllowedMethods())) {
+                        corsRegistration.allowedMethods(config.getAllowedMethods().split(","));
+                    }
+                    if (StringUtils.isNotBlank(config.getAllowedHeaders())) {
+                        corsRegistration.allowedHeaders(config.getAllowedHeaders().split(","));
+                    }
+                    if (config.getMaxAge() > 0) {
+                        corsRegistration.maxAge(config.getMaxAge());
+                    }
+                    if (StringUtils.isNotBlank(config.getExposedHeaders())) {
+                        corsRegistration.allowedHeaders(config.getExposedHeaders().split(","));
+                    }
+
+                });
             }
         };
     }

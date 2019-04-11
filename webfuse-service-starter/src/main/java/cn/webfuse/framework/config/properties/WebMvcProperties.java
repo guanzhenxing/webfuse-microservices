@@ -87,6 +87,9 @@ public class WebMvcProperties {
     }
 
 
+    /**
+     * https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS
+     */
     @Data
     @NoArgsConstructor
     public static class Cors {
@@ -98,7 +101,7 @@ public class WebMvcProperties {
         /**
          * 跨域信息
          */
-        private Map<String, RegistrationConfig> registrationConfig = new ConcurrentHashMap<>();
+        private List<RegistrationConfig> registrationConfig = new ArrayList<>();
 
         /**
          * 描述 : 跨域信息
@@ -129,6 +132,16 @@ public class WebMvcProperties {
              * 描述 : 允许的头信息
              */
             private String allowedHeaders = "*";
+
+            /**
+             * 描述 : 请求的结果能够被缓存多久
+             */
+            private Long maxAge = 3600L;
+
+            /**
+             * 描述 : 让服务器把允许浏览器访问的头放入白名单
+             */
+            private String exposedHeaders = "";
 
         }
     }
