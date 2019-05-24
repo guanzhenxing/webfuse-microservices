@@ -1,4 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  cn.webfuse.framework.config.WebMvcAutoConfig,\
-  cn.webfuse.framework.config.LoggerAutoConfig,\
-  cn.webfuse.framework.config.ErrorMvcAutoConfig
