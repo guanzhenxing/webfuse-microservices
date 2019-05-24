@@ -1,0 +1,3 @@
+turbine:
+  app-config: ms-consumer-service,ms-producer-service
+  clusterNameExpression: "'default'"

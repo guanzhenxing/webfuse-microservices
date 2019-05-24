@@ -1,0 +1,22 @@
+server:
+  port: 2301
+spring:
+  application:
+    name: dservice-turbine-stream
+  cloud:
+    config:
+      profile: dev
+      label: master
+      username: webfuse
+      password: webfuse
+      fail-fast: true
+      discovery:
+        enabled: true
+        service-id: central-config
+##########################
+## Eureka配置
+##########################
+eureka:
+  client:
+    service-url:
+      defaultZone: http://webfuse:webfuse@localhost:2000/eureka/

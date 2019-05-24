@@ -1,0 +1,65 @@
+##########################
+## Actuator监控配置
+##########################
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+    env:
+      enabled: true
+
+##########################
+## 基本配置
+##########################
+mvc:
+  favicon:
+    enabled: false
+
+##########################
+## Spring Cloud配置
+##########################
+webfuse-security:
+  user:
+    name: webfuse
+    password: webfuse
+
+spring:
+  # basic config
+  http:
+    converters:
+      preferred-json-mapper: jackson
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  cloud:
+    config:
+      server:
+        jdbc:  #通过数据库的方式
+          sql: 'SELECT `KEY`, `VALUE` from PROPERTIES where APPLICATION=? and PROFILE=? and LABEL=?'
+    bus:
+      trace:
+        enabled: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/central_config
+    username: root
+    password: root
+#  main:
+#    allow-bean-definition-overriding: true
+  profiles:
+    active: jdbc
+
+  # for rabbitmq
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: webfuse
+    password: webfuse
