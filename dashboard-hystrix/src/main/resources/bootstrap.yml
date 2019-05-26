@@ -1,7 +1,0 @@
-server:
-  port: 2300
-spring:
-  application:
-    name: dashboard-hystrix
-
-
